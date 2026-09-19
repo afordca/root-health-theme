@@ -1,0 +1,188 @@
+/* Root Helps Founding Story Section - Mobile First */
+.root-helps-founding-story {
+	/* Configurable variables */
+	--founding-story-background-color: #fe9a68;
+	--founding-story-container-padding-mobile: 69px 17px 60px;
+	--founding-story-container-padding-desktop: 139px 80px 60px;
+	--founding-story-min-height-desktop: 1477px;
+	--founding-story-container-max-width: 1440px;
+	--founding-story-heading-color: #e5653d;
+	--founding-story-text-color: #000000;
+	--founding-story-separator-color: #e5653d;
+
+	position: relative;
+	margin: 0;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	background: var(--founding-story-background-color);
+	overflow: hidden;
+}
+
+.root-helps-founding-story__container {
+	position: relative;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Main Heading */
+.root-helps-founding-story__heading {
+	font-family: "GT Super Ds Trial", "GT Super Display", serif;
+	font-weight: 400;
+	font-size: 4.8rem;
+	line-height: 1.25;
+	color: var(--founding-story-heading-color);
+}
+
+/* Founder Cards */
+.root-helps-founding-story__founder-cards {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.root-helps-founding-story__founder-card {
+	position: relative;
+}
+
+.root-helps-founding-story__founder-image-placeholder,
+.root-helps-founding-story__founder-image {
+	width: 100%;
+	height: auto;
+	border-radius: 15.6px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.root-helps-founding-story__founder-info {
+	padding: 0;
+}
+
+.root-helps-founding-story__founder-name {
+	font-family: "GT Super Ds Trial", "GT Super Display", serif;
+	font-weight: 300;
+	font-size: 42px;
+	line-height: 1.14;
+	color: var(--founding-story-text-color);
+	margin: 0 0 20px 0;
+}
+
+.root-helps-founding-story__founder-bio {
+	font-family:
+		"Gilroy",
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		sans-serif;
+	font-weight: 300;
+	font-size: 1.8rem;
+	line-height: 1.5;
+	color: var(--founding-story-text-color);
+	margin: 0;
+}
+
+/* Separator Lines */
+.root-helps-founding-story__separator-line {
+	width: 400px;
+	height: 1px;
+	background: var(--founding-story-separator-color);
+	margin: 30px 0 30px 7px;
+}
+
+.root-helps-founding-story__story-text {
+	font-family:
+		"Gilroy",
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		sans-serif;
+	font-weight: 300;
+	font-size: 1.8rem;
+	line-height: 1.67;
+	color: var(--founding-story-text-color);
+	margin: 0;
+}
+
+/* Desktop Styles */
+@media screen and (min-width: 768px) {
+	.root-helps-founding-story__founder-cards {
+		flex-direction: row;
+	}
+	.root-helps-founding-story__founder-info {
+		padding: 0 18px;
+	}
+	.root-helps-founding-story {
+		background: var(--founding-story-background-color);
+		min-height: var(--founding-story-min-height-desktop);
+	}
+
+	.root-helps-founding-story__heading {
+		font-size: 6rem;
+		line-height: 1.5;
+		margin: 0;
+	}
+
+	.root-helps-founding-story__founder-card {
+		position: relative;
+		margin-bottom: 80px;
+	}
+
+	.root-helps-founding-story__founder-image {
+		width: 513px;
+		height: auto;
+		border-radius: 20px;
+		margin: 0 0 20px 0;
+	}
+
+	.root-helps-founding-story__founder-info {
+		padding: 0;
+	}
+
+	.root-helps-founding-story__founder-name {
+		font-size: 4rem;
+		line-height: 1.14;
+		margin: 0 0 20px 0;
+	}
+
+	.root-helps-founding-story__founder-bio {
+		font-size: 2rem;
+		line-height: 1.5;
+	}
+
+	.root-helps-founding-story__story-text {
+		font-size: 2.4rem;
+		line-height: 1.67;
+	}
+
+	/* Hide separator lines on desktop */
+	.root-helps-founding-story__separator-line {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 1025px) {
+	.root-helps-founding-story__container {
+		max-width: var(--founding-story-container-max-width);
+		margin: 0 auto;
+		min-height: var(--founding-story-min-height-desktop);
+		display: flex;
+		gap: 80px;
+		flex-direction: row;
+		position: relative;
+		padding-top: 140px;
+	}
+
+	.root-helps-founding-story__founder-cards {
+		flex-direction: column;
+	}
+}

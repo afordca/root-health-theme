@@ -1,0 +1,115 @@
+{% comment %}
+  Dietary Restrictions Grid Snippet
+
+  This snippet renders a grid of dietary restrictions with icons.
+  It can accept data from multiple sources:
+
+  Parameters:
+  - restrictions: array of restriction objects with title and icon properties
+  - blocks: array of blocks from a section with dietary_restriction type
+  - grid_columns: number of columns (default: 3)
+  - show_heading: boolean (default: false)
+  - heading: string for heading text
+{% endcomment %}
+
+{%- assign grid_columns = grid_columns | default: 3 -%}
+{%- assign show_heading = show_heading | default: false -%}
+
+{% comment %}
+  Handle different data sources:
+  1. restrictions array (passed directly)
+  2. blocks array (from section schema)
+  3. default fallback
+{% endcomment %}
+
+{%- assign final_restrictions = '' | split: ',' -%}
+
+{% if restrictions != blank and restrictions.size > 0 %}
+  {%- comment -%}Use provided restrictions array{%- endcomment -%}
+  {%- assign final_restrictions = restrictions -%}
+{% elsif blocks != blank and blocks.size > 0 %}
+  {%- comment -%}Convert blocks to restrictions array{%- endcomment -%}
+  {%- assign final_restrictions = blocks | where: 'type', 'dietary-restriction' -%}
+{% endif %}
+
+{% comment %}
+  If no restrictions found, use defaults
+{% endcomment %}
+{% if final_restrictions.size == 0 %}
+  {%- assign default_restrictions = 'VEGAN|Vegan-icon.svg|false,SOY FREE|soy-free-icon.svg|false,DAIRY FREE|dairy-free-icon.svg|false,GLUTEN FREE|gluten-free-icon.svg|false,NUT FREE|nut-free-icon.svg|false,ADDITIVE FREE|additive-free-icon.svg|false'
+    | split: ','
+  -%}
+{% endif %}
+
+<div class="dietary-restrictions-grid" style="--grid-columns: {{ grid_columns }};">
+  {% if show_heading and heading != blank %}
+    <p class="dietary-restrictions-grid__heading">{{ heading }}</p>
+  {% endif %}
+
+  <div class="dietary-restrictions-grid__items">
+    {% if final_restrictions.size > 0 %}
+      {% for restriction_item in final_restrictions %}
+        {%- assign restriction_title = restriction_item.settings.title -%}
+        {%- assign restriction_icon = restriction_item.settings.custom_icon -%}
+        {%- assign not_included = restriction_item.settings.not_included | default: 'false' -%}
+
+        <div class="dietary-restrictions-grid__item{% if not_included == 'true' %} dietary-restrictions-grid__item--not-included{% endif %}">
+          <div class="dietary-restrictions-grid__icon">
+            {% if restriction_icon != blank %}
+              <img
+                src="{{ restriction_icon | image_url }}"
+                alt="{{ restriction_title | escape }}"
+                class="dietary-restrictions-grid__icon-image"
+                width="68"
+                height="68"
+              >
+            {% else %}
+              <!-- Default decorative icon -->
+              <div class="dietary-restrictions-grid__default-icon" aria-hidden="true">
+                <div class="dietary-restrictions-grid__icon-shape"></div>
+              </div>
+            {% endif %}
+            {% if not_included == 'true' %}
+              <div class="dietary-restrictions-grid__strike-through" aria-hidden="true"></div>
+            {% endif %}
+          </div>
+          {% if restriction_title != blank %}
+            <h3 class="dietary-restrictions-grid__title">{{ restriction_title }}</h3>
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% else %}
+      {% for restriction_item in default_restrictions %}
+        {%- assign parts = restriction_item | split: '|' -%}
+        {%- assign restriction_title = parts[0] -%}
+        {%- assign restriction_icon = parts[1] -%}
+        {%- assign not_included = parts[2] | default: 'false' -%}
+
+        <div class="dietary-restrictions-grid__item{% if not_included == 'true' %} dietary-restrictions-grid__item--not-included{% endif %}">
+          <div class="dietary-restrictions-grid__icon">
+            {% if restriction_icon != blank %}
+              <img
+                src="{{ restriction_icon | file_url }}"
+                alt="{{ restriction_title | escape }}"
+                class="dietary-restrictions-grid__icon-image"
+                width="68"
+                height="68"
+              >
+            {% else %}
+              <!-- Default decorative icon -->
+              <div class="dietary-restrictions-grid__default-icon" aria-hidden="true">
+                <div class="dietary-restrictions-grid__icon-shape"></div>
+              </div>
+            {% endif %}
+            {% if not_included == 'true' %}
+              <div class="dietary-restrictions-grid__strike-through" aria-hidden="true"></div>
+            {% endif %}
+          </div>
+          {% if restriction_title != blank %}
+            <h3 class="dietary-restrictions-grid__title">{{ restriction_title }}</h3>
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>

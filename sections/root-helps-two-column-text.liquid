@@ -1,0 +1,108 @@
+{{ 'section-root-helps-two-column-text.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign heading = section.settings.heading
+  assign body_text = section.settings.body_text
+-%}
+
+<section class="section-root-helps-two-column-text root-helps-section" id="section-{{ section.id }}">
+  <div class="container root-helps-section__container">
+    <div class="content">
+      <div class="left-column">
+        {%- if heading != blank -%}
+          <h2 class="main-heading">{{ heading }}</h2>
+        {%- endif -%}
+      </div>
+      <div class="right-column">
+        {%- if body_text != blank -%}
+          <div class="body-text">{{ body_text | newline_to_br }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Root Helps Two Col",
+  "tag": "section",
+  "class": "section-root-helps-two-column-text",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Left Column Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Right Column Text"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "Accent 1"
+        },
+        {
+          "value": "accent-2",
+          "label": "Accent 2"
+        },
+        {
+          "value": "background-1",
+          "label": "Background 1"
+        },
+        {
+          "value": "background-2",
+          "label": "Background 2"
+        },
+        {
+          "value": "inverse",
+          "label": "Inverse"
+        }
+      ],
+      "default": "background-1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Helps Two Column Text",
+      "settings": {
+        "heading": "Root was born out of our desire to ease the journey for new moms.",
+        "body_text": "As fellow parents, we understand the challenges and struggles that come with parenthood. By sharing our experiences and creating Root, we hope to help new moms save time, energy, and alleviate some of the stressors that we encountered."
+      }
+    }
+  ]
+}
+{% endschema %}

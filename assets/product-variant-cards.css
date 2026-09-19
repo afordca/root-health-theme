@@ -1,0 +1,189 @@
+/* Product Variant Cards - Consistent styling for mobile and desktop */
+
+.product-variant-cards {
+	border: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-md, 8px);
+}
+
+.product-variant-cards__label {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 500;
+	font-size: 1rem;
+	line-height: 3.8;
+	letter-spacing: 20%;
+	text-transform: uppercase;
+	color: #000000;
+}
+
+.product-variant-cards__item {
+	position: relative;
+}
+
+.product-variant-cards__item-unavailable {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.product-variant-cards__item-unavailable .product-variant-cards__header {
+	border: none;
+	background-color: #ccc;
+}
+
+.product-variant-cards__item-unavailable .product-variant-cards__label-card {
+	border: 1px solid #ccc;
+}
+
+.product-variant-cards__item--selected .product-variant-cards__header {
+	border: none;
+	background-color: #fe9a68;
+}
+
+.product-variant-cards__item .product-variant-cards__details {
+	padding: var(--spacing-md, 12px);
+}
+
+.product-variant-cards__input {
+	display: none;
+}
+
+.product-variant-cards__label-card {
+	display: flex;
+	align-items: flex-start;
+	border: 1px solid #fe9a68;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	position: relative;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.product-variant-cards__input:checked + .product-variant-cards__label-card {
+	border: 2px solid #e5653d;
+	background-color: rgba(229, 101, 61, 0.05);
+}
+
+.product-variant-cards__content {
+	flex: 1;
+	overflow: hidden;
+	border-radius: 8px;
+}
+
+.product-variant-cards__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: var(--spacing-xs, 8px);
+	padding: var(--spacing-sm, 8px);
+}
+
+.product-variant-cards__title {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.6rem;
+	line-height: 1.125;
+	text-transform: uppercase;
+	color: #000000;
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-xs, 8px);
+}
+
+.product-variant-cards__price {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 500;
+	font-size: 1.8rem;
+	line-height: 1.125;
+	color: #000000;
+	text-align: right;
+}
+
+.product-variant-cards__details {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.5rem;
+	line-height: 1.15;
+	color: #000000;
+	white-space-collapse: preserve-breaks;
+}
+
+.product-variant-cards__details > div {
+	margin-bottom: 2px;
+}
+
+.product-variant-cards__radio {
+	width: 20px;
+	height: 20px;
+	border: 1px solid #000000;
+	border-radius: 50%;
+	margin-left: var(--spacing-sm, 8px);
+	margin-top: 2px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.product-variant-cards__item--selected .product-variant-cards__radio-circle {
+	background: #e5653d;
+	opacity: 1;
+}
+
+.product-variant-cards__radio-circle {
+	width: 12px;
+	height: 12px;
+	background: #000000;
+	border-radius: 50%;
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+
+.product-variant-cards__input:checked
+	+ .product-variant-cards__label-card
+	.product-variant-cards__radio {
+	border: 2px solid #000000;
+}
+
+.product-variant-cards__input:checked
+	+ .product-variant-cards__label-card
+	.product-variant-cards__radio-circle {
+	opacity: 1;
+}
+
+/* OR Separator */
+.product-variant-cards__separator {
+	text-align: center;
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 400;
+	font-size: 1.8rem;
+	line-height: 1.33;
+	color: #000000;
+	margin: var(--spacing-md, 12px) 0;
+}
+
+/* Responsive Design */
+
+/* Mobile Specific */
+@media screen and (max-width: 767px) {
+	.product-variant-cards__header {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.product-variant-cards__price-details {
+		text-align: right;
+		margin-top: var(--spacing-xs, 8px);
+		margin-left: 36px;
+	}
+}
+
+/* Desktop Specific */
+@media screen and (min-width: 768px) {
+	.product-variant-cards {
+		max-width: 620px;
+	}
+}

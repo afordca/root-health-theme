@@ -1,0 +1,99 @@
+/* Two Column Text Section */
+.section-root-helps-two-column-text {
+	position: relative;
+	margin: 0;
+	background: #ffffff;
+}
+
+.section-root-helps-two-column-text .container {
+	position: relative;
+	width: 100%;
+	padding-top: 21px;
+	padding-bottom: 60px;
+}
+
+.section-root-helps-two-column-text .content {
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+}
+
+.section-root-helps-two-column-text .left-column {
+	width: 100%;
+}
+
+.section-root-helps-two-column-text .right-column {
+	width: 100%;
+}
+
+.section-root-helps-two-column-text .main-heading {
+	font-family: "GT Super Ds Trial", "GT Super Display", serif;
+	font-weight: 400;
+	font-size: 36px;
+	line-height: 1.33;
+	color: #fe9a68;
+	margin: 0;
+}
+
+.section-root-helps-two-column-text .body-text {
+	font-family:
+		"Gilroy",
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		sans-serif;
+	font-weight: 300;
+	font-size: 18px;
+	line-height: 1.67;
+	color: #000000;
+	margin: 0;
+}
+
+/* Desktop Styles */
+@media screen and (min-width: 768px) {
+	.section-root-helps-two-column-text {
+		background: #ffffff;
+		min-height: 440px;
+	}
+
+	.section-root-helps-two-column-text .left-column {
+		flex: 1 1 50%;
+	}
+
+	.section-root-helps-two-column-text .right-column {
+		flex: 1 1 50%;
+	}
+
+	.section-root-helps-two-column-text .main-heading {
+		font-size: 48px;
+		line-height: 1.5;
+		min-height: 216px;
+	}
+
+	.section-root-helps-two-column-text .body-text {
+		font-size: 1.8rem;
+		line-height: 1.5;
+		min-height: 216px;
+	}
+
+	.section-root-helps-two-column-text .container {
+		padding: 60px 40px;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.section-root-helps-two-column-text .container {
+		max-width: 1440px;
+	}
+
+	.section-root-helps-two-column-text .content {
+		display: flex;
+		flex-direction: row;
+		gap: 40px;
+		align-items: flex-start;
+	}
+}

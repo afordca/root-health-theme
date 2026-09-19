@@ -1,0 +1,179 @@
+{% comment %}
+  Renders product variant cards for radio button selection
+
+  Accepts:
+  - product: {Object} Product object
+  - section_id: {String} Section ID for unique input IDs
+  - form_id: {String} Product form ID
+  - show_quantity_label: {Boolean} Whether to show "QUANTITY" label (default: true)
+
+  Usage:
+  {% render 'product-variant-cards', product: product, section_id: section.id, form_id: product_form_id %}
+{% endcomment %}
+
+{%- assign show_quantity_label = show_quantity_label | default: true -%}
+
+{%- unless product.has_only_default_variant -%}
+  <variant-selects
+    id="variant-selects-{{ section_id }}"
+    data-section="{{ section_id }}"
+    {{ block.shopify_attributes }}
+  >
+    <fieldset class="product-variant-cards js product-form__input">
+      {%- if show_quantity_label -%}
+        <legend class="product-variant-cards__label form__label">QUANTITY</legend>
+      {%- endif -%}
+
+      {%- assign monthly_variants = '' -%}
+      {%- assign one_month_variants = '' -%}
+      {%- assign trial_variants = '' -%}
+
+      {%- for variant in product.variants -%}
+        {% if variant.metafields.custom.subscription_type.value contains 'Monthly' %}
+          {%- assign monthly_variants = monthly_variants | append: variant -%}
+        {% endif %}
+        {% if variant.metafields.custom.subscription_type.value contains 'One Month' %}
+          {%- assign one_month_variants = one_month_variants | append: variant -%}
+        {% endif %}
+        {% if variant.metafields.custom.subscription_type.value contains 'Trial' %}
+          {%- assign trial_variants = trial_variants | append: variant -%}
+        {% endif %}
+      {%- endfor -%}
+
+      <!-- Monthly Subscription -->
+      {%- for variant in product.variants -%}
+        {% if variant.metafields.custom.subscription_type.value contains 'Monthly' %}
+          <div class="product-variant-cards__item {% if variant == product.selected_or_first_available_variant %}product-variant-cards__item--selected{% endif %} {% if variant.available == false %}product-variant-cards__item-unavailable{% endif %}">
+            <input
+              type="radio"
+              id="{{ section_id }}-{{ variant.id }}"
+              name="options[Subscription Type]"
+              value="{{ variant.metafields.custom.subscription_type.value }}"
+              form="{{ form_id }}"
+              {% if variant == product.selected_or_first_available_variant %}
+                checked
+              {% endif %}
+              data-option-value-id="{{ variant.option_values[0].id }}"
+              data-product-url="{{ variant.url }}"
+              class="product-variant-cards__input"
+            >
+            <label
+              for="{{ section_id }}-{{ variant.id }}"
+              class="product-variant-cards__label-card"
+            >
+              <div class="product-variant-cards__content">
+                <div class="product-variant-cards__header">
+                  <div class="product-variant-cards__title">
+                    <div class="product-variant-cards__radio">
+                      <span class="product-variant-cards__radio-circle"></span>
+                    </div>
+                    {{- variant.title }}
+                  </div>
+                  <div class="product-variant-cards__price-details">
+                    <div class="product-variant-cards__price">{{ variant.price | money }} / Mo</div>
+                  </div>
+                </div>
+                <div class="product-variant-cards__details">
+                  {{- variant.metafields.custom.variant_description.value -}}
+                </div>
+              </div>
+            </label>
+          </div>
+        {% endif %}
+      {%- endfor -%}
+
+      <!-- 1 Month Supply -->
+      {%- for variant in product.variants -%}
+        {% if variant.metafields.custom.subscription_type.value contains 'One Month' %}
+          <div class="product-variant-cards__item {% if variant == product.selected_or_first_available_variant %}product-variant-cards__item--selected{% endif %} {% if variant.available == false %}product-variant-cards__item-unavailable{% endif %}">
+            <input
+              type="radio"
+              id="{{ section_id }}-{{ variant.id }}"
+              name="options[Subscription Type]"
+              value="{{ variant.metafields.custom.subscription_type.value }}"
+              form="{{ form_id }}"
+              {% if variant == product.selected_or_first_available_variant %}
+                checked
+              {% endif %}
+              data-option-value-id="{{ variant.option_values[0].id }}"
+              data-product-url="{{ variant.url }}"
+              class="product-variant-cards__input"
+            >
+            <label
+              for="{{ section_id }}-{{ variant.id }}"
+              class="product-variant-cards__label-card"
+            >
+              <div class="product-variant-cards__content">
+                <div class="product-variant-cards__header">
+                  <div class="product-variant-cards__title">
+                    <div class="product-variant-cards__radio">
+                      <span class="product-variant-cards__radio-circle"></span>
+                    </div>
+                    {{- variant.title }}
+                  </div>
+                  <div class="product-variant-cards__price-details">
+                    <div class="product-variant-cards__price">{{ variant.price | money }}</div>
+                  </div>
+                </div>
+                <div class="product-variant-cards__details">
+                  {{- variant.metafields.custom.variant_description.value -}}
+                </div>
+              </div>
+            </label>
+          </div>
+        {% endif %}
+      {%- endfor -%}
+
+      <!-- OR Separator -->
+      {%- if trial_variants.size > 0 -%}
+        <div class="product-variant-cards__separator">- OR -</div>
+      {%- endif -%}
+
+      <!-- Trial Pack -->
+      {%- for variant in product.variants -%}
+        {% if variant.metafields.custom.subscription_type.value contains 'Trial' %}
+          <div class="product-variant-cards__item {% if variant == product.selected_or_first_available_variant %}product-variant-cards__item--selected{% endif %} {% if variant.available == false %}product-variant-cards__item-unavailable{% endif %}">
+            <input
+              type="radio"
+              id="{{ section_id }}-{{ variant.id }}"
+              name="options[Subscription Type]"
+              value="{{ variant.metafields.custom.subscription_type.value }}"
+              form="{{ form_id }}"
+              {% if variant == product.selected_or_first_available_variant %}
+                checked
+              {% endif %}
+              data-option-value-id="{{ variant.option_values[0].id }}"
+              data-product-url="{{ variant.url }}"
+              class="product-variant-cards__input"
+            >
+            <label
+              for="{{ section_id }}-{{ variant.id }}"
+              class="product-variant-cards__label-card"
+            >
+              <div class="product-variant-cards__content">
+                <div class="product-variant-cards__header">
+                  <div class="product-variant-cards__title">
+                    <div class="product-variant-cards__radio">
+                      <span class="product-variant-cards__radio-circle"></span>
+                    </div>
+                    {{- variant.title }}
+                  </div>
+                  <div class="product-variant-cards__price-details">
+                    <div class="product-variant-cards__price">{{ variant.price | money }}</div>
+                  </div>
+                </div>
+                <div class="product-variant-cards__details">
+                  {{- variant.metafields.custom.variant_description.value -}}
+                </div>
+              </div>
+            </label>
+          </div>
+        {% endif %}
+      {%- endfor -%}
+    </fieldset>
+
+    <script type="application/json" data-selected-variant>
+      {{ product.selected_or_first_available_variant | json }}
+    </script>
+  </variant-selects>
+{%- endunless -%}

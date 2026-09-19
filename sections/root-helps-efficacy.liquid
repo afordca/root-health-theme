@@ -1,0 +1,294 @@
+{%- liquid
+  assign heading = section.settings.heading
+  assign description = section.settings.description
+  assign report_background = section.settings.report_background
+  assign form_action = section.settings.form_action
+  assign padding_top = section.settings.padding_top | default: 0
+  assign padding_bottom = section.settings.padding_bottom | default: 0
+-%}
+
+{{ 'section-root-helps-efficacy.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ padding_top }}px;
+    padding-bottom: {{ padding_bottom }}px;
+  }
+
+  {% if report_background %}
+    #root-helps-efficacy-{{ section.id }} .root-helps-efficacy__report-preview {
+      background-image: url('{{ report_background | image_url: width: 592 }}');
+    }
+  {% else %}
+    #root-helps-efficacy-{{ section.id }} .root-helps-efficacy__report-preview {
+      background-image: url('{{ "efficacy-report-bg.jpg" | asset_url }}');
+    }
+  {% endif %}
+{% endstyle %}
+
+<section
+  class="root-helps-section root-helps-efficacy section-{{ section.id }}-padding"
+  id="root-helps-efficacy-{{ section.id }}"
+>
+  <div class="root-helps-section__container root-helps-efficacy__container">
+    <div class="root-helps-efficacy__content">
+      {% if heading != blank %}
+        <h2 class="root-helps-efficacy__heading">{{ heading }}</h2>
+      {% endif %}
+
+      {% if description != blank %}
+        <p class="root-helps-efficacy__description">{{ description }}</p>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <!-- Check for objective and subjective blocks -->
+        {% assign has_objective = false %}
+        {% assign has_subjective = false %}
+
+        {% for block in section.blocks %}
+          {% if block.settings.section_type == 'objective' %}
+            {% assign has_objective = true %}
+          {% elsif block.settings.section_type == 'subjective' %}
+            {% assign has_subjective = true %}
+          {% endif %}
+          {% if has_objective and has_subjective %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+        {% if has_objective %}
+          <div class="root-helps-efficacy__section">
+            <span class="root-helps-efficacy__section-label">Objective Findings</span>
+            <div class="root-helps-efficacy__stats-grid">
+              {% for block in section.blocks %}
+                {% if block.settings.section_type == 'objective' %}
+                  {% case block.type %}
+                    {% when 'statistic' %}
+                      <div class="root-helps-efficacy__stat" {{ block.shopify_attributes }}>
+                        {% if block.settings.number != blank %}
+                          <div class="root-helps-efficacy__stat-number">{{ block.settings.number }}</div>
+                        {% endif %}
+                        {% if block.settings.label != blank %}
+                          <div class="root-helps-efficacy__stat-label">{{ block.settings.label }}</div>
+                        {% endif %}
+                        {% if block.settings.description != blank %}
+                          <div class="root-helps-efficacy__stat-description">{{ block.settings.description }}</div>
+                        {% endif %}
+                      </div>
+                  {% endcase %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="root-helps-efficacy__divider"></div>
+
+        {% if has_subjective %}
+          <div class="root-helps-efficacy__section">
+            <span class="root-helps-efficacy__section-label">Subjective Findings</span>
+            <div class="root-helps-efficacy__stats-grid">
+              {% for block in section.blocks %}
+                {% if block.settings.section_type == 'subjective' %}
+                  {% case block.type %}
+                    {% when 'statistic' %}
+                      <div class="root-helps-efficacy__stat" {{ block.shopify_attributes }}>
+                        {% if block.settings.number != blank %}
+                          <div class="root-helps-efficacy__stat-number">{{ block.settings.number }}</div>
+                        {% endif %}
+                        {% if block.settings.label != blank %}
+                          <div class="root-helps-efficacy__stat-label">{{ block.settings.label }}</div>
+                        {% endif %}
+                        {% if block.settings.description != blank %}
+                          <div class="root-helps-efficacy__stat-description">{{ block.settings.description }}</div>
+                        {% endif %}
+                      </div>
+                  {% endcase %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    <div class="root-helps-efficacy__sidebar">
+      <div class="root-helps-efficacy__report-preview">
+        <div class="root-helps-efficacy__report-overlay">
+          <div class="root-helps-efficacy__report-subtitle">Maternal Nutrition and Lactation:</div>
+          <div class="root-helps-efficacy__report-title">Root Shake Clinical Efficacy Report</div>
+        </div>
+      </div>
+
+      <div class="root-helps-efficacy__form">
+        {% comment %}
+          <form action="{{ form_action }}" method="post" accept-charset="UTF-8">
+            <div class="root-helps-efficacy__form-field">
+              <input
+                type="text"
+                name="name"
+                class="root-helps-efficacy__form-input"
+                placeholder="Name"
+                required
+              >
+            </div>
+            <div class="root-helps-efficacy__form-field">
+              <input
+                type="email"
+                name="email"
+                class="root-helps-efficacy__form-input"
+                placeholder="Email Address"
+                required
+              >
+            </div>
+            <button type="submit" class="root-helps-efficacy__form-button">Download Full Report</button>
+          </form>
+        {% endcomment %}
+        <div class="klaviyo-form-TnkUWa"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Root Helps Efficacy",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "report_background",
+      "label": "Report background image",
+      "info": "Recommended size: 592x565px for desktop, 414x499px for mobile"
+    },
+    {
+      "type": "url",
+      "id": "form_action",
+      "label": "Form action URL",
+      "info": "URL where form data will be sent"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "statistic",
+      "name": "Statistic",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Statistic number"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Statistic label"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Statistic description"
+        },
+        {
+          "type": "select",
+          "id": "section_type",
+          "label": "Section type",
+          "options": [
+            {
+              "value": "objective",
+              "label": "Objective Findings"
+            },
+            {
+              "value": "subjective",
+              "label": "Subjective Findings"
+            }
+          ],
+          "default": "objective"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Helps Efficacy",
+      "settings": {
+        "heading": "Real-world tested for efficacy",
+        "description": "We enlisted a third-party market testing firm to help us determine the efficacy of our product by hosting a consumer survey of more than 100 breastfeeding moms ages 18-55 with babies aged 6 months and under. The survey ran for 10 days, with moms reporting their results after 10 days of blindly sampling our product. A summary of our findings are below. A full report is available for download.",
+        "form_action": "#"
+      },
+      "blocks": [
+        {
+          "type": "statistic",
+          "settings": {
+            "number": "X%",
+            "label": "Increase in milk supply",
+            "description": "Average increase in new moms saw an increase in 2 weeks",
+            "section_type": "objective"
+          }
+        },
+        {
+          "type": "statistic",
+          "settings": {
+            "number": "X oz",
+            "label": "Increase per pumping session",
+            "description": "Average amount of breastmilk production increase per pumping session.",
+            "section_type": "objective"
+          }
+        },
+        {
+          "type": "statistic",
+          "settings": {
+            "number": "X out of X",
+            "label": "Felt in a better mood",
+            "description": "Average increase in new moms saw an increase in 2 weeks",
+            "section_type": "subjective"
+          }
+        },
+        {
+          "type": "statistic",
+          "settings": {
+            "number": "X minutes",
+            "label": "Increase in availble time",
+            "description": "Moms reported having an average of X more minutes to the day.",
+            "section_type": "subjective"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

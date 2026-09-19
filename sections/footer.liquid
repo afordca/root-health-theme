@@ -1,0 +1,280 @@
+{% comment %}
+  Root Health Footer
+
+  Four-column footer layout with responsive mobile design.
+  Features logo, navigation columns, and CTA section with background image.
+{% endcomment %}
+
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
+
+<footer
+  class="root-helps-footer root-helps-section"
+  id="RootHelpsFooter-{{ section.id }}"
+  style="
+    --footer-bg-color: {{ section.settings.background_color }};
+    --logo-color: {{ section.settings.logo_color }};
+    --text-color: {{ section.settings.text_color }};
+    --heading-color: {{ section.settings.heading_color }};
+    --cta-bg-color: {{ section.settings.cta_bg_color }};
+    --cta-text-color: {{ section.settings.cta_text_color }};
+    --border-color: {{ section.settings.border_color }};
+    --disclaimer-color: {{ section.settings.disclaimer_color }};
+    --bottom-bar-bg: {{ section.settings.bottom_bar_bg }};
+  "
+>
+  <div class="root-helps-section__container root-helps-footer__container">
+    <div class="root-helps-footer__top-border"></div>
+    <div class="root-helps-footer__grid">
+      <!-- Column 1: Logo/Brand -->
+      <div class="root-helps-footer__column root-helps-footer__column--brand">
+        {% if section.settings.logo != blank %}
+          <img
+            src="{{ section.settings.logo | image_url: width: 200 }}"
+            alt="{{ shop.name | escape }}"
+            class="root-helps-footer__logo"
+            loading="lazy"
+            width="107"
+            height="15"
+          >
+        {% else %}
+          <h2 class="root-helps-footer__brand-text">
+            {{ section.settings.brand_text | default: 'ROOT' }}
+          </h2>
+        {% endif %}
+      </div>
+
+      <!-- Column 2: Product Navigation -->
+      <div class="root-helps-footer__column root-helps-footer__column--product">
+        <h3 class="root-helps-footer__heading">{{ section.settings.product_heading }}</h3>
+        {% if section.settings.product_menu != blank %}
+          <ul class="root-helps-footer__nav-list">
+            {% for link in linklists[section.settings.product_menu].links %}
+              <li class="root-helps-footer__nav-item">
+                <a href="{{ link.url }}" class="root-helps-footer__nav-link">
+                  {{ link.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <!-- Column 3: Company Navigation -->
+      <div class="root-helps-footer__column root-helps-footer__column--company">
+        <h3 class="root-helps-footer__heading">{{ section.settings.company_heading }}</h3>
+        {% if section.settings.company_menu != blank %}
+          <ul class="root-helps-footer__nav-list">
+            {% for link in linklists[section.settings.company_menu].links %}
+              <li class="root-helps-footer__nav-item">
+                <a href="{{ link.url }}" class="root-helps-footer__nav-link">
+                  {{ link.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <!-- Column 4: CTA Section -->
+      <div class="root-helps-footer__column root-helps-footer__column--cta">
+        <div
+          class="root-helps-footer__cta-block"
+          style="
+            {% if section.settings.cta_bg_image != blank %}
+              background-image: url('{{ section.settings.cta_bg_image | image_url }}');
+            {% else %}
+              background-image: url('{{ 'footer-cta-bg-685781.jpg' | asset_url }}');
+            {% endif %}
+          "
+        >
+          {% if section.settings.cta_text != blank %}
+            <h3 class="root-helps-footer__cta-text">
+              {{ section.settings.cta_text | newline_to_br }}
+            </h3>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Legal Section -->
+    <div class="root-helps-footer__legal">
+      {% if section.settings.disclaimer != blank %}
+        <p class="root-helps-footer__disclaimer">
+          {{ section.settings.disclaimer }}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="root-helps-footer__bottom-row">
+    <div class="root-helps-footer__copyright">
+      &copy;&nbsp;
+      {{- section.settings.copyright | default: '' | append: 'now' | date: '%Y' | append: ' Root Health.' }}
+    </div>
+
+    {% if section.settings.legal_links != blank %}
+      <div class="root-helps-footer__legal-links">
+        {{ section.settings.legal_links }}
+      </div>
+    {% endif %}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Root Health Footer",
+  "tag": "footer",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Brand"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image",
+      "info": "Recommended size: 200x30px"
+    },
+    {
+      "type": "text",
+      "id": "brand_text",
+      "label": "Brand text",
+      "default": "ROOT",
+      "info": "Used if no logo image is uploaded"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "text",
+      "id": "product_heading",
+      "label": "Product menu heading",
+      "default": "PRODUCT"
+    },
+    {
+      "type": "link_list",
+      "id": "product_menu",
+      "label": "Product Menu"
+    },
+    {
+      "type": "text",
+      "id": "company_heading",
+      "label": "Company menu heading",
+      "default": "COMPANY"
+    },
+    {
+      "type": "link_list",
+      "id": "company_menu",
+      "label": "Company Menu"
+    },
+    {
+      "type": "header",
+      "content": "CTA Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "cta_bg_image",
+      "label": "CTA background image",
+      "info": "Recommended size: 520x226px"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "Make\nBreastfeeding\nEasier"
+    },
+    {
+      "type": "header",
+      "content": "Legal Information"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "FDA disclaimer",
+      "default": "The statements made on this website have not been evaluated by the FDA (U.S. Food & Drug Administration). The products sold on this website are not intended to diagnose, treat, cure, or prevent any disease. The information provided by this website or this company is not a substitute for a face-to-face consultation with your physician, and should not be construed as individual medical advice."
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright text",
+      "default": "© 2025, Root Health."
+    },
+    {
+      "type": "richtext",
+      "id": "legal_links",
+      "label": "Legal links",
+      "default": "<p><a href='/policies/refund-policy'>Refund policy</a> | <a href='/policies/privacy-policy'>Privacy policy</a> | <a href='/policies/terms-of-service'>Terms of service</a></p>"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "logo_color",
+      "label": "Logo/Brand color",
+      "default": "#E5653D"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Navigation heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "CTA text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#FE9A68"
+    },
+    {
+      "type": "color",
+      "id": "disclaimer_color",
+      "label": "Disclaimer text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "bottom_bar_bg",
+      "label": "Bottom bar background",
+      "default": "#FE9A68"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Health Footer",
+      "settings": {
+        "brand_text": "ROOT",
+        "product_heading": "PRODUCT",
+        "product_menu": "footer-product-menu",
+        "company_heading": "COMPANY",
+        "company_menu": "footer-company-menu",
+        "cta_text": "Make\nBreastfeeding\nEasier",
+        "disclaimer": "The statements made on this website have not been evaluated by the FDA (U.S. Food & Drug Administration). The products sold on this website are not intended to diagnose, treat, cure, or prevent any disease. The information provided by this website or this company is not a substitute for a face-to-face consultation with your physician, and should not be construed as individual medical advice.",
+        "copyright": "© 2025, Root Health.",
+        "legal_links": "<p><a href='/policies/refund-policy'>Refund policy</a> | <a href='/policies/privacy-policy'>Privacy policy</a> | <a href='/policies/terms-of-service'>Terms of service</a></p>"
+      }
+    }
+  ]
+}
+{% endschema %}

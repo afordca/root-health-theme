@@ -1,0 +1,90 @@
+/* Mobile-first styles for Root Helps Product Sub Header section */
+.root-helps-product-subheader {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	background-color: #ffffff;
+	overflow: hidden;
+}
+
+.root-helps-product-subheader__container {
+	position: relative;
+	width: 100%;
+	max-width: 414px;
+	height: 440px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.root-helps-product-subheader__background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 297px;
+	object-fit: cover;
+	z-index: 1;
+}
+
+.root-helps-product-subheader__content {
+	position: relative;
+	z-index: 2;
+	margin-top: 303px;
+	padding: 0 7px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.root-helps-product-subheader__heading {
+	font-family: "GT Super Ds Trial", "GT-Super-Display-Regular", serif;
+	font-weight: 400;
+	font-size: 48px;
+	line-height: 1.25em; /* 60px */
+	color: #e5653d;
+	margin: 0;
+	text-align: left;
+	max-width: 400px;
+	white-space: pre-line;
+}
+
+/* Tablet and Desktop styles */
+@media screen and (min-width: 768px) {
+	.root-helps-product-subheader__container {
+		max-width: 100%;
+		height: 635px;
+	}
+
+	.root-helps-product-subheader__background {
+		width: 100%;
+		height: 100%;
+		top: -163px;
+		height: 960px;
+	}
+
+	.root-helps-product-subheader__content {
+		top: 60px;
+		margin-top: 0;
+		padding: 0;
+		z-index: 2;
+	}
+
+	.root-helps-product-subheader__heading {
+		font-size: 90px;
+		line-height: 1em; /* 90px */
+		max-width: 592px;
+	}
+}
+
+/* Large desktop optimization */
+@media screen and (min-width: 1024px) {
+	.root-helps-product-subheader__container {
+		margin: 0 auto;
+	}
+}
+
+/* Fallback font styles */
+.root-helps-product-subheader__heading {
+	font-family: "GT Super Ds Trial", "GT-Super-Display-Regular", "Georgia", serif;
+}

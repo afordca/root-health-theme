@@ -1,0 +1,795 @@
+{% comment %}
+  Ingredient List Section
+
+  Dynamic ingredient list section with categories and ingredient items.
+{% endcomment %}
+
+{{ 'section-root-helps-ingredient-list.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="root-helps-section root-helps-ingredient-list"
+  id="RootHelpsIngredientList-{{ section.id }}"
+  style="
+    --background-color: {{ section.settings.background_color }};
+    --text-color: {{ section.settings.text_color }};
+    --category-color: {{ section.settings.category_color }};
+    --ingredient-color: {{ section.settings.ingredient_color }};
+    --accent-color: {{ section.settings.accent_color }};
+  "
+>
+  <div class="root-helps-section__container">
+    <div class="root-helps-ingredient-list__grid">
+      <!-- Categories and Ingredients List -->
+      <div class="root-helps-ingredient-list__categories snap-scroll horizontal">
+        {% assign category_blocks = section.blocks
+          | where: 'type', 'ingredient_category'
+          | sort: 'settings.category_order'
+        %}
+        {% if category_blocks.size > 0 %}
+          {% for block in category_blocks %}
+            <div
+              class="root-helps-ingredient-list__category"
+              {{ block.shopify_attributes }}
+            >
+              <!-- Category Title -->
+              {% if block.settings.category_title != blank %}
+                <h3 class="root-helps-ingredient-list__category-title">
+                  {{ block.settings.category_title }}
+                </h3>
+              {% endif %}
+
+              <!-- Ingredients List -->
+              <div class="root-helps-ingredient-list__ingredients snap-scroll horizontal">
+                {% assign ingredient_blocks = section.blocks
+                  | where: 'type', 'ingredient_item'
+                  | sort: 'settings.ingredient_order'
+                %}
+                {% for ingredient_block in ingredient_blocks %}
+                  {% assign ingredient_category = ingredient_block.settings.parent_category %}
+                  {% if ingredient_category == 'custom' and ingredient_block.settings.custom_parent_category != blank %}
+                    {% assign ingredient_category = ingredient_block.settings.custom_parent_category %}
+                  {% endif %}
+
+                  {% if ingredient_category == block.settings.category_id
+                    and ingredient_block.settings.ingredient_title != blank
+                  %}
+                    <a
+                      class="root-helps-ingredient-list__ingredient-item"
+                      data-ingredient-trigger
+                      data-ingredient-title="{{ ingredient_block.settings.ingredient_title | escape }}"
+                      data-ingredient-subtitle="{{ ingredient_block.settings.ingredient_subtitle | escape }}"
+                      data-ingredient-description="{{ ingredient_block.settings.ingredient_description | escape }}"
+                      data-ingredient-why-title="{{ ingredient_block.settings.ingredient_why_title | default: 'Why we chose this?' | escape }}"
+                      data-ingredient-why-content="{{ ingredient_block.settings.ingredient_why_content | escape }}"
+                      data-ingredient-research-title="{{ ingredient_block.settings.ingredient_research_title | default: 'Research and Sources' | escape }}"
+                      data-ingredient-research-content="{{ ingredient_block.settings.ingredient_research_content | escape }}"
+                      {% if ingredient_block.settings.ingredient_image != blank %}
+                        data-ingredient-image="{{ ingredient_block.settings.ingredient_image | image_url: width: 800 }}"
+                      {% endif %}
+                      {{ ingredient_block.shopify_attributes }}
+                    >
+                      <!-- Category Dot Indicator -->
+                      <span class="root-helps-ingredient-list__category-dot"></span>
+                      <span>{{ ingredient_block.settings.ingredient_title }}</span>
+                    </a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <!-- Featured Ingredient Content -->
+      <div class="root-helps-ingredient-list__featured">
+        <!-- Featured Ingredient Background Image -->
+        <div class="root-helps-ingredient-list__featured-image mobile">
+          {% if section.settings.featured_image != blank %}
+            <img
+              src="{{ section.settings.featured_image | image_url }}"
+              alt="{{ section.settings.featured_title | escape }}"
+              class="root-helps-ingredient-list__featured-bg"
+              loading="lazy"
+              width=""
+              height=""
+            >
+          {% else %}
+            <img
+              src="{{ 'ingredient-detail-bg-2c659c.jpg' | asset_url }}"
+              alt="{{ section.settings.featured_title | escape | default: 'Featured ingredient' }}"
+              class="root-helps-ingredient-list__featured-bg"
+              loading="lazy"
+              width=""
+              height=""
+            >
+          {% endif %}
+        </div>
+        <div class="root-helps-ingredient-list__featured-content" id="featured-content-{{ section.id }}">
+          <h3 class="root-helps-ingredient-list__featured-title font-gt-super-display" data-content="title">
+            Select an ingredient to learn more
+          </h3>
+
+          <p class="root-helps-ingredient-list__featured-subtitle" data-content="subtitle"></p>
+
+          <p class="root-helps-ingredient-list__featured-description" data-content="description">
+            Click on any ingredient to see detailed information about its benefits and research.
+          </p>
+
+          <div class="root-helps-ingredient-list__featured-section">
+            <h4 class="root-helps-ingredient-list__featured-section-title" data-content="why-title">
+              Why we chose this?
+            </h4>
+            <p class="root-helps-ingredient-list__featured-section-content" data-content="why-content"></p>
+          </div>
+
+          <div class="root-helps-ingredient-list__featured-section">
+            <h4 class="root-helps-ingredient-list__featured-section-title" data-content="research-title">
+              Research and Sources
+            </h4>
+            <p class="root-helps-ingredient-list__featured-section-content" data-content="research-content"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Featured Ingredient Background Image -->
+    <div class="root-helps-ingredient-list__featured-image desktop">
+      {% if section.settings.featured_image != blank %}
+        <img
+          src="{{ section.settings.featured_image | image_url }}"
+          alt="{{ section.settings.featured_title | escape }}"
+          class="root-helps-ingredient-list__featured-bg"
+          loading="lazy"
+          width=""
+          height=""
+        >
+      {% else %}
+        <img
+          src="{{ 'ingredient-detail-bg-2c659c.jpg' | asset_url }}"
+          alt="{{ section.settings.featured_title | escape | default: 'Featured ingredient' }}"
+          class="root-helps-ingredient-list__featured-bg"
+          loading="lazy"
+          width=""
+          height=""
+        >
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const ingredientSection = document.getElementById('RootHelpsIngredientList-{{ section.id }}');
+    if (!ingredientSection) return;
+
+    const triggers = ingredientSection.querySelectorAll('[data-ingredient-trigger]');
+    const featuredContent = ingredientSection.querySelector('#featured-content-{{ section.id }}');
+    const featuredImageMobile = ingredientSection.querySelector('.root-helps-ingredient-list__featured-image.mobile .root-helps-ingredient-list__featured-bg');
+    const featuredImageDesktop = ingredientSection.querySelector('.root-helps-ingredient-list__featured-image.desktop .root-helps-ingredient-list__featured-bg');
+
+    if (!featuredContent) return;
+
+    // Store default image URLs for fallback
+    const defaultImageUrl = '{{ section.settings.featured_image | image_url | default: 'ingredient-detail-bg-2c659c.jpg' | asset_url }}';
+    const defaultAlt = '{{ section.settings.featured_title | escape | default: 'Featured ingredient' }}';
+
+    // Initialize with fade-in class if there's default content
+    const hasDefaultContent =
+      featuredContent.querySelector('[data-content="title"]').textContent.trim() !==
+      'Select an ingredient to learn more';
+    if (hasDefaultContent) {
+      featuredContent.classList.add('fade-in');
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', function () {
+        console.log('Ingredient trigger clicked:', this);
+        // Get data attributes
+        const ingredient_item = this.getAttribute('data-ingredient-item') || '';
+        const title = this.getAttribute('data-ingredient-title') || '';
+        const subtitle = this.getAttribute('data-ingredient-subtitle') || '';
+        const description = this.getAttribute('data-ingredient-description') || '';
+        const whyTitle = this.getAttribute('data-ingredient-why-title') || 'Why we chose this?';
+        const whyContent = this.getAttribute('data-ingredient-why-content') || '';
+        const researchTitle = this.getAttribute('data-ingredient-research-title') || 'Research and Sources';
+        const researchContent = this.getAttribute('data-ingredient-research-content') || '';
+        const imageUrl = this.getAttribute('data-ingredient-image') || '';
+
+        // Remove active state from all triggers
+        triggers.forEach((t) => t.classList.remove('active'));
+
+        // Add active state to clicked trigger
+        this.classList.add('active');
+
+        // Fade out current content
+        featuredContent.classList.remove('fade-in');
+
+        setTimeout(() => {
+          // Update content
+          const titleEl = featuredContent.querySelector('[data-content="title"]');
+          const subtitleEl = featuredContent.querySelector('[data-content="subtitle"]');
+          const descriptionEl = featuredContent.querySelector('[data-content="description"]');
+          const whyTitleEl = featuredContent.querySelector('[data-content="why-title"]');
+          const whyContentEl = featuredContent.querySelector('[data-content="why-content"]');
+          const researchTitleEl = featuredContent.querySelector('[data-content="research-title"]');
+          const researchContentEl = featuredContent.querySelector('[data-content="research-content"]');
+
+          if (titleEl) titleEl.textContent = title;
+          if (subtitleEl) subtitleEl.textContent = subtitle;
+          if (descriptionEl) descriptionEl.textContent = description;
+          if (whyTitleEl) whyTitleEl.textContent = whyTitle;
+          if (whyContentEl) whyContentEl.innerHTML = whyContent;
+          if (researchTitleEl) researchTitleEl.textContent = researchTitle;
+          if (researchContentEl) researchContentEl.innerHTML = researchContent;
+
+          // Update background images with fallback logic
+          const finalImageUrl = imageUrl || defaultImageUrl;
+          const finalAlt = title || defaultAlt;
+
+          if (featuredImageMobile) {
+            featuredImageMobile.src = finalImageUrl;
+            featuredImageMobile.alt = finalAlt;
+          }
+
+          if (featuredImageDesktop) {
+            featuredImageDesktop.src = finalImageUrl;
+            featuredImageDesktop.alt = finalAlt;
+          }
+
+          // Fade in new content
+          featuredContent.classList.add('fade-in');
+        }, 200); // Half of transition duration
+      });
+    });
+
+    // Auto-click first ingredient if available
+    if (triggers.length > 0) {
+      triggers[0].click();
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Root Helps Ingred",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Featured Ingredient"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image",
+      "label": "Featured ingredient image"
+    },
+    {
+      "type": "text",
+      "id": "featured_title",
+      "label": "Featured ingredient title",
+      "default": "Moringa Leaf"
+    },
+    {
+      "type": "text",
+      "id": "featured_subtitle",
+      "label": "Featured ingredient subtitle",
+      "default": "Lactation support"
+    },
+    {
+      "type": "textarea",
+      "id": "featured_description",
+      "label": "Featured ingredient description",
+      "default": "5% of recommended daily value"
+    },
+    {
+      "type": "text",
+      "id": "why_chosen_title",
+      "label": "Why chosen section title",
+      "default": "Why we chose this?"
+    },
+    {
+      "type": "richtext",
+      "id": "why_chosen_content",
+      "label": "Why chosen content",
+      "default": "<p>Packed with essential nutrients like vitamins A, C, and E, this herbal galactagogue has been shown to increase breast milk levels by 47%, according to a 2022 study. The same study found that the exclusive breastfeeding rate at 6 months was 52.3% in the group of mothers who'd taken Moringa oleifera. For context, the percentage of infants born in 2020 in the U.S. who were breastfed exclusively through 6 months was 25.4%, according to the National Immunization Survey.</p>"
+    },
+    {
+      "type": "text",
+      "id": "research_title",
+      "label": "Research section title",
+      "default": "Research and Sources"
+    },
+    {
+      "type": "richtext",
+      "id": "research_content",
+      "label": "Research content and citations",
+      "default": "<p>Source: Fungtammasan S and Phupong V. The effect of Moringa oleifera capsule in increasing breast milk volume in early postpartum patients: A double-blind, randomized controlled trial. Eur J Obstet Gynecol Reprod Biol X. 2022 Dec; 16: 100171. DOI: 10.1016/j.eurox.2022.100171</p>"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "category_color",
+      "label": "Category title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "ingredient_color",
+      "label": "Ingredient list color",
+      "default": "#FE9A68"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (dots)",
+      "default": "#E5653D"
+    },
+    {
+      "type": "color",
+      "id": "featured_title_color",
+      "label": "Featured title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "featured_subtitle_color",
+      "label": "Featured subtitle color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "featured_description_color",
+      "label": "Featured description color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "featured_source_color",
+      "label": "Featured source color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient_category",
+      "name": "Ingredient Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_id",
+          "label": "Category ID",
+          "info": "🔑 CRITICAL: This ID must match exactly what ingredients reference. Use lowercase, hyphens only (e.g., 'galactagogues', 'vitamins-minerals'). Ingredients will use this exact ID to appear under this category.",
+          "default": "category"
+        },
+        {
+          "type": "text",
+          "id": "category_title",
+          "label": "Category display title",
+          "default": "Category Title"
+        },
+        {
+          "type": "number",
+          "id": "category_order",
+          "label": "Display order",
+          "info": "Lower numbers appear first",
+          "default": 1
+        }
+      ]
+    },
+    {
+      "type": "ingredient_item",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "select",
+          "id": "parent_category",
+          "label": "Parent Category",
+          "info": "🔗 IMPORTANT: This must match a Category ID from your ingredient categories above. New ingredients default to 'Base' - change this to match the category where you want this ingredient to appear.",
+          "options": [
+            {
+              "value": "lactation-support",
+              "label": "Lactation Support"
+            },
+            {
+              "value": "galactagogues",
+              "label": "Galactagogues"
+            },
+            {
+              "value": "nutritional-support",
+              "label": "Nutritional Support"
+            },
+            {
+              "value": "plant-proteins",
+              "label": "Plant Proteins"
+            },
+            {
+              "value": "vitamins-minerals",
+              "label": "Vitamins & Minerals"
+            },
+            {
+              "value": "protein",
+              "label": "Protein"
+            },
+            {
+              "value": "base",
+              "label": "Base"
+            },
+            {
+              "value": "custom",
+              "label": "Custom Category (enter ID below)"
+            }
+          ],
+          "default": "base"
+        },
+        {
+          "type": "text",
+          "id": "custom_parent_category",
+          "label": "Custom Category ID",
+          "info": "⚠️ ADVANCED: Only use this if you selected 'Custom Category' above. Enter the exact category_id from your category block (e.g., 'my-custom-category').",
+          "default": "Custom"
+        },
+        {
+          "type": "number",
+          "id": "ingredient_order",
+          "label": "Order within category",
+          "info": "Lower numbers appear first within the category",
+          "default": 1
+        },
+        {
+          "type": "header",
+          "content": "Basic Information"
+        },
+        {
+          "type": "text",
+          "id": "ingredient_title",
+          "label": "Ingredient name",
+          "default": "Ingredient Name"
+        },
+        {
+          "type": "text",
+          "id": "ingredient_subtitle",
+          "label": "Primary benefit/function",
+          "info": "Short description of main benefit (e.g., 'Lactation support')",
+          "default": "Primary benefit"
+        },
+        {
+          "type": "textarea",
+          "id": "ingredient_description",
+          "label": "Brief description",
+          "info": "Short description shown in the ingredient list",
+          "default": "Brief description of this ingredient"
+        },
+        {
+          "type": "header",
+          "content": "Detailed Information (Right Panel)"
+        },
+        {
+          "type": "image_picker",
+          "id": "ingredient_image",
+          "label": "Featured image",
+          "info": "Large image displayed when ingredient is selected"
+        },
+        {
+          "type": "text",
+          "id": "ingredient_why_title",
+          "label": "'Why we chose this' title",
+          "default": "Why we chose this?"
+        },
+        {
+          "type": "richtext",
+          "id": "ingredient_why_content",
+          "label": "'Why we chose this' content",
+          "info": "Detailed explanation of why this ingredient was selected",
+          "default": "<p>Explain why this ingredient was chosen and its specific benefits.</p>"
+        },
+        {
+          "type": "text",
+          "id": "ingredient_research_title",
+          "label": "Research section title",
+          "default": "Research and Sources"
+        },
+        {
+          "type": "richtext",
+          "id": "ingredient_research_content",
+          "label": "Research and citations",
+          "info": "Scientific backing, studies, and source citations",
+          "default": "<p>Include relevant research citations and sources here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Helps Ingredient List",
+      "blocks": [
+        {
+          "type": "ingredient_category",
+          "settings": {
+            "category_id": "galactagogues",
+            "category_title": "Galactagogues",
+            "category_order": 1
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "galactagogues",
+            "ingredient_order": 1,
+            "ingredient_title": "Moringa Leaf",
+            "ingredient_subtitle": "Milk volume booster",
+            "ingredient_description": "Increases milk volume by up to 47%",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Packed with essential nutrients like vitamins A, C, and E, this herbal galactagogue has been clinically shown to increase breast milk levels by 47%. The same study found that exclusive breastfeeding rates at 6 months improved to 52.3% in mothers taking Moringa oleifera, compared to the U.S. national average of just 25.4%.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p><strong>Source:</strong> Fungtammasan S and Phupong V. The effect of Moringa oleifera capsule in increasing breast milk volume in early postpartum patients: A double-blind, randomized controlled trial. <em>Eur J Obstet Gynecol Reprod Biol X.</em> 2022 Dec; 16: 100171. DOI: 10.1016/j.eurox.2022.100171</p>",
+            "ingredient_image": "shopify://shop_images/moringa-leaf.jpg"
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "galactagogues",
+            "ingredient_order": 2,
+            "ingredient_title": "Goats Rue",
+            "ingredient_subtitle": "Traditional galactagogue",
+            "ingredient_description": "Centuries-old lactation support herb",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for Goats Rue. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "galactagogues",
+            "ingredient_order": 3,
+            "ingredient_title": "Asparagus Powder",
+            "ingredient_subtitle": "Nutritional support",
+            "ingredient_description": "Rich in folate and nutrients",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for Asparagus Powder. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "galactagogues",
+            "ingredient_order": 4,
+            "ingredient_title": "Blessed Thistle",
+            "ingredient_subtitle": "Synergistic herb",
+            "ingredient_description": "Often paired with other galactagogues",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for Blessed Thistle. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_category",
+          "settings": {
+            "category_id": "vitamins-minerals",
+            "category_title": "Vitamins & Minerals",
+            "category_order": 2
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "vitamins-minerals",
+            "ingredient_order": 1,
+            "ingredient_title": "Flax Seed Powder",
+            "ingredient_subtitle": "Omega-3 source",
+            "ingredient_description": "Rich in essential fatty acids",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for Flax Seed Powder. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "vitamins-minerals",
+            "ingredient_order": 2,
+            "ingredient_title": "Probiotic powder",
+            "ingredient_subtitle": "Digestive support",
+            "ingredient_description": "Beneficial bacteria for gut health",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for Probiotic powder. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "vitamins-minerals",
+            "ingredient_order": 3,
+            "ingredient_title": "Prebiotic powder",
+            "ingredient_subtitle": "Feeds beneficial bacteria",
+            "ingredient_description": "Supports probiotic function",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for Prebiotic powder. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "vitamins-minerals",
+            "ingredient_order": 4,
+            "ingredient_title": "Amino Acids",
+            "ingredient_subtitle": "Building blocks of protein",
+            "ingredient_description": "Essential for tissue repair",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for Amino Acids. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "vitamins-minerals",
+            "ingredient_order": 5,
+            "ingredient_title": "Potassium",
+            "ingredient_subtitle": "Essential electrolyte",
+            "ingredient_description": "Supports proper muscle function",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for Potassium. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "vitamins-minerals",
+            "ingredient_order": 6,
+            "ingredient_title": "Chloride",
+            "ingredient_subtitle": "Electrolyte balance",
+            "ingredient_description": "Maintains fluid balance",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for Chloride. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "vitamins-minerals",
+            "ingredient_order": 7,
+            "ingredient_title": "Magnesium",
+            "ingredient_subtitle": "Muscle and nerve function",
+            "ingredient_description": "Supports energy production",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for Magnesium. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_category",
+          "settings": {
+            "category_id": "protein",
+            "category_title": "Protein",
+            "category_order": 3
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "protein",
+            "ingredient_order": 1,
+            "ingredient_title": "Keto Oat Powder",
+            "ingredient_subtitle": "Low-carb oat alternative",
+            "ingredient_description": "Provides fiber and nutrients",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for Keto Oat Powder. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "protein",
+            "ingredient_order": 2,
+            "ingredient_title": "Pea Protein Powder",
+            "ingredient_subtitle": "Complete plant protein",
+            "ingredient_description": "All essential amino acids",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for Pea Protein Powder. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "protein",
+            "ingredient_order": 3,
+            "ingredient_title": "RICE Protein",
+            "ingredient_subtitle": "Hypoallergenic protein",
+            "ingredient_description": "Gentle on digestion",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for RICE Protein. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_category",
+          "settings": {
+            "category_id": "base",
+            "category_title": "Base",
+            "category_order": 4
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "base",
+            "ingredient_order": 1,
+            "ingredient_title": "WATER",
+            "ingredient_subtitle": "Pure hydration base",
+            "ingredient_description": "Essential for all biological processes",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for WATER. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "base",
+            "ingredient_order": 2,
+            "ingredient_title": "Cacao Powder",
+            "ingredient_subtitle": "Natural chocolate flavor",
+            "ingredient_description": "Rich in antioxidants",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for Cacao Powder. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "base",
+            "ingredient_order": 3,
+            "ingredient_title": "DATE SYRUP",
+            "ingredient_subtitle": "Natural sweetener",
+            "ingredient_description": "Whole food sweetening agent",
+            "ingredient_why_title": "Why we chose this?",
+            "ingredient_why_content": "<p>Placeholder content for DATE SYRUP. This will be updated with specific research and benefits.</p>",
+            "ingredient_research_title": "Research and Sources",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

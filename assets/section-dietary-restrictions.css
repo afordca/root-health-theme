@@ -1,0 +1,388 @@
+.dietary-restrictions {
+	--dietary-restrictions-padding-top: 36px;
+	--dietary-restrictions-padding-bottom: 36px;
+	--dietary-restrictions-heading-color: #000000;
+	--dietary-restrictions-text-color: #000000;
+	--dietary-restrictions-accent-color: #fe9a68;
+	--dietary-restrictions-background-color: #ffffff;
+
+	padding-top: var(--dietary-restrictions-padding-top);
+	padding-bottom: var(--dietary-restrictions-padding-bottom);
+	background-color: var(--dietary-restrictions-background-color);
+	position: relative;
+}
+
+.dietary-restrictions__container {
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.dietary-restrictions__content {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.dietary-restrictions__grid-column {
+	flex: 1;
+}
+
+.dietary-restrictions__grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1.5rem 1rem;
+}
+
+.dietary-restrictions__text-column {
+	flex: 1;
+}
+
+.dietary-restrictions__heading {
+	font-weight: 300;
+	font-size: 30px;
+	line-height: 1.3;
+	color: var(--dietary-restrictions-heading-color);
+	margin: 0;
+	letter-spacing: -0.01em;
+}
+
+.dietary-restrictions__item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding: 0.75rem;
+	transition: transform 0.2s ease;
+}
+
+.dietary-restrictions__item:hover {
+	transform: translateY(-2px);
+}
+
+.dietary-restrictions__icon {
+	width: 3.5rem;
+	height: 3.5rem;
+	border-radius: 50%;
+	margin-bottom: 0.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	border: solid 1px var(--dietary-restrictions-accent-color);
+}
+
+.dietary-restrictions__custom-icon {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.dietary-restrictions__default-icon {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dietary-restrictions__icon-shape {
+	width: 2.5rem;
+	height: 2.5rem;
+	border: 2px solid var(--dietary-restrictions-accent-color);
+	border-radius: 50%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dietary-restrictions__icon-shape::before {
+	content: "";
+	position: absolute;
+	width: 1.25rem;
+	height: 1.25rem;
+	background: var(--dietary-restrictions-accent-color);
+	border-radius: 2px;
+}
+
+.dietary-restrictions__strike-through {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+}
+
+.dietary-restrictions__strike-through::before {
+	content: "";
+	position: absolute;
+	width: 3rem;
+	height: 2px;
+	background: var(--dietary-restrictions-accent-color);
+	transform: rotate(-45deg);
+	border-radius: 1px;
+}
+
+.dietary-restrictions__item--not-included .dietary-restrictions__icon-shape {
+	opacity: 0.5;
+}
+
+.dietary-restrictions__item--not-included .dietary-restrictions__title {
+	opacity: 0.5;
+}
+
+.dietary-restrictions__title {
+	font-weight: 500;
+	font-size: 0.688rem;
+	line-height: 1.4;
+	color: var(--dietary-restrictions-text-color);
+	margin: 0;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+.dietary-restrictions__divider {
+	width: 100%;
+	height: 1px;
+	background-color: var(--dietary-restrictions-accent-color);
+	margin-top: 2rem;
+}
+
+/* Focus states for accessibility */
+.dietary-restrictions__item:focus-within {
+	outline: 2px solid var(--dietary-restrictions-accent-color);
+	outline-offset: 4px;
+	border-radius: 8px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+	.dietary-restrictions__item {
+		transition: none;
+	}
+
+	.dietary-restrictions__item:hover {
+		transform: none;
+	}
+}
+
+/* Mobile First Responsive Design */
+@media screen and (min-width: 481px) {
+	.dietary-restrictions__container {
+		padding: 0 20px;
+	}
+
+	.dietary-restrictions__content {
+		gap: 2.5rem;
+	}
+
+	.dietary-restrictions__heading {
+		font-size: 2.25rem;
+	}
+
+	.dietary-restrictions__item {
+		padding: 1rem;
+	}
+
+	.dietary-restrictions__icon {
+		width: 4rem;
+		height: 4rem;
+		margin-bottom: 1rem;
+	}
+
+	.dietary-restrictions__icon-shape {
+		width: 3rem;
+		height: 3rem;
+	}
+
+	.dietary-restrictions__icon-shape::before {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
+	.dietary-restrictions__strike-through::before {
+		width: 3.5rem;
+	}
+
+	.dietary-restrictions__title {
+		font-size: 0.75rem;
+	}
+
+	.dietary-restrictions__divider {
+		margin-top: 2.5rem;
+	}
+}
+
+@media screen and (min-width: 750px) {
+	.dietary-restrictions__container {
+		padding: 0 40px;
+	}
+
+	.dietary-restrictions__content {
+		gap: 3rem;
+	}
+
+	.dietary-restrictions__grid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2rem 1.5rem;
+	}
+
+	.dietary-restrictions__heading {
+		font-size: 3rem;
+		line-height: 1.2;
+	}
+
+	.dietary-restrictions__item {
+		padding: 1.25rem 1rem;
+	}
+
+	.dietary-restrictions__icon {
+		width: 4.5rem;
+		height: 4.5rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.dietary-restrictions__icon-shape {
+		width: 3.5rem;
+		height: 3.5rem;
+	}
+
+	.dietary-restrictions__title {
+		font-size: 0.875rem;
+	}
+
+	.dietary-restrictions__divider {
+		margin-top: 3rem;
+	}
+}
+
+@media screen and (min-width: 990px) {
+	.dietary-restrictions__container {
+		padding: 0;
+	}
+
+	.dietary-restrictions__content {
+		flex-direction: row;
+		align-items: flex-start;
+		gap: 4rem;
+	}
+
+	.dietary-restrictions__grid-column {
+		flex: 0 0 auto;
+		width: 350px;
+	}
+
+	.dietary-restrictions__text-column {
+		flex: 1;
+		padding-top: 1.5rem;
+	}
+
+	.dietary-restrictions__grid {
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		gap: 2.5rem 2rem;
+	}
+
+	.dietary-restrictions__heading {
+		font-size: 4rem;
+		line-height: 1.3;
+	}
+
+	.dietary-restrictions__item {
+		padding: 1.75rem 1.25rem;
+	}
+
+	.dietary-restrictions__icon {
+		width: 5rem;
+		height: 5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.dietary-restrictions__icon-shape {
+		width: 4rem;
+		height: 4rem;
+	}
+
+	.dietary-restrictions__icon-shape::before {
+		width: 2rem;
+		height: 2rem;
+	}
+
+	.dietary-restrictions__strike-through::before {
+		width: 4.5rem;
+	}
+
+	.dietary-restrictions__title {
+		font-size: 1rem;
+	}
+}
+
+.dietary-restrictions__content--text-right .dietary-restrictions__text-column {
+	order: 2;
+}
+
+.dietary-restrictions__content--text-right .dietary-restrictions__grid-column {
+	order: 1;
+}
+
+@media screen and (min-width: 1024px) {
+	.dietary-restrictions__container {
+		padding: 0 40px 0 0;
+	}
+
+	.dietary-restrictions__content {
+		gap: 6rem;
+	}
+
+	.dietary-restrictions__grid-column {
+		width: 50%;
+		margin-left: -10px;
+	}
+
+	.dietary-restrictions__text-column {
+		padding-top: 2rem;
+	}
+
+	.dietary-restrictions__grid {
+		gap: 3rem 2.5rem;
+	}
+
+	.dietary-restrictions__heading {
+		font-size: 4.8rem;
+		line-height: 1.4;
+	}
+
+	.dietary-restrictions__item {
+		padding: 2rem 1.5rem;
+	}
+
+	.dietary-restrictions__icon {
+		width: 5.5rem;
+		height: 5.5rem;
+		margin-bottom: 2rem;
+	}
+
+	.dietary-restrictions__icon-shape {
+		width: 4.5rem;
+		height: 4.5rem;
+	}
+
+	.dietary-restrictions__icon-shape::before {
+		width: 2.25rem;
+		height: 2.25rem;
+	}
+
+	.dietary-restrictions__strike-through::before {
+		width: 5rem;
+	}
+
+	.dietary-restrictions__title {
+		font-size: 1.125rem;
+	}
+}

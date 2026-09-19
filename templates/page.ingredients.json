@@ -1,0 +1,236 @@
+{
+    "sections": {
+        "97e2c775-0d4f-49bb-bbee-1da965f259fa": {
+            "type": "image-banner",
+            "blocks": {
+                "template--21390794260774__97e2c775-0d4f-49bb-bbee-1da965f259fa-heading-1": {
+                    "type": "heading",
+                    "settings": {
+                        "heading": "Purposeful Ingredients",
+                        "heading_size": "h1"
+                    }
+                },
+                "template--21390794260774__97e2c775-0d4f-49bb-bbee-1da965f259fa-text-1": {
+                    "type": "text",
+                    "settings": {
+                        "text": "We understand that quality and transparency matter when it comes to the products you use. That's why we're committed to using only the best ingredients that you can trust. Our products are formulated with the highest standards of quality and safety, so you can feel confident that you're getting the best possible nutrition and support for yourself and your baby.",
+                        "text_style": "body"
+                    }
+                },
+                "template--21390794260774__97e2c775-0d4f-49bb-bbee-1da965f259fa-buttons-1": {
+                    "type": "buttons",
+                    "settings": {
+                        "button_label_1": "",
+                        "button_link_1": "",
+                        "button_style_secondary_1": false,
+                        "button_label_2": "",
+                        "button_link_2": "",
+                        "button_style_secondary_2": false
+                    }
+                }
+            },
+            "block_order": [
+                "template--21390794260774__97e2c775-0d4f-49bb-bbee-1da965f259fa-heading-1",
+                "template--21390794260774__97e2c775-0d4f-49bb-bbee-1da965f259fa-text-1",
+                "template--21390794260774__97e2c775-0d4f-49bb-bbee-1da965f259fa-buttons-1"
+            ],
+            "settings": {
+                "image": "shopify:\/\/shop_images\/Ingredients-hero-TEMP.png",
+                "image_overlay_opacity": 0,
+                "image_height": "medium",
+                "image_behavior": "none",
+                "desktop_content_position": "middle-right",
+                "desktop_content_alignment": "left",
+                "show_text_box": false,
+                "color_scheme": "accent-1",
+                "stack_images_on_mobile": true,
+                "mobile_content_alignment": "center",
+                "show_text_below": true
+            }
+        },
+        "cfc2625b-22eb-4a83-a7cc-05e3bcc2088a": {
+            "type": "root-helps-dietary-restrictions",
+            "settings": {}
+        },
+        "main": {
+            "type": "main-page",
+            "disabled": true,
+            "settings": {
+                "padding_top": 28,
+                "padding_bottom": 28
+            }
+        },
+        "05368f94-0a57-4cd2-a059-1344080e03ca": {
+            "type": "rich-text",
+            "blocks": {
+                "template--21390794260774__05368f94-0a57-4cd2-a059-1344080e03ca-heading-1": {
+                    "type": "heading",
+                    "settings": {
+                        "heading": "Our Ingredients",
+                        "heading_size": "h1"
+                    }
+                },
+                "template--21390794260774__05368f94-0a57-4cd2-a059-1344080e03ca-text-1": {
+                    "type": "text",
+                    "settings": {
+                        "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+                    }
+                }
+            },
+            "block_order": [
+                "template--21390794260774__05368f94-0a57-4cd2-a059-1344080e03ca-heading-1",
+                "template--21390794260774__05368f94-0a57-4cd2-a059-1344080e03ca-text-1"
+            ],
+            "settings": {
+                "desktop_content_position": "center",
+                "content_alignment": "center",
+                "color_scheme": "background-1",
+                "full_width": true,
+                "padding_top": 40,
+                "padding_bottom": 52
+            }
+        },
+        "546ecfee-021a-42ea-9860-5d2d93c0a8e2": {
+            "type": "multicolumn",
+            "blocks": {
+                "d427cc04-05a2-46d9-8f00-efe4ec026c14": {
+                    "type": "column",
+                    "settings": {
+                        "image": "shopify:\/\/shop_images\/Frame_2.png",
+                        "title": "Moringa Leaf (Moringa oleifera)",
+                        "text": "<p>Packed with essential nutrients like vitamins A, C, and E, this herbal galactagogue has been shown to increase breast milk levels by 47%, according to a 2022 study. The same study found that the exclusive breastfeeding rate at 6 months was 52.3% in the group of mothers who’d taken Moringa oleifera. For context, the percentage of infants born in 2020 in the U.S. who were breastfed exclusively through 6 months was 25.4%, according to the National Immunization Survey.<\/p><h6>Source: Fungtammasan S and Phupong V. <a href=\"https:\/\/www.sciencedirect.com\/science\/article\/pii\/S2590161322000321?via%3Dihub\"><span style=\"text-decoration:underline\">The effect of Moringa oleifera capsule in increasing breast milk volume in early postpartum patients: A double-blind, randomized controlled trial<\/span><\/a>. Eur J Obstet Gynecol Reprod Biol X. 2022 Dec; 16: 100171. DOI: 10.1016\/j.eurox.2022.100171<\/h6>",
+                        "link_label": "",
+                        "link": ""
+                    }
+                },
+                "template--18907466105126__546ecfee-021a-42ea-9860-5d2d93c0a8e2-column-1": {
+                    "type": "column",
+                    "settings": {
+                        "image": "shopify:\/\/shop_images\/founded.png",
+                        "title": "Goat’s Rue (Galega officinalis)",
+                        "text": "<p>A popular herbal galactagogue that won’t leave its usual bitter taste in your mouth from our formula. While you most likely know of Goat’s Rue through friends who tried it for boosting milk supply, it's also got street cred. A <a href=\"https:\/\/pubmed.ncbi.nlm.nih.gov\/27901335\/\"><span style=\"text-decoration:underline\">survey<\/span><\/a> found that of 238 mothers using a goat's rue supplement, 67% felt they had an increase in milk production and 88% felt that the product had benefited their breastfeeding experience.<\/p><h6>Source: Salatino S, Giacomelli L, Carnevali I, et al. <a href=\"https:\/\/pubmed.ncbi.nlm.nih.gov\/27901335\/\"><span style=\"text-decoration:underline\">The role of natural galactagogues during breastfeeding. Focus on a Galega officinalis based food supplement<\/span><\/a>. Minerva Pediatr. 2017;69:531–7. DOI: 10.23736\/S0026-4946.16.04797-6<\/h6>",
+                        "link_label": "",
+                        "link": ""
+                    }
+                },
+                "template--18907466105126__546ecfee-021a-42ea-9860-5d2d93c0a8e2-column-2": {
+                    "type": "column",
+                    "settings": {
+                        "image": "shopify:\/\/shop_images\/nut-free-icon.svg",
+                        "title": "Blessed Thistle (Cnicus benedictus)",
+                        "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+                        "link_label": "",
+                        "link": ""
+                    }
+                },
+                "template--18907466105126__546ecfee-021a-42ea-9860-5d2d93c0a8e2-column-3": {
+                    "type": "column",
+                    "settings": {
+                        "image": "shopify:\/\/shop_images\/biscotti-lays-in-a-monstera-leaf.jpg",
+                        "title": "Shatavari (Asparagus racemosus)",
+                        "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+                        "link_label": "",
+                        "link": ""
+                    }
+                }
+            },
+            "block_order": [
+                "d427cc04-05a2-46d9-8f00-efe4ec026c14",
+                "template--18907466105126__546ecfee-021a-42ea-9860-5d2d93c0a8e2-column-1",
+                "template--18907466105126__546ecfee-021a-42ea-9860-5d2d93c0a8e2-column-2",
+                "template--18907466105126__546ecfee-021a-42ea-9860-5d2d93c0a8e2-column-3"
+            ],
+            "settings": {
+                "title": "Galactagogues",
+                "heading_size": "h2",
+                "image_width": "full",
+                "image_ratio": "square",
+                "button_label": "",
+                "button_link": "",
+                "columns_desktop": 3,
+                "column_alignment": "left",
+                "background_style": "primary",
+                "color_scheme": "background-1",
+                "columns_mobile": "1",
+                "swipe_on_mobile": true,
+                "padding_top": 36,
+                "padding_bottom": 36
+            }
+        },
+        "dbecc356-3e4a-48c5-86c8-cea4c591db21": {
+            "type": "multicolumn",
+            "blocks": {
+                "a61b1bd0-f718-4dee-ab2f-eb8359d01be1": {
+                    "type": "column",
+                    "settings": {
+                        "image": "shopify:\/\/shop_images\/Frame_2.png",
+                        "title": "Folate",
+                        "text": "<p>Packed with essential nutrients like vitamins A, C, and E, this herbal galactagogue has been shown to increase breast milk levels by 47%, according to a 2022 study.<\/p>",
+                        "link_label": "",
+                        "link": ""
+                    }
+                },
+                "f7fbd23e-57f6-46d8-b5cb-4727ba7b7df0": {
+                    "type": "column",
+                    "settings": {
+                        "image": "shopify:\/\/shop_images\/founded.png",
+                        "title": "Vitamin D",
+                        "text": "<p>Vegan source. A popular herbal galactagogue that won’t leave its usual bitter taste in your mouth from our formula. While you most likely know of Goat’s Rue through friends<\/p>",
+                        "link_label": "",
+                        "link": ""
+                    }
+                },
+                "765d98ce-666b-4e9d-aff4-04378efb3c9e": {
+                    "type": "column",
+                    "settings": {
+                        "image": "shopify:\/\/shop_images\/nut-free-icon.svg",
+                        "title": "Potassium",
+                        "text": "<p>Hydration. Electrolytes. Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+                        "link_label": "",
+                        "link": ""
+                    }
+                },
+                "f57e9000-93d0-4ae3-8e19-b6e7d90e4a58": {
+                    "type": "column",
+                    "settings": {
+                        "image": "shopify:\/\/shop_images\/biscotti-lays-in-a-monstera-leaf.jpg",
+                        "title": "B Vitamins",
+                        "text": "<p>Energy to keep you going, but no biotin for those who are sensitive. Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+                        "link_label": "",
+                        "link": ""
+                    }
+                }
+            },
+            "block_order": [
+                "a61b1bd0-f718-4dee-ab2f-eb8359d01be1",
+                "f7fbd23e-57f6-46d8-b5cb-4727ba7b7df0",
+                "765d98ce-666b-4e9d-aff4-04378efb3c9e",
+                "f57e9000-93d0-4ae3-8e19-b6e7d90e4a58"
+            ],
+            "settings": {
+                "title": "Vitamins & Minerals",
+                "heading_size": "h2",
+                "image_width": "full",
+                "image_ratio": "square",
+                "button_label": "",
+                "button_link": "",
+                "columns_desktop": 3,
+                "column_alignment": "left",
+                "background_style": "primary",
+                "color_scheme": "background-1",
+                "columns_mobile": "1",
+                "swipe_on_mobile": true,
+                "padding_top": 36,
+                "padding_bottom": 36
+            }
+        }
+    },
+    "order": [
+        "97e2c775-0d4f-49bb-bbee-1da965f259fa",
+        "cfc2625b-22eb-4a83-a7cc-05e3bcc2088a",
+        "main",
+        "05368f94-0a57-4cd2-a059-1344080e03ca",
+        "546ecfee-021a-42ea-9860-5d2d93c0a8e2",
+        "dbecc356-3e4a-48c5-86c8-cea4c591db21"
+    ]
+}

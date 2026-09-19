@@ -1,0 +1,115 @@
+/* Dietary Restrictions Grid - Reusable component */
+
+.dietary-restrictions-grid {
+	--grid-columns: 3;
+	padding: 40px 0;
+}
+
+.dietary-restrictions-grid__heading {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.125rem;
+	line-height: 1.67;
+	color: #000000;
+	margin-bottom: var(--spacing-lg, 16px);
+	text-align: center;
+}
+
+.dietary-restrictions-grid__items {
+	display: grid;
+	grid-template-columns: repeat(var(--grid-columns), 1fr);
+	gap: var(--spacing-md, 12px);
+	justify-items: flex-start;
+}
+
+.dietary-restrictions-grid__item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+}
+
+.dietary-restrictions-grid__icon {
+	position: relative;
+	width: 68.8px;
+	height: 68.8px;
+	margin-bottom: var(--spacing-sm, 8px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dietary-restrictions-grid__icon-image {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.dietary-restrictions-grid__default-icon {
+	width: 68.8px;
+	height: 68.8px;
+	border: 1.6px solid #fe9a68;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #ffffff;
+}
+
+.dietary-restrictions-grid__icon-shape {
+	width: 30px;
+	height: 30px;
+	background-color: #fe9a68;
+	border-radius: 50%;
+}
+
+.dietary-restrictions-grid__title {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1rem;
+	line-height: 3.17;
+	letter-spacing: 0.2rem;
+	text-transform: uppercase;
+	color: #000000;
+	margin: 0;
+}
+
+/* Strike-through styles for excluded items */
+.dietary-restrictions-grid__item--not-included {
+	opacity: 0.6;
+}
+
+.dietary-restrictions-grid__strike-through {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	width: 80px;
+	height: 2px;
+	background-color: #ff0000;
+	z-index: 2;
+}
+
+.dietary-restrictions-grid__item--not-included
+	.dietary-restrictions-grid__title {
+	text-decoration: line-through;
+	color: #666666;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 767px) {
+	.dietary-restrictions-grid {
+		--grid-columns: 3;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.dietary-restrictions-grid {
+		--grid-columns: 6;
+	}
+
+	.dietary-restrictions-grid__items {
+		gap: var(--spacing-sm, 8px);
+	}
+}

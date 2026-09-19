@@ -1,0 +1,1426 @@
+{% comment %}
+  Root Health Product Information Section - Clean Version
+{% endcomment %}
+
+<product-info
+  id="MainProduct-{{ section.id }}"
+  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  data-section="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+  data-update-url="true"
+  data-url="{{ product.url }}"
+  data-redirect-to-checkout="true"
+>
+  {{ 'section-root-helps-product-information.css' | asset_url | stylesheet_tag }}
+  {{ 'section-root-helps-product-information-carousel.css' | asset_url | stylesheet_tag }}
+  {{ 'product-variant-cards.css' | asset_url | stylesheet_tag }}
+  {{ 'dietary-restrictions-grid.css' | asset_url | stylesheet_tag }}
+  {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+  {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+  {{ 'component-price.css' | asset_url | stylesheet_tag }}
+  {{ 'component-slider.css' | asset_url | stylesheet_tag }}
+  {{ 'component-rating.css' | asset_url | stylesheet_tag }}
+  {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+  {% unless product.has_only_default_variant %}
+    {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
+    {{ 'component-swatch-input.css' | asset_url | stylesheet_tag }}
+    {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
+  {% endunless %}
+
+  {%- if product.quantity_price_breaks_configured? -%}
+    {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
+
+  {%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+
+    :root {
+      --image-background-color: {{ section.settings.image_background_color }};
+    }
+  {%- endstyle -%}
+
+  <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  {%- if product.quantity_price_breaks_configured? -%}
+    <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+
+  {%- if request.design_mode -%}
+    <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+
+  <section class="root-helps-section root-helps-product-information">
+    {%- assign product_form_id = 'product-form-' | append: section.id -%}
+
+    <div class="root-helps-section__container">
+      <!-- Mobile-first layout structure -->
+      <div class="root-helps-product-information__mobile-layout">
+        <!-- 1. Title (Mobile Only) -->
+        <div class="root-helps-product-information__mobile-title">
+          <h1 class="root-helps-product-information__title">{{ product.title | escape }}</h1>
+        </div>
+
+        <!-- 2. Main Image (Mobile Only) -->
+        <div class="root-helps-product-information__mobile-image">
+          {% if product.featured_media %}
+            <img
+              id="main-image-mobile-{{ section.id }}"
+              src="{{ product.featured_media | image_url: width: 414 }}"
+              alt="{{ product.featured_media.alt | escape | default: product.title }}"
+              class="root-helps-product-information__image"
+              loading="lazy"
+              width="414"
+              height="186"
+            >
+          {% else %}
+            <img
+              id="main-image-mobile-{{ section.id }}"
+              class="root-helps-product-information__image"
+              src="{{ 'product-hero-image-642529.jpg' | asset_url }}"
+              alt="{{ product.title | escape }}"
+              loading="lazy"
+              width="414"
+              height="186"
+            >
+          {% endif %}
+        </div>
+
+        <!-- 3. Additional Images (Mobile Only) -->
+        {% if product.media.size > 0 %}
+          <div class="root-helps-product-information__mobile-carousel-container snap-scroll horizontal">
+            <div class="root-helps-product-information__mobile-carousel snap-inner">
+              {% for media in product.media limit: 5 %}
+                <div class="root-helps-product-information__carousel-item" data-media-index="{{ forloop.index0 }}">
+                  {% case media.media_type %}
+                    {% when 'image' %}
+                      <img
+                        src="{{ media | image_url: width: 118 }}"
+                        alt="{{ media.alt | escape | default: product.title }}"
+                        class="root-helps-product-information__carousel-image"
+                        data-full-src="{{ media | image_url: width: 414 }}"
+                        loading="lazy"
+                        width="118"
+                        height="118"
+                      >
+                    {% when 'video' %}
+                      {{ media | media_tag: class: 'root-helps-product-information__carousel-image' }}
+                    {% else %}
+                      <div class="root-helps-product-information__carousel-placeholder"></div>
+                  {% endcase %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- 4. Version (Mobile Only) -->
+        <div class="root-helps-product-information__mobile-version">V 1.0</div>
+
+        <!-- 5-9. Content blocks (Mobile Only) -->
+        <div class="root-helps-product-information__mobile-content">
+          <product-info
+            id="ProductInfo-{{ section.id }}"
+            data-section="{{ section.id }}"
+            data-url="{{ product.url }}"
+            data-product-id="{{ product.id }}"
+            data-update-url="false"
+            data-zoom-on-hover="false"
+            data-redirect-to-checkout="true"
+            class="product__info-wrapper"
+          >
+            <product-form
+              class="product-form"
+              data-hide-errors="false"
+              data-section-id="{{ section.id }}"
+            >
+              <div class="product-form__error-message-wrapper" role="alert" hidden>
+                <span class="svg-wrapper">
+                  {{- 'icon-error.svg' | inline_asset_content -}}
+                </span>
+                <span class="product-form__error-message"></span>
+              </div>
+
+              {%- form 'product',
+                product,
+                id: product_form_id,
+                class: 'form',
+                novalidate: 'novalidate',
+                data-type: 'add-to-cart-form'
+              -%}
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ product.selected_or_first_available_variant.id }}"
+                  {% if product.selected_or_first_available_variant.available == false
+                    or product.selected_or_first_available_variant == null
+                  %}
+                    disabled
+                  {% endif %}
+                  class="product-variant-id"
+                >
+
+                {%- for block in section.blocks -%}
+                  {%- case block.type -%}
+                    {%- when 'description' -%}
+                      <div class="root-helps-product-information__mobile-description" {{ block.shopify_attributes }}>
+                        {{ product.description }}
+                      </div>
+
+                    {%- when 'custom_benefits' -%}
+                      <div class="root-helps-product-information__mobile-benefits" {{ block.shopify_attributes }}>
+                        {%- for benefits_block in section.blocks -%}
+                          {%- if benefits_block.type == 'benefit_item' -%}
+                            <div class="root-helps-product-information__benefit">
+                              {{ benefits_block.settings.benefit_text }}
+                            </div>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </div>
+
+                    {%- when 'variant_picker' -%}
+                      <!-- Variant Picker -->
+                      <div class="root-helps-product-information__mobile-variants" {{ block.shopify_attributes }}>
+                        {% render 'product-variant-cards',
+                          product: product,
+                          section_id: section.id,
+                          form_id: product_form_id
+                        %}
+                      </div>
+
+                    {%- when 'benefit_item' -%}
+                      {%- comment -%} Individual benefit items are handled by the custom_benefits container {%- endcomment -%}
+
+                    {%- when 'buy_buttons' -%}
+                      <div class="root-helps-product-information__mobile-payment" {{ block.shopify_attributes }}>
+                        <button
+                          id="{{ product_form_id }}-submit"
+                          type="submit"
+                          name="add"
+                          aria-haspopup="dialog"
+                          aria-labelledby="{{ product_form_id }}-submit title-{{ section.id }}-{{ product.id }}"
+                          aria-live="polite"
+                          data-sold-out-message="true"
+                          {% if product.selected_or_first_available_variant.available == false %}
+                            disabled
+                          {% endif %}
+                          class="root-helps-product-information__payment-button"
+                        >
+                          <span>
+                            {%- if product.selected_or_first_available_variant == null -%}
+                              {{ 'products.product.unavailable' | t }}
+                            {%- elsif product.selected_or_first_available_variant.available == false -%}
+                              {{ 'products.product.sold_out' | t }}
+                            {%- else -%}
+                              CONTINUE TO PAYMENT
+                            {%- endif -%}
+                          </span>
+                          {%- render 'loading-spinner' -%}
+                        </button>
+                      </div>
+                  {%- endcase -%}
+                {%- endfor -%}
+              {%- endform -%}
+            </product-form>
+          </product-info>
+        </div>
+
+        <!-- 10. Dietary Restrictions (Mobile Only) -->
+        <div class="root-helps-product-information__mobile-dietary">
+          {% render 'dietary-restrictions-grid' %}
+        </div>
+      </div>
+
+      <!-- Desktop layout (hidden on mobile) -->
+      <div class="root-helps-product-information__grid">
+        <!-- Left Column: Product Media Gallery -->
+        <div class="root-helps-product-information__image-column">
+          <div class="root-helps-product-information__image-wrapper">
+            {% if product.featured_media %}
+              <img
+                id="main-image-desktop-{{ section.id }}"
+                src="{{ product.featured_media | image_url: width: 670 }}"
+                alt="{{ product.featured_media.alt | escape | default: product.title }}"
+                class="root-helps-product-information__image"
+                loading="lazy"
+                width=""
+                height=""
+              >
+            {% else %}
+              <img
+                id="main-image-desktop-{{ section.id }}"
+                class="root-helps-product-information__image"
+                src="{{ 'product-hero-image-642529.jpg' | asset_url }}"
+                alt="{{ product.title | escape }}"
+                loading="lazy"
+                width=""
+                height=""
+              >
+            {% endif %}
+          </div>
+
+          <!-- Image Carousel -->
+          {% if product.media.size > 0 %}
+            <div class="root-helps-product-information__carousel-container snap-scroll horizontal">
+              <div class="root-helps-product-information__carousel  snap-inner">
+                {% for media in product.media limit: 5 %}
+                  <div class="root-helps-product-information__carousel-item" data-media-index="{{ forloop.index0 }}">
+                    {% case media.media_type %}
+                      {% when 'image' %}
+                        <img
+                          src="{{ media | image_url: width: 118 }}"
+                          alt="{{ media.alt | escape | default: product.title }}"
+                          class="root-helps-product-information__carousel-image"
+                          data-full-src="{{ media | image_url: width: 670 }}"
+                          loading="lazy"
+                          width="118"
+                          height="118"
+                        >
+                      {% when 'video' %}
+                        {{ media | media_tag: class: 'root-helps-product-information__carousel-image' }}
+                      {% else %}
+                        <div class="root-helps-product-information__carousel-placeholder"></div>
+                    {% endcase %}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+
+          <!-- Dietary Restrictions (Desktop) -->
+          {% render 'dietary-restrictions-grid', grid_columns: 6 %}
+        </div>
+
+        <!-- Right Column: Product Info -->
+        <div class="root-helps-section root-helps-product-information__details-column">
+          <section
+            id="ProductInfo-{{ section.id }}"
+            class="root-helps-section__container product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
+          >
+            <product-form
+              class="product-form"
+              data-hide-errors="false"
+              data-section-id="{{ section.id }}"
+            >
+              <div class="product-form__error-message-wrapper" role="alert" hidden>
+                <span class="svg-wrapper">
+                  {{- 'icon-error.svg' | inline_asset_content -}}
+                </span>
+                <span class="product-form__error-message"></span>
+              </div>
+
+              {%- form 'product',
+                product,
+                id: product_form_id,
+                class: 'product-form',
+                novalidate: 'novalidate',
+                data-type: 'add-to-cart-form'
+              -%}
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ product.selected_or_first_available_variant.id }}"
+                  {% if product.selected_or_first_available_variant.available == false
+                    or product.selected_or_first_available_variant == null
+                  %}
+                    disabled
+                  {% endif %}
+                  class="product-variant-id"
+                >
+                <!-- Blocks go here -->
+                {%- for block in section.blocks -%}
+                  {%- case block.type -%}
+                    {%- when '@app' -%}
+                      {% render block %}
+
+                    {%- when 'text' -%}
+                      <p
+                        class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                        {{ block.shopify_attributes }}
+                      >
+                        {{- block.settings.text -}}
+                      </p>
+
+                    {%- when 'title' -%}
+                      <div class="product__title root-helps-product-information__header" {{ block.shopify_attributes }}>
+                        <h1 class="root-helps-product-information__title">{{ product.title | escape }}</h1>
+                        <div class="root-helps-product-information__version">V 1.0</div>
+                      </div>
+
+                    {%- when 'description' -%}
+                      {%- if product.description != blank -%}
+                        <div
+                          class="product__description rte root-helps-product-information__description"
+                          {{ block.shopify_attributes }}
+                        >
+                          {{ product.description }}
+                        </div>
+                      {%- endif -%}
+
+                    {%- when 'custom_benefits' -%}
+                      <div class="root-helps-product-information__benefits" {{ block.shopify_attributes }}>
+                        <div class="root-helps-product-information__benefits-grid">
+                          {%- for benefits_block in section.blocks -%}
+                            {%- if benefits_block.type == 'benefit_item' -%}
+                              <div class="root-helps-product-information__benefit">
+                                {{ benefits_block.settings.benefit_text }}
+                              </div>
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </div>
+                      </div>
+
+                    {%- when 'sku' -%}
+                      <p
+                        class="product__sku{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
+                        id="Sku-{{ section.id }}"
+                        role="status"
+                        {{ block.shopify_attributes }}
+                      >
+                        <span class="visually-hidden">{{ 'products.product.sku' | t }}:</span>
+                        {{- product.selected_or_first_available_variant.sku -}}
+                      </p>
+
+                    {%- when 'custom_liquid' -%}
+                      {{ block.settings.custom_liquid }}
+
+                    {%- when 'collapsible_tab' -%}
+                      <div class="product__accordion accordion" {{ block.shopify_attributes }}>
+                        <details id="Details-{{ block.id }}-{{ section.id }}">
+                          <summary>
+                            <div class="summary__title">
+                              {% render 'icon-accordion', icon: block.settings.icon %}
+                              <h2 class="h4 accordion__title inline-richtext">
+                                {{ block.settings.heading | default: block.settings.page.title | escape }}
+                              </h2>
+                            </div>
+                            {{- 'icon-caret.svg' | inline_asset_content -}}
+                          </summary>
+                          <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                            {{ block.settings.content }}
+                            {{ block.settings.page.content }}
+                          </div>
+                        </details>
+                      </div>
+
+                    {%- when 'variant_picker' -%}
+                      {%- unless product.has_only_default_variant -%}
+                        <div class="root-helps-product-information__variants" {{ block.shopify_attributes }}>
+                          {% if product.metafields.custom.variant_selection_type.value contains 'Cards' %}
+                            {% render 'product-variant-cards',
+                              product: product,
+                              section_id: section.id,
+                              form_id: product_form_id
+                            %}
+                          {% else %}
+                            <div class="root-helps-product-information__variant-options">
+                              {%- comment -%} Sort variants: Subscription first, then regular purchases, then trial {%- endcomment -%}
+                              {%- assign subscription_variants = product.variants
+                                | where: 'selling_plan_allocations', 'not_empty'
+                              -%}
+                              {%- assign regular_variants = product.variants
+                                | where: 'selling_plan_allocations', 'empty'
+                              -%}
+                              {%- assign trial_variants = regular_variants | where: 'title', 'Trial Pack' -%}
+                              {%- assign other_variants = regular_variants | where: 'title', '!= Trial Pack' -%}
+
+                              {%- comment -%} Display subscription variants first (Monthly Subscription) {%- endcomment -%}
+                              {%- for variant in subscription_variants -%}
+                                <div class="root-helps-product-information__variant-option{% unless variant.available %} root-helps-product-information__variant-option--disabled{% endunless %}">
+                                  <input
+                                    type="radio"
+                                    id="Variant-{{ section.id }}-{{ variant.id }}"
+                                    name="id"
+                                    value="{{ variant.id }}"
+                                    class="root-helps-product-information__variant-radio"
+                                    {% if forloop.first
+                                      and product.selected_or_first_available_variant.selling_plan_allocations != empty
+                                    %}
+                                      checked
+                                    {% endif %}
+                                    {% unless variant.available %}
+                                      disabled
+                                    {% endunless %}
+                                    form="{{ product_form_id }}"
+                                  >
+                                  <label
+                                    for="Variant-{{ section.id }}-{{ variant.id }}"
+                                    class="root-helps-product-information__variant-label"
+                                  >
+                                    <div class="root-helps-product-information__variant-header">
+                                      <div class="root-helps-product-information__variant-title">
+                                        {{ variant.title }}
+                                      </div>
+                                      <div class="root-helps-product-information__variant-price">
+                                        {{ variant.price | money_with_currency }}
+                                      </div>
+                                    </div>
+                                    {% if variant.metafields.custom.details %}
+                                      <div class="root-helps-product-information__variant-details">
+                                        {{ variant.metafields.custom.details }}
+                                      </div>
+                                    {% endif %}
+                                    {% unless variant.available %}
+                                      <div class="root-helps-product-information__variant-sold-out">
+                                        {{ 'products.product.sold_out' | t }}
+                                      </div>
+                                    {% endunless %}
+                                  </label>
+                                </div>
+                              {%- endfor -%}
+
+                              {%- comment -%} Display other regular variants (1 Month Supply) {%- endcomment -%}
+                              {%- for variant in other_variants -%}
+                                <div class="root-helps-product-information__variant-option{% unless variant.available %} root-helps-product-information__variant-option--disabled{% endunless %}">
+                                  <input
+                                    type="radio"
+                                    id="Variant-{{ section.id }}-{{ variant.id }}"
+                                    name="id"
+                                    value="{{ variant.id }}"
+                                    class="root-helps-product-information__variant-radio"
+                                    {% if variant.id == product.selected_or_first_available_variant.id
+                                      and product.selected_or_first_available_variant.selling_plan_allocations == empty
+                                    %}
+                                      checked
+                                    {% endif %}
+                                    {% unless variant.available %}
+                                      disabled
+                                    {% endunless %}
+                                    form="{{ product_form_id }}"
+                                  >
+                                  <label
+                                    for="Variant-{{ section.id }}-{{ variant.id }}"
+                                    class="root-helps-product-information__variant-label"
+                                  >
+                                    <div class="root-helps-product-information__variant-header">
+                                      <div class="root-helps-product-information__variant-title">
+                                        {{ variant.title }}
+                                      </div>
+                                      <div class="root-helps-product-information__variant-price">
+                                        {{ variant.price | money_with_currency }}
+                                      </div>
+                                    </div>
+                                    {% if variant.metafields.custom.details %}
+                                      <div class="root-helps-product-information__variant-details">
+                                        {{ variant.metafields.custom.details }}
+                                      </div>
+                                    {% endif %}
+                                    {% unless variant.available %}
+                                      <div class="root-helps-product-information__variant-sold-out">
+                                        {{ 'products.product.sold_out' | t }}
+                                      </div>
+                                    {% endunless %}
+                                  </label>
+                                </div>
+                              {%- endfor -%}
+
+                              {%- comment -%} Display "- OR -" separator if trial variants exist {%- endcomment -%}
+                              {%- if trial_variants.size > 0 -%}
+                                <div class="root-helps-product-information__separator">- OR -</div>
+                              {%- endif -%}
+
+                              {%- comment -%} Display trial variants last (Trial Pack) {%- endcomment -%}
+                              {%- for variant in trial_variants -%}
+                                <div class="root-helps-product-information__variant-option{% unless variant.available %} root-helps-product-information__variant-option--disabled{% endunless %}">
+                                  <input
+                                    type="radio"
+                                    id="Variant-{{ section.id }}-{{ variant.id }}"
+                                    name="id"
+                                    value="{{ variant.id }}"
+                                    class="root-helps-product-information__variant-radio"
+                                    {% if variant.id == product.selected_or_first_available_variant.id %}
+                                      checked
+                                    {% endif %}
+                                    {% unless variant.available %}
+                                      disabled
+                                    {% endunless %}
+                                    form="{{ product_form_id }}"
+                                  >
+                                  <label
+                                    for="Variant-{{ section.id }}-{{ variant.id }}"
+                                    class="root-helps-product-information__variant-label"
+                                  >
+                                    <div class="root-helps-product-information__variant-header">
+                                      <div class="root-helps-product-information__variant-title">
+                                        {{ variant.title }}
+                                      </div>
+                                      <div class="root-helps-product-information__variant-price">
+                                        {{ variant.price | money_with_currency }}
+                                      </div>
+                                    </div>
+                                    {% if variant.metafields.custom.details %}
+                                      <div class="root-helps-product-information__variant-details">
+                                        {{ variant.metafields.custom.details }}
+                                      </div>
+                                    {% endif %}
+                                    {% unless variant.available %}
+                                      <div class="root-helps-product-information__variant-sold-out">
+                                        {{ 'products.product.sold_out' | t }}
+                                      </div>
+                                    {% endunless %}
+                                  </label>
+                                </div>
+                              {%- endfor -%}
+                            </div>
+
+                            <div
+                              id="Quantity-Form-{{ section.id }}"
+                              class="product-form__input product-form__quantity root-helps-product-information__quantity"
+                              {{ block.shopify_attributes }}
+                            >
+                              {% comment %} TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter {% endcomment %}
+                              {% # theme-check-disable %}
+                              {%- assign cart_qty = cart
+                                | item_count_for_variant: product.selected_or_first_available_variant.id
+                              -%}
+                              {% # theme-check-enable %}
+                              <label class="form__label" for="Quantity-{{ section.id }}">
+                                {{- 'products.product.quantity.label' | t -}}
+                              </label>
+                              <div class="price-per-item__container">
+                                <quantity-input
+                                  class="quantity"
+                                  data-url="{{ product.url }}"
+                                  data-section="{{ section.id }}"
+                                >
+                                  <button class="quantity__button" name="minus" type="button">
+                                    <span class="visually-hidden">
+                                      {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                                    </span>
+                                    <span class="svg-wrapper">
+                                      {{- 'icon-minus.svg' | inline_asset_content -}}
+                                    </span>
+                                  </button>
+                                  <input
+                                    class="quantity__input"
+                                    type="number"
+                                    name="quantity"
+                                    id="Quantity-{{ section.id }}"
+                                    data-cart-quantity="{{ cart_qty }}"
+                                    data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                                    min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                                    {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                                      data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                                      max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                                    {% endif %}
+                                    step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                                    value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                                    form="{{ product_form_id }}"
+                                  >
+                                  <button class="quantity__button" name="plus" type="button">
+                                    <span class="visually-hidden">
+                                      {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                                    </span>
+                                    <span class="svg-wrapper">
+                                      {{- 'icon-plus.svg' | inline_asset_content -}}
+                                    </span>
+                                  </button>
+                                </quantity-input>
+                              </div>
+                            </div>
+                          {% endif %}
+                        </div>
+                      {%- endunless -%}
+
+                    {%- when 'benefit_item' -%}
+                      {%- comment -%} Individual benefit items are handled by the custom_benefits container {%- endcomment -%}
+
+                    {%- when 'buy_buttons' -%}
+                      <div
+                        id="price-{{ section.id }}"
+                        role="status"
+                        class="root-helps-product-information__price"
+                        {{ block.shopify_attributes }}
+                      >
+                        {%- render 'price',
+                          product: product,
+                          use_variant: true,
+                          show_badges: true,
+                          price_class: 'price--large'
+                        -%}
+                      </div>
+                      <div class="quantity__rules caption" id="Quantity-Rules-{{ section.id }}">
+                        {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
+                          <span class="divider">
+                            {{-
+                              'products.product.quantity.multiples_of'
+                              | t: quantity: product.selected_or_first_available_variant.quantity_rule.increment
+                            -}}
+                          </span>
+                        {%- endif -%}
+                        {%- if product.selected_or_first_available_variant.quantity_rule.min > 1 -%}
+                          <span class="divider">
+                            {{-
+                              'products.product.quantity.minimum_of'
+                              | t: quantity: product.selected_or_first_available_variant.quantity_rule.min
+                            -}}
+                          </span>
+                        {%- endif -%}
+                        {%- if product.selected_or_first_available_variant.quantity_rule.max != null -%}
+                          <span class="divider">
+                            {{-
+                              'products.product.quantity.maximum_of'
+                              | t: quantity: product.selected_or_first_available_variant.quantity_rule.max
+                            -}}
+                          </span>
+                        {%- endif -%}
+                      </div>
+                      {%- if product.quantity_price_breaks_configured? -%}
+                        <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
+                          <span>{{ 'products.product.volume_pricing.note' | t }}</span>
+                        </div>
+                      {%- endif -%}
+                      {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
+                        <div class="product__tax caption rte">
+                          {%- if cart.duties_included and cart.taxes_included -%}
+                            {{ 'products.product.duties_and_taxes_included' | t }}
+                          {%- elsif cart.taxes_included -%}
+                            {{ 'products.product.taxes_included' | t }}
+                          {%- elsif cart.duties_included -%}
+                            {{ 'products.product.duties_included' | t }}
+                          {%- endif -%}
+                          {%- if shop.shipping_policy.body != blank -%}
+                            {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+                      <div {{ block.shopify_attributes }}>
+                        {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
+                        {%- form 'product',
+                          product,
+                          id: product_form_installment_id,
+                          class: 'installment caption-large'
+                        -%}
+                          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                          {{ form | payment_terms }}
+                        {%- endform -%}
+                      </div>
+
+                      {%- if block.settings.show_inventory_status -%}
+                        <p
+                          class="product__inventory root-helps-product-information__inventory{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
+                          {{ block.shopify_attributes }}
+                          id="Inventory-{{ section.id }}"
+                          role="status"
+                        >
+                          {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
+                            {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
+                              {%- if product.selected_or_first_available_variant.inventory_quantity
+                                  <= block.settings.inventory_threshold
+                              -%}
+                                <span class="svg-wrapper" style="color: rgb(238, 148, 65)">
+                                  {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                                </span>
+                                {%- if block.settings.show_inventory_quantity -%}
+                                  {{-
+                                    'products.product.inventory_low_stock_show_count'
+                                    | t: quantity: product.selected_or_first_available_variant.inventory_quantity
+                                  -}}
+                                {%- else -%}
+                                  {{- 'products.product.inventory_low_stock' | t -}}
+                                {%- endif -%}
+                              {%- else -%}
+                                <span class="svg-wrapper" style="color: rgb(62, 214, 96)">
+                                  {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                                </span>
+                                {%- if block.settings.show_inventory_quantity -%}
+                                  {{-
+                                    'products.product.inventory_in_stock_show_count'
+                                    | t: quantity: product.selected_or_first_available_variant.inventory_quantity
+                                  -}}
+                                {%- else -%}
+                                  {{- 'products.product.inventory_in_stock' | t -}}
+                                {%- endif -%}
+                              {%- endif -%}
+                            {%- else -%}
+                              {%- if product.selected_or_first_available_variant.inventory_policy == 'continue' -%}
+                                <span class="svg-wrapper" style="color: rgb(62, 214, 96)">
+                                  {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                                </span>
+                                {{- 'products.product.inventory_out_of_stock_continue_selling' | t -}}
+                              {%- else -%}
+                                <span class="svg-wrapper" style="color: rgb(200, 200, 200)">
+                                  {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                                </span>
+                                {{- 'products.product.inventory_out_of_stock' | t -}}
+                              {%- endif -%}
+                            {%- endif -%}
+                          {%- endif -%}
+                        </p>
+                      {%- endif -%}
+                      <div class="root-helps-product-information__payment" {{ block.shopify_attributes }}>
+                        <button
+                          id="ProductSubmitButton-{{ section.id }}"
+                          type="submit"
+                          name="add"
+                          class="product-form__submit button button--full-width button--primary root-helps-product-information__payment-button"
+                          {% if product.selected_or_first_available_variant.available == false
+                            or product.selected_or_first_available_variant == null
+                          %}
+                            disabled
+                          {% endif %}
+                        >
+                          <span>
+                            {%- if product.selected_or_first_available_variant == null -%}
+                              {{ 'products.product.unavailable' | t }}
+                            {%- elsif product.selected_or_first_available_variant.available == false -%}
+                              {{ 'products.product.sold_out' | t }}
+                            {%- else -%}
+                              CONTINUE TO PAYMENT
+                            {%- endif -%}
+                          </span>
+                          {%- render 'loading-spinner' -%}
+                        </button>
+                      </div>
+
+                    {%- when 'share' -%}
+                      {% liquid
+                        assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
+                        render 'share-button', block: block, share_link: share_url
+                      %}
+
+                    {%- when 'rating' -%}
+                      {%- if product.metafields.reviews.rating.value != blank -%}
+                        <div class="rating-wrapper">
+                          {% liquid
+                            assign rating_decimal = 0
+                            assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+                            if decimal >= 0.3 and decimal <= 0.7
+                              assign rating_decimal = 0.5
+                            elsif decimal > 0.7
+                              assign rating_decimal = 1
+                            endif
+                          %}
+                          <div
+                            class="rating"
+                            role="img"
+                            aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="rating-star"
+                              style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
+                            ></span>
+                          </div>
+                          <p class="rating-text caption">
+                            <span aria-hidden="true">
+                              {{- product.metafields.reviews.rating.value }} /
+                              {{ product.metafields.reviews.rating.value.scale_max -}}
+                            </span>
+                          </p>
+                          <p class="rating-count caption">
+                            <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
+                            <span class="visually-hidden">
+                              {{- product.metafields.reviews.rating_count }}
+                              {{ 'accessibility.total_reviews' | t -}}
+                            </span>
+                          </p>
+                        </div>
+                      {%- endif -%}
+                  {%- endcase -%}
+                {%- endfor -%}
+              {%- endform -%}
+            </product-form>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</product-info>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Initialize product image carousel functionality
+    const sectionId = '{{ section.id }}';
+
+    // Get main images for both mobile and desktop
+    const mainImageMobile = document.getElementById(`main-image-mobile-${sectionId}`);
+    const mainImageDesktop = document.getElementById(`main-image-desktop-${sectionId}`);
+
+    // Get all carousel items for both mobile and desktop
+    const mobileCarouselItems = document.querySelectorAll(
+      '.root-helps-product-information__mobile-carousel .root-helps-product-information__carousel-item'
+    );
+    const desktopCarouselItems = document.querySelectorAll(
+      '.root-helps-product-information__grid .root-helps-product-information__carousel-item'
+    );
+
+    // Function to handle carousel item clicks
+    function handleCarouselClick(carouselItems, mainImage, isMobile = false) {
+      if (!carouselItems.length || !mainImage) return;
+
+      carouselItems.forEach((item, index) => {
+        const img = item.querySelector('.root-helps-product-information__carousel-image');
+
+        if (img && img.tagName === 'IMG') {
+          // Make carousel item clickable
+          item.style.cursor = 'pointer';
+          item.setAttribute('role', 'button');
+          item.setAttribute('tabindex', '0');
+          item.setAttribute('aria-label', `View ${img.alt || 'product image'}`);
+
+          // Add click event listener
+          const clickHandler = function () {
+            const fullSrc = img.getAttribute('data-full-src');
+            const alt = img.getAttribute('alt');
+
+            if (fullSrc && mainImage) {
+              // Add loading state
+              mainImage.style.opacity = '0.5';
+
+              // Create new image to preload
+              const newImg = new Image();
+              newImg.onload = function () {
+                mainImage.src = fullSrc;
+                if (alt) {
+                  mainImage.alt = alt;
+                }
+                mainImage.style.opacity = '1';
+
+                // Update active state on carousel items
+                carouselItems.forEach((carouselItem) => {
+                  carouselItem.classList.remove('active');
+                  carouselItem.setAttribute('aria-selected', 'false');
+                });
+                item.classList.add('active');
+                item.setAttribute('aria-selected', 'true');
+              };
+              newImg.src = fullSrc;
+            }
+          };
+
+          item.addEventListener('click', clickHandler);
+
+          // Add keyboard support
+          item.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              clickHandler();
+            }
+          });
+
+          // Set first item as active by default
+          if (index === 0) {
+            item.classList.add('active');
+            item.setAttribute('aria-selected', 'true');
+          } else {
+            item.setAttribute('aria-selected', 'false');
+          }
+        }
+      });
+    }
+
+    // Initialize mobile carousel
+    if (mobileCarouselItems.length > 0 && mainImageMobile) {
+      handleCarouselClick(mobileCarouselItems, mainImageMobile, true);
+    }
+
+    // Initialize desktop carousel
+    if (desktopCarouselItems.length > 0 && mainImageDesktop) {
+      handleCarouselClick(desktopCarouselItems, mainImageDesktop, false);
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Root Helps Product",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "image_background_color",
+      "label": "Image background color",
+      "default": "#FE9A68"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "Accent 1"
+        },
+        {
+          "value": "accent-2",
+          "label": "Accent 2"
+        },
+        {
+          "value": "background-1",
+          "label": "Background 1"
+        },
+        {
+          "value": "background-2",
+          "label": "Background 2"
+        },
+        {
+          "value": "inverse",
+          "label": "Inverse"
+        }
+      ],
+      "default": "background-1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_info",
+      "default": true,
+      "label": "Enable sticky product information"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "Text block",
+          "label": "Text"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "Body"
+            },
+            {
+              "value": "subtitle",
+              "label": "Subtitle"
+            },
+            {
+              "value": "uppercase",
+              "label": "Uppercase"
+            }
+          ],
+          "default": "body",
+          "label": "Text style"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1
+    },
+    {
+      "type": "variant_picker",
+      "name": "Variant picker",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "picker_type",
+          "options": [
+            {
+              "value": "dropdown",
+              "label": "Dropdown"
+            },
+            {
+              "value": "button",
+              "label": "Buttons"
+            }
+          ],
+          "default": "button",
+          "label": "Type"
+        },
+        {
+          "type": "select",
+          "id": "swatch_shape",
+          "options": [
+            {
+              "value": "circle",
+              "label": "Circle"
+            },
+            {
+              "value": "square",
+              "label": "Square"
+            }
+          ],
+          "default": "circle",
+          "label": "Quantity"
+        }
+      ]
+    },
+    {
+      "type": "buy_buttons",
+      "name": "Payment Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_pickup_availability",
+          "default": true,
+          "label": "Show pickup availability",
+          "info": "Show information about pickup availability for the selected variant."
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1
+    },
+    {
+      "type": "share",
+      "name": "Share",
+      "limit": 1
+    },
+    {
+      "type": "custom_liquid",
+      "name": "Custom liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom liquid",
+          "info": "Add app snippets or other Liquid code to create advanced customizations."
+        }
+      ]
+    },
+    {
+      "type": "collapsible_tab",
+      "name": "Collapsible row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Collapsible row",
+          "label": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "apple",
+              "label": "Apple"
+            },
+            {
+              "value": "banana",
+              "label": "Banana"
+            },
+            {
+              "value": "bottle",
+              "label": "Bottle"
+            },
+            {
+              "value": "box",
+              "label": "Box"
+            },
+            {
+              "value": "carrot",
+              "label": "Carrot"
+            },
+            {
+              "value": "chat_bubble",
+              "label": "Chat bubble"
+            },
+            {
+              "value": "check_mark",
+              "label": "Check mark"
+            },
+            {
+              "value": "clipboard",
+              "label": "Clipboard"
+            },
+            {
+              "value": "dairy",
+              "label": "Dairy"
+            },
+            {
+              "value": "dairy_free",
+              "label": "Dairy free"
+            },
+            {
+              "value": "dryer",
+              "label": "Dryer"
+            },
+            {
+              "value": "eye",
+              "label": "Eye"
+            },
+            {
+              "value": "fire",
+              "label": "Fire"
+            },
+            {
+              "value": "gluten_free",
+              "label": "Gluten free"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "iron",
+              "label": "Iron"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "leather",
+              "label": "Leather"
+            },
+            {
+              "value": "lightning_bolt",
+              "label": "Lightning bolt"
+            },
+            {
+              "value": "lipstick",
+              "label": "Lipstick"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "map_pin",
+              "label": "Map pin"
+            },
+            {
+              "value": "nut_free",
+              "label": "Nut free"
+            },
+            {
+              "value": "pants",
+              "label": "Pants"
+            },
+            {
+              "value": "paw_print",
+              "label": "Paw print"
+            },
+            {
+              "value": "pepper",
+              "label": "Pepper"
+            },
+            {
+              "value": "perfume",
+              "label": "Perfume"
+            },
+            {
+              "value": "plane",
+              "label": "Plane"
+            },
+            {
+              "value": "plant",
+              "label": "Plant"
+            },
+            {
+              "value": "price_tag",
+              "label": "Price tag"
+            },
+            {
+              "value": "question_mark",
+              "label": "Question mark"
+            },
+            {
+              "value": "recycle",
+              "label": "Recycle"
+            },
+            {
+              "value": "return",
+              "label": "Return"
+            },
+            {
+              "value": "ruler",
+              "label": "Ruler"
+            },
+            {
+              "value": "serving_dish",
+              "label": "Serving dish"
+            },
+            {
+              "value": "shirt",
+              "label": "Shirt"
+            },
+            {
+              "value": "shoe",
+              "label": "Shoe"
+            },
+            {
+              "value": "silhouette",
+              "label": "Silhouette"
+            },
+            {
+              "value": "snowflake",
+              "label": "Snowflake"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "stopwatch",
+              "label": "Stopwatch"
+            },
+            {
+              "value": "truck",
+              "label": "Truck"
+            },
+            {
+              "value": "washing",
+              "label": "Washing"
+            }
+          ],
+          "default": "check_mark",
+          "label": "Icon"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Row content"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Row content from page"
+        }
+      ]
+    },
+    {
+      "type": "rating",
+      "name": "Product rating",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "To display a rating, add a product rating app. [Learn more](https://help.shopify.com/manual/online-store/themes/theme-store/apps#product-rating-reviews-apps)"
+        }
+      ]
+    },
+    {
+      "type": "inventory",
+      "name": "Inventory",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_inventory_status",
+          "default": true,
+          "label": "Show inventory status"
+        },
+        {
+          "type": "range",
+          "id": "inventory_threshold",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "label": "Low inventory threshold",
+          "default": 10
+        },
+        {
+          "type": "checkbox",
+          "id": "show_inventory_quantity",
+          "default": true,
+          "label": "Show inventory quantity"
+        }
+      ]
+    },
+    {
+      "type": "sku",
+      "name": "SKU",
+      "limit": 1
+    },
+    {
+      "type": "quantity_selector",
+      "name": "Quantity selector",
+      "limit": 1
+    },
+    {
+      "type": "custom_benefits",
+      "name": "Benefits Container",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Benefits"
+        },
+        {
+          "type": "paragraph",
+          "content": "This block acts as a container for your benefits. Add individual 'Benefit Item' blocks to populate this section."
+        }
+      ]
+    },
+    {
+      "type": "benefit_item",
+      "name": "Benefit Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefit_text",
+          "label": "Benefit text",
+          "default": "Enter your benefit text here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Helps Product Information",
+      "blocks": [
+        { "type": "title" },
+        { "type": "description" },
+        { "type": "custom_benefits" },
+        { "type": "benefit_item", "settings": { "benefit_text": "Natural ingredients" } },
+        { "type": "benefit_item", "settings": { "benefit_text": "Clinically tested" } },
+        { "type": "benefit_item", "settings": { "benefit_text": "Third-party verified" } },
+        { "type": "variant_picker" },
+        { "type": "buy_buttons" }
+      ]
+    }
+  ]
+}
+{% endschema %}

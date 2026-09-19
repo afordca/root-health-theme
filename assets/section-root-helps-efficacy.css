@@ -1,0 +1,375 @@
+/* Mobile-first styles for Root Helps Efficacy section */
+.root-helps-efficacy {
+	margin: 0;
+	background-color: #ffffff;
+}
+
+.root-helps-efficacy__container {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+}
+
+.root-helps-efficacy__content {
+	padding: 25px 0px;
+	flex: 1;
+}
+
+.root-helps-efficacy__heading {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 36px;
+	line-height: 1.3333333333333333em; /* 48px */
+	color: #000000;
+	margin: 0 0 21px 0;
+	max-width: 337px;
+}
+
+.root-helps-efficacy__description {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 1.5em; /* 24px */
+	color: #000000;
+	margin: 0 0 40px 0;
+	max-width: 348px;
+}
+
+.root-helps-efficacy__section {
+	margin-bottom: 40px;
+}
+
+.root-helps-efficacy__section-label {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 800;
+	font-size: 10px;
+	line-height: 6em; /* 60px */
+	letter-spacing: 20%;
+	text-transform: uppercase;
+	color: #000000;
+	margin: 0 0 -20px 0;
+	display: block;
+}
+
+.root-helps-efficacy__stats-grid {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.root-helps-efficacy__stat {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.root-helps-efficacy__stat-number {
+	font-family: "GT Super Ds Trial", "GT-Super-Display-Regular", serif;
+	font-weight: 300;
+	font-size: 9.6rem;
+	line-height: 1.1; /* 18px */
+	color: #e5653d;
+	margin: 20px 0 20px 0;
+	display: flex;
+	align-items: center;
+	min-height: 66px;
+}
+
+.root-helps-efficacy__stat-label {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 2.4rem;
+	line-height: 0.75em; /* 18px */
+	color: #000000;
+	margin: 0 0 5px 0;
+	text-align: left;
+}
+
+.root-helps-efficacy__stat-description {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 1.152999997138977em; /* 18.4px */
+	color: #000000;
+	margin: 0;
+	max-width: 194px;
+}
+
+.root-helps-efficacy__divider {
+	width: 100%;
+	height: 1px;
+	background: repeating-linear-gradient(
+		to right,
+		#dfdfdf 0px,
+		#dfdfdf 2.6px,
+		transparent 2.6px,
+		transparent 5.2px
+	);
+	margin: 30px 0 20px 0;
+}
+
+.root-helps-efficacy__disclaimer {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 3.75em; /* 60px */
+	color: #000000;
+	margin: 20px 0 0 -9px;
+}
+
+.root-helps-efficacy__sidebar {
+	background-color: #f7f7f7;
+	padding: 0;
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 0px;
+}
+
+.root-helps-efficacy__report-preview {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	padding: 20px;
+	min-height: 450px;
+}
+
+.root-helps-efficacy__report-overlay {
+	background-color: #fe9a68;
+	padding: 20px;
+	width: max-content;
+	height: max-content;
+	box-sizing: border-box;
+	justify-self: flex-end;
+}
+
+.root-helps-efficacy__report-brand {
+	font-weight: 400;
+	font-size: 19px;
+	line-height: 0.75em; /* 14px */
+	letter-spacing: 83.33333333333334%;
+	color: #fe9a68;
+	margin: 0 0 15px 0;
+	background-color: #ffffff;
+	padding: 8px 15px;
+	display: inline-block;
+	text-align: center;
+}
+
+.root-helps-efficacy__report-subtitle {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 1.5em; /* 21px */
+	color: #ffffff;
+	margin: 0 0 8px 0;
+}
+
+.klaviyo-form h1,
+.klaviyo-form * {
+	font-family: "Gilroy", sans-serif !important;
+}
+
+.root-helps-efficacy__report-title {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 21px;
+	line-height: 1em; /* 21px */
+	color: #ffffff;
+	margin: 0;
+	max-width: 229px;
+}
+
+.root-helps-efficacy__form {
+	padding-top: 20px;
+}
+
+.klaviyo-form div[needs-click] > div {
+	padding: 0px;
+}
+
+.root-helps-efficacy__form-field {
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.klaviyo-form input,
+.root-helps-efficacy__form-input {
+	width: 100%;
+	height: 34px !important;
+	border: none !important;
+	border-bottom: 1px solid #e1e1e1 !important;
+	background: transparent;
+	font-family: "Gilroy", sans-serif !important;
+	font-weight: 300;
+	font-size: 11px;
+	line-height: 3.75em;
+	color: #000000;
+	padding: 0 3px;
+	box-sizing: border-box;
+}
+
+.klaviyo-form input::placeholder,
+.root-helps-efficacy__form-input::placeholder {
+	color: #000000;
+	opacity: 1;
+	font-family: "Gilroy", sans-serif !important;
+	letter-spacing: normal !important;
+}
+
+.klaviyo-form button,
+.root-helps-efficacy__form-button {
+	width: 100% !important;
+	background-color: #e5653d !important;
+	color: #ffffff !important;
+	font-weight: 400;
+	font-size: 1.5rem;
+	line-height: 1.5em;
+	letter-spacing: 25%;
+	text-transform: uppercase;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+	margin-top: 10px;
+	font-family: "Gilroy", sans-serif !important;
+}
+
+.root-helps-efficacy__form-button:hover {
+	background-color: #d44e2a;
+}
+
+.root-helps-efficacy__form-button:focus {
+	outline: 2px solid #e5653d;
+	outline-offset: 2px;
+}
+
+.root-helps-efficacy__form-disclaimer {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 3.75em;
+	color: #000000;
+	margin: 10px 0 0 0;
+}
+
+/* Desktop styles */
+@media screen and (min-width: 768px) {
+	.root-helps-efficacy__content {
+		flex: 1;
+		max-width: 848px;
+		padding: 56px 0px;
+	}
+
+	.root-helps-efficacy__heading {
+		font-size: 48px;
+		line-height: 1.25em; /* 60px */
+		margin: 0 0 10px 0;
+		max-width: 655px;
+	}
+
+	.root-helps-efficacy__description {
+		margin: 0 0 48px 0;
+		max-width: 658px;
+	}
+
+	.root-helps-efficacy__section {
+		margin-bottom: 60px;
+	}
+
+	.root-helps-efficacy__stats-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 40px 93px;
+	}
+
+	.root-helps-efficacy__divider {
+		width: 674px;
+		margin: 58px 0 20px -16px;
+	}
+
+	.root-helps-efficacy__disclaimer {
+		margin: 20px 0 0 -9px;
+	}
+
+	.root-helps-efficacy__report-overlay {
+		bottom: 154px;
+		left: 18px;
+		width: 274px;
+		height: 154px;
+		padding: 30px 11px 25px 11px;
+	}
+
+	.root-helps-efficacy__report-brand {
+		font-size: 18px;
+		margin: 0 0 20px 26px;
+		padding: 5px 20px;
+	}
+
+	.root-helps-efficacy__report-subtitle {
+		font-size: 16px;
+		line-height: 1.5em;
+		margin: 0 0 11px 0;
+	}
+
+	.root-helps-efficacy__report-title {
+		font-size: 2.4rem;
+		line-height: 1em;
+		max-width: 259px;
+	}
+
+	.root-helps-efficacy__form {
+		padding: 0;
+	}
+
+	.root-helps-efficacy__form-field {
+		margin-bottom: 16px;
+	}
+
+	.root-helps-efficacy__form-input {
+		height: 48px;
+		font-size: 16px;
+		line-height: 3.75em;
+	}
+
+	.root-helps-efficacy__form-button {
+		margin-top: 20px;
+	}
+}
+
+@media screen and (min-width: 1025px) {
+	.root-helps-efficacy__container {
+		flex-direction: row;
+		min-height: 840px;
+	}
+
+	.root-helps-efficacy__sidebar {
+		width: 592px;
+		min-height: 840px;
+		flex-shrink: 0;
+		padding: 56px 24px;
+	}
+}
+
+/* Fallback font styles */
+.root-helps-efficacy__heading,
+.root-helps-efficacy__stat-number {
+	font-family: "GT Super Ds Trial", "GT-Super-Display-Regular", "Georgia", serif;
+}
+
+.root-helps-efficacy__description,
+.root-helps-efficacy__section-label,
+.root-helps-efficacy__stat-label,
+.root-helps-efficacy__stat-description,
+.root-helps-efficacy__disclaimer,
+.root-helps-efficacy__report-subtitle,
+.root-helps-efficacy__report-title,
+.root-helps-efficacy__form-input,
+.root-helps-efficacy__form-disclaimer {
+	font-family: "Gilroy", "Arial", sans-serif;
+}

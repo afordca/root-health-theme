@@ -1,0 +1,179 @@
+{{ 'section-root-helps-founding-story.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign heading = section.settings.heading
+  assign story_text = section.settings.story_text
+-%}
+
+<section class="root-helps-section root-helps-founding-story" id="section-{{ section.id }}">
+  <div class="root-helps-section__container root-helps-founding-story__container">
+    {%- if section.blocks.size > 0 -%}
+      <div class="root-helps-founding-story__founder-cards">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'founder' -%}
+              <div
+                class="root-helps-founding-story__founder-card root-helps-founding-story__founder-card--{{ block.settings.founder_key }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- if block.settings.founder_image != blank -%}
+                  <img
+                    class="root-helps-founding-story__founder-image"
+                    src="{{ block.settings.founder_image | image_url }}"
+                    alt="{{ block.settings.founder_name }}"
+                    aria-hidden="true"
+                    width=""
+                    height=""
+                  >
+                {%- else -%}
+                  <img
+                    class="root-helps-founding-story__founder-image-placeholder"
+                    src="{{ 'founder-image-placeholder-1x1.png' | image_url }}"
+                    alt=""
+                    aria-hidden="true"
+                    width=""
+                    height=""
+                  >
+                {%- endif -%}
+                <div class="root-helps-founding-story__founder-info">
+                  <h3 class="root-helps-founding-story__founder-name root-helps-founding-story__founder-name">
+                    {{ block.settings.founder_name }}
+                  </h3>
+                  <p class="root-helps-founding-story__founder-bio root-helps-founding-story__founder-bio">
+                    {{ block.settings.founder_bio }}
+                  </p>
+                </div>
+              </div>
+              {%- unless forloop.last -%}
+                <div class="root-helps-founding-story__separator-line"></div>
+              {%- endunless -%}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if story_text != blank -%}
+      <div class="root-helps-founding-story__story-content">
+        {%- if heading != blank -%}
+          <h2 class="root-helps-founding-story__heading">{{ heading }}</h2>
+        {%- endif -%}
+
+        <div class="root-helps-founding-story__story-text">{{ story_text | newline_to_br }}</div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Root Helps Founding",
+  "tag": "section",
+  "class": "section-root-helps-founding-story",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "story_text",
+      "label": "Story Text"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "founder",
+      "name": "Founder",
+      "settings": [
+        {
+          "type": "text",
+          "id": "founder_name",
+          "label": "Founder Name"
+        },
+        {
+          "type": "textarea",
+          "id": "founder_bio",
+          "label": "Founder Bio"
+        },
+        {
+          "type": "image_picker",
+          "id": "founder_image",
+          "label": "Founder Image"
+        },
+        {
+          "type": "select",
+          "id": "founder_key",
+          "label": "Founder Key",
+          "options": [
+            {
+              "value": "julia",
+              "label": "Julia"
+            },
+            {
+              "value": "alex",
+              "label": "Alex"
+            }
+          ],
+          "default": "julia"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Helps Founding Story",
+      "settings": {
+        "heading": "We created Root because moms deserve more",
+        "story_text": "When siblings Julia and Alex became new parents just three months apart (exciting!), their discussions quickly shifted from gripes about their mother (parents, amirite?) to the challenges of caring for a newborn.\n\nAs they navigated this new journey together, both babies suffered from allergies and colic, prompting Alex's wife—who happens to be a double-board-certified MD, btw—to join in on the conversation and share ideas for better baby care and more restful sleep. They tried new diets, consulted new doctors, and scoured new sections of grocery stores. Phew.\n\nWhile these efforts helped the babies, the moms were still exhausted and struggling to keep up with the dietary demands of round-the-clock breastfeeding and pumping. They needed something that didn't exist: Clean, healthy, allergen-free, lactation-boosting nutrition that was quick and easy to consume. And so Root was born.\n\nBreastfeeding takes a lot out of you (literally!). If you or your partner, friend, wife, sister, beloved cousin (whoever!) are struggling to maintain a sufficient breast milk supply, we're here for you."
+      },
+      "blocks": [
+        {
+          "type": "founder",
+          "settings": {
+            "founder_name": "Julia Ford-Carther",
+            "founder_bio": "Founder + CEO<br>Undersupplier, Former 9-Hours-a-Night Sleeper, Proud Mom of 1. (Also Alex's Sister.)",
+            "founder_key": "julia"
+          }
+        },
+        {
+          "type": "founder",
+          "settings": {
+            "founder_name": "Alex Ford-Carther",
+            "founder_bio": "COO<br>Advocate, \"Dad Of The Year\" 10 Years Running, Proud Papa of 3. (Also Julia's Brother.)",
+            "founder_key": "alex"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

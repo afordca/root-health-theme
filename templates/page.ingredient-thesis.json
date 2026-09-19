@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+    "sections": {
+        "ingredient-thesis": {
+            "type": "root-helps-ingredient-thesis",
+            "settings": {
+                "enable_section": true,
+                "title": "THESIS",
+                "description": "<p>We've identified 5 nutritional components that have a direct impact on your milk supply. We set out to create a product that addressed each of these components without compromising on clean, healthful ingredients that could accommodate various dietary needs and desires.</p>"
+            },
+            "blocks": {
+                "hydration": {
+                    "type": "component",
+                    "settings": {
+                        "name": "Hydration",
+                        "icon": "icon-hydration.svg"
+                    }
+                },
+                "calories": {
+                    "type": "component",
+                    "settings": {
+                        "name": "Calories",
+                        "icon": "icon-calories.svg"
+                    }
+                },
+                "vitamins": {
+                    "type": "component",
+                    "settings": {
+                        "name": "Vitamins",
+                        "icon": "icon-vitamins.svg"
+                    }
+                },
+                "protein": {
+                    "type": "component",
+                    "settings": {
+                        "name": "Protein",
+                        "icon": "icon-protein.svg"
+                    }
+                },
+                "galactagogues": {
+                    "type": "component",
+                    "settings": {
+                        "name": "Galactagogues",
+                        "icon": "icon-galactagogues.svg"
+                    }
+                }
+            },
+            "block_order": [
+                "hydration",
+                "calories",
+                "vitamins",
+                "protein",
+                "galactagogues"
+            ]
+        }
+    },
+    "order": [
+        "ingredient-thesis"
+    ]
+}
