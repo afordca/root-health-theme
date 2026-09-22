@@ -1,0 +1,298 @@
+{% comment %}
+  Comparison Chart Section
+
+  A comparison table showing how the shake compares to other lactation products
+  across different nutritional components. Features a highlighted shake column
+  with visual indicators for each component.
+{% endcomment %}
+
+{{ 'section-root-health-comparison-chart.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="root-health-section root-health-comparison-chart"
+  id="RootHelpsComparisonChart-{{ section.id }}"
+  style="
+    --heading-color: {{ section.settings.heading_color }};
+    --text-color: {{ section.settings.text_color }};
+    --highlight-bg: {{ section.settings.highlight_bg_color }};
+    --highlight-dot: {{ section.settings.highlight_dot_color }};
+    --default-dot: {{ section.settings.default_dot_color }};
+    --border-color: {{ section.settings.border_color }};
+    --bg-color: {{ section.settings.background_color }};
+    --title-color: {{ section.settings.title_color }};
+  "
+>
+  <div class="root-health-section__container">
+    <div class="root-health-comparison-chart__container">
+      <div class="root-health-comparison-chart__intro">
+        {% if section.settings.title != blank %}
+          <h2 class="root-health-comparison-chart__title">{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+          <div class="root-health-comparison-chart__heading">
+            <p>{{ section.settings.heading }}</p>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="root-health-comparison-chart__table-wrapper">
+        <table class="root-health-comparison-chart__table">
+          <thead>
+            <tr>
+              <th class="root-health-comparison-chart__header-empty"></th>
+              {% for product in section.blocks %}
+                <th class="root-health-comparison-chart__header{% if product.settings.is_highlighted %} root-health-comparison-chart__header--highlighted{% endif %}">
+                  {{ product.settings.product_name }}
+                </th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% assign components = section.settings.components | split: ',' %}
+            {% for component in components %}
+              <tr class="root-health-comparison-chart__row">
+                <td class="root-health-comparison-chart__component">
+                  {{ component | strip }}
+                </td>
+                {% assign lower_component = component | strip | downcase %}
+                {% for product in section.blocks %}
+                  <td class="root-health-comparison-chart__cell{% if product.settings.is_highlighted == true %} root-health-comparison-chart__cell--highlighted{% endif %}">
+                    {% assign component_index = 'has_' | append: lower_component | strip %}
+                    {% assign has_component = product.settings[component_index] %}
+
+                    {%- comment -%}
+                      Render a dot if the product has the component
+                    {%- endcomment -%}
+
+                    {% if has_component == true %}
+                      <span
+                        class="root-health-comparison-chart__dot{% if product.settings.is_highlighted %} root-health-comparison-chart__dot--highlighted{% endif %}"
+                      ></span>
+                    {% endif %}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Root Health Compare",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "The Most Complete product on the market"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Description text",
+      "default": "We've identified 5 different nutritional components that have an impact on your lactation volume. As the only complete product on the market, see how our shake compares to other products."
+    },
+    {
+      "type": "text",
+      "id": "components",
+      "label": "Components (comma separated)",
+      "default": "Hydration, Calories, Vitamins, Proteins, Supplements",
+      "info": "List the nutritional components to compare, separated by commas"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background (desktop)",
+      "default": "#FE9A68"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color (desktop)",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "highlight_bg_color",
+      "label": "Highlighted column background",
+      "default": "#FE9A68"
+    },
+    {
+      "type": "color",
+      "id": "highlight_dot_color",
+      "label": "Highlighted column dot color",
+      "default": "#E5653D"
+    },
+    {
+      "type": "color",
+      "id": "default_dot_color",
+      "label": "Default dot color",
+      "default": "#D9D9D9"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Row border color",
+      "default": "#8A8A8A"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "text",
+          "id": "product_name",
+          "label": "Product name",
+          "default": "Product"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_highlighted",
+          "label": "Highlight this column",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Components"
+        },
+        {
+          "type": "checkbox",
+          "id": "has_hydration",
+          "label": "Has Hydration",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "has_calories",
+          "label": "Has Calories",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "has_vitamins",
+          "label": "Has Vitamins",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "has_proteins",
+          "label": "Has Proteins",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "has_supplements",
+          "label": "Has Supplements",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "has_galactagogues",
+          "label": "Has Galactagogues",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Health Comparison Chart",
+      "blocks": [
+        {
+          "type": "product",
+          "settings": {
+            "product_name": "Shake",
+            "is_highlighted": true,
+            "has_hydration": true,
+            "has_calories": true,
+            "has_vitamins": true,
+            "has_proteins": true,
+            "has_supplements": true,
+            "has_galactagogues": true
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "product_name": "Powders",
+            "is_highlighted": false,
+            "has_hydration": false,
+            "has_calories": true,
+            "has_vitamins": true,
+            "has_proteins": true,
+            "has_supplements": true,
+            "has_galactagogues": true
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "product_name": "Teas",
+            "is_highlighted": false,
+            "has_hydration": true,
+            "has_calories": false,
+            "has_vitamins": true,
+            "has_proteins": false,
+            "has_supplements": false,
+            "has_galactagogues": false
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "product_name": "Cookies",
+            "is_highlighted": false,
+            "has_hydration": false,
+            "has_calories": true,
+            "has_vitamins": true,
+            "has_proteins": false,
+            "has_supplements": true,
+            "has_galactagogues": true
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "product_name": "Pills",
+            "is_highlighted": false,
+            "has_hydration": false,
+            "has_calories": false,
+            "has_vitamins": true,
+            "has_proteins": false,
+            "has_supplements": true,
+            "has_galactagogues": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

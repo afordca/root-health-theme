@@ -1,0 +1,153 @@
+{% comment %}
+  CTA - Footer Section
+
+  Full-width closing call-to-action. Left half (brand red) holds the heading,
+  subtext and an outlined button; right half (orange) holds the product image.
+{% endcomment %}
+
+{{ 'section-root-health-cta-footer.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="root-health-section root-health-cta-footer"
+  id="RootHelpsCTAFooter-{{ section.id }}"
+  style="--left-bg-color: {{ section.settings.left_bg_color }}; --right-bg-color: {{ section.settings.right_bg_color }}; --heading-color: {{ section.settings.heading_color }}; --subtext-color: {{ section.settings.subtext_color }}; --button-border-color: {{ section.settings.button_border_color }}; --button-text-color: {{ section.settings.button_text_color }};"
+>
+  <div class="root-health-cta-footer__inner">
+    <div class="root-health-cta-footer__content">
+      {% if section.settings.heading != blank %}
+        <h2 class="root-health-cta-footer__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.subtext != blank %}
+        <p class="root-health-cta-footer__subtext">{{ section.settings.subtext }}</p>
+      {% endif %}
+
+      {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+        <a
+          href="{{ section.settings.button_url }}"
+          class="root-health-cta-footer__button"
+          {% if section.settings.button_url contains 'http' %}
+            target="_blank" rel="noopener noreferrer"
+          {% endif %}
+        >
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="root-health-cta-footer__media">
+      {% if section.settings.image_filename != blank %}
+        <img
+          src="{{ section.settings.image_filename | asset_url }}"
+          alt="{{ section.settings.heading | escape }}"
+          class="root-health-cta-footer__image"
+          loading="lazy"
+        >
+      {% elsif section.settings.image != blank %}
+        {{
+          section.settings.image
+          | image_url: width: 1600
+          | image_tag: loading: 'lazy', alt: section.settings.heading, class: 'root-health-cta-footer__image'
+        }}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Root Health CTA Footer",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Make Breastfeeding Easier"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Nutritional support for when you need it most, for as long as you need it"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image"
+    },
+    {
+      "type": "text",
+      "id": "image_filename",
+      "label": "Product image (asset filename)",
+      "info": "Optional. Filename of an image in your theme assets. Overrides the image picker above."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "left_bg_color",
+      "label": "Left background",
+      "default": "#FC4C44"
+    },
+    {
+      "type": "color",
+      "id": "right_bg_color",
+      "label": "Right background",
+      "default": "#FE9A68"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Subtext color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button border color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Health CTA Footer"
+    }
+  ]
+}
+{% endschema %}

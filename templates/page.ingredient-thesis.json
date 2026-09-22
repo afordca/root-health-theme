@@ -10,7 +10,7 @@
 {
     "sections": {
         "ingredient-thesis": {
-            "type": "root-helps-ingredient-thesis",
+            "type": "root-health-ingredient-thesis",
             "settings": {
                 "enable_section": true,
                 "title": "THESIS",

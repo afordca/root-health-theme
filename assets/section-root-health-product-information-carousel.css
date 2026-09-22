@@ -1,0 +1,78 @@
+/* Product Information Carousel Styles */
+
+.root-health-product-information__carousel-item {
+	cursor: pointer;
+	transition:
+		opacity 0.2s ease,
+		transform 0.2s ease,
+		border-color 0.2s ease;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	overflow: hidden;
+	position: relative;
+}
+
+.root-health-product-information__carousel-item:hover {
+	opacity: 0.8;
+	transform: scale(1.02);
+}
+
+.root-health-product-information__carousel-item:focus {
+	outline: 2px solid #005fcc;
+	outline-offset: 2px;
+}
+
+.root-health-product-information__carousel-item.active {
+	border-color: #000;
+	opacity: 1;
+}
+
+.root-health-product-information__carousel-item.active:hover {
+	transform: scale(1);
+	opacity: 1;
+}
+
+.root-health-product-information__carousel-image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: inherit;
+}
+
+/* Main image loading state */
+.root-health-product-information__image {
+	transition: opacity 0.3s ease;
+}
+
+/* Mobile specific styles */
+@media screen and (max-width: 749px) {
+	.root-health-product-information__mobile-carousel
+		.root-health-product-information__carousel-item {
+		flex-shrink: 0;
+		width: 118px;
+		height: 118px;
+	}
+
+	.root-health-product-information__mobile-carousel {
+		display: flex;
+		gap: 8px;
+		overflow-x: auto;
+		scroll-behavior: smooth;
+		-webkit-overflow-scrolling: touch;
+	}
+}
+
+/* Desktop specific styles */
+@media screen and (min-width: 750px) {
+	.root-health-product-information__carousel {
+		display: flex;
+		gap: 8px;
+	}
+
+	.root-health-product-information__carousel
+		.root-health-product-information__carousel-item {
+		width: 118px;
+		height: 118px;
+	}
+}

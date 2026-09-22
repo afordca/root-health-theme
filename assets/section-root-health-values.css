@@ -1,0 +1,182 @@
+/* Root Health Values Section - Mobile First */
+.root-health-values {
+	--values-padding-top: 4rem;
+	--values-padding-bottom: 4rem;
+	--values-background-color: #ffffff;
+	--values-container-max-width: 1440px;
+	--values-container-padding: 1.5rem;
+	--values-header-margin-bottom: 3rem;
+	--values-grid-gap: 3rem;
+	--values-subtitle-color: #000000;
+	--values-item-title-color: #000000;
+	--values-item-description-color: #000000;
+
+	padding-top: var(--values-padding-top);
+	padding-bottom: var(--values-padding-bottom);
+	background-color: var(--values-background-color);
+}
+
+.root-health-values__container {
+	max-width: var(--values-container-max-width);
+	margin: 0 auto;
+}
+
+.root-health-values__header {
+	margin-bottom: var(--values-header-margin-bottom);
+}
+
+.root-health-values__subtitle {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.25rem;
+	line-height: 1;
+	letter-spacing: 0.25em;
+	color: var(--values-subtitle-color);
+	text-transform: uppercase;
+	margin-bottom: 0;
+}
+
+.root-health-values__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--values-grid-gap);
+}
+
+.root-health-values__item {
+	text-align: left;
+}
+
+.root-health-values__item-title {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 3.6rem;
+	line-height: 0.5;
+	color: var(--values-item-title-color);
+	margin-bottom: 2rem;
+	text-align: left;
+}
+
+.root-health-values__item-description {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.8rem;
+	line-height: 1.67;
+	color: var(--values-item-description-color);
+	margin: 0 auto;
+}
+
+/* Tablet styles */
+@media screen and (min-width: 768px) {
+	.root-health-values {
+		--values-padding-top: 5rem;
+		--values-padding-bottom: 5rem;
+	}
+
+	.root-health-values__grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 4rem 3rem;
+	}
+
+	.root-health-values__item-title {
+		font-size: 2.25rem;
+	}
+}
+
+/* Mission statement row (Figma 1612:1659) */
+.root-health-values__mission {
+	margin-bottom: 4rem;
+}
+
+.root-health-values__mission-heading {
+	font-family: "GT Super Ds Trial", "GT Super Display", serif;
+	font-weight: 400;
+	font-size: 3.6rem;
+	line-height: 1;
+	color: var(--color-primary);
+	margin: 0 0 1.5rem 0;
+}
+
+.root-health-values__mission-text {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.8rem;
+	line-height: 1.44;
+	color: #000000;
+}
+
+/* Desktop styles */
+@media screen and (min-width: 1024px) {
+	.root-health-values {
+		--values-padding-top: 7rem;
+		--values-padding-bottom: 7rem;
+	}
+
+	.root-health-values__container {
+		padding-left: 107px;
+		padding-right: 84px;
+	}
+
+	.root-health-values__header {
+		margin-bottom: 4rem;
+		text-align: center;
+	}
+
+	.root-health-values__subtitle {
+		font-family: "Gilroy", sans-serif;
+		font-weight: 600;
+		font-size: 1.2rem;
+		letter-spacing: 3px;
+		text-align: center;
+	}
+
+	.root-health-values__mission {
+		display: flex;
+		align-items: flex-start;
+		gap: 0;
+		margin-bottom: 8rem;
+	}
+
+	.root-health-values__mission-heading {
+		flex: 0 0 266px;
+		font-size: 60px;
+		margin: 0;
+	}
+
+	.root-health-values__mission-text {
+		flex: 1 1 auto;
+		max-width: 983px;
+		line-height: 1.44;
+	}
+
+	.root-health-values__grid {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0;
+	}
+
+	.root-health-values__item {
+		text-align: left;
+		padding: 0 34px;
+	}
+
+	.root-health-values__item:first-child {
+		padding-left: 0;
+	}
+
+	.root-health-values__item + .root-health-values__item {
+		border-left: 1px solid #e2e2e2;
+	}
+
+	.root-health-values__item-title {
+		font-size: 3.6rem;
+		line-height: 1;
+		text-align: left;
+		margin-bottom: 3rem;
+	}
+
+	.root-health-values__item-description {
+		text-align: left;
+		margin: 0;
+		max-width: none;
+		line-height: 1.67;
+	}
+}

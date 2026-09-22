@@ -1,0 +1,55 @@
+/* ==========================================================================
+   Root Health Trusted Partners — brand-red press-quote strip
+   Mobile-first base styles; desktop row inside the 1024px media query.
+   ========================================================================== */
+
+.root-health-trusted-by {
+	background-color: var(--background-color, var(--color-cta));
+	padding: 0;
+	border-top: 1px solid var(--divider-color, #ffffff);
+	border-bottom: 1px solid var(--divider-color, #ffffff);
+}
+
+.root-health-trusted-by__container {
+	width: 100%;
+	padding: 16px 24px;
+}
+
+.root-health-trusted-by__quotes {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.root-health-trusted-by__quote {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 600;
+	font-size: 1.3rem;
+	line-height: 1.3;
+	color: var(--quote-color, #ffffff);
+	margin: 0;
+}
+
+/* Desktop (1024px+) */
+@media screen and (min-width: 1024px) {
+	.root-health-trusted-by__container {
+		padding: 20px 38px;
+	}
+
+	.root-health-trusted-by__quotes {
+		flex-direction: row;
+		align-items: flex-start;
+		gap: 40px;
+		max-width: 640px;
+	}
+
+	.root-health-trusted-by__quote {
+		flex: 0 0 auto;
+		font-size: 1.2rem;
+		line-height: 1.3;
+	}
+
+	.root-health-trusted-by__quote:first-child {
+		font-size: 1.4rem;
+	}
+}

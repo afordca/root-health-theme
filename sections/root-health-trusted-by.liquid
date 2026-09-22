@@ -1,0 +1,103 @@
+{% comment %}
+  Trusted Partners Section
+
+  A slim brand-red band of short press / customer quotes displayed in a row,
+  framed by thin divider lines top and bottom.
+{% endcomment %}
+
+{{ 'section-root-health-trusted-by.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="root-health-section root-health-trusted-by"
+  id="RootHelpsTrustedBy-{{ section.id }}"
+  style="
+    --background-color: {{ section.settings.background_color }};
+    --quote-color: {{ section.settings.quote_color }};
+    --divider-color: {{ section.settings.divider_color }};
+  "
+>
+  <div class="root-health-trusted-by__container">
+    {% if section.blocks.size > 0 %}
+      <div class="root-health-trusted-by__quotes">
+        {% for block in section.blocks %}
+          {% if block.type == 'quote' and block.settings.quote != blank %}
+            <p class="root-health-trusted-by__quote" {{ block.shopify_attributes }}>
+              {{ block.settings.quote }}
+            </p>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Root Health Trusted",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FC4C44"
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Quote text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider line color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Quote",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "“A great product.”"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Health Trusted By",
+      "blocks": [
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "“The postpartum chocolate shake I just drank was beyond my expectations.”"
+          }
+        },
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "“I also like it because you could take it on the go.”"
+          }
+        },
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "“My supply went up by a couple ounces each time that I would pump.”"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

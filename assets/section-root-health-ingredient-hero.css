@@ -1,0 +1,121 @@
+.section-root-health-ingredient-hero {
+	--section-padding-top: 0;
+	--section-padding-bottom: 0;
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: #ffffff;
+}
+
+.ingredient-hero__background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: 1;
+}
+
+.ingredient-hero__background img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.ingredient-hero__content {
+	position: relative;
+	z-index: 2;
+	max-width: 90%;
+	margin: 0 auto;
+	padding: 4rem 2rem;
+}
+
+.ingredient-hero__title {
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 400;
+	font-size: 3.75rem;
+	line-height: 1.1;
+	margin-bottom: 1.5rem;
+	color: var(--color-primary);
+}
+
+.ingredient-hero__description {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 400;
+	font-size: 1.125rem;
+	line-height: 1.6;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+/* Tablet styles */
+@media screen and (min-width: 768px) {
+	.ingredient-hero__content {
+		padding: 6rem 3rem;
+	}
+
+	.ingredient-hero__title {
+		font-size: 4.5rem;
+	}
+
+	.ingredient-hero__description {
+		font-size: 1.25rem;
+	}
+}
+
+/* Desktop styles (Figma 1710:1582 - split: image left, text right on white) */
+@media screen and (min-width: 1024px) {
+	.section-root-health-ingredient-hero {
+		min-height: 72rem; /* 720px */
+		background-color: #ffffff;
+		color: #000000;
+		text-align: left;
+		justify-content: flex-start;
+		overflow: hidden;
+	}
+
+	.section-root-health-ingredient-hero .ingredient-hero__background {
+		width: 54%;
+		height: 100%;
+	}
+
+	.section-root-health-ingredient-hero .ingredient-hero__background img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.ingredient-hero__content {
+		max-width: 1440px;
+		width: 100%;
+		margin: 0 auto;
+		padding: 0 40px 0 54%;
+		text-align: left;
+	}
+
+	.ingredient-hero__title {
+		font-family: "GT Super Ds Trial", serif;
+		font-weight: 400;
+		font-size: 9.6rem; /* 96px */
+		line-height: 1.02;
+		color: var(--color-primary);
+		max-width: 582px;
+		margin: 0 0 3rem 0;
+	}
+
+	.ingredient-hero__description {
+		font-family: "Gilroy", sans-serif;
+		font-weight: 300;
+		font-size: 1.8rem; /* 18px */
+		line-height: 1.55;
+		color: #000000;
+		max-width: 531px;
+		margin: 0;
+	}
+}

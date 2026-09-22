@@ -1,1 +1,154 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"padding_top":28,"padding_bottom":28}},"root_helps_hero_MQJx39":{"type":"root-helps-hero","name":"Root Helps Hero","settings":{"layout_type":"split","text_position":"left","text_alignment":"left","heading":"A Healthy Family Is Everything","subheading":"","cta_text":"","cta_url":"shopify:\/\/collections\/all","enable_button_cta":false,"background_image":"shopify:\/\/shop_images\/our-why-hero_b1fde7b8-2198-495d-80c6-19b11bd20245.png","title_color":"#fe9a68","subheading_color":"#ffffff","overlay_opacity":0.2,"section_height":"large"}},"root_helps_two_column_text_687BtC":{"type":"root-helps-two-column-text","name":"Two Column Text","settings":{"heading":"Root was born out of our desire to ease the journey for new moms.","body_text":"As fellow parents, we understand the challenges and struggles that come with parenthood. By sharing our experiences and creating Root, we hope to help new moms save time, energy, and alleviate some of the stressors that we encountered.","color_scheme":"background-1","padding_top":0,"padding_bottom":0}},"video_qTYKUC":{"type":"video","name":"t:sections.video.presets.name","settings":{"heading":"","heading_size":"h1","enable_video_looping":false,"video_url":"https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc","description":"","full_width":false,"color_scheme":"","padding_top":36,"padding_bottom":36}},"root_helps_mission_HHta4m":{"type":"root-helps-mission","name":"Mission","settings":{"heading":"Mission","mission_text":"Our mission is to alleviate the physical and emotional burdens that come with being a new mom. We strive to provide nutritionally balanced products that increase energy levels and reduce stress for new moms, allowing them to better care for themselves and their babies.","title_color":"#e5653d","text_color":"#000000","padding_top":0,"padding_bottom":0}},"root_helps_values_F9J8Xy":{"type":"root-helps-values","blocks":{"value_item_CLKjB4":{"type":"value_item","settings":{"title":"Quality","description":"<p>Packed with essential protein to keep your body strong and your brain fit<\/p>"}},"value_item_xkb7wL":{"type":"value_item","settings":{"title":"Empathy","description":"<p>Our medically derived formula makes sure you have the right vitamins to help with lactation production<\/p>"}},"value_item_aNEzKk":{"type":"value_item","settings":{"title":"Community","description":"<p>Breastfeeding moms need an extra 500 calories a day to help with milk production. We help you get there.<\/p>"}},"value_item_XQpzKY":{"type":"value_item","settings":{"title":"Vulnerability","description":"<p>Our proprietary blend provides for an increase in supply<\/p>"}}},"block_order":["value_item_CLKjB4","value_item_xkb7wL","value_item_aNEzKk","value_item_XQpzKY"],"name":"Root Helps - Values","settings":{"subtitle":"WHAT WE VALUE","padding_top":112,"padding_bottom":112}},"root_helps_founding_story_KHzdPK":{"type":"root-helps-founding-story","blocks":{"founder_zhMjbf":{"type":"founder","settings":{"founder_name":"Julia Ford-Carther","founder_bio":"Founder + CEO<br>Undersupplier, Former 9-Hours-a-Night Sleeper, Proud Mom of 1. (Also Alex's Sister.)","founder_image":"shopify:\/\/shop_images\/Rectangle_24_2.png","founder_key":"julia"}},"founder_pqjifj":{"type":"founder","settings":{"founder_name":"Alex Ford-Carther","founder_bio":"COO<br>Advocate, \"Dad Of The Year\" 10 Years Running, Proud Papa of 3. (Also Julia's Brother.)","founder_image":"shopify:\/\/shop_images\/Rectangle_25.png","founder_key":"alex"}}},"block_order":["founder_zhMjbf","founder_pqjifj"],"name":"Founding Story","settings":{"heading":"We created Root because moms deserve more","story_text":"When siblings Julia and Alex became new parents just three months apart (exciting!), their discussions quickly shifted from gripes about their mother (parents, amirite?) to the challenges of caring for a newborn.\n\nAs they navigated this new journey together, both babies suffered from allergies and colic, prompting Alex's wife—who happens to be a double-board-certified MD, btw—to join in on the conversation and share ideas for better baby care and more restful sleep. They tried new diets, consulted new doctors, and scoured new sections of grocery stores. Phew.\n\nWhile these efforts helped the babies, the moms were still exhausted and struggling to keep up with the dietary demands of round-the-clock breastfeeding and pumping. They needed something that didn't exist: Clean, healthy, allergen-free, lactation-boosting nutrition that was quick and easy to consume. And so Root was born.\n\nBreastfeeding takes a lot out of you (literally!). If you or your partner, friend, wife, sister, beloved cousin (whoever!) are struggling to maintain a sufficient breast milk supply, we're here for you.","padding_top":0,"padding_bottom":0}}},"order":["main","root_helps_hero_MQJx39","root_helps_two_column_text_687BtC","video_qTYKUC","root_helps_mission_HHta4m","root_helps_values_F9J8Xy","root_helps_founding_story_KHzdPK"]}
+{
+  "sections": {
+    "root_health_hero_MQJx39": {
+      "type": "root-health-hero",
+      "name": "Root Health Hero",
+      "settings": {
+        "layout_variant": "why",
+        "layout_type": "full",
+        "text_position": "left",
+        "text_alignment": "left",
+        "heading": "A Healthy Family Is Everything",
+        "subheading": "",
+        "cta_text": "",
+        "cta_url": "shopify://collections/all",
+        "enable_button_cta": false,
+        "background_image": "shopify://shop_images/our-why-hero_b1fde7b8-2198-495d-80c6-19b11bd20245.png",
+        "title_color": "#ffffff",
+        "subheading_color": "#ffffff",
+        "overlay_opacity": 0.15,
+        "section_height": "large"
+      }
+    },
+    "root_health_two_column_text_687BtC": {
+      "type": "root-health-two-column-text",
+      "name": "Two Column Text",
+      "blocks": {
+        "team_member_julia": {
+          "type": "team_member",
+          "settings": {
+            "image_filename": "julia-ford-carther-72098e.jpg",
+            "name": "Julia Ford-Carther",
+            "role": "Founder + CEO",
+            "bio": "Undersupplier, Former 9-Hours-a-Night Sleeper, Proud Mom of 1. (Also Alex's Sister.)"
+          }
+        },
+        "team_member_alex": {
+          "type": "team_member",
+          "settings": {
+            "image_filename": "alex-ford-carther-72098e.jpg",
+            "name": "Alex Ford-Carther",
+            "role": "COO",
+            "bio": "Advocate, \"Dad Of The Year\" 10 Years Running, Proud Papa of 3. (Also Julia's Brother.)"
+          }
+        }
+      },
+      "block_order": [
+        "team_member_julia",
+        "team_member_alex"
+      ],
+      "settings": {
+        "heading": "We created Root because moms deserve more",
+        "description": "As fellow parents, we understand the challenges and struggles that come with parenthood. By sharing our experiences and creating Root, we hope to help new moms save time, energy, and alleviate some of the stressors that we encountered.",
+        "image_filename": "",
+        "founding_story_label": "Founding Story",
+        "founding_story": "<p>When siblings Julia and Alex became new parents just three months apart (exciting!), their discussions quickly shifted from gripes about their mother (parents, amirite?) to the challenges of caring for a newborn.</p><p>As they navigated this new journey together, both babies suffered from allergies and colic, prompting Alex's wife—who happens to be a double-board-certified MD, btw—to join in on the conversation and share ideas for better baby care and more restful sleep. They tried new diets, consulted new doctors, and scoured new sections of grocery stores. Phew.</p><p>While these efforts helped the babies, the moms were still exhausted and struggling to keep up with the dietary demands of round-the-clock breastfeeding and pumping. They needed something that didn't exist: Clean, healthy, allergen-free, lactation-boosting nutrition that was quick and easy to consume. And so Root was born.</p><p>Breastfeeding takes a lot out of you (literally!). If you or your partner, friend, wife, sister, beloved cousin (whoever!) are struggling to maintain a sufficient breast milk supply, we're here for you.</p>",
+        "team_label": "Founding Team",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "video_qTYKUC": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "root_health_mission_HHta4m": {
+      "type": "root-health-mission",
+      "name": "Mission",
+      "settings": {
+        "mission_text": "This is for you, mom. The time-crunched, sleep-deprived, multitasking, always-hungry, always-pumping, nursing-on-demand, rediscovering-yourself-again, totally-in-love you. I wanted to make it a little bit easier for you to get what you need throughout your day, so we put four postpartum must-haves in a made-for-you drink. Just one less thing to think about so you can focus on what matters most.\n\nRooting for you,",
+        "role_text": "FOUNDER + CEO",
+        "founder_image_filename": "julia-ford-carther-72098e.jpg",
+        "signature_image_filename": "",
+        "background_color": "#fc4c44",
+        "text_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "root_health_values_F9J8Xy": {
+      "type": "root-health-values",
+      "blocks": {
+        "value_item_CLKjB4": {
+          "type": "value_item",
+          "settings": {
+            "title": "Quality",
+            "description": "<p>Packed with essential protein to keep your body strong and your brain fit</p>"
+          }
+        },
+        "value_item_xkb7wL": {
+          "type": "value_item",
+          "settings": {
+            "title": "Empathy",
+            "description": "<p>Our medically derived formula makes sure you have the right vitamins to help with lactation production</p>"
+          }
+        },
+        "value_item_aNEzKk": {
+          "type": "value_item",
+          "settings": {
+            "title": "Community",
+            "description": "<p>Breastfeeding moms need an extra 500 calories a day to help with milk production. We help you get there.</p>"
+          }
+        },
+        "value_item_XQpzKY": {
+          "type": "value_item",
+          "settings": {
+            "title": "Support",
+            "description": "<p>Our proprietary blend provides for an increase in supply</p>"
+          }
+        }
+      },
+      "block_order": [
+        "value_item_CLKjB4",
+        "value_item_xkb7wL",
+        "value_item_aNEzKk",
+        "value_item_XQpzKY"
+      ],
+      "name": "Root Health - Values",
+      "settings": {
+        "subtitle": "WHAT WE VALUE",
+        "mission_heading": "Mission",
+        "mission_text": "<p>Our mission is to alleviate the physical and emotional burdens that come with being a new mom. We strive to provide nutritionally balanced products that increase energy levels and reduce stress for new moms, allowing them to better care for themselves and their babies.</p>",
+        "padding_top": 56,
+        "padding_bottom": 80
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "root_health_hero_MQJx39",
+    "root_health_two_column_text_687BtC",
+    "video_qTYKUC",
+    "root_health_mission_HHta4m",
+    "root_health_values_F9J8Xy",
+    "main"
+  ]
+}

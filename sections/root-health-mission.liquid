@@ -1,0 +1,135 @@
+{{ 'section-root-health-mission.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign letter_text = section.settings.mission_text
+  assign role_text = section.settings.role_text
+  assign text_color = section.settings.text_color | default: '#ffffff'
+  assign background_color = section.settings.background_color | default: '#fc4c44'
+  assign founder_image = section.settings.founder_image_filename
+  assign signature_image = section.settings.signature_image_filename
+-%}
+
+<section
+  class="root-health-section root-health-mission root-health-mission--letter"
+  id="section-{{ section.id }}"
+  style="
+    --mission-letter-bg: {{ background_color }};
+    --mission-letter-text-color: {{ text_color }};
+  "
+>
+  <div class="root-health-section__container root-health-mission__container">
+    <div
+      class="root-health-mission__media"
+      {% if founder_image != blank %}
+        style="background-image: url('{{ founder_image | asset_url }}');"
+      {% endif %}
+    ></div>
+    <div class="root-health-mission__content">
+      {%- if letter_text != blank -%}
+        <div class="root-health-mission__letter">{{ letter_text | newline_to_br }}</div>
+      {%- endif -%}
+      {%- if signature_image != blank -%}
+        <img
+          class="root-health-mission__signature"
+          src="{{ signature_image | asset_url }}"
+          alt="{{ role_text | escape }}"
+          loading="lazy"
+        >
+      {%- endif -%}
+      {%- if role_text != blank -%}
+        <p class="root-health-mission__role type-label">{{ role_text }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Root Health Mission",
+  "tag": "section",
+  "class": "section-root-health-mission",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "textarea",
+      "id": "mission_text",
+      "label": "Letter text",
+      "info": "Use blank lines to separate paragraphs."
+    },
+    {
+      "type": "text",
+      "id": "role_text",
+      "label": "Signature role",
+      "default": "FOUNDER + CEO"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "text",
+      "id": "founder_image_filename",
+      "label": "Founder image (asset filename)",
+      "info": "Filename of an image in your theme assets, e.g. julia-ford-carther-72098e.jpg."
+    },
+    {
+      "type": "text",
+      "id": "signature_image_filename",
+      "label": "Signature image (asset filename)",
+      "info": "Optional. Filename of a signature graphic (SVG/PNG) in your theme assets."
+    },
+    {
+      "type": "header",
+      "content": "Style Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#fc4c44"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Health Mission",
+      "settings": {
+        "mission_text": "This is for you, mom. The time-crunched, sleep-deprived, multitasking, always-hungry, always-pumping, nursing-on-demand, rediscovering-yourself-again, totally-in-love you. I wanted to make it a little bit easier for you to get what you need throughout your day, so we put four postpartum must-haves in a made-for-you drink. Just one less thing to think about so you can focus on what matters most.\n\nRooting for you,",
+        "role_text": "FOUNDER + CEO"
+      }
+    }
+  ]
+}
+{% endschema %}

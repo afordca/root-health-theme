@@ -1,0 +1,101 @@
+{%- liquid
+  assign heading = section.settings.heading
+  assign background_image = section.settings.background_image
+  assign padding_top = section.settings.padding_top | default: 0
+  assign padding_bottom = section.settings.padding_bottom | default: 0
+-%}
+
+{{ 'section-root-health-product-subheader.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ padding_top }}px;
+    padding-bottom: {{ padding_bottom }}px;
+  }
+{% endstyle %}
+
+<section class="root-health-section root-health-product-subheader section-{{ section.id }}-padding" id="root-health-product-subheader-{{ section.id }}">
+  <div class="root-health-product-subheader__container">
+    {% if background_image %}
+      {%- liquid
+        assign sizes = '(min-width: 768px) 1440px, 445px'
+      -%}
+      {{ background_image | image_url: width: 1440 | image_tag:
+        sizes: sizes,
+        widths: '445, 1440',
+        class: 'root-health-product-subheader__background',
+        loading: 'lazy',
+        alt: background_image.alt | default: heading
+      }}
+    {% else %}
+      <img
+        src="{{ 'product-subheader-bg.jpg' | asset_url }}"
+        class="root-health-product-subheader__background"
+        width="1440"
+        height="960"
+        loading="lazy"
+        alt="{{ heading | strip_newlines }}"
+        sizes="(min-width: 768px) 1440px, 445px"
+      >
+    {% endif %}
+
+    <div class="root-health-product-subheader__content root-health-section__container">
+      {% if heading != blank %}
+        <h2 class="root-health-product-subheader__heading">{{ heading }}</h2>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Root Health Prod Sub",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image",
+      "info": "Recommended size: 1440x960px for desktop, 445x297px for mobile"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Health Product Subheader",
+      "settings": {
+        "heading": "Less Stress.\nMore We time."
+      }
+    }
+  ]
+}
+{% endschema %}

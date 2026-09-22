@@ -17,9 +17,9 @@
         "padding_bottom": 28
       }
     },
-    "root_helps_hero_VBPqt7": {
-      "type": "root-helps-hero",
-      "name": "Root Helps Hero",
+    "root_health_hero_VBPqt7": {
+      "type": "root-health-hero",
+      "name": "Root Health Hero",
       "settings": {
         "layout_type": "split",
         "text_position": "right",
@@ -36,8 +36,8 @@
         "section_height": "large"
       }
     },
-    "root_helps_ingredient_thesis_6A7z73": {
-      "type": "root-helps-ingredient-thesis",
+    "root_health_ingredient_thesis_6A7z73": {
+      "type": "root-health-ingredient-thesis",
       "blocks": {
         "component_YKBngV": {
           "type": "component",
@@ -82,15 +82,15 @@
         "component_epUWLU",
         "component_xGaqJJ"
       ],
-      "name": "Root Helps Ingredient Thesis",
+      "name": "Root Health Ingredient Thesis",
       "settings": {
         "enable_section": true,
         "title": "THESIS",
         "description": "<p>We've identified 5 nutritional components that have a direct impact on your milk supply. We set out to create a product that addressed each of these components without compromising on clean, healthful ingredients that could accommodate various dietary needs and desires.</p>"
       }
     },
-    "root_helps_selection_process_DHbYeY": {
-      "type": "root-helps-selection-process",
+    "root_health_selection_process_DHbYeY": {
+      "type": "root-health-selection-process",
       "blocks": {
         "criteria_item_6AykUq": {
           "type": "criteria_item",
@@ -123,7 +123,7 @@
         "criteria_item_dUYFiU",
         "criteria_item_TQqTTW"
       ],
-      "name": "Root Helps Selection Process",
+      "name": "Root Health Selection Process",
       "settings": {
         "heading": "We implemented a rigorous selection process for our ingredients",
         "description": "We spent over two years developing, modifying, testing and formulating our product. Every ingredient was picked with purpose and intent. Learn the benefits of each ingredient.",
@@ -132,8 +132,8 @@
         "padding_bottom": 0
       }
     },
-    "root_helps_ingredient_list_PN9eyf": {
-      "type": "root-helps-ingredient-list",
+    "root_health_ingredient_list_PN9eyf": {
+      "type": "root-health-ingredient-list",
       "blocks": {
         "ingredient_category_lactation_support": {
           "type": "ingredient_category",
@@ -555,8 +555,8 @@
         "featured_source_color": "#000000"
       }
     },
-    "root_helps_medical_advisors_Rdn3qn": {
-      "type": "root-helps-medical-advisors",
+    "root_health_medical_advisors_Rdn3qn": {
+      "type": "root-health-medical-advisors",
       "blocks": {
         "advisor_n4gnXj": {
           "type": "advisor",
@@ -614,8 +614,8 @@
         "border_color": "#fe9a68"
       }
     },
-    "root_helps_efficacy_fQdg4h": {
-      "type": "root-helps-efficacy",
+    "root_health_efficacy_fQdg4h": {
+      "type": "root-health-efficacy",
       "blocks": {
         "statistic_KQH6xF": {
           "type": "statistic",
@@ -660,7 +660,7 @@
         "statistic_FzCx7H",
         "statistic_M6bcCz"
       ],
-      "name": "Root Helps Efficacy",
+      "name": "Root Health Efficacy",
       "settings": {
         "heading": "Real-world tested for efficacy",
         "description": "We enlisted a third-party market testing firm to help us determine the efficacy of our product by hosting a consumer survey of more than 100 breastfeeding moms ages 18-55 with babies aged 6 months and under. The survey ran for 10 days, with moms reporting their results after 10 days of blindly sampling our product. A summary of our findings are below. A full report is available for download.",
@@ -670,8 +670,8 @@
         "padding_bottom": 0
       }
     },
-    "root_helps_product_testing_NhC3px": {
-      "type": "root-helps-product-testing",
+    "root_health_product_testing_NhC3px": {
+      "type": "root-health-product-testing",
       "blocks": {
         "test_item_fiGWyH": {
           "type": "test_item",
@@ -716,7 +716,7 @@
         "test_item_6bpjcH",
         "test_item_eEeFjP"
       ],
-      "name": "Root Helps Product Testing",
+      "name": "Root Health Product Testing",
       "settings": {
         "heading": "Rigorously tested to meet our product standards",
         "subtitle": "Each batch is tested for and required to meet various thresholds:",
@@ -730,12 +730,12 @@
   },
   "order": [
     "main",
-    "root_helps_hero_VBPqt7",
-    "root_helps_ingredient_thesis_6A7z73",
-    "root_helps_selection_process_DHbYeY",
-    "root_helps_ingredient_list_PN9eyf",
-    "root_helps_medical_advisors_Rdn3qn",
-    "root_helps_efficacy_fQdg4h",
-    "root_helps_product_testing_NhC3px"
+    "root_health_hero_VBPqt7",
+    "root_health_ingredient_thesis_6A7z73",
+    "root_health_selection_process_DHbYeY",
+    "root_health_ingredient_list_PN9eyf",
+    "root_health_medical_advisors_Rdn3qn",
+    "root_health_efficacy_fQdg4h",
+    "root_health_product_testing_NhC3px"
   ]
 }

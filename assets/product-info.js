@@ -76,7 +76,7 @@ if (!customElements.get("product-info")) {
 
 				// Add direct click listeners to payment buttons for debugging
 				const paymentButtons = this.querySelectorAll(
-					".root-helps-product-information__payment-button"
+					".root-health-product-information__payment-button"
 				);
 				console.log(
 					"Root Health: Found payment buttons:",

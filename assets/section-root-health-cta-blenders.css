@@ -1,0 +1,246 @@
+/* Mobile-first CSS variables and base styles */
+.root-health-cta-blenders {
+	--content-max-width: 100%;
+	--button-width: 160px;
+	--button-height: 60px;
+	--border-radius: 20px;
+}
+
+/* Base mobile styles */
+.root-health-cta-blenders {
+	position: relative;
+	overflow: hidden;
+	padding: 16px;
+}
+
+.root-health-cta-blenders .root-health-section__container {
+	height: 100%;
+}
+
+.root-health-cta-blenders__container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-size: auto 100%;
+	background-position: right center;
+	background-repeat: no-repeat;
+	border-radius: var(--border-radius);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-size: 0;
+}
+
+.root-health-cta-blenders__background-image {
+	height: 440px;
+	width: 100%;
+	border-radius: 40px;
+	overflow: hidden;
+}
+
+.root-health-cta-blenders__background-image img {
+	object-fit: contain;
+	height: 100%;
+}
+
+.root-health-cta-blenders__content-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	padding: 30px 0px;
+}
+
+.root-health-cta-blenders__content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	max-width: var(--content-max-width);
+	gap: 20px;
+}
+
+.root-health-cta-blenders__heading {
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 300;
+	font-size: 4.8rem;
+	line-height: 1em;
+	color: var(--heading-color, var(--color-primary));
+	margin: 0;
+	text-align: left;
+}
+
+.root-health-cta-blenders__subtext {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 2.4rem;
+	line-height: 1.33;
+	color: var(--subtext-color, #000000);
+	margin: 0;
+	text-align: left;
+	max-width: 100%;
+}
+
+.root-health-cta-blenders__button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--button-width);
+	height: var(--button-height);
+	background-color: var(--button-bg-color, var(--color-cta));
+	color: var(--button-text-color, #ffffff);
+	text-decoration: none;
+	font-weight: 400;
+	font-size: 1.4rem;
+	line-height: 1.29;
+	letter-spacing: 0.21em;
+	text-transform: uppercase;
+	text-align: center;
+	border-radius: 0;
+	transition: all 0.3s ease;
+	margin-top: 16px;
+	width: 100%;
+}
+
+.root-health-cta-blenders__button:hover {
+	background-color: color-mix(
+		in srgb,
+		var(--button-bg-color, var(--color-cta)) 80%,
+		black
+	);
+	transform: translateY(-2px);
+}
+
+.root-health-cta-blenders__button:focus {
+	outline: 2px solid var(--button-bg-color, var(--color-cta));
+	outline-offset: 2px;
+}
+
+/* Small Mobile and above (480px+) */
+@media screen and (min-width: 480px) {
+	.root-health-cta-blenders {
+		--button-width: 180px;
+		--button-height: 50px;
+	}
+
+	.root-health-cta-blenders {
+		height: 600px;
+		padding: 20px;
+	}
+
+	.root-health-cta-blenders__content-wrapper {
+		padding: 40px 20px;
+	}
+
+	.root-health-cta-blenders__content {
+		gap: 24px;
+	}
+
+	.root-health-cta-blenders__heading {
+		font-size: 48px;
+	}
+
+	.root-health-cta-blenders__subtext {
+		font-size: 20px;
+	}
+
+	.root-health-cta-blenders__button {
+		font-size: 12px;
+		margin-top: 16px;
+	}
+}
+
+/* Tablet and above (768px+) */
+@media screen and (min-width: 768px) {
+	.root-health-cta-blenders {
+		--content-max-width: 500px;
+	}
+
+	.root-health-cta-blenders {
+		height: 800px;
+		padding: 30px 0;
+	}
+
+	.root-health-cta-blenders__content-wrapper {
+		padding: 60px 40px;
+	}
+
+	.root-health-cta-blenders__content {
+		gap: 30px;
+	}
+
+	.root-health-cta-blenders__heading {
+		font-size: 70px;
+	}
+
+	.root-health-cta-blenders__subtext {
+		font-size: 2.4rem;
+		max-width: 280px;
+	}
+}
+
+/* Desktop and above (1024px+) */
+@media screen and (min-width: 1024px) {
+	.root-health-cta-blenders {
+		--content-max-width: 900px;
+		--button-width: 220px;
+		--button-height: 50px;
+	}
+
+	.root-health-cta-blenders {
+		height: var(--section-height, 960px);
+		padding: 40px 30px;
+	}
+
+	.root-health-cta-blenders__container {
+		justify-content: flex-start;
+		align-items: flex-end;
+		background-size: cover;
+		background-position: center;
+	}
+
+	.root-health-cta-blenders__content-wrapper {
+		justify-content: flex-start;
+		align-items: flex-end;
+		padding: 0 0 40px 48px;
+	}
+
+	.root-health-cta-blenders__background-image {
+		display: none;
+		background-image: none;
+	}
+
+	.root-health-cta-blenders__content {
+		align-items: flex-start;
+		text-align: left;
+		gap: 20px;
+		max-width: var(--content-max-width);
+	}
+
+	.root-health-cta-blenders__heading {
+		font-size: 9.6rem;
+		line-height: 1;
+		text-align: left;
+		color: #ffffff;
+		max-width: 895px;
+	}
+
+	.root-health-cta-blenders__subtext {
+		font-size: 2.4rem;
+		line-height: 40px;
+		text-align: left;
+		color: #ffffff;
+		max-width: 725px;
+	}
+
+	.root-health-cta-blenders__button {
+		position: absolute;
+		right: 51px;
+		bottom: 44px;
+		width: var(--button-width);
+		height: var(--button-height);
+		margin-top: 0;
+	}
+}

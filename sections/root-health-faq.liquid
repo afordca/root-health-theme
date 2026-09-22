@@ -1,0 +1,259 @@
+{% comment %}
+  FAQ Section
+
+  Dynamic FAQ section with accordion functionality.
+  Features expandable questions and answers with orange design theme.
+{% endcomment %}
+
+{{ 'section-root-health-faq.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="root-health-section root-health-faq"
+  id="RootHelpsFAQ-{{ section.id }}"
+  style="
+    --background-color: {{ section.settings.background_color }};
+    --heading-color: {{ section.settings.heading_color }};
+    --question-color: {{ section.settings.question_color }};
+    --answer-color: {{ section.settings.answer_color }};
+    --border-color: {{ section.settings.border_color }};
+    --icon-color: {{ section.settings.icon_color }};
+  "
+>
+  <div class="root-health-section__container">
+    <div class="root-health-faq__container">
+      {% if section.settings.heading != blank %}
+        <div class="root-health-faq__header">
+          <h2 class="root-health-faq__heading">
+            {{ section.settings.heading }}
+          </h2>
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <div class="root-health-faq__list">
+          {% for block in section.blocks %}
+            <div
+              class="root-health-faq__item"
+              {{ block.shopify_attributes }}
+              data-faq-item
+            >
+              {% if block.settings.question != blank %}
+                <button
+                  class="root-health-faq__question"
+                  type="button"
+                  aria-expanded="{% if forloop.first and section.settings.first_item_open %}true{% else %}false{% endif %}"
+                  data-faq-trigger
+                >
+                  <span class="root-health-faq__question-text">
+                    {{ block.settings.question }}
+                  </span>
+                  <span class="root-health-faq__icon" data-faq-icon>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <line x1="10" y1="0" x2="10" y2="20" stroke="currentColor" stroke-width="1"/>
+                      <line x1="0" y1="10" x2="20" y2="10" stroke="currentColor" stroke-width="1" class="root-health-faq__horizontal-line"/>
+                    </svg>
+                  </span>
+                </button>
+              {% endif %}
+
+              {% if block.settings.answer != blank %}
+                <div
+                  class="root-health-faq__answer{% if forloop.first and section.settings.first_item_open %} root-health-faq__answer--open{% else %} root-health-faq__answer--closed{% endif %}"
+                  data-faq-content
+                >
+                  <div class="root-health-faq__answer-content">
+                    {{ block.settings.answer | newline_to_br }}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqSection = document.getElementById('RootHelpsFAQ-{{ section.id }}');
+    if (!faqSection) return;
+
+    const faqItems = faqSection.querySelectorAll('[data-faq-item]');
+
+    faqItems.forEach((item) => {
+      const trigger = item.querySelector('[data-faq-trigger]');
+      const content = item.querySelector('[data-faq-content]');
+      const icon = item.querySelector('[data-faq-icon]');
+
+      if (!trigger || !content) return;
+
+      trigger.addEventListener('click', function () {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+
+        // Close all other items
+        faqItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            const otherTrigger = otherItem.querySelector('[data-faq-trigger]');
+            const otherContent = otherItem.querySelector('[data-faq-content]');
+            const otherIcon = otherItem.querySelector('[data-faq-icon]');
+
+            if (otherTrigger && otherContent) {
+              otherTrigger.setAttribute('aria-expanded', 'false');
+              otherContent.classList.remove('root-health-faq__answer--open');
+              otherContent.classList.add('root-health-faq__answer--closed');
+              if (otherIcon) {
+                otherIcon.classList.remove('root-health-faq__icon--expanded');
+              }
+            }
+          }
+        });
+
+        // Toggle current item
+        if (isExpanded) {
+          trigger.setAttribute('aria-expanded', 'false');
+          content.classList.remove('root-health-faq__answer--open');
+          content.classList.add('root-health-faq__answer--closed');
+          if (icon) {
+            icon.classList.remove('root-health-faq__icon--expanded');
+          }
+        } else {
+          trigger.setAttribute('aria-expanded', 'true');
+          content.classList.remove('root-health-faq__answer--closed');
+          content.classList.add('root-health-faq__answer--open');
+          if (icon) {
+            icon.classList.add('root-health-faq__icon--expanded');
+          }
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Root Health FAQ",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "checkbox",
+      "id": "first_item_open",
+      "label": "Show first FAQ open by default",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Section heading color",
+      "default": "#E5653D"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#FE9A68"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Plus/minus icon color",
+      "default": "#E5653D"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Frequently asked question?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Answer to the frequently asked question goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Health FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Membership Cancelation",
+            "answer": "You can cancel your membership at any time through your account dashboard or by contacting our customer support team."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Product Testing",
+            "answer": "We test our products at a third party facility that is regulated by the FDA. We test every batch that is produced for the following:\n\nLead\nHarmful Materials"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Shipping Information",
+            "answer": "We offer free shipping on all orders over $50. Standard shipping typically takes 3-5 business days."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Product Ingredients",
+            "answer": "All our ingredients are carefully sourced and tested for quality. You can find detailed ingredient lists on each product page."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Return Policy",
+            "answer": "We offer a 30-day return policy for unopened products. Please contact customer service to initiate a return."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

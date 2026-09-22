@@ -1,0 +1,321 @@
+/* Mobile-first CSS variables and base styles */
+.root-health-medical-advisors {
+	--card-width: auto;
+	--card-height: auto;
+	--image-size: 100%;
+	--border-radius: 20px;
+	--grid-gap: 40px 8px;
+}
+
+/* Base mobile styles */
+.root-health-medical-advisors {
+	background-color: #ffffff;
+	position: relative;
+}
+
+/* Section border lines */
+.root-health-medical-advisors::before,
+.root-health-medical-advisors::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background-color: var(--border-color, var(--color-accent));
+}
+
+.root-health-medical-advisors::before {
+	top: 0;
+}
+
+.root-health-medical-advisors::after {
+	bottom: 0;
+}
+
+.root-health-medical-advisors__container {
+	/* Container styles handled by .root-health-section__container */
+	padding: 0;
+}
+
+/* Header Section */
+.root-health-medical-advisors__header {
+	margin-bottom: 10px;
+	max-width: 800px;
+	text-align: left;
+}
+
+.root-health-medical-advisors__heading {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 2.4rem;
+	line-height: 1.1;
+	color: var(--heading-color, #000000);
+	margin: 0 0 20px 0;
+}
+
+.root-health-medical-advisors__description {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	line-height: 1.5;
+	color: var(--text-color, #000000);
+	margin: 0;
+	text-align: left;
+}
+
+/* Grid Layout */
+.root-health-medical-advisors__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(47.5%, 48%));
+	gap: var(--grid-gap);
+	justify-items: center;
+}
+
+/* Advisor Cards */
+.root-health-medical-advisors__advisor {
+	width: 100%;
+	min-height: var(--card-height);
+	padding: 20px 0px;
+}
+
+.root-health-medical-advisors__advisor-inner {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: var(--card-bg-color, #ffffff);
+	border-radius: var(--border-radius);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Image Section */
+.root-health-medical-advisors__image-wrapper {
+	border-radius: var(--border-radius) var(--border-radius) 0 0;
+	flex-shrink: 0;
+}
+
+.root-health-medical-advisors__advisor:hover
+	.root-health-medical-advisors__image-wrapper,
+.root-health-medical-advisors__advisor:hover
+	.root-health-medical-advisors__image-placeholder {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.root-health-medical-advisors__image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.root-health-medical-advisors__image-placeholder {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1 / 1;
+	background-color: #f5f5f5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #ccc;
+	border-radius: var(--border-radius);
+	flex-shrink: 0;
+}
+
+/* Content Section */
+.root-health-medical-advisors__content {
+	padding: 20px 0;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.root-health-medical-advisors__name {
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 1.2;
+	color: var(--name-color, #000000);
+	margin: 0 0 5px 0;
+}
+
+.root-health-medical-advisors__credential {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 1.25;
+	color: var(--credential-color, #000000);
+	margin: 0 0 10px 0;
+	min-height: 36px;
+}
+
+.root-health-medical-advisors__mother-info {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 0.89;
+	letter-spacing: 0.083em;
+	text-transform: uppercase;
+	color: var(--mother-label-color, #000000);
+	margin: 0;
+	margin-top: auto;
+	padding-top: 10px;
+}
+
+/* Small Mobile and above (480px+) */
+@media screen and (min-width: 480px) {
+	.root-health-medical-advisors {
+		--section-padding: 40px;
+		--grid-gap: 30px;
+		--card-width: 280px;
+	}
+}
+
+/* Tablet and above (768px+) */
+@media screen and (min-width: 768px) {
+	.root-health-medical-advisors {
+		--section-padding: 60px;
+		--grid-gap: 40px;
+		--card-width: 250px;
+		--image-size: 250px;
+	}
+
+	.root-health-medical-advisors {
+		padding: var(--section-padding) 0px;
+	}
+
+	.root-health-medical-advisors__header {
+		text-align: left;
+	}
+
+	.root-health-medical-advisors__heading {
+		font-size: 40px;
+	}
+
+	.root-health-medical-advisors__description {
+		text-align: left;
+	}
+
+	.root-health-medical-advisors__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.root-health-medical-advisors__name {
+		font-size: 1.8rem;
+	}
+
+	.root-health-medical-advisors__credential {
+		font-size: 14px;
+	}
+}
+
+/* Desktop and above (1024px+) - Figma 1580:293 */
+@media screen and (min-width: 1024px) {
+	.root-health-medical-advisors {
+		padding: 87px 0 100px 0;
+	}
+
+	.root-health-medical-advisors__advisor-inner {
+		padding: 0px;
+		background-color: transparent;
+	}
+
+	.root-health-medical-advisors__advisor {
+		padding: 0;
+	}
+
+	.root-health-medical-advisors__header {
+		margin-bottom: 55px;
+		max-width: 900px;
+	}
+
+	.root-health-medical-advisors__heading {
+		font-family: "GT Super Ds Trial", serif;
+		font-weight: 300;
+		font-size: 48px;
+		line-height: 1.1;
+		margin: 0 0 24px 0;
+	}
+
+	.root-health-medical-advisors__description {
+		font-size: 16px;
+		line-height: 1.5;
+		max-width: 898px;
+	}
+
+	.root-health-medical-advisors__grid {
+		grid-template-columns: repeat(4, 1fr);
+		gap: 50px;
+		justify-items: start;
+	}
+
+	.root-health-medical-advisors__image-wrapper {
+		border-radius: 20px;
+		overflow: hidden;
+		width: 100%;
+		aspect-ratio: 1 / 1;
+	}
+
+	.root-health-medical-advisors__content {
+		padding: 20px 0 0 0;
+	}
+
+	.root-health-medical-advisors__name {
+		font-family: "GT Super Ds Trial", serif;
+		font-weight: 400;
+		font-size: 24px;
+		line-height: 1.2;
+		margin: 0 0 12px 0;
+	}
+
+	.root-health-medical-advisors__credential {
+		font-size: 14px;
+		line-height: 1.25;
+		margin: 0 0 20px 0;
+		min-height: auto;
+	}
+
+	.root-health-medical-advisors__mother-info {
+		font-size: 12px;
+		letter-spacing: 0.083em;
+		padding-top: 0;
+	}
+}
+
+/* Focus States for Accessibility */
+.root-health-medical-advisors__advisor-inner:focus-within {
+	outline: 2px solid #4a90e2;
+	outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+	.root-health-medical-advisors {
+		--section-padding: 20px;
+		--grid-gap: 20px;
+	}
+
+	.root-health-medical-advisors::before,
+	.root-health-medical-advisors::after {
+		display: none;
+	}
+
+	.root-health-medical-advisors__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.root-health-medical-advisors__advisor-inner:hover {
+		transform: none;
+		box-shadow: none;
+	}
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+	.root-health-medical-advisors__advisor-inner {
+		border: 2px solid currentColor;
+	}
+
+	.root-health-medical-advisors__image-placeholder {
+		border: 1px solid currentColor;
+	}
+}

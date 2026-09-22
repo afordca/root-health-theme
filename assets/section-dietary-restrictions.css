@@ -3,7 +3,7 @@
 	--dietary-restrictions-padding-bottom: 36px;
 	--dietary-restrictions-heading-color: #000000;
 	--dietary-restrictions-text-color: #000000;
-	--dietary-restrictions-accent-color: #fe9a68;
+	--dietary-restrictions-accent-color: var(--color-accent);
 	--dietary-restrictions-background-color: #ffffff;
 
 	padding-top: var(--dietary-restrictions-padding-top);

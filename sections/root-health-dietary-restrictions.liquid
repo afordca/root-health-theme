@@ -1,0 +1,250 @@
+{{ 'section-dietary-restrictions.css' | asset_url | stylesheet_tag }}
+{{ 'dietary-restrictions-grid.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="root-health-section dietary-restrictions"
+  id="Dietary Restrictions-{{ section.id }}"
+  style="
+    --dietary-restrictions-heading-color: {{ section.settings.heading_color | default: '#000000' }};
+    --dietary-restrictions-text-color: {{ section.settings.text_color | default: '#000000' }};
+    --dietary-restrictions-accent-color: {{ section.settings.accent_color | default: '#FE9A68' }};
+    --dietary-restrictions-background-color: {{ section.settings.background_color | default: '#FFFFFF' }};
+    --dietary-restrictions-padding-top: {{ section.settings.padding_top | default: 36 }}px;
+    --dietary-restrictions-padding-bottom: {{ section.settings.padding_bottom | default: 36 }}px;
+  "
+>
+  <div class="root-health-section__container">
+    <div class="dietary-restrictions__container">
+      <div class="dietary-restrictions__content{% if section.settings.text_position == 'right' %} dietary-restrictions__content--text-right{% endif %}">
+        {% if section.settings.text_position == 'left' %}
+          <!-- Left Column: Text Content -->
+          <div class="dietary-restrictions__text-column">
+            {% if section.settings.heading != blank %}
+              <h2 class="dietary-restrictions__heading">{{ section.settings.heading }}</h2>
+            {% endif %}
+          </div>
+
+          <!-- Right Column: Dietary Restrictions Grid -->
+          <div class="dietary-restrictions__grid-column">
+            {% render 'dietary-restrictions-grid',
+              restrictions: null,
+              blocks: section.blocks,
+              grid_columns: section.settings.grid_columns,
+              show_heading: false,
+              heading: ''
+            %}
+          </div>
+        {% else %}
+          <!-- Left Column: Dietary Restrictions Grid -->
+          <div class="dietary-restrictions__grid-column">
+            {% render 'dietary-restrictions-grid',
+              restrictions: null,
+              blocks: section.blocks,
+              grid_columns: section.settings.grid_columns,
+              show_heading: false,
+              heading: ''
+            %}
+          </div>
+
+          <!-- Right Column: Text Content -->
+          <div class="dietary-restrictions__text-column">
+            {% if section.settings.heading != blank %}
+              <h2 class="dietary-restrictions__heading">{{ section.settings.heading }}</h2>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if section.settings.show_divider %}
+        <div class="dietary-restrictions__divider" aria-hidden="true"></div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Root Health Dietary",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Functional dietary-restrictions free of allergens, additives, and harmful minerals.",
+      "label": "Heading"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "default": true,
+      "label": "Show bottom divider"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "default": "#000000",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "default": "#000000",
+      "label": "Text color"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "default": "#FE9A68",
+      "label": "Accent color"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "default": "#FFFFFF",
+      "label": "Background color"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Text column position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "grid_columns",
+      "label": "Items per row",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3,
+      "info": "Number of dietary restrictions per row on desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "dietary-restriction",
+      "name": "Dietary Restriction",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Dietary Restriction title"
+        },
+        {
+          "type": "checkbox",
+          "id": "not_included",
+          "default": false,
+          "label": "Not included (show with strike-through)"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Custom icon (optional)",
+          "info": "Upload a custom icon image (e.g., SVG icons from /cdn/shop/files/)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Health Dietary Restrictions",
+      "settings": {
+        "heading": "Functional dietary-restrictions free of allergens, additives, and harmful minerals.",
+        "text_position": "right",
+        "grid_columns": 3,
+        "show_divider": true,
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "accent_color": "#FE9A68",
+        "background_color": "#FFFFFF",
+        "padding_top": 36,
+        "padding_bottom": 36
+      },
+      "blocks": [
+        {
+          "type": "dietary-restriction",
+          "settings": {
+            "title": "VEGAN",
+            "custom_icon": "shopify://shop_images/vegan-icon.svg"
+          }
+        },
+        {
+          "type": "dietary-restriction",
+          "settings": {
+            "title": "SOY FREE",
+            "custom_icon": "shopify://shop_images/soy-free-icon.svg"
+          }
+        },
+        {
+          "type": "dietary-restriction",
+          "settings": {
+            "title": "DAIRY FREE",
+            "custom_icon": "shopify://shop_images/dairy-free-icon.svg"
+          }
+        },
+        {
+          "type": "dietary-restriction",
+          "settings": {
+            "title": "GLUTEN FREE",
+            "custom_icon": "shopify://shop_images/gluten-free-icon.svg"
+          }
+        },
+        {
+          "type": "dietary-restriction",
+          "settings": {
+            "title": "NUT FREE",
+            "custom_icon": "shopify://shop_images/nut-free-icon.svg"
+          }
+        },
+        {
+          "type": "dietary-restriction",
+          "settings": {
+            "title": "ADDITIVE FREE",
+            "custom_icon": "shopify://shop_images/additive-free-icon.svg"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

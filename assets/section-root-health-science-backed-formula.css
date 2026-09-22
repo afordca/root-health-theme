@@ -1,0 +1,173 @@
+/* Root Health Science Backed Formula Section - Mobile First */
+/* Based on Figma Design: Mobile (414x600) -> Desktop (1440x997) */
+
+.root-health-science-backed-formula {
+	background-color: var(--color-accent);
+}
+
+.root-health-science-formula__container {
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.root-health-science-formula__image-container {
+	border-radius: 1.25rem; /* 20px */
+	overflow: hidden;
+}
+
+.root-health-science-formula__image {
+	width: 100%;
+	height: auto;
+}
+
+.root-health-science-formula__content {
+	background: transparent;
+	color: #ffffff;
+}
+
+.root-health-science-formula__heading {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 3.6rem; /* 36px */
+	line-height: 1.3333333333333333; /* 1.33 */
+	margin-bottom: 1rem;
+	color: #ffffff;
+}
+
+.root-health-science-formula__description {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.6rem; /* 16px */
+	line-height: 1.5;
+	margin-bottom: 1rem;
+	color: #000000;
+}
+
+.root-health-science-formula__button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 21px;
+	background-color: var(--color-primary);
+	color: #ffffff;
+	text-decoration: none;
+	font-family: "Averta-Semibold", sans-serif;
+	font-weight: 400;
+	line-height: 1.2857142857142858; /* ~1.29 */
+	letter-spacing: 0.21428571428571427em; /* 21.43% */
+	text-transform: uppercase;
+	border-radius: 0;
+	transition: background-color 0.3s ease;
+	margin-top: 20px;
+	width: 100%;
+}
+
+.root-health-science-formula__button:hover {
+	background-color: #cc4a2a;
+}
+
+.root-health-science-formula__button:focus {
+	outline: 2px solid #ffffff;
+	outline-offset: 2px;
+}
+
+/* Tablet and larger screens */
+@media screen and (min-width: 768px) {
+	.root-health-science-formula__container {
+		display: flex;
+		gap: 40px;
+		flex-direction: row;
+		align-items: flex-start;
+	}
+
+	.root-health-science-formula__image-container {
+		order: 2;
+		object-fit: contain;
+		max-height: 702px;
+	}
+
+	.root-health-science-formula__content {
+		z-index: 2;
+		order: 1;
+		flex: 0 0 400px;
+	}
+
+	.root-health-science-formula__heading {
+		font-size: 3.75rem; /* 60px */
+		line-height: 1.3333333333333333;
+		margin-bottom: 2rem;
+	}
+
+	.root-health-science-formula__description {
+		font-size: 1.875rem; /* 30px */
+		line-height: 1.6;
+		margin-bottom: 2rem;
+	}
+
+	.root-health-science-formula__button {
+		padding: 21px 50px;
+	}
+}
+
+/* Large desktop screens - match Figma 1682:1053 */
+@media screen and (min-width: 1024px) {
+	.root-health-science-formula__container {
+		flex-direction: row;
+		align-items: center;
+		gap: 72px;
+		max-width: 1440px;
+		padding: 0 56px 0 133px;
+	}
+
+	.root-health-science-formula__content {
+		order: 1;
+		flex: 0 0 481px;
+		max-width: 481px;
+	}
+
+	.root-health-science-formula__image-container {
+		order: 2;
+		flex: 1 1 auto;
+		max-height: 516px;
+		border-radius: 20px;
+	}
+
+	.root-health-science-formula__image {
+		width: 100%;
+		height: 516px;
+		object-fit: cover;
+	}
+
+	.root-health-science-formula__heading {
+		font-size: 6rem; /* 60px */
+		line-height: 1em; /* 60px */
+		margin-bottom: 3rem;
+		max-width: 451px;
+		color: #ffffff;
+	}
+
+	.root-health-science-formula__description {
+		font-size: 2.4rem; /* 24px */
+		line-height: 1.5; /* 36px */
+		margin-bottom: 4rem;
+		max-width: 481px;
+		color: #000000;
+	}
+
+	.root-health-science-formula__button {
+		width: 220px;
+		padding: 21px 0;
+		margin-top: 0;
+		background-color: var(--color-cta);
+		letter-spacing: 3px;
+		font-size: 1.4rem; /* 14px */
+	}
+
+	.root-health-science-formula__button:hover {
+		background-color: #e0433c;
+	}
+}

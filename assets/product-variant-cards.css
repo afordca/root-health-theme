@@ -39,7 +39,7 @@
 
 .product-variant-cards__item--selected .product-variant-cards__header {
 	border: none;
-	background-color: #fe9a68;
+	background-color: var(--color-accent);
 }
 
 .product-variant-cards__item .product-variant-cards__details {
@@ -53,7 +53,7 @@
 .product-variant-cards__label-card {
 	display: flex;
 	align-items: flex-start;
-	border: 1px solid #fe9a68;
+	border: 1px solid var(--color-accent);
 	border-radius: 10px;
 	cursor: pointer;
 	transition: all 0.2s ease;
@@ -63,7 +63,7 @@
 }
 
 .product-variant-cards__input:checked + .product-variant-cards__label-card {
-	border: 2px solid #e5653d;
+	border: 2px solid var(--color-primary);
 	background-color: rgba(229, 101, 61, 0.05);
 }
 
@@ -129,7 +129,7 @@
 }
 
 .product-variant-cards__item--selected .product-variant-cards__radio-circle {
-	background: #e5653d;
+	background: var(--color-primary);
 	opacity: 1;
 }
 

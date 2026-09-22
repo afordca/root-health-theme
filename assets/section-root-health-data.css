@@ -1,0 +1,145 @@
+/* ==========================================================================
+   Root Health Data / Efficacy
+   Mobile-first base styles, desktop layout inside the 1024px media query.
+   ========================================================================== */
+
+.root-health-data {
+	background-color: var(--data-bg-color, var(--color-accent));
+	padding-top: var(--data-padding-top, 60px);
+	padding-bottom: var(--data-padding-bottom, 60px);
+}
+
+.root-health-data__grid {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.root-health-data__media {
+	width: 100%;
+}
+
+.root-health-data__image {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 420px;
+	object-fit: cover;
+	border-radius: 20px;
+}
+
+.root-health-data__image--placeholder {
+	aspect-ratio: 478 / 589;
+	background-color: rgba(255, 255, 255, 0.25);
+}
+
+.root-health-data__content {
+	width: 100%;
+}
+
+.root-health-data__heading {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 3.2rem;
+	line-height: 1.25;
+	color: var(--data-heading-color, #ffffff);
+	margin: 0 0 24px;
+}
+
+.root-health-data__stats {
+	display: flex;
+	flex-direction: column;
+}
+
+.root-health-data__stat {
+	padding: 20px 0;
+	border-bottom: 1px dashed var(--data-divider-color, #ffffff);
+}
+
+.root-health-data__stat-number {
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 300;
+	font-size: 4.8rem;
+	line-height: 1;
+	color: var(--data-stat-color, #ffffff);
+	margin-bottom: 8px;
+}
+
+.root-health-data__stat-unit {
+	font-size: 0.5em;
+	margin-left: 2px;
+}
+
+.root-health-data__stat-desc {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 400;
+	font-size: 1.6rem;
+	line-height: 1.4;
+	color: var(--data-description-color, #ffffff);
+	margin: 0;
+}
+
+.root-health-data__disclaimer {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 700;
+	font-size: 1.6rem;
+	line-height: 1.4;
+	color: var(--data-disclaimer-color, var(--color-primary));
+	margin: 24px 0 0;
+}
+
+/* Desktop (1024px+) */
+@media screen and (min-width: 1024px) {
+	.root-health-data__grid {
+		flex-direction: row;
+		align-items: center;
+		gap: 100px;
+		padding-left: 40px;
+	}
+
+	.root-health-data__media {
+		flex: 0 0 478px;
+		width: 478px;
+	}
+
+	.root-health-data__image {
+		height: 589px;
+		max-height: none;
+		object-fit: cover;
+	}
+
+	.root-health-data__content {
+		flex: 1 1 auto;
+		max-width: 640px;
+	}
+
+	.root-health-data__heading {
+		font-size: 4.8rem;
+		line-height: 6rem;
+		margin: 0 0 32px;
+		max-width: 490px;
+	}
+
+	.root-health-data__stat {
+		padding: 26px 0;
+	}
+
+	.root-health-data__stat-number {
+		font-size: 6.7rem;
+		margin-bottom: 12px;
+	}
+
+	.root-health-data__stat-unit {
+		font-size: 3.36rem;
+	}
+
+	.root-health-data__stat-desc {
+		font-size: 2.1rem;
+		line-height: 28px;
+	}
+
+	.root-health-data__disclaimer {
+		margin-top: 40px;
+		padding-left: 40px;
+	}
+}

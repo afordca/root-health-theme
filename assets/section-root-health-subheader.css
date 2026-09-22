@@ -1,0 +1,313 @@
+.subheader {
+	--subheader-padding-top: 15px;
+	--subheader-padding-bottom: 36px;
+	--subheader-line-color: var(--color-divider);
+
+	padding-top: var(--subheader-padding-top);
+	padding-bottom: var(--subheader-padding-bottom);
+	background-color: #ffffff;
+	position: relative;
+	overflow: hidden;
+}
+
+.subheader__container {
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 0 0rem;
+}
+
+.subheader__content {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1.8rem;
+	align-items: flex-start;
+	position: relative;
+}
+
+.subheader__text-section {
+	padding: 0;
+	z-index: 2;
+	position: relative;
+}
+
+.subheader__heading {
+	font-weight: 300;
+	font-size: 3rem;
+	line-height: 1.5;
+	color: var(--subheader-heading-color, var(--color-primary));
+	margin: 0 0 1.5rem 0;
+}
+
+.subheader__description {
+	font-weight: 300;
+	line-height: 1.67;
+	color: var(--subheader-text-color, #000000);
+	margin: 0 0 3rem 0;
+}
+
+.subheader__benefits {
+	margin-top: 4rem;
+}
+
+.subheader__benefits-heading {
+	font-weight: 400;
+	line-height: 1.29;
+	letter-spacing: 0.214em;
+	text-transform: uppercase;
+	color: var(--subheader-text-color, #000000);
+	margin: 0 0 2.5rem 0;
+}
+
+.subheader__benefits-list {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.subheader__benefit {
+	position: relative;
+}
+
+.subheader__benefit-title {
+	font-weight: 300;
+	font-size: 3rem;
+	line-height: 1;
+	letter-spacing: 0.033em;
+	color: var(--subheader-text-color, #000000);
+	margin: 0 0 1rem 0;
+	padding-bottom: 0.5rem;
+	font-family: "GT Super Ds Trial", Georgia, serif;
+}
+
+.subheader__benefit-description {
+	font-weight: 300;
+	line-height: 1.71;
+	color: var(--subheader-text-color, #000000);
+	margin: 0;
+}
+
+.subheader__benefit-line {
+	width: 100%;
+	height: 1px;
+	background-image: repeating-linear-gradient(
+		to right,
+		var(--subheader-line-color) 0,
+		var(--subheader-line-color) 2px,
+		transparent 2px,
+		transparent 6px
+	);
+	margin-top: 2rem;
+}
+
+.subheader__visual-section {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 400px;
+	padding: 0px 0px;
+	padding-right: 0;
+	background-color: var(--subheader-background-shape-color, var(--color-accent));
+	border-radius: 1.25rem;
+	z-index: 1;
+	height: 400px;
+	width: 100%;
+}
+
+.subheader__image {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 100%;
+}
+
+.subheader__product-image {
+	max-width: 100%;
+	height: auto;
+	object-fit: contain;
+	max-height: 60rem;
+}
+
+/* Tablet and up */
+@media screen and (min-width: 750px) {
+	.subheader__container {
+		padding: 0 4rem;
+	}
+
+	.subheader__content {
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+	}
+
+	.subheader__heading {
+		font-size: 4.8rem;
+	}
+
+	.subheader__benefits-list {
+		gap: 3rem;
+	}
+
+	.subheader__visual-section {
+		min-height: 600px;
+	}
+}
+
+/* Desktop and up */
+@media screen and (min-width: 990px) {
+	.subheader__container {
+		padding: 0 6rem;
+	}
+
+	.subheader__content {
+		gap: 6rem;
+	}
+
+	.subheader__text-section {
+		padding: 3rem 0;
+		padding-right: 10.375rem;
+	}
+
+	.subheader__visual-section {
+		min-height: 70.5rem;
+	}
+}
+
+/* Large desktop — Figma redesign layout */
+@media screen and (min-width: 1024px) {
+	.subheader {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	.subheader .root-health-section__container {
+		padding: 0;
+	}
+
+	.subheader__container {
+		padding: 0;
+		max-width: 1440px;
+	}
+
+	/* Full-width orange band behind the top of the section */
+	.subheader::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 317px;
+		background-color: var(--subheader-background-shape-color, var(--color-accent));
+		z-index: 0;
+	}
+
+	.subheader__content {
+		grid-template-columns: 1.35fr 1fr;
+		gap: 0;
+		align-items: start;
+		height: auto;
+		min-height: 0;
+		position: relative;
+		z-index: 1;
+		padding: 28px 84px 0;
+	}
+
+	.subheader__text-section {
+		order: 1;
+		grid-column: 1;
+		padding: 0;
+		padding-right: 40px;
+	}
+
+	.subheader__heading {
+		font-size: 60px;
+		line-height: 1;
+		color: #ffffff;
+		margin: 0 0 24px 0;
+		max-width: 550px;
+	}
+
+	.subheader__description {
+		font-size: 18px;
+		line-height: 1.67;
+		color: #ffffff;
+		margin: 0 0 84px 0;
+		max-width: 593px;
+	}
+
+	.subheader__benefits {
+		margin-top: 0;
+	}
+
+	.subheader__benefits-heading {
+		font-size: 14px;
+		letter-spacing: 3px;
+		color: var(--subheader-text-color, #000000);
+		margin: 0 0 32px 0;
+	}
+
+	.subheader__benefits-list {
+		gap: 28px;
+	}
+
+	.subheader__benefit {
+		display: grid;
+		grid-template-columns: 280px 1fr;
+		gap: 24px;
+		align-items: start;
+	}
+
+	.subheader__benefit-title {
+		font-size: 30px;
+		line-height: 1;
+		letter-spacing: 1px;
+		color: var(--subheader-text-color, #000000);
+		margin: 0;
+		padding: 0;
+	}
+
+	.subheader__benefit-description {
+		font-size: 14px;
+		line-height: 1.71;
+		color: var(--subheader-text-color, #000000);
+		margin: 0;
+		max-width: 430px;
+	}
+
+	.subheader__benefit-line {
+		display: none;
+	}
+
+	.subheader__visual-section {
+		order: 2;
+		grid-column: 2;
+		background: none;
+		border-radius: 0;
+		min-height: 0;
+		height: auto;
+		top: 0;
+		padding: 0;
+		align-self: stretch;
+		justify-content: center;
+		align-items: flex-end;
+	}
+
+	.subheader__image {
+		align-items: flex-end;
+		height: 100%;
+	}
+
+	.subheader__product-image {
+		max-height: none;
+		width: auto;
+		max-width: 100%;
+	}
+}
+
+/* Focus and accessibility */
+.subheader__benefit:focus-within {
+	outline: 2px solid var(--subheader-heading-color, var(--color-primary));
+	outline-offset: 2px;
+	border-radius: 4px;
+}

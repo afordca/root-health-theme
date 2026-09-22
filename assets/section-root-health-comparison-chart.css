@@ -1,0 +1,357 @@
+/* Mobile-first CSS variables and base styles */
+.root-health-comparison-chart {
+	--table-padding: 16px 0px;
+	--dot-size: 14px;
+	--row-height: 72px;
+	--column-width: 90px;
+	--border-radius: 10px;
+	--dash-pattern: 2px 4px;
+}
+
+/* Base mobile styles */
+.root-health-comparison-chart {
+	background-color: #ffffff;
+}
+
+.root-health-comparison-chart__container {
+	/* Container styles handled by .root-health-section__container */
+	padding: 0;
+}
+
+.root-health-comparison-chart__intro {
+	margin-bottom: 32px;
+}
+
+.root-health-comparison-chart__title {
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 300;
+	font-size: 3.2rem;
+	line-height: 1.1;
+	color: var(--heading-color, #000000);
+	margin: 0 0 16px;
+}
+
+.root-health-comparison-chart__heading {
+	margin-bottom: 40px;
+	max-width: 1070px;
+}
+
+.root-health-comparison-chart__heading p {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 1.5;
+	color: var(--heading-color, #000000);
+	margin: 0;
+}
+
+.root-health-comparison-chart__table-wrapper {
+	overflow-x: auto;
+	border-radius: var(--border-radius);
+	background: #ffffff;
+	padding: var(--table-padding);
+	-webkit-overflow-scrolling: touch;
+}
+
+.root-health-comparison-chart__table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	min-width: 450px;
+}
+
+/* Table Headers */
+.root-health-comparison-chart__header-empty {
+	width: 100px;
+	height: var(--row-height);
+	background: transparent;
+	border: none;
+}
+
+.root-health-comparison-chart__header {
+	width: var(--column-width);
+	height: var(--row-height);
+	text-align: center;
+	vertical-align: middle;
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 3;
+	color: var(--text-color, #000000);
+	border: none;
+	background: transparent;
+	border-radius: 0;
+	padding: 0px;
+}
+
+.root-health-comparison-chart__header--highlighted {
+	background-color: var(--highlight-bg, var(--color-accent));
+	font-weight: 800;
+	border-radius: var(--border-radius) var(--border-radius) 0 0;
+	position: relative;
+	width: var(--column-width);
+}
+
+/* Table Rows */
+.root-health-comparison-chart__row td {
+	border-bottom: 1px dashed var(--border-color, var(--color-border));
+}
+
+.root-health-comparison-chart__row:last-child {
+	border-bottom: none;
+}
+
+/* Component Labels */
+.root-health-comparison-chart__component {
+	width: 100px;
+	height: var(--row-height);
+	text-align: left;
+	vertical-align: middle;
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 300;
+	font-size: 1.4rem;
+	line-height: 3;
+	color: var(--text-color, #000000);
+	padding: 0 8px 0 0;
+	border-right: none;
+}
+
+/* Table Cells */
+.root-health-comparison-chart__cell {
+	width: var(--column-width);
+	height: var(--row-height);
+	text-align: center;
+	vertical-align: middle;
+	border: none;
+	background: transparent;
+	padding: 0px;
+	position: relative;
+}
+
+.root-health-comparison-chart__cell--highlighted {
+	background-color: var(--highlight-bg, var(--color-accent));
+}
+
+.root-health-comparison-chart__row:last-child
+	.root-health-comparison-chart__cell--highlighted {
+	border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+/* Dots */
+.root-health-comparison-chart__dot {
+	display: inline-block;
+	width: var(--dot-size);
+	height: var(--dot-size);
+	border-radius: 50%;
+	background-color: var(--default-dot, var(--color-divider));
+}
+
+.root-health-comparison-chart__dot--highlighted {
+	background-color: var(--highlight-dot, var(--color-primary));
+}
+
+/* Small Mobile and above (480px+) */
+@media screen and (min-width: 480px) {
+	.root-health-comparison-chart {
+		--dot-size: 16px;
+		--column-width: 100px;
+	}
+
+	.root-health-comparison-chart__heading p {
+		font-size: 22px;
+	}
+
+	.root-health-comparison-chart__table-wrapper {
+		padding: 20px 0;
+	}
+
+	.root-health-comparison-chart__table {
+		min-width: 500px;
+	}
+
+	.root-health-comparison-chart__header-empty {
+		width: 120px;
+	}
+
+	.root-health-comparison-chart__header {
+		font-size: 18px;
+		padding: 0 8px;
+	}
+
+	.root-health-comparison-chart__component {
+		font-size: 18px;
+		width: 120px;
+		padding: 0 12px;
+	}
+
+	.root-health-comparison-chart__cell {
+		padding: 0 8px;
+	}
+}
+
+/* Tablet and above (768px+) */
+@media screen and (min-width: 768px) {
+	.root-health-comparison-chart {
+		--column-width: 120px;
+	}
+
+	.root-health-comparison-chart__container {
+		padding: 0;
+	}
+
+	.root-health-comparison-chart__heading p {
+		font-size: 26px;
+	}
+
+	.root-health-comparison-chart__table-wrapper {
+		padding: 30px 0;
+	}
+
+	.root-health-comparison-chart__header-empty {
+		width: 150px;
+	}
+
+	.root-health-comparison-chart__header {
+		font-size: 20px;
+	}
+
+	.root-health-comparison-chart__component {
+		font-size: 20px;
+		width: 150px;
+	}
+}
+
+/* Desktop and above (1024px+) */
+@media screen and (min-width: 1024px) {
+	.root-health-comparison-chart {
+		--table-padding: 0;
+		--dot-size: 12px;
+		--column-width: 120px;
+		--row-height: 60px;
+		--border-radius: 20px;
+		background-color: var(--bg-color, var(--color-accent));
+	}
+
+	/* Two-column layout: intro on the left, comparison card on the right */
+	.root-health-comparison-chart__container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		gap: 80px;
+		padding: 60px 40px;
+	}
+
+	.root-health-comparison-chart__intro {
+		flex: 0 0 462px;
+		max-width: 462px;
+		margin-bottom: 0;
+	}
+
+	.root-health-comparison-chart__title {
+		font-size: 4.8rem;
+		line-height: 1;
+		color: var(--title-color, #ffffff);
+		margin: 0 0 24px;
+	}
+
+	.root-health-comparison-chart__heading {
+		margin-bottom: 0;
+	}
+
+	.root-health-comparison-chart__heading p {
+		font-family: "Gilroy", sans-serif;
+		font-weight: 400;
+		font-size: 1.8rem;
+		line-height: 1.55;
+		color: var(--title-color, #ffffff);
+	}
+
+	/* White comparison card */
+	.root-health-comparison-chart__table-wrapper {
+		flex: 1 1 auto;
+		max-width: 783px;
+		background: #ffffff;
+		border-radius: var(--border-radius);
+		padding: 40px 48px;
+		overflow: visible;
+	}
+
+	.root-health-comparison-chart__table {
+		min-width: 0;
+	}
+
+	.root-health-comparison-chart__header-empty {
+		width: 160px;
+	}
+
+	.root-health-comparison-chart__header {
+		font-family: "Gilroy", sans-serif;
+		font-weight: 300;
+		font-size: 1.4rem;
+		line-height: 1;
+		color: var(--text-color, #000000);
+		padding: 0 8px;
+		height: 60px;
+	}
+
+	.root-health-comparison-chart__header--highlighted {
+		width: var(--column-width);
+		background-color: transparent;
+		border-radius: 0;
+		font-weight: 700;
+		font-size: 1.6rem;
+		letter-spacing: 0.6em;
+		text-indent: 0.6em;
+		text-transform: uppercase;
+		color: var(--highlight-dot, var(--color-primary));
+	}
+
+	.root-health-comparison-chart__component {
+		font-family: "Gilroy", sans-serif;
+		font-weight: 600;
+		font-size: 1.8rem;
+		line-height: 1;
+		color: #000000;
+		width: 160px;
+		padding: 0 20px 0 0;
+	}
+
+	.root-health-comparison-chart__cell {
+		padding: 0 8px;
+	}
+
+	.root-health-comparison-chart__cell--highlighted {
+		background-color: transparent;
+	}
+
+	.root-health-comparison-chart__row td {
+		border-bottom: 1px dashed #e0e0e0;
+	}
+}
+
+/* Accessibility */
+.root-health-comparison-chart__table {
+	border: 1px solid transparent;
+}
+
+.root-health-comparison-chart__table:focus-within {
+	outline: 2px solid #4a90e2;
+	outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+	.root-health-comparison-chart {
+		padding: 20px 0;
+	}
+
+	.root-health-comparison-chart__table-wrapper {
+		box-shadow: none;
+		border: 1px solid #000;
+	}
+
+	.root-health-comparison-chart__dot {
+		border: 1px solid #000;
+	}
+}

@@ -1,0 +1,305 @@
+/* Root Health Ingredient Thesis Section - Mobile First */
+.root-health-ingredient-thesis {
+	--thesis-title-color: #000000;
+	--thesis-text-color: #000000;
+	--thesis-icon-color: var(--color-accent);
+	--thesis-icon-size: 28px;
+
+	width: 100%;
+	background-color: #ffffff;
+	position: relative;
+	padding-bottom: 40px;
+}
+
+.root-health-ingredient-thesis__container {
+	width: 100%;
+	max-width: 1440px;
+	height: auto;
+	margin: 0 auto;
+	position: relative;
+	padding: 0 var(--page-width-margin, 20px);
+}
+
+.root-health-ingredient-thesis__content {
+	position: static;
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+}
+
+.root-health-ingredient-thesis .root-health-section__container {
+	height: 100%;
+}
+
+.root-health-ingredient-thesis__text {
+	width: 100%;
+	max-width: 100%;
+}
+
+.root-health-ingredient-thesis__title {
+	font-family: "Gilroy", var(--font-body-family);
+	font-weight: 300;
+	font-size: 12px;
+	line-height: 2em;
+	color: var(--thesis-title-color);
+	margin: 0 0 20px 0;
+	text-align: left;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.root-health-ingredient-thesis__description {
+	font-family: "Gilroy", var(--font-body-family);
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 1.4em;
+	color: var(--thesis-text-color);
+	margin: 0;
+	text-align: left;
+	max-width: 100%;
+}
+
+.root-health-ingredient-thesis__description p {
+	margin: 0;
+}
+
+.root-health-ingredient-thesis__heading {
+	font-family: "GT Super Ds Trial", var(--font-heading-family);
+	font-weight: 300;
+	font-size: 30px;
+	line-height: 1.25;
+	color: var(--thesis-title-color);
+	margin: 0 0 20px 0;
+	text-align: left;
+}
+
+.root-health-ingredient-thesis__media {
+	width: 100%;
+	margin-top: 8px;
+}
+
+.root-health-ingredient-thesis__media img {
+	width: 100%;
+	height: auto;
+	display: block;
+	border-radius: 20px;
+	object-fit: cover;
+}
+
+.root-health-ingredient-thesis__components {
+	position: static;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	align-items: flex-start;
+}
+
+.root-health-ingredient-thesis__component {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.root-health-ingredient-thesis__icon {
+	width: var(--thesis-icon-size);
+	height: var(--thesis-icon-size);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.root-health-ingredient-thesis__icon svg {
+	width: 100%;
+	height: 100%;
+	fill: var(--thesis-icon-color);
+}
+
+.root-health-ingredient-thesis__component-name {
+	font-family: "GT Super Ds Trial", var(--font-heading-family);
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 1.4em;
+	color: var(--thesis-text-color);
+	text-align: left;
+	white-space: nowrap;
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 750px) {
+	.root-health-ingredient-thesis {
+		--thesis-icon-size: 32px;
+		padding-bottom: 50px;
+	}
+
+	.root-health-ingredient-thesis__content {
+		gap: 50px;
+	}
+
+	.root-health-ingredient-thesis__title {
+		font-size: 14px;
+		line-height: 2.5em;
+		margin-bottom: 30px;
+	}
+
+	.root-health-ingredient-thesis__description {
+		font-size: 1.8rem;
+		line-height: 1.6em;
+	}
+
+	.root-health-ingredient-thesis__components {
+		gap: 12px;
+	}
+
+	.root-health-ingredient-thesis__component {
+		gap: 16px;
+	}
+
+	.root-health-ingredient-thesis__component-name {
+		font-size: 1.8rem;
+		line-height: 1.6em;
+	}
+}
+
+/* Desktop Styles */
+@media screen and (min-width: 991px) {
+	.root-health-ingredient-thesis {
+		--thesis-icon-size: 36px;
+	}
+
+	.root-health-ingredient-thesis__container {
+		height: 546px;
+		padding: 0;
+	}
+
+	.root-health-ingredient-thesis__content {
+		position: relative;
+		display: flex;
+		height: 100%;
+		width: 100%;
+		gap: 0;
+		flex-direction: row;
+	}
+
+	.root-health-ingredient-thesis__text {
+		width: auto;
+		flex: 1 1 100%;
+	}
+
+	.root-health-ingredient-thesis__title {
+		font-size: 16px;
+		line-height: 3.75em;
+		margin: 0 0 0px 0;
+	}
+
+	.root-health-ingredient-thesis__description {
+		font-size: 30px;
+		line-height: 2em;
+		max-width: 722px;
+	}
+
+	.root-health-ingredient-thesis__components {
+		gap: 12px;
+		flex: 0 1 40%;
+		padding-top: 60px;
+	}
+
+	.root-health-ingredient-thesis__component {
+		gap: 24px;
+	}
+
+	.root-health-ingredient-thesis__component-name {
+		font-size: 30px;
+		line-height: 2em;
+	}
+}
+
+/* Desktop layout to match Figma 1682:1085 (text left, image right) */
+@media screen and (min-width: 1024px) {
+	.root-health-ingredient-thesis__container {
+		height: auto;
+		min-height: 502px;
+		padding: 0 40px;
+	}
+
+	.root-health-ingredient-thesis__content {
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 60px;
+	}
+
+	.root-health-ingredient-thesis__text {
+		flex: 1 1 auto;
+		max-width: 848px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.root-health-ingredient-thesis__title {
+		font-size: 16px;
+		line-height: 1.5;
+		letter-spacing: 0.125em; /* ~2px */
+		margin: 0 0 24px 0;
+	}
+
+	.root-health-ingredient-thesis__heading {
+		font-size: 48px;
+		line-height: 1.25;
+		margin: 0 0 32px 0;
+	}
+
+	.root-health-ingredient-thesis__description {
+		font-size: 18px;
+		line-height: 1.66;
+		max-width: 722px;
+	}
+
+	.root-health-ingredient-thesis__components {
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 76px;
+		padding-top: 60px;
+		align-items: flex-start;
+	}
+
+	.root-health-ingredient-thesis__component {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 12px;
+	}
+
+	.root-health-ingredient-thesis__component-name {
+		font-family: "Gilroy", var(--font-body-family);
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 1;
+	}
+
+	.root-health-ingredient-thesis__media {
+		flex: 0 0 433px;
+		max-width: 433px;
+		margin-top: 12px;
+	}
+
+	.root-health-ingredient-thesis__media img {
+		width: 433px;
+		height: 320px;
+		border-radius: 20px;
+	}
+}
+
+/* Theme Setting Variables */
+.root-health-ingredient-thesis[style*="--thesis-title-color"] {
+	--thesis-title-color: var(--thesis-title-color);
+}
+
+.root-health-ingredient-thesis[style*="--thesis-text-color"] {
+	--thesis-text-color: var(--thesis-text-color);
+}
+
+.root-health-ingredient-thesis[style*="--thesis-icon-color"] {
+	--thesis-icon-color: var(--thesis-icon-color);
+}

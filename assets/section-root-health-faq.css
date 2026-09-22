@@ -1,0 +1,281 @@
+/* Root Health FAQ Section - Mobile First */
+
+.root-health-faq {
+	/* Mobile-first CSS custom properties */
+	--item-spacing: 0;
+	--question-padding: 20px;
+	--answer-padding: 20px;
+	--border-width: 1px;
+	--icon-size: 20px;
+	--transition-duration: 0.2s;
+	--heading-size: 32px;
+	--question-size: 20px;
+	--answer-size: 16px;
+
+	background-color: var(--background-color, #ffffff);
+	padding: var(--section-padding);
+}
+
+.root-health-faq__container {
+	width: 100%;
+}
+
+/* Header Section - Mobile First */
+.root-health-faq__header {
+	text-align: left;
+	margin-bottom: 30px;
+}
+
+.root-health-faq__heading {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: var(--heading-size);
+	line-height: 1;
+	text-align: left;
+	color: var(--heading-color, var(--color-primary));
+	margin: 0;
+}
+
+/* FAQ List */
+.root-health-faq__list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--item-spacing);
+}
+
+/* FAQ Items */
+.root-health-faq__item {
+	border: var(--border-width) solid var(--border-color, var(--color-accent));
+	background-color: var(--background-color, #ffffff);
+}
+
+.root-health-faq__item:not(:last-child) {
+	border-bottom: none;
+}
+
+/* Question Button */
+.root-health-faq__question {
+	width: 100%;
+	padding: var(--question-padding);
+	background: none;
+	border: none;
+	text-align: left;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+	transition: background-color var(--transition-duration) ease-in-out;
+}
+
+.root-health-faq__question:hover {
+	background-color: rgba(254, 154, 104, 0.05);
+}
+
+.root-health-faq__question:focus {
+	outline: 2px solid var(--border-color, var(--color-accent));
+	outline-offset: -2px;
+}
+
+.root-health-faq__question-text {
+	font-family: "GT Super Txt Trial", serif;
+	font-weight: 400;
+	font-size: var(--question-size);
+	line-height: 0.75;
+	color: var(--question-color, #000000);
+	text-align: left;
+	flex: 1;
+}
+
+/* Plus/Minus Icon */
+.root-health-faq__icon {
+	flex-shrink: 0;
+	width: var(--icon-size);
+	height: var(--icon-size);
+	color: var(--icon-color, var(--color-primary));
+	transition: transform var(--transition-duration) ease-in-out;
+}
+
+.root-health-faq__icon svg {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.root-health-faq__horizontal-line {
+	transition: opacity var(--transition-duration) ease-in-out;
+}
+
+.root-health-faq__icon--expanded {
+	transform: rotate(45deg);
+}
+
+.root-health-faq__icon--expanded .root-health-faq__horizontal-line {
+	opacity: 0;
+}
+
+/* Answer Content */
+.root-health-faq__answer {
+	border-top: var(--border-width) solid var(--border-color, var(--color-accent));
+	max-height: 0px;
+	overflow: hidden;
+	transition: max-height 0.2s ease-in-out;
+}
+
+.root-health-faq__answer--closed {
+	max-height: 0px;
+}
+
+.root-health-faq__answer--open {
+	max-height: 1000px;
+}
+
+.root-health-faq__answer-content {
+	padding: var(--answer-padding);
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: var(--answer-size);
+	line-height: 1.33;
+	color: var(--answer-color, #000000);
+}
+
+/* Small Mobile Styles (480px and up) */
+@media screen and (min-width: 480px) {
+	.root-health-faq {
+		--section-padding: 50px 0px;
+		--question-padding: 25px;
+		--answer-padding: 25px;
+		--heading-size: 36px;
+		--question-size: 22px;
+		--answer-size: 17px;
+	}
+}
+
+/* Tablet Styles (768px and up) */
+@media screen and (min-width: 768px) {
+	.root-health-faq {
+		--section-padding: 60px 0px;
+		--question-padding: 30px;
+		--answer-padding: 30px;
+		--heading-size: 42px;
+		--question-size: 23px;
+		--answer-size: 18px;
+	}
+
+	.root-health-faq__header {
+		margin-bottom: 50px;
+	}
+}
+
+/* Desktop Styles (1024px and up) */
+@media screen and (min-width: 1024px) {
+	.root-health-faq {
+		--section-padding: 80px 0px;
+		--question-padding: 20px 30px;
+		--answer-padding: 30px;
+		--heading-size: 48px;
+		--question-size: 24px;
+		--answer-size: 18px;
+	}
+
+	.root-health-faq__header {
+		margin-bottom: 60px;
+	}
+
+	.root-health-faq__heading {
+		text-align: center;
+	}
+
+	.root-health-faq__answer-content {
+		padding: var(--answer-padding) 30px;
+	}
+}
+
+/* Large Desktop Styles (1200px and up) */
+@media screen and (min-width: 1024px) {
+	.root-health-faq__container {
+		max-width: 1440px;
+		margin: 0 auto;
+	}
+}
+
+/* Animation for smooth accordion */
+@media (prefers-reduced-motion: no-preference) {
+	.root-health-faq__answer {
+		transition: max-height 0.2s ease-in-out;
+	}
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+	.root-health-faq__question,
+	.root-health-faq__icon,
+	.root-health-faq__horizontal-line,
+	.root-health-faq__answer {
+		transition: none;
+	}
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+	.root-health-faq__item {
+		border-width: 2px;
+	}
+
+	.root-health-faq__question:focus {
+		outline-width: 3px;
+	}
+
+	.root-health-faq__icon {
+		filter: contrast(2);
+	}
+}
+
+/* Focus Visible Support */
+.root-health-faq__question:focus-visible {
+	outline: 2px solid var(--border-color, var(--color-accent));
+	outline-offset: -2px;
+}
+
+.root-health-faq__question:focus:not(:focus-visible) {
+	outline: none;
+}
+
+/* Print Styles */
+@media print {
+	.root-health-faq {
+		background-color: transparent !important;
+	}
+
+	.root-health-faq__item {
+		border: 1px solid #000;
+		break-inside: avoid;
+		margin-bottom: 20px;
+	}
+
+	.root-health-faq__answer {
+		display: block !important;
+		border-top: 1px solid #000;
+	}
+
+	.root-health-faq__icon {
+		display: none;
+	}
+
+	.root-health-faq__question {
+		padding-right: 0;
+	}
+
+	.root-health-faq__question:hover {
+		background-color: transparent;
+	}
+}
+
+/* Dark Mode Support (if needed) */
+@media (prefers-color-scheme: dark) {
+	.root-health-faq {
+		--background-color: #1a1a1a;
+		--question-color: #ffffff;
+		--answer-color: #ffffff;
+	}
+}

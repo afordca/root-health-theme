@@ -1,0 +1,124 @@
+/* ==========================================================================
+   Root Health CTA - Footer
+   Mobile-first base styles; desktop split layout inside 1024px media query.
+   ========================================================================== */
+
+.root-health-cta-footer {
+	padding: 0;
+	background-color: var(--left-bg-color, var(--color-cta));
+	overflow: hidden;
+}
+
+.root-health-cta-footer__inner {
+	display: flex;
+	flex-direction: column;
+}
+
+.root-health-cta-footer__content {
+	background-color: var(--left-bg-color, var(--color-cta));
+	padding: 48px 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 20px;
+}
+
+.root-health-cta-footer__heading {
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 300;
+	font-size: 4rem;
+	line-height: 1.05;
+	color: var(--heading-color, #ffffff);
+	margin: 0;
+}
+
+.root-health-cta-footer__subtext {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.6rem;
+	line-height: 1.4;
+	color: var(--subtext-color, #ffffff);
+	margin: 0;
+}
+
+.root-health-cta-footer__button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 220px;
+	height: 50px;
+	border: 1px solid var(--button-border-color, #ffffff);
+	background: transparent;
+	color: var(--button-text-color, #ffffff);
+	font-family: "Gilroy", sans-serif;
+	font-weight: 600;
+	font-size: 1.4rem;
+	letter-spacing: 0.21em;
+	text-transform: uppercase;
+	text-decoration: none;
+	margin-top: 8px;
+	transition: all 0.3s ease;
+}
+
+.root-health-cta-footer__button:hover {
+	background: var(--button-border-color, #ffffff);
+	color: var(--left-bg-color, var(--color-cta));
+}
+
+.root-health-cta-footer__media {
+	background-color: var(--right-bg-color, var(--color-accent));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 240px;
+}
+
+.root-health-cta-footer__image {
+	display: block;
+	width: 100%;
+	height: auto;
+	object-fit: contain;
+}
+
+/* Desktop (1024px+) */
+@media screen and (min-width: 1024px) {
+	.root-health-cta-footer__inner {
+		flex-direction: row;
+		align-items: stretch;
+		min-height: 512px;
+	}
+
+	.root-health-cta-footer__content {
+		flex: 0 0 50%;
+		justify-content: center;
+		padding: 0 80px;
+	}
+
+	.root-health-cta-footer__heading {
+		font-size: 6rem;
+		max-width: 614px;
+	}
+
+	.root-health-cta-footer__subtext {
+		font-size: 1.8rem;
+		line-height: 24px;
+		max-width: 538px;
+	}
+
+	.root-health-cta-footer__button {
+		margin-top: 16px;
+	}
+
+	.root-health-cta-footer__media {
+		flex: 0 0 50%;
+		min-height: 512px;
+		overflow: hidden;
+	}
+
+	.root-health-cta-footer__image {
+		width: 100%;
+		height: auto;
+		max-height: 512px;
+		object-fit: contain;
+	}
+}

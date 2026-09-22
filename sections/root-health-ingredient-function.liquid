@@ -1,0 +1,195 @@
+{% comment %}
+  Ingredient Function Section
+
+  "Functional ingredients" band: a centered heading, a row of dietary / quality
+  icon badges (Vegan, Soy Free, etc.), and a Learn More link. Optional decorative
+  corner images.
+{% endcomment %}
+
+{{ 'section-root-health-ingredient-function.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="root-health-section root-health-ingredient-function"
+  id="RootHelpsIngredientFunction-{{ section.id }}"
+  style="
+    --background-color: {{ section.settings.background_color }};
+    --heading-color: {{ section.settings.heading_color }};
+    --label-color: {{ section.settings.label_color }};
+    --learn-more-color: {{ section.settings.learn_more_color }};
+  "
+>
+  {% if section.settings.decor_top_left_filename != blank %}
+    <img
+      class="root-health-ingredient-function__decor root-health-ingredient-function__decor--top-left"
+      src="{{ section.settings.decor_top_left_filename | asset_url }}"
+      alt=""
+      loading="lazy"
+      aria-hidden="true"
+    >
+  {% endif %}
+  {% if section.settings.decor_bottom_right_filename != blank %}
+    <img
+      class="root-health-ingredient-function__decor root-health-ingredient-function__decor--bottom-right"
+      src="{{ section.settings.decor_bottom_right_filename | asset_url }}"
+      alt=""
+      loading="lazy"
+      aria-hidden="true"
+    >
+  {% endif %}
+
+  <div class="root-health-section__container root-health-ingredient-function__container">
+    {% if section.settings.heading != blank %}
+      <h3 class="root-health-ingredient-function__heading">
+        {{ section.settings.heading }}
+      </h3>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="root-health-ingredient-function__icons">
+        {% for block in section.blocks %}
+          {% if block.type == 'icon_item' %}
+            <div class="root-health-ingredient-function__icon-item" {{ block.shopify_attributes }}>
+              <div class="root-health-ingredient-function__icon">
+                {% if block.settings.icon_filename != blank %}
+                  <img src="{{ block.settings.icon_filename | asset_url }}" alt="{{ block.settings.label | escape }}" loading="lazy">
+                {% elsif block.settings.icon != blank %}
+                  {{ block.settings.icon | image_url: width: 172 | image_tag: loading: 'lazy', alt: block.settings.label }}
+                {% endif %}
+              </div>
+              {% if block.settings.label != blank %}
+                <p class="root-health-ingredient-function__label type-label">{{ block.settings.label }}</p>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+      <div class="root-health-ingredient-function__cta">
+        <a
+          href="{{ section.settings.button_url }}"
+          class="root-health-ingredient-function__learn-more"
+          {% if section.settings.button_url contains 'http' %}
+            target="_blank" rel="noopener noreferrer"
+          {% endif %}
+        >
+          {{ section.settings.button_text }} &rarr;
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Root Health Ingred",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Functional ingredients free of refined sugar, artificial ingredients, allergens, and harmful substances."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Link text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Decorative images (optional)"
+    },
+    {
+      "type": "text",
+      "id": "decor_top_left_filename",
+      "label": "Top-left image (asset filename)",
+      "info": "Optional. Filename of a decorative image in your theme assets."
+    },
+    {
+      "type": "text",
+      "id": "decor_bottom_right_filename",
+      "label": "Bottom-right image (asset filename)",
+      "info": "Optional. Filename of a decorative image in your theme assets."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "learn_more_color",
+      "label": "Learn more link color",
+      "default": "#FC4C44"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_item",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "icon_filename",
+          "label": "Icon (asset filename)",
+          "info": "Optional. Overrides the image picker above."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Vegan"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Health Ingredient Function",
+      "blocks": [
+        { "type": "icon_item", "settings": { "label": "Vegan" } },
+        { "type": "icon_item", "settings": { "label": "Soy Free" } },
+        { "type": "icon_item", "settings": { "label": "Dairy Free" } },
+        { "type": "icon_item", "settings": { "label": "Gluten Free" } },
+        { "type": "icon_item", "settings": { "label": "Nut Free" } },
+        { "type": "icon_item", "settings": { "label": "Refined Sugar Free" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

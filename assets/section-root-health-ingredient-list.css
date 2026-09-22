@@ -1,0 +1,348 @@
+/* =====================================================================
+   Root Health Ingredient List — card carousel
+   Root font-size is 62.5% on this theme, so 1rem = 10px.
+   Mobile-first: cards stack full-width and expand vertically.
+   Desktop (>=769px): horizontal card carousel with width-transition expand.
+   ===================================================================== */
+
+.ril {
+	--ril-bg: var(--background-color, var(--color-surface));
+	--ril-card-bg: #fff;
+	--ril-card-radius: 20px;
+	--ril-card-collapsed-w: 300px;
+	--ril-card-expanded-w: 940px;
+	--ril-card-h: 460px;
+	--ril-row-gap: 20px;
+	--ril-tab-active: var(--accent-color, var(--color-primary));
+	--ril-tab-inactive: var(--text-color, #333);
+}
+
+.ril {
+	background-color: var(--ril-bg, var(--color-surface));
+}
+
+/* Section heading */
+.ril__heading {
+	font-family: "GT Super Ds Trial", var(--font-heading-family), serif;
+	font-weight: 300;
+	font-size: 3.2rem;
+	line-height: 1.15;
+	color: #000;
+	margin: 0 0 3rem 0;
+	text-align: left;
+	max-width: 90rem;
+}
+
+/* ---------------------------------------------------------------------
+   Category tabs
+   --------------------------------------------------------------------- */
+.ril__tabs {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 2rem 4rem;
+	margin: 0 0 3rem 0;
+}
+
+.ril__tab {
+	appearance: none;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	font-family: "Gilroy", sans-serif;
+	font-weight: 600;
+	font-size: 1.8rem;
+	line-height: 1;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: var(--ril-tab-inactive, #333);
+	transition: color 0.2s ease;
+}
+
+.ril__tab:hover {
+	opacity: 0.85;
+}
+
+.ril__tab.is-active {
+	color: var(--ril-tab-active, var(--color-primary));
+}
+
+.ril__tab:focus-visible {
+	outline: 2px solid var(--ril-tab-active, var(--color-primary));
+	outline-offset: 4px;
+}
+
+/* ---------------------------------------------------------------------
+   Panels / rows
+   --------------------------------------------------------------------- */
+.ril__panel {
+	display: none;
+}
+
+.ril__panel.is-active {
+	display: block;
+}
+
+.ril__row {
+	display: flex;
+	flex-direction: column;
+	gap: var(--ril-row-gap);
+}
+
+/* ---------------------------------------------------------------------
+   Card — mobile-first (vertical, full-width)
+   --------------------------------------------------------------------- */
+.ril-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	background: var(--ril-card-bg, #fff);
+	border-radius: var(--ril-card-radius, 20px);
+	overflow: hidden;
+	cursor: pointer;
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.ril-card:focus-visible {
+	outline: 2px solid var(--ril-tab-active, var(--color-primary));
+	outline-offset: 2px;
+}
+
+.ril-card__img {
+	display: block;
+	width: 100%;
+	height: 220px;
+	object-fit: cover;
+	flex-shrink: 0;
+}
+
+.ril-card__img--placeholder {
+	background: linear-gradient(135deg, #efe9e2, #e4d9cd);
+}
+
+.ril-card__footer {
+	padding: 2rem 2.2rem;
+}
+
+.ril-card__name {
+	font-family: "GT Super Ds Trial", var(--font-heading-family), serif;
+	font-weight: 300;
+	font-size: 3rem;
+	line-height: 1.1;
+	color: #000;
+	margin: 0;
+}
+
+.ril-card__purpose {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 600;
+	font-size: 1.8rem;
+	line-height: 1.3;
+	color: #333;
+	margin: 0.6rem 0 0 0;
+}
+
+.ril-card__value {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.3rem;
+	line-height: 1.4;
+	color: #777;
+	margin: 0.4rem 0 0 0;
+}
+
+/* Detail — hidden until expanded */
+.ril-card__detail {
+	display: none;
+	padding: 0 2.2rem 2rem 2.2rem;
+}
+
+.ril-card.is-open .ril-card__detail {
+	display: block;
+}
+
+.ril-card__detail-block--research {
+	margin-top: 2rem;
+}
+
+.ril-card__detail-heading {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 600;
+	font-size: 2rem;
+	line-height: 1.2;
+	color: #000;
+	margin: 0 0 0.8rem 0;
+}
+
+.ril-card__detail-heading--sm {
+	font-size: 1.6rem;
+}
+
+.ril-card__detail-text,
+.ril-card__detail-source {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.6rem;
+	line-height: 2.8rem;
+	color: #333;
+	margin: 0;
+}
+
+.ril-card__detail-source {
+	font-size: 1.4rem;
+	line-height: 2.2rem;
+}
+
+.ril-card__detail-source a {
+	color: var(--ril-tab-active, var(--color-primary));
+	text-decoration: underline;
+}
+
+.ril-card__detail-source p {
+	margin: 0;
+}
+
+/* ---------------------------------------------------------------------
+   Desktop carousel (>=769px)
+   --------------------------------------------------------------------- */
+@media screen and (min-width: 769px) {
+	.ril__heading {
+		font-size: 6rem;
+		line-height: 1.2;
+		margin: 0 0 4rem 0;
+	}
+
+	.ril__row {
+		flex-direction: row;
+		align-items: stretch;
+		gap: var(--ril-row-gap);
+		overflow-x: auto;
+		overflow-y: hidden;
+		padding-bottom: 1.5rem;
+		scroll-snap-type: x proximity;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.ril__row::-webkit-scrollbar {
+		height: 6px;
+	}
+
+	.ril__row::-webkit-scrollbar-thumb {
+		background-color: rgba(0, 0, 0, 0.12);
+		border-radius: 3px;
+	}
+
+	/* Collapsed card: fixed 300x460, content absolutely positioned */
+	.ril-card {
+		display: block;
+		position: relative;
+		flex: 0 0 auto;
+		width: var(--ril-card-collapsed-w, 300px);
+		height: var(--ril-card-h, 460px);
+		overflow: hidden;
+		scroll-snap-align: start;
+		transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+		will-change: width;
+	}
+
+	.ril-card__img {
+		position: absolute;
+		top: 0;
+		left: auto;
+		right: 0;
+		width: 100%;
+		height: 65%;
+		object-fit: cover;
+		border-radius: var(--ril-card-radius, 20px) var(--ril-card-radius, 20px) 0 0;
+		transition: none;
+	}
+
+	.ril-card__footer {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		padding: 2rem 2.4rem 2.4rem 2.4rem;
+	}
+
+	.ril-card__detail {
+		display: block;
+		position: absolute;
+		top: 3rem;
+		left: 4rem;
+		right: 34rem; /* leave room for the top-right image */
+		bottom: 12rem; /* leave room for the footer */
+		padding: 0;
+		opacity: 0;
+		visibility: hidden;
+		overflow: hidden;
+		transition: opacity 0.3s ease 0.1s;
+	}
+
+	/* Expanded card */
+	.ril-card.is-open {
+		width: var(--ril-card-expanded-w, 940px);
+	}
+
+	.ril-card.is-open .ril-card__img {
+		width: 300px;
+		height: 260px;
+		top: 0;
+		left: auto;
+		right: 0;
+		border-radius: 0 var(--ril-card-radius, 20px) 0 20px;
+	}
+
+	.ril-card.is-open .ril-card__detail {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.ril-card.is-open .ril-card__footer {
+		right: auto;
+		max-width: 60%;
+	}
+
+	.ril-card__detail-block--research {
+		margin-top: 3rem;
+	}
+}
+
+/* ---------------------------------------------------------------------
+   Reduced motion
+   --------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+	.ril-card,
+	.ril-card__img,
+	.ril-card__detail {
+		transition: none;
+	}
+}
+
+/* Print */
+@media print {
+	.ril {
+		background-color: transparent !important;
+	}
+	.ril__panel {
+		display: block !important;
+	}
+	.ril__row {
+		flex-direction: column !important;
+		overflow: visible !important;
+	}
+	.ril-card {
+		width: 100% !important;
+		height: auto !important;
+		break-inside: avoid;
+	}
+	.ril-card__detail {
+		position: static !important;
+		display: block !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+	}
+}

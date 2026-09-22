@@ -1,0 +1,229 @@
+{% comment %}
+  Data / Efficacy Section
+
+  Orange feature band with an image card on the left and a heading plus a set of
+  statistic rows on the right. Each stat is a block with a large number, an
+  optional small unit, and a supporting description. A results disclaimer sits at
+  the bottom.
+{% endcomment %}
+
+{{ 'section-root-health-data.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="root-health-section root-health-data"
+  id="RootHelpsData-{{ section.id }}"
+  style="--data-bg-color: {{ section.settings.background_color }}; --data-heading-color: {{ section.settings.heading_color }}; --data-stat-color: {{ section.settings.stat_color }}; --data-description-color: {{ section.settings.description_color }}; --data-divider-color: {{ section.settings.divider_color }}; --data-disclaimer-color: {{ section.settings.disclaimer_color }}; --data-padding-top: {{ section.settings.padding_top }}px; --data-padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="root-health-section__container">
+    <div class="root-health-data__grid">
+      <div class="root-health-data__media">
+        {% if section.settings.image_filename != blank %}
+          <img
+            src="{{ section.settings.image_filename | asset_url }}"
+            alt="{{ section.settings.heading | escape }}"
+            class="root-health-data__image"
+            loading="lazy"
+          >
+        {% elsif section.settings.image != blank %}
+          {{
+            section.settings.image
+            | image_url: width: 960
+            | image_tag: loading: 'lazy', alt: section.settings.heading, class: 'root-health-data__image'
+          }}
+        {% else %}
+          <div class="root-health-data__image root-health-data__image--placeholder"></div>
+        {% endif %}
+      </div>
+
+      <div class="root-health-data__content">
+        {% if section.settings.heading != blank %}
+          <h2 class="root-health-data__heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+          <div class="root-health-data__stats">
+            {% for block in section.blocks %}
+              {% if block.type == 'stat' %}
+                <div class="root-health-data__stat" {{ block.shopify_attributes }}>
+                  <div class="root-health-data__stat-number">
+                    {%- assign stat_num = block.settings.number | replace: 'out of', '<span class="root-health-data__stat-unit">out of</span>' -%}
+                    {{ stat_num }}{% if block.settings.unit != blank %}<span class="root-health-data__stat-unit">{{ block.settings.unit }}</span>{% endif %}
+                  </div>
+                  {% if block.settings.description != blank %}
+                    <p class="root-health-data__stat-desc">{{ block.settings.description }}</p>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if section.settings.disclaimer != blank %}
+      <p class="root-health-data__disclaimer">{{ section.settings.disclaimer }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Root Health Data",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Real-world tested for efficacy"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer text",
+      "default": "Results disclaimer"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Recommended size: 478x589px"
+    },
+    {
+      "type": "text",
+      "id": "image_filename",
+      "label": "Image (asset filename)",
+      "info": "Optional. Filename of an image in your theme assets. Overrides the image picker above."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FE9A68"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "stat_color",
+      "label": "Stat number color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "disclaimer_color",
+      "label": "Disclaimer color",
+      "default": "#E5653D"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "4 out of 5"
+        },
+        {
+          "type": "text",
+          "id": "unit",
+          "label": "Unit (small, optional)"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Moms saw a milk supply increase"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Health Data",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "number": "4 out of 5",
+            "unit": "",
+            "description": "Moms saw a milk supply increase"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": "+0.9",
+            "unit": "oz",
+            "description": "Avg increase in supply per feeding (3.6 oz → 4.5 oz, +25%)"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": "+3",
+            "unit": "min",
+            "description": "Longer average pumping session duration"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

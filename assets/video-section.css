@@ -46,3 +46,48 @@
 .video-section__media.media-fit-cover video {
   object-fit: cover;
 }
+
+/* ============================================================
+   Why page video (Figma 1612:1656)
+   Centered, rounded video framed to 1280px with an orange circular
+   play button. Scoped to .video-section so the shared
+   .deferred-media__poster-button used elsewhere is untouched.
+   ============================================================ */
+.video-section .video-section__media,
+.video-section .deferred-media__poster {
+  border-radius: 10px;
+}
+
+.video-section .deferred-media__poster-button {
+  background-color: var(--color-accent);
+  border: none;
+  color: #ffffff;
+}
+
+.video-section .deferred-media__poster-button .svg-wrapper,
+.video-section .deferred-media__poster-button .icon {
+  color: #ffffff;
+}
+
+.video-section .deferred-media__poster-button svg {
+  fill: currentColor;
+}
+
+@media screen and (min-width: 1024px) {
+  .video-section .video-section__media {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .video-section .deferred-media__poster-button {
+    height: 9.8rem;
+    width: 9.8rem;
+  }
+
+  .video-section .deferred-media__poster-button .svg-wrapper,
+  .video-section .deferred-media__poster-button .icon {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+}

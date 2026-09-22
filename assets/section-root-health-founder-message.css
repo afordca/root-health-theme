@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Root Health Founder Message
+   Two-column: founder image card (left) + story content (right).
+   Mobile-first base styles; desktop layout inside the 1024px media query.
+   ========================================================================== */
+
+.root-health-founder-message {
+	background-color: var(--background-color, #ffffff);
+}
+
+.root-health-founder-message__grid {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	align-items: center;
+}
+
+.root-health-founder-message__media {
+	width: 100%;
+}
+
+.root-health-founder-message__image {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 420px;
+	object-fit: cover;
+	border-radius: 20px;
+}
+
+.root-health-founder-message__content {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.root-health-founder-message__heading {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 3.2rem;
+	line-height: 1.05;
+	color: var(--heading-color, var(--color-primary));
+	margin: 0;
+}
+
+.root-health-founder-message__subtext {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.6rem;
+	line-height: 1.4;
+	color: var(--subtext-color, #000000);
+	margin: 0;
+}
+
+.root-health-founder-message__label {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	align-self: flex-start;
+	padding: 16px 40px;
+	border: 1px solid var(--label-border-color, var(--color-primary));
+	color: var(--label-color, var(--color-primary));
+	background: transparent;
+	font-family: "Gilroy", sans-serif;
+	font-weight: 600;
+	font-size: 1.4rem;
+	line-height: 1.3;
+	letter-spacing: 0.21em;
+	text-transform: uppercase;
+	text-decoration: none;
+	margin-top: 8px;
+	transition: all 0.3s ease;
+}
+
+.root-health-founder-message__label:hover {
+	background: var(--label-border-color, var(--color-primary));
+	color: #ffffff;
+}
+
+/* Desktop (1024px+) */
+@media screen and (min-width: 1024px) {
+	.root-health-founder-message__grid {
+		flex-direction: row;
+		align-items: center;
+		gap: 96px;
+	}
+
+	.root-health-founder-message__media {
+		flex: 0 0 550px;
+		width: 550px;
+	}
+
+	.root-health-founder-message__image {
+		width: 550px;
+		height: 550px;
+		max-height: none;
+	}
+
+	.root-health-founder-message__content {
+		flex: 1 1 auto;
+		max-width: 562px;
+		gap: 28px;
+	}
+
+	.root-health-founder-message__heading {
+		font-size: 4.8rem;
+		line-height: 1;
+	}
+
+	.root-health-founder-message__subtext {
+		font-size: 1.8rem;
+		line-height: 1.4;
+		max-width: 544px;
+	}
+}

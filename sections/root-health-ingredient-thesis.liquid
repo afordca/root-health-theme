@@ -1,0 +1,168 @@
+{{ 'section-root-health-ingredient-thesis.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign eyebrow = section.settings.title
+  assign heading = section.settings.heading
+  assign description = section.settings.description
+  assign enable_section = section.settings.enable_section
+  assign thesis_image = section.settings.image
+  assign thesis_image_file = section.settings.image_filename
+-%}
+
+{%- if enable_section -%}
+  <section class="root-health-section root-health-ingredient-thesis">
+    <div class="root-health-section__container">
+      <div class="root-health-ingredient-thesis__content">
+        <div class="root-health-ingredient-thesis__text">
+          {% if eyebrow != blank %}
+            <p class="root-health-ingredient-thesis__title type-label">{{ eyebrow }}</p>
+          {% endif %}
+          {% if heading != blank %}
+            <h2 class="root-health-ingredient-thesis__heading">{{ heading }}</h2>
+          {% endif %}
+          {% if description != blank %}
+            <div class="root-health-ingredient-thesis__description">
+              {{ description }}
+            </div>
+          {% endif %}
+
+          <div class="root-health-ingredient-thesis__components">
+            {% for block in section.blocks %}
+              {%- case block.type -%}
+                {%- when 'component' -%}
+                  <div class="root-health-ingredient-thesis__component" {{ block.shopify_attributes }}>
+                    {% if block.settings.icon != blank %}
+                      <div class="root-health-ingredient-thesis__icon">
+                        <img src="{{ block.settings.icon | asset_url }}" alt="{{ block.settings.name }}">
+                      </div>
+                    {% endif %}
+                    {% if block.settings.name != blank %}
+                      <span class="root-health-ingredient-thesis__component-name">
+                        {{ block.settings.name }}
+                      </span>
+                    {% endif %}
+                  </div>
+              {%- endcase -%}
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="root-health-ingredient-thesis__media">
+          {%- if thesis_image_file != blank -%}
+            <img src="{{ thesis_image_file | asset_url }}" alt="" loading="lazy" width="" height="">
+          {%- elsif thesis_image != blank -%}
+            <img src="{{ thesis_image | image_url: width: 900 }}" alt="{{ thesis_image.alt | escape }}" loading="lazy" width="" height="">
+          {%- else -%}
+            <img src="{{ 'product-hero-image-642529.jpg' | asset_url }}" alt="" loading="lazy" width="" height="">
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Root Health Ingr Thesis",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_section",
+      "label": "Enable section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Eyebrow",
+      "default": "THESIS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The most complete product developed"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>We've identified 5 nutritional components that have a direct impact on your milk supply. We set out to create a product that addressed each of these components without compromising on clean, healthful ingredients that could accommodate various dietary needs and desires.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Side image"
+    },
+    {
+      "type": "text",
+      "id": "image_filename",
+      "label": "Side image (asset filename)",
+      "info": "Optional. Filename of an image in your theme assets, e.g. product-hero-image-642529.jpg. Overrides the image picker above."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "component",
+      "name": "Nutritional Component",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Component name"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon filename",
+          "info": "Enter the filename of the SVG icon (e.g., 'icon-hydration.svg')"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Health Ingredient Thesis",
+      "blocks": [
+        {
+          "type": "component",
+          "settings": {
+            "name": "Hydration",
+            "icon": "icon-hydration.svg"
+          }
+        },
+        {
+          "type": "component",
+          "settings": {
+            "name": "Calories",
+            "icon": "icon-calories.svg"
+          }
+        },
+        {
+          "type": "component",
+          "settings": {
+            "name": "Vitamins",
+            "icon": "icon-vitamins.svg"
+          }
+        },
+        {
+          "type": "component",
+          "settings": {
+            "name": "Protein",
+            "icon": "icon-protein.svg"
+          }
+        },
+        {
+          "type": "component",
+          "settings": {
+            "name": "Galactagogues",
+            "icon": "icon-galactagogues.svg"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

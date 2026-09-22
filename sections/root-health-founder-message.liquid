@@ -1,0 +1,170 @@
+{% comment %}
+  Founder Message Section
+
+  Two-column founding story: a square image card on the left, and the heading,
+  subtext and an outlined "founding story" link on the right.
+{% endcomment %}
+
+{{ 'section-root-health-founder-message.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="root-health-section root-health-founder-message"
+  id="RootHelpsFounderMessage-{{ section.id }}"
+  style="
+    --background-color: {{ section.settings.background_color }};
+    --heading-color: {{ section.settings.heading_color }};
+    --subtext-color: {{ section.settings.subtext_color }};
+    --label-color: {{ section.settings.label_color }};
+    --label-border-color: {{ section.settings.label_bg_color }};
+  "
+>
+  <div class="root-health-section__container">
+    <div class="root-health-founder-message__grid">
+      <div class="root-health-founder-message__media">
+        {% if section.settings.image_filename != blank %}
+          <img
+            class="root-health-founder-message__image"
+            src="{{ section.settings.image_filename | asset_url }}"
+            alt="{{ section.settings.heading | escape }}"
+            loading="lazy"
+          >
+        {% elsif section.settings.background_image != blank %}
+          {{
+            section.settings.background_image
+            | image_url: width: 1100
+            | image_tag: loading: 'lazy', alt: section.settings.heading, class: 'root-health-founder-message__image'
+          }}
+        {% else %}
+          <img
+            class="root-health-founder-message__image"
+            src="{{ 'founder-message-bg-6d7afd.jpg' | asset_url }}"
+            alt="{{ section.settings.heading | escape }}"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+
+      <div class="root-health-founder-message__content">
+        {% if section.settings.heading != blank %}
+          <h2 class="root-health-founder-message__heading">
+            {{ section.settings.heading }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.subtext != blank %}
+          <p class="root-health-founder-message__subtext">
+            {{ section.settings.subtext }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.label != blank %}
+          <a href="{{ section.settings.action_link }}" class="root-health-founder-message__label type-label">
+            {{ section.settings.label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Root Health Founder",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Founder image",
+      "info": "Recommended: square image (e.g. 1100x1100px)"
+    },
+    {
+      "type": "text",
+      "id": "image_filename",
+      "label": "Founder image (asset filename)",
+      "info": "Optional. Filename of an image in your theme assets. Overrides the image picker above."
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Main heading",
+      "default": "We exist to support moms..."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "We value what we put in our body just as much as you do."
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Button label",
+      "default": "OUR FOUNDING STORY"
+    },
+    {
+      "type": "url",
+      "id": "action_link",
+      "label": "Action link",
+      "default": "/"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section height (px)",
+      "min": 400,
+      "max": 800,
+      "step": 50,
+      "default": 600
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#E5653D"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Subtext color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Button text color",
+      "default": "#E5653D"
+    },
+    {
+      "type": "color",
+      "id": "label_bg_color",
+      "label": "Button border color",
+      "default": "#E5653D"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Root Health Founder Message"
+    }
+  ]
+}
+{% endschema %}
