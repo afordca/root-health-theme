@@ -6,6 +6,7 @@
   assign button_text = section.settings.button_text
   assign button_url = section.settings.button_url
   assign bg_image = section.settings.background_image
+  assign bg_image_filename = section.settings.background_image_filename
 -%}
 
 <section
@@ -16,7 +17,16 @@
     <div class="root-health-product-testing__wrapper">
       <!-- Left Column: Image -->
       <div class="root-health-product-testing__image-container">
-        {%- if bg_image != blank -%}
+        {%- if bg_image_filename != blank -%}
+          <img
+            class="root-health-product-testing__image"
+            src="{{ bg_image_filename | asset_url }}"
+            alt="{{ section.settings.heading | escape }}"
+            loading="lazy"
+            width="600"
+            height="480"
+          >
+        {%- elsif bg_image != blank -%}
           <img
             class="root-health-product-testing__image"
             src="{{ bg_image | image_url: width: 600 }}"
@@ -116,6 +126,12 @@
       "type": "image_picker",
       "id": "background_image",
       "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "background_image_filename",
+      "label": "Background image (asset filename)",
+      "info": "Optional. Filename of an image in your theme assets, e.g. product-test.png. Overrides the image picker above."
     },
     {
       "type": "header",

@@ -1,1 +1,454 @@
-{"sections":{"ingredient_hero":{"type":"root-health-ingredient-hero","settings":{"background_image_desktop_filename":"ingredient-hero-bg-18fd29.jpg","background_image_mobile_filename":"ingredient-hero-mobile-bg-38a050.jpg","title":"Our formula compromised for no one","description":"<p>Because you wouldn't compromise for your little one, we wouldn't compromise for you. That's why we're committed to using only the best ingredients that you can trust. All that leads to a product that tastes good, is effective and is good for you.</p>","color_scheme":"scheme-1","padding_top":0,"padding_bottom":0}},"ingredient_list":{"type":"root-health-ingredient-list","blocks":{"cat_functional":{"type":"ingredient_category","settings":{"category_id":"functional","category_title":"Functional","category_order":1}},"cat_galactagogues":{"type":"ingredient_category","settings":{"category_id":"galactagogues","category_title":"Galactagogues","category_order":2}},"cat_protein":{"type":"ingredient_category","settings":{"category_id":"protein","category_title":"Protein","category_order":3}},"cat_base":{"type":"ingredient_category","settings":{"category_id":"base","category_title":"Base","category_order":4}},"ing_folate":{"type":"ingredient_item","settings":{"parent_category":"custom","custom_parent_category":"functional","ingredient_order":1,"ingredient_title":"Folate","ingredient_subtitle":"Nutritional support","ingredient_description":"Essential for cell growth and development.","ingredient_why_content":"<p>Packed with essential nutrients, folate supports healthy cell growth and development for both mother and baby.</p>","ingredient_research_content":"<p>Research content to be added.</p>"}},"ing_probiotic":{"type":"ingredient_item","settings":{"parent_category":"custom","custom_parent_category":"functional","ingredient_order":2,"ingredient_title":"Probiotic Powder","ingredient_subtitle":"Digestive support","ingredient_description":"Beneficial bacteria for gut health.","ingredient_why_content":"<p>Supports digestive health and immune function with beneficial bacteria.</p>","ingredient_research_content":"<p>Research content to be added.</p>"}},"ing_moringa":{"type":"ingredient_item","settings":{"parent_category":"galactagogues","ingredient_order":1,"ingredient_title":"Moringa Leaf","ingredient_subtitle":"Lactation support","ingredient_description":"Increases milk volume by up to 47%.","ingredient_why_content":"<p>Packed with essential nutrients like vitamins A, C, and E, this herbal galactagogue has been clinically shown to increase breast milk levels by 47%. The same study found that exclusive breastfeeding rates at 6 months improved to 52.3% in mothers taking Moringa oleifera, compared to the U.S. national average of just 25.4%.</p>","ingredient_research_content":"<p><strong>Source:</strong> Fungtammasan S and Phupong V. The effect of Moringa oleifera capsule in increasing breast milk volume in early postpartum patients: A double-blind, randomized controlled trial. <em>Eur J Obstet Gynecol Reprod Biol X.</em> 2022 Dec; 16: 100171.</p>"}},"ing_goatsrue":{"type":"ingredient_item","settings":{"parent_category":"galactagogues","ingredient_order":2,"ingredient_title":"Goat's Rue","ingredient_subtitle":"Lactation support","ingredient_description":"Traditional galactagogue for milk supply.","ingredient_why_content":"<p>A popular herbal galactagogue traditionally used to support and boost milk production.</p>","ingredient_research_content":"<p>Research content to be added.</p>"}},"ing_blessedthistle":{"type":"ingredient_item","settings":{"parent_category":"galactagogues","ingredient_order":3,"ingredient_title":"Blessed Thistle","ingredient_subtitle":"Lactation support","ingredient_description":"Often paired with other galactagogues.","ingredient_why_content":"<p>A synergistic herb frequently combined with other galactagogues to support lactation.</p>","ingredient_research_content":"<p>Research content to be added.</p>"}},"ing_shatavari":{"type":"ingredient_item","settings":{"parent_category":"galactagogues","ingredient_order":4,"ingredient_title":"Shatavari","ingredient_subtitle":"Lactation support","ingredient_description":"Ayurvedic herb for lactation and vitality.","ingredient_why_content":"<p>A traditional Ayurvedic adaptogen valued for supporting lactation and overall vitality.</p>","ingredient_research_content":"<p>Research content to be added.</p>"}},"ing_peaprotein":{"type":"ingredient_item","settings":{"parent_category":"protein","ingredient_order":1,"ingredient_title":"Pea Protein Powder","ingredient_subtitle":"Complete plant protein","ingredient_description":"All essential amino acids.","ingredient_why_content":"<p>A complete plant protein delivering all essential amino acids for tissue repair and energy.</p>","ingredient_research_content":"<p>Research content to be added.</p>"}},"ing_riceprotein":{"type":"ingredient_item","settings":{"parent_category":"protein","ingredient_order":2,"ingredient_title":"Rice Protein","ingredient_subtitle":"Hypoallergenic protein","ingredient_description":"Gentle on digestion.","ingredient_why_content":"<p>A hypoallergenic protein source that is gentle on digestion.</p>","ingredient_research_content":"<p>Research content to be added.</p>"}},"ing_water":{"type":"ingredient_item","settings":{"parent_category":"base","ingredient_order":1,"ingredient_title":"Water","ingredient_subtitle":"Pure hydration base","ingredient_description":"Essential for all biological processes.","ingredient_why_content":"<p>The pure hydration base essential for every biological process.</p>","ingredient_research_content":"<p>Research content to be added.</p>"}},"ing_cacao":{"type":"ingredient_item","settings":{"parent_category":"base","ingredient_order":2,"ingredient_title":"Cacao Powder","ingredient_subtitle":"Natural chocolate flavor","ingredient_description":"Rich in antioxidants.","ingredient_why_content":"<p>Adds natural chocolate flavor and is rich in antioxidants.</p>","ingredient_research_content":"<p>Research content to be added.</p>"}},"ing_datesyrup":{"type":"ingredient_item","settings":{"parent_category":"base","ingredient_order":3,"ingredient_title":"Date Syrup","ingredient_subtitle":"Natural sweetener","ingredient_description":"Whole food sweetening agent.","ingredient_why_content":"<p>A whole-food sweetener providing natural sweetness without refined sugar.</p>","ingredient_research_content":"<p>Research content to be added.</p>"}}},"block_order":["cat_functional","cat_galactagogues","cat_protein","cat_base","ing_folate","ing_probiotic","ing_moringa","ing_goatsrue","ing_blessedthistle","ing_shatavari","ing_peaprotein","ing_riceprotein","ing_water","ing_cacao","ing_datesyrup"],"settings":{"section_heading":"Functional ingredients for a more functioning you","featured_title":"Moringa Leaf","featured_subtitle":"Lactation support","background_color":"#F7F7F7","text_color":"#333333","category_color":"#333333","ingredient_color":"#FE9A68","accent_color":"#E5653D"}},"ingredient_thesis":{"type":"root-health-ingredient-thesis","blocks":{"comp_hydration":{"type":"component","settings":{"name":"Hydration","icon":"icon-hydration.svg"}},"comp_calories":{"type":"component","settings":{"name":"Calories","icon":"icon-calories.svg"}},"comp_protein":{"type":"component","settings":{"name":"Protein","icon":"icon-protein.svg"}},"comp_vitamins":{"type":"component","settings":{"name":"Vitamins","icon":"icon-vitamins.svg"}},"comp_galactagogues":{"type":"component","settings":{"name":"Galactagogues","icon":"icon-galactagogues.svg"}}},"block_order":["comp_hydration","comp_calories","comp_protein","comp_vitamins","comp_galactagogues"],"settings":{"enable_section":true,"title":"THESIS","heading":"The most complete product developed","description":"<p>We've identified 5 nutritional components that have a direct impact on your milk supply, mood and energy levels. We set out to create a product that addressed each of these components without compromising on clean, healthful ingredients that could accommodate various dietary needs.</p>","image_filename":"product-hero-image-642529.jpg"}},"selection_process":{"type":"root-health-selection-process","blocks":{"crit_1":{"type":"criteria_item","settings":{"text":"Non-GMO"}},"crit_2":{"type":"criteria_item","settings":{"text":"Lead Free"}},"crit_3":{"type":"criteria_item","settings":{"text":"Clean Label"}},"crit_4":{"type":"criteria_item","settings":{"text":"No Additives"}},"crit_5":{"type":"criteria_item","settings":{"text":"No Additives"}},"crit_6":{"type":"criteria_item","settings":{"text":"No Additives"}}},"block_order":["crit_1","crit_2","crit_3","crit_4","crit_5","crit_6"],"settings":{"heading":"A meticulous selection process","description":"We spent over two years developing, modifying, testing and formulating our product. Every ingredient was picked with purpose and intent. Learn the benefits of each ingredient.","criteria_label":"","padding_top":0,"padding_bottom":0}},"medical_advisors":{"type":"root-health-medical-advisors","blocks":{"advisor_1":{"type":"advisor","settings":{"advisor_image_filename":"advisor-1.jpg","advisor_name":"Lisa Smith, MD","advisor_credential":"Board Certified Emergency","mother_info":"Mother of 3"}},"advisor_2":{"type":"advisor","settings":{"advisor_image_filename":"advisor-2.jpg","advisor_name":"Lisa Smith, MD","advisor_credential":"Lactation Consultant","mother_info":"Mother of 3"}},"advisor_3":{"type":"advisor","settings":{"advisor_image_filename":"advisor-3.jpg","advisor_name":"Lisa Smith, MD","advisor_credential":"OB/GYN","mother_info":"Mother of 3"}},"advisor_4":{"type":"advisor","settings":{"advisor_image_filename":"advisor-4-1590e0.jpg","advisor_name":"Lisa Smith, MD","advisor_credential":"Doula","mother_info":"Mother of 3"}}},"block_order":["advisor_1","advisor_2","advisor_3","advisor_4"],"settings":{"heading":"Guided by Medical Expertise","description":"As we developed our formula and strategy, we sought direct input and feedback from medical professionals. Our advisory board exists as a resource to ensure we are meeting the changing medical and emotional demands of new mothers.","heading_color":"#000000","text_color":"#000000","name_color":"#000000","credential_color":"#000000","mother_label_color":"#000000","card_bg_color":"#FFFFFF","border_color":"#FE9A68"}},"product_testing":{"type":"root-health-product-testing","blocks":{"test_1":{"type":"test_item","settings":{"test_name":"Heavy Metals","test_value":"0mg"}},"test_2":{"type":"test_item","settings":{"test_name":"Lead","test_value":"0mg"}},"test_3":{"type":"test_item","settings":{"test_name":"Allergens","test_value":"0mg"}},"test_4":{"type":"test_item","settings":{"test_name":"Heavy Metals","test_value":"0mg"}},"test_5":{"type":"test_item","settings":{"test_name":"Heavy Metals","test_value":"0mg"}}},"block_order":["test_1","test_2","test_3","test_4","test_5"],"settings":{"heading":"Rigorously tested to meet our product standards","subtitle":"Each batch is tested for and required to meet various thresholds:","section_height":"auto","padding_top":0,"padding_bottom":0}},"main":{"type":"main-page","disabled":true,"settings":{"padding_top":28,"padding_bottom":28}},"root_health_efficacy_fQdg4h":{"type":"root-health-efficacy","blocks":{"statistic_KQH6xF":{"type":"statistic","settings":{"number":"X%","label":"Increase in milk supply","description":"Average increase in new moms saw an increase in 2 weeks","section_type":"objective"}},"statistic_zRU4HC":{"type":"statistic","settings":{"number":"X oz","label":"Increase per pumping session","description":"Average amount of breastmilk production increase per pumping session.","section_type":"objective"}},"statistic_FzCx7H":{"type":"statistic","settings":{"number":"X out of X","label":"Felt in a better mood","description":"Average increase in new moms saw an increase in 2 weeks","section_type":"subjective"}},"statistic_M6bcCz":{"type":"statistic","settings":{"number":"X minutes","label":"Increase in availble time","description":"Moms reported having an average of X more minutes to the day.","section_type":"subjective"}}},"block_order":["statistic_KQH6xF","statistic_zRU4HC","statistic_FzCx7H","statistic_M6bcCz"],"name":"Root Health Efficacy","settings":{"heading":"Real-world tested for efficacy","description":"We enlisted a third-party market testing firm to help us determine the efficacy of our product by hosting a consumer survey of more than 100 breastfeeding moms ages 18-55 with babies aged 6 months and under. The survey ran for 10 days, with moms reporting their results after 10 days of blindly sampling our product. A summary of our findings are below. A full report is available for download.","report_background":"shopify://shop_images/Rectangle_76.png","form_action":"#","padding_top":0,"padding_bottom":0}}},"order":["ingredient_hero","ingredient_list","ingredient_thesis","selection_process","medical_advisors","root_health_efficacy_fQdg4h","product_testing","main"]}
+{
+  "sections": {
+    "ingredient_hero": {
+      "type": "root-health-ingredient-hero",
+      "settings": {
+        "background_image_desktop_filename": "ingredient-hero-bg-18fd29.jpg",
+        "background_image_mobile_filename": "ingredient-hero-mobile-bg-38a050.jpg",
+        "title": "Our formula compromised for no one",
+        "description": "<p>Because you wouldn't compromise for your little one, we wouldn't compromise for you. That's why we're committed to using only the best ingredients that you can trust. All that leads to a product that tastes good, is effective and is good for you.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "ingredient_list": {
+      "type": "root-health-ingredient-list",
+      "blocks": {
+        "cat_functional": {
+          "type": "ingredient_category",
+          "settings": {
+            "category_id": "functional",
+            "category_title": "Functional",
+            "category_order": 1
+          }
+        },
+        "cat_galactagogues": {
+          "type": "ingredient_category",
+          "settings": {
+            "category_id": "galactagogues",
+            "category_title": "Galactagogues",
+            "category_order": 2
+          }
+        },
+        "cat_protein": {
+          "type": "ingredient_category",
+          "settings": {
+            "category_id": "protein",
+            "category_title": "Protein",
+            "category_order": 3
+          }
+        },
+        "cat_base": {
+          "type": "ingredient_category",
+          "settings": {
+            "category_id": "base",
+            "category_title": "Base",
+            "category_order": 4
+          }
+        },
+        "ing_folate": {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "custom",
+            "custom_parent_category": "functional",
+            "ingredient_order": 1,
+            "ingredient_title": "Folate",
+            "ingredient_subtitle": "Nutritional support",
+            "ingredient_description": "Essential for cell growth and development.",
+            "ingredient_why_content": "<p>Packed with essential nutrients, folate supports healthy cell growth and development for both mother and baby.</p>",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        "ing_probiotic": {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "custom",
+            "custom_parent_category": "functional",
+            "ingredient_order": 2,
+            "ingredient_title": "Probiotic Powder",
+            "ingredient_subtitle": "Digestive support",
+            "ingredient_description": "Beneficial bacteria for gut health.",
+            "ingredient_why_content": "<p>Supports digestive health and immune function with beneficial bacteria.</p>",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        "ing_moringa": {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "galactagogues",
+            "ingredient_order": 1,
+            "ingredient_title": "Moringa Leaf",
+            "ingredient_subtitle": "Lactation support",
+            "ingredient_description": "Increases milk volume by up to 47%.",
+            "ingredient_why_content": "<p>Packed with essential nutrients like vitamins A, C, and E, this herbal galactagogue has been clinically shown to increase breast milk levels by 47%. The same study found that exclusive breastfeeding rates at 6 months improved to 52.3% in mothers taking Moringa oleifera, compared to the U.S. national average of just 25.4%.</p>",
+            "ingredient_research_content": "<p><strong>Source:</strong> Fungtammasan S and Phupong V. The effect of Moringa oleifera capsule in increasing breast milk volume in early postpartum patients: A double-blind, randomized controlled trial. <em>Eur J Obstet Gynecol Reprod Biol X.</em> 2022 Dec; 16: 100171.</p>"
+          }
+        },
+        "ing_goatsrue": {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "galactagogues",
+            "ingredient_order": 2,
+            "ingredient_title": "Goat's Rue",
+            "ingredient_subtitle": "Lactation support",
+            "ingredient_description": "Traditional galactagogue for milk supply.",
+            "ingredient_why_content": "<p>A popular herbal galactagogue traditionally used to support and boost milk production.</p>",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        "ing_blessedthistle": {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "galactagogues",
+            "ingredient_order": 3,
+            "ingredient_title": "Blessed Thistle",
+            "ingredient_subtitle": "Lactation support",
+            "ingredient_description": "Often paired with other galactagogues.",
+            "ingredient_why_content": "<p>A synergistic herb frequently combined with other galactagogues to support lactation.</p>",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        "ing_shatavari": {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "galactagogues",
+            "ingredient_order": 4,
+            "ingredient_title": "Shatavari",
+            "ingredient_subtitle": "Lactation support",
+            "ingredient_description": "Ayurvedic herb for lactation and vitality.",
+            "ingredient_why_content": "<p>A traditional Ayurvedic adaptogen valued for supporting lactation and overall vitality.</p>",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        "ing_peaprotein": {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "protein",
+            "ingredient_order": 1,
+            "ingredient_title": "Pea Protein Powder",
+            "ingredient_subtitle": "Complete plant protein",
+            "ingredient_description": "All essential amino acids.",
+            "ingredient_why_content": "<p>A complete plant protein delivering all essential amino acids for tissue repair and energy.</p>",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        "ing_riceprotein": {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "protein",
+            "ingredient_order": 2,
+            "ingredient_title": "Rice Protein",
+            "ingredient_subtitle": "Hypoallergenic protein",
+            "ingredient_description": "Gentle on digestion.",
+            "ingredient_why_content": "<p>A hypoallergenic protein source that is gentle on digestion.</p>",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        "ing_water": {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "base",
+            "ingredient_order": 1,
+            "ingredient_title": "Water",
+            "ingredient_subtitle": "Pure hydration base",
+            "ingredient_description": "Essential for all biological processes.",
+            "ingredient_why_content": "<p>The pure hydration base essential for every biological process.</p>",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        "ing_cacao": {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "base",
+            "ingredient_order": 2,
+            "ingredient_title": "Cacao Powder",
+            "ingredient_subtitle": "Natural chocolate flavor",
+            "ingredient_description": "Rich in antioxidants.",
+            "ingredient_why_content": "<p>Adds natural chocolate flavor and is rich in antioxidants.</p>",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        },
+        "ing_datesyrup": {
+          "type": "ingredient_item",
+          "settings": {
+            "parent_category": "base",
+            "ingredient_order": 3,
+            "ingredient_title": "Date Syrup",
+            "ingredient_subtitle": "Natural sweetener",
+            "ingredient_description": "Whole food sweetening agent.",
+            "ingredient_why_content": "<p>A whole-food sweetener providing natural sweetness without refined sugar.</p>",
+            "ingredient_research_content": "<p>Research content to be added.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "cat_functional",
+        "cat_galactagogues",
+        "cat_protein",
+        "cat_base",
+        "ing_folate",
+        "ing_probiotic",
+        "ing_moringa",
+        "ing_goatsrue",
+        "ing_blessedthistle",
+        "ing_shatavari",
+        "ing_peaprotein",
+        "ing_riceprotein",
+        "ing_water",
+        "ing_cacao",
+        "ing_datesyrup"
+      ],
+      "settings": {
+        "section_heading": "Functional ingredients for a more functioning you",
+        "featured_title": "Moringa Leaf",
+        "featured_subtitle": "Lactation support",
+        "background_color": "#F7F7F7",
+        "text_color": "#333333",
+        "category_color": "#333333",
+        "ingredient_color": "#FE9A68",
+        "accent_color": "#E5653D"
+      }
+    },
+    "ingredient_thesis": {
+      "type": "root-health-ingredient-thesis",
+      "blocks": {
+        "comp_hydration": {
+          "type": "component",
+          "settings": {
+            "name": "Hydration",
+            "icon": "icon-hydration.svg"
+          }
+        },
+        "comp_calories": {
+          "type": "component",
+          "settings": {
+            "name": "Calories",
+            "icon": "icon-calories.svg"
+          }
+        },
+        "comp_protein": {
+          "type": "component",
+          "settings": {
+            "name": "Protein",
+            "icon": "icon-protein.svg"
+          }
+        },
+        "comp_vitamins": {
+          "type": "component",
+          "settings": {
+            "name": "Vitamins",
+            "icon": "icon-vitamins.svg"
+          }
+        },
+        "comp_galactagogues": {
+          "type": "component",
+          "settings": {
+            "name": "Galactagogues",
+            "icon": "icon-galactagogues.svg"
+          }
+        }
+      },
+      "block_order": [
+        "comp_hydration",
+        "comp_calories",
+        "comp_protein",
+        "comp_vitamins",
+        "comp_galactagogues"
+      ],
+      "settings": {
+        "enable_section": true,
+        "title": "THESIS",
+        "heading": "The most complete product developed",
+        "description": "<p>We've identified 5 nutritional components that have a direct impact on your milk supply, mood and energy levels. We set out to create a product that addressed each of these components without compromising on clean, healthful ingredients that could accommodate various dietary needs.</p>",
+        "image_filename": "product-hero-image-642529.jpg"
+      }
+    },
+    "selection_process": {
+      "type": "root-health-selection-process",
+      "blocks": {
+        "crit_1": {
+          "type": "criteria_item",
+          "settings": {
+            "text": "Non-GMO"
+          }
+        },
+        "crit_2": {
+          "type": "criteria_item",
+          "settings": {
+            "text": "Lead Free"
+          }
+        },
+        "crit_3": {
+          "type": "criteria_item",
+          "settings": {
+            "text": "Clean Label"
+          }
+        },
+        "crit_4": {
+          "type": "criteria_item",
+          "settings": {
+            "text": "No Additives"
+          }
+        },
+        "crit_5": {
+          "type": "criteria_item",
+          "settings": {
+            "text": "No Additives"
+          }
+        },
+        "crit_6": {
+          "type": "criteria_item",
+          "settings": {
+            "text": "No Additives"
+          }
+        }
+      },
+      "block_order": [
+        "crit_1",
+        "crit_2",
+        "crit_3",
+        "crit_4",
+        "crit_5",
+        "crit_6"
+      ],
+      "settings": {
+        "heading": "A meticulous selection process",
+        "description": "We spent over two years developing, modifying, testing and formulating our product. Every ingredient was picked with purpose and intent. Learn the benefits of each ingredient.",
+        "criteria_label": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "medical_advisors": {
+      "type": "root-health-medical-advisors",
+      "blocks": {
+        "advisor_1": {
+          "type": "advisor",
+          "settings": {
+            "advisor_image_filename": "advisor-1.jpg",
+            "advisor_name": "Lisa Smith, MD",
+            "advisor_credential": "Board Certified Emergency",
+            "mother_info": "Mother of 3"
+          }
+        },
+        "advisor_2": {
+          "type": "advisor",
+          "settings": {
+            "advisor_image_filename": "advisor-2.jpg",
+            "advisor_name": "Lisa Smith, MD",
+            "advisor_credential": "Lactation Consultant",
+            "mother_info": "Mother of 3"
+          }
+        },
+        "advisor_3": {
+          "type": "advisor",
+          "settings": {
+            "advisor_image_filename": "advisor-3.jpg",
+            "advisor_name": "Lisa Smith, MD",
+            "advisor_credential": "OB/GYN",
+            "mother_info": "Mother of 3"
+          }
+        },
+        "advisor_4": {
+          "type": "advisor",
+          "settings": {
+            "advisor_image_filename": "advisor-4-1590e0.jpg",
+            "advisor_name": "Lisa Smith, MD",
+            "advisor_credential": "Doula",
+            "mother_info": "Mother of 3"
+          }
+        }
+      },
+      "block_order": [
+        "advisor_1",
+        "advisor_2",
+        "advisor_3",
+        "advisor_4"
+      ],
+      "settings": {
+        "heading": "Guided by Medical Expertise",
+        "description": "As we developed our formula and strategy, we sought direct input and feedback from medical professionals. Our advisory board exists as a resource to ensure we are meeting the changing medical and emotional demands of new mothers.",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "name_color": "#000000",
+        "credential_color": "#000000",
+        "mother_label_color": "#000000",
+        "card_bg_color": "#FFFFFF",
+        "border_color": "#FE9A68"
+      }
+    },
+    "product_testing": {
+      "type": "root-health-product-testing",
+      "blocks": {
+        "test_1": {
+          "type": "test_item",
+          "settings": {
+            "test_name": "Heavy Metals",
+            "test_value": "0mg"
+          }
+        },
+        "test_2": {
+          "type": "test_item",
+          "settings": {
+            "test_name": "Lead",
+            "test_value": "0mg"
+          }
+        },
+        "test_3": {
+          "type": "test_item",
+          "settings": {
+            "test_name": "Allergens",
+            "test_value": "0mg"
+          }
+        },
+        "test_4": {
+          "type": "test_item",
+          "settings": {
+            "test_name": "Heavy Metals",
+            "test_value": "0mg"
+          }
+        },
+        "test_5": {
+          "type": "test_item",
+          "settings": {
+            "test_name": "Heavy Metals",
+            "test_value": "0mg"
+          }
+        }
+      },
+      "block_order": [
+        "test_1",
+        "test_2",
+        "test_3",
+        "test_4",
+        "test_5"
+      ],
+      "settings": {
+        "heading": "Rigorously tested to meet our product standards",
+        "subtitle": "Each batch is tested for and required to meet various thresholds:",
+        "section_height": "auto",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "background_image_filename": "product-test.png"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "ingredient_hero",
+    "ingredient_list",
+    "ingredient_thesis",
+    "selection_process",
+    "medical_advisors",
+    "product_testing",
+    "main"
+  ]
+}

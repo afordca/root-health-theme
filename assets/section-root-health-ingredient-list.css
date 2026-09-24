@@ -257,7 +257,9 @@
 		height: 65%;
 		object-fit: cover;
 		border-radius: var(--ril-card-radius, 20px) var(--ril-card-radius, 20px) 0 0;
-		transition: none;
+		transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+			height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+			border-radius 0.45s ease;
 	}
 
 	.ril-card__footer {
@@ -279,7 +281,7 @@
 		opacity: 0;
 		visibility: hidden;
 		overflow: hidden;
-		transition: opacity 0.3s ease 0.1s;
+		transition: opacity 0.3s ease;
 	}
 
 	/* Expanded card */

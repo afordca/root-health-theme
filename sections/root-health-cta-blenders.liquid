@@ -13,7 +13,9 @@
   style="--section-height: {{ section.settings.section_height }}px;  --heading-color: {{ section.settings.heading_color }}; --subtext-color: {{ section.settings.subtext_color }}; --button-bg-color: {{ section.settings.button_bg_color }}; --button-text-color: {{ section.settings.button_text_color }};"
 >
   <div class="root-health-section__container">
-    {%- if section.settings.background_image != blank -%}
+    {%- if section.settings.background_image_filename != blank -%}
+      {% assign background_image = section.settings.background_image_filename | asset_url %}
+    {%- elsif section.settings.background_image != blank -%}
       {% assign background_image = section.settings.background_image | image_url %}
     {%- else -%}
       {% assign background_image = 'cta-blenders-bg-682b75.jpg' | asset_url %}
@@ -78,6 +80,12 @@
       "id": "background_image",
       "label": "Background image",
       "info": "Recommended size: 1380x960px"
+    },
+    {
+      "type": "text",
+      "id": "background_image_filename",
+      "label": "Background image (asset filename)",
+      "info": "Optional. Filename of an image in your theme assets, e.g. hero-cta-blenders.png. Overrides the image picker above."
     },
     {
       "type": "text",

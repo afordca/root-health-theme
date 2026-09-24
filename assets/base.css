@@ -4461,8 +4461,7 @@ details[open] .header__icon-close {
 	.section-header {
 		z-index: 6;
 	}
-	.section-root-health-hero,
-	.section-root-health-ingredient-hero {
+	.section-root-health-hero {
 		margin-top: calc(-1 * var(--header-height, 84px));
 	}
 }

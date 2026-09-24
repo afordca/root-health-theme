@@ -17,7 +17,8 @@
         "title_color": "#ffffff",
         "subheading_color": "#ffffff",
         "overlay_opacity": 0.15,
-        "section_height": "large"
+        "section_height": "large",
+        "background_image_filename": "hero-why.png"
       }
     },
     "root_health_two_column_text_687BtC": {
@@ -27,7 +28,7 @@
         "team_member_julia": {
           "type": "team_member",
           "settings": {
-            "image_filename": "julia-ford-carther-72098e.jpg",
+            "image_filename": "julia-profile.png",
             "name": "Julia Ford-Carther",
             "role": "Founder + CEO",
             "bio": "Undersupplier, Former 9-Hours-a-Night Sleeper, Proud Mom of 1. (Also Alex's Sister.)"
@@ -36,7 +37,7 @@
         "team_member_alex": {
           "type": "team_member",
           "settings": {
-            "image_filename": "alex-ford-carther-72098e.jpg",
+            "image_filename": "alex-profile.png",
             "name": "Alex Ford-Carther",
             "role": "COO",
             "bio": "Advocate, \"Dad Of The Year\" 10 Years Running, Proud Papa of 3. (Also Julia's Brother.)"
@@ -50,7 +51,7 @@
       "settings": {
         "heading": "We created Root because moms deserve more",
         "description": "As fellow parents, we understand the challenges and struggles that come with parenthood. By sharing our experiences and creating Root, we hope to help new moms save time, energy, and alleviate some of the stressors that we encountered.",
-        "image_filename": "",
+        "image_filename": "moms-more.png",
         "founding_story_label": "Founding Story",
         "founding_story": "<p>When siblings Julia and Alex became new parents just three months apart (exciting!), their discussions quickly shifted from gripes about their mother (parents, amirite?) to the challenges of caring for a newborn.</p><p>As they navigated this new journey together, both babies suffered from allergies and colic, prompting Alex's wife—who happens to be a double-board-certified MD, btw—to join in on the conversation and share ideas for better baby care and more restful sleep. They tried new diets, consulted new doctors, and scoured new sections of grocery stores. Phew.</p><p>While these efforts helped the babies, the moms were still exhausted and struggling to keep up with the dietary demands of round-the-clock breastfeeding and pumping. They needed something that didn't exist: Clean, healthy, allergen-free, lactation-boosting nutrition that was quick and easy to consume. And so Root was born.</p><p>Breastfeeding takes a lot out of you (literally!). If you or your partner, friend, wife, sister, beloved cousin (whoever!) are struggling to maintain a sufficient breast milk supply, we're here for you.</p>",
         "team_label": "Founding Team",
@@ -80,7 +81,7 @@
         "mission_text": "This is for you, mom. The time-crunched, sleep-deprived, multitasking, always-hungry, always-pumping, nursing-on-demand, rediscovering-yourself-again, totally-in-love you. I wanted to make it a little bit easier for you to get what you need throughout your day, so we put four postpartum must-haves in a made-for-you drink. Just one less thing to think about so you can focus on what matters most.\n\nRooting for you,",
         "role_text": "FOUNDER + CEO",
         "founder_image_filename": "julia-ford-carther-72098e.jpg",
-        "signature_image_filename": "",
+        "signature_image_filename": "Julia_Signature.svg",
         "background_color": "#fc4c44",
         "text_color": "#ffffff",
         "padding_top": 0,

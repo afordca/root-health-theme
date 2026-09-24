@@ -13,15 +13,10 @@
 	position: relative;
 }
 
-/* Section border lines */
+/* Section border lines (removed) */
 .root-health-medical-advisors::before,
 .root-health-medical-advisors::after {
-	content: "";
-	position: absolute;
-	left: 0;
-	right: 0;
-	height: 1px;
-	background-color: var(--border-color, var(--color-accent));
+	display: none;
 }
 
 .root-health-medical-advisors::before {
