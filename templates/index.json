@@ -1,9 +1,19 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "root_health_hero_Tq6myW": {
       "type": "root-health-hero",
       "name": "Root Health Hero",
       "settings": {
+        "layout_variant": "default",
         "layout_type": "full",
         "text_position": "center",
         "text_alignment": "center",
@@ -12,7 +22,6 @@
         "cta_text": "ORDER NOW",
         "cta_url": "shopify://products/the-shake",
         "enable_button_cta": true,
-        "background_image": "",
         "background_image_filename": "hero-home.jpg",
         "title_color": "#ffffff",
         "subheading_color": "#ffffff",
@@ -53,7 +62,7 @@
       "name": "Subheader",
       "settings": {
         "heading": "Replace the meal you keep skipping",
-        "description": "Breastfeeding can be the most rewarding experience for new moms, but it does not come without its challenges. Our daily nutrient shake helps you take those challenges head on.",
+        "description": "Our first of its kind, ready to drink formula",
         "benefits_heading": "KEY BENEFITS",
         "product_image": "shopify://shop_images/Package_-_Orange_1.png",
         "product_image_filename": "RH-330_Mockup.png",
@@ -136,6 +145,55 @@
         "background_image_filename": "hero-cta-blenders.png"
       }
     },
+    "root_health_data_a1B2c3": {
+      "type": "root-health-data",
+      "blocks": {
+        "stat_d1": {
+          "type": "stat",
+          "settings": {
+            "number": "4 out of 5",
+            "unit": "",
+            "description": "Moms saw a milk supply increase"
+          }
+        },
+        "stat_d2": {
+          "type": "stat",
+          "settings": {
+            "number": "+0.9",
+            "unit": "oz",
+            "description": "Avg increase in supply per feeding (3.6 oz → 4.5 oz, +25%)"
+          }
+        },
+        "stat_d3": {
+          "type": "stat",
+          "settings": {
+            "number": "+3",
+            "unit": "min",
+            "description": "Longer average pumping session duration"
+          }
+        }
+      },
+      "block_order": [
+        "stat_d1",
+        "stat_d2",
+        "stat_d3"
+      ],
+      "name": "Data",
+      "settings": {
+        "heading": "Real-world tested for efficacy",
+        "disclaimer": "Results disclaimer",
+        "image": "shopify://shop_images/small-business-interior.jpg",
+        "image_filename": "",
+        "background_color": "#fe9a68",
+        "heading_color": "#ffffff",
+        "stat_color": "#ffffff",
+        "description_color": "#ffffff",
+        "divider_color": "#ffffff",
+        "disclaimer_color": "#e5653d",
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
     "root_health_comparison_chart_jYJPJr": {
       "type": "root-health-comparison-chart",
       "blocks": {
@@ -145,19 +203,6 @@
             "product_name": "ROOT",
             "is_highlighted": true,
             "has_hydration": true,
-            "has_calories": true,
-            "has_vitamins": true,
-            "has_proteins": true,
-            "has_supplements": true,
-            "has_galactagogues": true
-          }
-        },
-        "product_ycW37t": {
-          "type": "product",
-          "settings": {
-            "product_name": "Powders",
-            "is_highlighted": false,
-            "has_hydration": false,
             "has_calories": true,
             "has_vitamins": true,
             "has_proteins": true,
@@ -176,6 +221,19 @@
             "has_proteins": false,
             "has_supplements": false,
             "has_galactagogues": false
+          }
+        },
+        "product_ycW37t": {
+          "type": "product",
+          "settings": {
+            "product_name": "Powders",
+            "is_highlighted": false,
+            "has_hydration": false,
+            "has_calories": true,
+            "has_vitamins": true,
+            "has_proteins": true,
+            "has_supplements": true,
+            "has_galactagogues": true
           }
         },
         "product_7hbmBc": {
@@ -214,134 +272,17 @@
       ],
       "name": "Comparison Chart",
       "settings": {
+        "title": "The Most Complete product on the market",
         "heading": "We've identified 5 different nutritional components that have an impact on your lactation volume. As the only complete product on the market, see how our shake compares to other products.",
         "components": "Hydration, Calories, Vitamins, Proteins, Galactagogues",
+        "background_color": "#fe9a68",
+        "title_color": "#ffffff",
         "heading_color": "#000000",
         "text_color": "#000000",
         "highlight_bg_color": "#fe9a68",
         "highlight_dot_color": "#e5653d",
         "default_dot_color": "#d9d9d9",
-        "border_color": "#8a8a8a",
-        "title": "The Most Complete product on the market",
-        "background_color": "#fe9a68",
-        "title_color": "#ffffff"
-      }
-    },
-    "root_health_testimonials_HK3XMR": {
-      "type": "root-health-testimonials",
-      "blocks": {
-        "video_1": {
-          "type": "testimonial",
-          "settings": {
-            "image": "",
-            "image_filename": "",
-            "video_url": "",
-            "caption": ""
-          }
-        },
-        "video_2": {
-          "type": "testimonial",
-          "settings": {
-            "image": "",
-            "image_filename": "",
-            "video_url": "",
-            "caption": ""
-          }
-        },
-        "video_3": {
-          "type": "testimonial",
-          "settings": {
-            "image": "",
-            "image_filename": "",
-            "video_url": "",
-            "caption": ""
-          }
-        },
-        "video_4": {
-          "type": "testimonial",
-          "settings": {
-            "image": "",
-            "image_filename": "",
-            "video_url": "",
-            "caption": ""
-          }
-        },
-        "video_5": {
-          "type": "testimonial",
-          "settings": {
-            "image": "",
-            "image_filename": "",
-            "video_url": "",
-            "caption": ""
-          }
-        }
-      },
-      "block_order": [
-        "video_1",
-        "video_2",
-        "video_3",
-        "video_4",
-        "video_5"
-      ],
-      "name": "Root Health Testimonials",
-      "settings": {
-        "heading": "HOW OTHERS ARE THRIVING ON ROOT",
-        "background_color": "#ffffff",
-        "heading_color": "#e5653d",
-        "placeholder_color": "#eeeeee",
-        "play_color": "#fc4c44"
-      }
-    },
-    "root_health_trusted_by_inGgNh": {
-      "type": "root-health-trusted-by",
-      "blocks": {
-        "quote_1": {
-          "type": "quote",
-          "settings": {
-            "quote": "“The postpartum chocolate shake I just drank was beyond my expectations.”"
-          }
-        },
-        "quote_2": {
-          "type": "quote",
-          "settings": {
-            "quote": "“I also like it because you could take it on the go.”"
-          }
-        },
-        "quote_3": {
-          "type": "quote",
-          "settings": {
-            "quote": "“My supply went up by a couple ounces each time that I would pump.”"
-          }
-        }
-      },
-      "block_order": [
-        "quote_1",
-        "quote_2",
-        "quote_3"
-      ],
-      "name": "Root Health Trusted By",
-      "settings": {
-        "background_color": "#fc4c44",
-        "quote_color": "#ffffff",
-        "divider_color": "#ffffff"
-      }
-    },
-    "root_health_founder_message_JEy6Q4": {
-      "type": "root-health-founder-message",
-      "name": "Root Health Founder Message",
-      "settings": {
-        "background_image": "",
-        "image_filename": "julia-box.png",
-        "heading": "We exist to support moms...",
-        "subtext": "We value what we put in our body just as much as you do.",
-        "label": "OUR FOUNDING STORY",
-        "action_link": "shopify://pages/our-why",
-        "section_height": 600,
-        "background_color": "#ffffff",
-        "heading_color": "#e5653d",
-        "subtext_color": "#000000",
-        "label_color": "#e5653d",
-        "label_bg_color": "#e5653d"
+        "border_color": "#8a8a8a"
       }
     },
     "root_health_ingredient_function_R7EJar": {
@@ -417,53 +358,115 @@
         "learn_more_color": "#fc4c44"
       }
     },
-    "root_health_data_a1B2c3": {
-      "type": "root-health-data",
+    "root_health_testimonials_HK3XMR": {
+      "type": "root-health-testimonials",
       "blocks": {
-        "stat_d1": {
-          "type": "stat",
+        "video_1": {
+          "type": "testimonial",
           "settings": {
-            "number": "4 out of 5",
-            "unit": "",
-            "description": "Moms saw a milk supply increase"
+            "image_filename": "",
+            "video_url": "",
+            "caption": ""
           }
         },
-        "stat_d2": {
-          "type": "stat",
+        "video_2": {
+          "type": "testimonial",
           "settings": {
-            "number": "+0.9",
-            "unit": "oz",
-            "description": "Avg increase in supply per feeding (3.6 oz → 4.5 oz, +25%)"
+            "image_filename": "",
+            "video_url": "",
+            "caption": ""
           }
         },
-        "stat_d3": {
-          "type": "stat",
+        "video_3": {
+          "type": "testimonial",
           "settings": {
-            "number": "+3",
-            "unit": "min",
-            "description": "Longer average pumping session duration"
+            "image_filename": "",
+            "video_url": "",
+            "caption": ""
+          }
+        },
+        "video_4": {
+          "type": "testimonial",
+          "settings": {
+            "image_filename": "",
+            "video_url": "",
+            "caption": ""
+          }
+        },
+        "video_5": {
+          "type": "testimonial",
+          "settings": {
+            "image_filename": "",
+            "video_url": "",
+            "caption": ""
           }
         }
       },
       "block_order": [
-        "stat_d1",
-        "stat_d2",
-        "stat_d3"
+        "video_1",
+        "video_2",
+        "video_3",
+        "video_4",
+        "video_5"
       ],
-      "name": "Data",
+      "name": "Root Health Testimonials",
       "settings": {
-        "heading": "Real-world tested for efficacy",
-        "disclaimer": "Results disclaimer",
-        "image": "",
-        "image_filename": "",
-        "background_color": "#fe9a68",
-        "heading_color": "#ffffff",
-        "stat_color": "#ffffff",
-        "description_color": "#ffffff",
-        "divider_color": "#ffffff",
-        "disclaimer_color": "#e5653d",
-        "padding_top": 100,
-        "padding_bottom": 100
+        "heading": "HOW OTHERS ARE THRIVING ON ROOT",
+        "background_color": "#ffffff",
+        "heading_color": "#e5653d",
+        "placeholder_color": "#eeeeee",
+        "play_color": "#fc4c44"
+      }
+    },
+    "root_health_trusted_by_inGgNh": {
+      "type": "root-health-trusted-by",
+      "blocks": {
+        "quote_1": {
+          "type": "quote",
+          "settings": {
+            "quote": "“The postpartum chocolate shake I just drank was beyond my expectations.”"
+          }
+        },
+        "quote_2": {
+          "type": "quote",
+          "settings": {
+            "quote": "“I also like it because you could take it on the go.”"
+          }
+        },
+        "quote_3": {
+          "type": "quote",
+          "settings": {
+            "quote": "“My supply went up by a couple ounces each time that I would pump.”"
+          }
+        }
+      },
+      "block_order": [
+        "quote_1",
+        "quote_2",
+        "quote_3"
+      ],
+      "name": "Root Health Trusted By",
+      "settings": {
+        "background_color": "#fc4c44",
+        "quote_color": "#ffffff",
+        "divider_color": "#ffffff"
+      }
+    },
+    "root_health_founder_message_JEy6Q4": {
+      "type": "root-health-founder-message",
+      "name": "Root Health Founder Message",
+      "settings": {
+        "image_filename": "julia-box.png",
+        "heading": "We exist to support moms...",
+        "subtext": "We value what we put in our body just as much as you do.",
+        "label": "OUR FOUNDING STORY",
+        "action_link": "shopify://pages/our-why",
+        "section_height": 600,
+        "background_color": "#ffffff",
+        "heading_color": "#e5653d",
+        "subtext_color": "#000000",
+        "label_color": "#e5653d",
+        "label_bg_color": "#e5653d"
       }
     },
     "root_health_cta_footer_z9Y8x7": {
@@ -474,7 +477,6 @@
         "subtext": "Nutritional support for when you need it most, for as long as you need it",
         "button_text": "SHOP NOW",
         "button_url": "shopify://products/the-shake",
-        "image": "",
         "image_filename": "",
         "left_bg_color": "#fc4c44",
         "right_bg_color": "#fe9a68",
