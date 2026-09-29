@@ -16,6 +16,7 @@
     --heading-color: {{ section.settings.heading_color }};
     --label-color: {{ section.settings.label_color }};
     --learn-more-color: {{ section.settings.learn_more_color }};
+    {%- if section.settings.background_image_filename != blank %} background-image: url('{{ section.settings.background_image_filename | asset_url }}'); background-size: cover; background-position: center; background-repeat: no-repeat;{% endif -%}
   "
 >
   {% if section.settings.decor_top_left_filename != blank %}
@@ -110,7 +111,17 @@
     },
     {
       "type": "header",
-      "content": "Decorative images (optional)"
+      "content": "Background image (optional)"
+    },
+    {
+      "type": "text",
+      "id": "background_image_filename",
+      "label": "Background image (asset filename)",
+      "info": "Optional. Fills the whole section (cover). Filename of an image in your theme assets, e.g. ingredients-bg.png."
+    },
+    {
+      "type": "header",
+      "content": "Decorative corner images (optional)"
     },
     {
       "type": "text",

@@ -26,7 +26,7 @@
     <div
       class="root-health-hero__container"
       role="img"
-      aria-label="{{ heading | escape }}"
+      aria-label="{{ heading | strip_html | escape }}"
       style="{% if section.settings.background_image_filename != blank %}background-image: url('{{ section.settings.background_image_filename | asset_url }}');{% elsif section.settings.background_image %}background-image: url('{{ section.settings.background_image | image_url: width: 1440, height: 950 }}');{% else %}--hero-bg-image: url('{{ 'hero-background-1a3f08.jpg' | asset_url }}');{% endif %}{% if section.settings.mobile_background_image %} --mobile-bg-image: url('{{ section.settings.mobile_background_image | image_url: width: 768, height: 800 }}');{% endif %} --overlay-opacity: {{ overlay_opacity }}; --hero-title-color: {{ title_color }}; --hero-subheading-color: {{ subheading_color }};"
     >
       {% if layout_type == 'split' %}

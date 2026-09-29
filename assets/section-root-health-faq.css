@@ -22,16 +22,16 @@
 
 /* Header Section - Mobile First */
 .root-health-faq__header {
-	text-align: left;
+	text-align: center;
 	margin-bottom: 30px;
 }
 
 .root-health-faq__heading {
-	font-family: "Gilroy", sans-serif;
-	font-weight: 300;
+	font-family: "GT Super Ds Trial", "GT Super Display", serif;
+	font-weight: 400;
 	font-size: var(--heading-size);
 	line-height: 1;
-	text-align: left;
+	text-align: center;
 	color: var(--heading-color, var(--color-primary));
 	margin: 0;
 }
@@ -43,14 +43,14 @@
 	gap: var(--item-spacing);
 }
 
-/* FAQ Items */
+/* FAQ Items — clean horizontal dividers (no boxed border) */
 .root-health-faq__item {
-	border: var(--border-width) solid var(--border-color, var(--color-accent));
+	border-top: var(--border-width) solid var(--border-color, var(--color-accent));
 	background-color: var(--background-color, #ffffff);
 }
 
-.root-health-faq__item:not(:last-child) {
-	border-bottom: none;
+.root-health-faq__item:last-child {
+	border-bottom: var(--border-width) solid var(--border-color, var(--color-accent));
 }
 
 /* Question Button */
@@ -81,7 +81,7 @@
 	font-family: "GT Super Txt Trial", serif;
 	font-weight: 400;
 	font-size: var(--question-size);
-	line-height: 0.75;
+	line-height: 1.2;
 	color: var(--question-color, #000000);
 	text-align: left;
 	flex: 1;
@@ -93,7 +93,6 @@
 	width: var(--icon-size);
 	height: var(--icon-size);
 	color: var(--icon-color, var(--color-primary));
-	transition: transform var(--transition-duration) ease-in-out;
 }
 
 .root-health-faq__icon svg {
@@ -102,41 +101,45 @@
 	display: block;
 }
 
-.root-health-faq__horizontal-line {
-	transition: opacity var(--transition-duration) ease-in-out;
+/* + when closed, - when open: fade the vertical stroke out */
+.root-health-faq__vertical-line {
+	transform-origin: center;
+	transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.root-health-faq__icon--expanded {
-	transform: rotate(45deg);
-}
-
-.root-health-faq__icon--expanded .root-health-faq__horizontal-line {
+.root-health-faq__icon--expanded .root-health-faq__vertical-line {
 	opacity: 0;
+	transform: rotate(90deg);
 }
 
-/* Answer Content */
+/* Answer Content — smooth grid-rows expand/collapse */
 .root-health-faq__answer {
-	border-top: var(--border-width) solid var(--border-color, var(--color-accent));
-	max-height: 0px;
-	overflow: hidden;
-	transition: max-height 0.2s ease-in-out;
-}
-
-.root-health-faq__answer--closed {
-	max-height: 0px;
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .root-health-faq__answer--open {
-	max-height: 1000px;
+	grid-template-rows: 1fr;
 }
 
 .root-health-faq__answer-content {
-	padding: var(--answer-padding);
+	overflow: hidden;
+	min-height: 0;
+	padding: 0 var(--answer-padding);
 	font-family: "Gilroy", sans-serif;
 	font-weight: 300;
 	font-size: var(--answer-size);
 	line-height: 1.33;
 	color: var(--answer-color, #000000);
+	opacity: 0;
+	transition: opacity 0.3s ease, padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.root-health-faq__answer--open .root-health-faq__answer-content {
+	padding-top: var(--answer-padding);
+	padding-bottom: var(--answer-padding);
+	opacity: 1;
 }
 
 /* Small Mobile Styles (480px and up) */
@@ -187,7 +190,8 @@
 	}
 
 	.root-health-faq__answer-content {
-		padding: var(--answer-padding) 30px;
+		padding-left: 30px;
+		padding-right: 30px;
 	}
 }
 
@@ -199,19 +203,12 @@
 	}
 }
 
-/* Animation for smooth accordion */
-@media (prefers-reduced-motion: no-preference) {
-	.root-health-faq__answer {
-		transition: max-height 0.2s ease-in-out;
-	}
-}
-
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
 	.root-health-faq__question,
-	.root-health-faq__icon,
-	.root-health-faq__horizontal-line,
-	.root-health-faq__answer {
+	.root-health-faq__vertical-line,
+	.root-health-faq__answer,
+	.root-health-faq__answer-content {
 		transition: none;
 	}
 }

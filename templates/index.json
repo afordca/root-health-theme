@@ -17,7 +17,7 @@
         "layout_type": "full",
         "text_position": "center",
         "text_alignment": "center",
-        "heading": "Nutritional Support when you need it most",
+        "heading": "Nutritional Support<br>when you need it most",
         "subheading": "#1 leading Dietary Supplement for nursing moms; enhance your supply ( and your mood)",
         "cta_text": "ORDER NOW",
         "cta_url": "shopify://products/the-shake",
@@ -351,11 +351,12 @@
         "button_text": "Learn More",
         "button_url": "shopify://pages/our-ingredients",
         "decor_top_left_filename": "",
-        "decor_bottom_right_filename": "ingredients-bg.png",
+        "decor_bottom_right_filename": "",
         "background_color": "#ffffff",
         "heading_color": "#000000",
         "label_color": "#000000",
-        "learn_more_color": "#fc4c44"
+        "learn_more_color": "#fc4c44",
+        "background_image_filename": "ingredients-bg.png"
       }
     },
     "root_health_testimonials_HK3XMR": {

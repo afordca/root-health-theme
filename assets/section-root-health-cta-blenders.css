@@ -15,6 +15,9 @@
 
 .root-health-cta-blenders .root-health-section__container {
 	height: 100%;
+	max-width: none;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .root-health-cta-blenders__container {
@@ -171,8 +174,8 @@
 		gap: 30px;
 	}
 
-	.root-health-cta-blenders__heading {
-		font-size: 70px;
+	.root-health-cta-blenders .root-health-cta-blenders__heading {
+		font-size: 56px !important;
 	}
 
 	.root-health-cta-blenders__subtext {
@@ -191,7 +194,7 @@
 
 	.root-health-cta-blenders {
 		height: var(--section-height, 960px);
-		padding: 40px 30px;
+		padding: 0;
 	}
 
 	.root-health-cta-blenders__container {
@@ -219,8 +222,8 @@
 		max-width: var(--content-max-width);
 	}
 
-	.root-health-cta-blenders__heading {
-		font-size: 9.6rem;
+	.root-health-cta-blenders .root-health-cta-blenders__heading {
+		font-size: 7.2rem !important;
 		line-height: 1;
 		text-align: left;
 		color: #ffffff;

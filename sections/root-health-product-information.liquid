@@ -183,7 +183,10 @@
                         {%- for benefits_block in section.blocks -%}
                           {%- if benefits_block.type == 'benefit_item' -%}
                             <div class="root-health-product-information__benefit">
-                              {{ benefits_block.settings.benefit_text }}
+                              {%- if benefits_block.settings.icon_filename != blank -%}
+                                <img class="root-health-product-information__benefit-icon" src="{{ benefits_block.settings.icon_filename | asset_url }}" alt="" width="20" height="20" loading="lazy">
+                              {%- endif -%}
+                              <span>{{ benefits_block.settings.benefit_text }}</span>
                             </div>
                           {%- endif -%}
                         {%- endfor -%}
@@ -234,6 +237,17 @@
               {%- endform -%}
             </product-form>
           </product-info>
+        </div>
+
+        <!-- Gift box (Mobile Only) -->
+        {%- assign m_gift_link = section.settings.gift_url | default: '/products/gift-card' -%}
+        <div class="rhpi-gift rhpi-gift--mobile">
+          <div class="rhpi-gift__icon" aria-hidden="true">{% render 'icon-accordion', icon: 'leaf' %}</div>
+          <div class="rhpi-gift__body">
+            <p class="rhpi-gift__heading">{{ section.settings.gift_heading }}</p>
+            <p class="rhpi-gift__text">{{ section.settings.gift_subtext }}</p>
+          </div>
+          <a href="{{ m_gift_link }}" class="rhpi-gift__button">Give A Gift</a>
         </div>
 
         <!-- 10. Dietary Restrictions (Mobile Only) -->
@@ -340,7 +354,11 @@
                 {%- for b in section.blocks -%}
                   {%- if b.type == 'benefit_item' -%}
                     <div class="rhpi-benefit" {{ b.shopify_attributes }}>
-                      <span class="rhpi-benefit__icon" aria-hidden="true"></span>
+                      {%- if b.settings.icon_filename != blank -%}
+                        <img class="rhpi-benefit__iconimg" src="{{ b.settings.icon_filename | asset_url }}" alt="" width="20" height="20" loading="lazy">
+                      {%- else -%}
+                        <span class="rhpi-benefit__icon" aria-hidden="true"></span>
+                      {%- endif -%}
                       <span class="rhpi-benefit__text">{{ b.settings.benefit_text }}</span>
                     </div>
                   {%- endif -%}
@@ -1183,6 +1201,12 @@
           "id": "benefit_text",
           "label": "Benefit text",
           "default": "Enter your benefit text here"
+        },
+        {
+          "type": "text",
+          "id": "icon_filename",
+          "label": "Icon (asset filename)",
+          "info": "Optional. Filename of an SVG/PNG in your theme assets, e.g. icons8-protein-50.svg. Leave blank for the default checkmark."
         }
       ]
     }

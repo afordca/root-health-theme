@@ -1,9 +1,9 @@
 /* Mobile-first CSS variables and base styles */
 .root-health-comparison-chart {
 	--table-padding: 16px 0px;
-	--dot-size: 14px;
-	--row-height: 72px;
-	--column-width: 90px;
+	--dot-size: 13px;
+	--row-height: 60px;
+	--column-width: 46px;
 	--border-radius: 10px;
 	--dash-pattern: 2px 4px;
 }
@@ -57,12 +57,12 @@
 	width: 100%;
 	border-collapse: separate;
 	border-spacing: 0;
-	min-width: 450px;
+	min-width: 320px;
 }
 
 /* Table Headers */
 .root-health-comparison-chart__header-empty {
-	width: 100px;
+	width: 66px;
 	height: var(--row-height);
 	background: transparent;
 	border: none;
@@ -82,6 +82,7 @@
 	background: transparent;
 	border-radius: 0;
 	padding: 0px;
+	font-size: 11px;
 }
 
 .root-health-comparison-chart__header--highlighted {
@@ -103,16 +104,16 @@
 
 /* Component Labels */
 .root-health-comparison-chart__component {
-	width: 100px;
+	width: 66px;
 	height: var(--row-height);
 	text-align: left;
 	vertical-align: middle;
 	font-family: "GT Super Ds Trial", serif;
 	font-weight: 300;
-	font-size: 1.4rem;
-	line-height: 3;
+	font-size: 1.2rem;
+	line-height: 1.15;
 	color: var(--text-color, #000000);
-	padding: 0 8px 0 0;
+	padding: 0 6px 0 0;
 	border-right: none;
 }
 

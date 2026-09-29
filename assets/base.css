@@ -15,6 +15,26 @@
 	--font-label: 12px;         /* eyebrows / pill labels */
 }
 
+/* Responsive type scale — headings shrink on smaller screens.
+   Section rules use var(--font-*), so redefining here scales everything. */
+@media screen and (max-width: 1023px) {
+	:root {
+		--font-display: 56px;
+		--font-h1: 44px;
+		--font-h2: 36px;
+		--font-h3: 26px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	:root {
+		--font-display: 40px;
+		--font-h1: 32px;
+		--font-h2: 27px;
+		--font-h3: 21px;
+	}
+}
+
 :root {
 	--alpha-button-background: 1;
 	--alpha-button-border: 1;
@@ -4396,7 +4416,6 @@ details[open] .header__icon-close {
 /* Display — hero headlines */
 .root-health-section .root-health-hero__heading,
 .root-health-section .ingredient-hero__title,
-.root-health-section .root-health-product-information__title,
 .root-health-section .display {
 	font-family: "GT Super Ds Trial", serif !important;
 	font-size: var(--font-display) !important;
