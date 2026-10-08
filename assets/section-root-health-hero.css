@@ -97,10 +97,10 @@
 }
 
 .root-health-hero__heading {
-	font-family: var(--hero-heading-font);
+	font-family: "GT Super Ds Trial", serif;
 	font-weight: 400;
-	font-size: 5.5rem;
-	line-height: 1.2;
+	font-size: var(--font-display);
+	line-height: 1.05;
 	color: var(--hero-title-color, var(--hero-text-color));
 	margin: 0 0 24px 0;
 	width: 100%;
@@ -208,7 +208,7 @@
 	}
 
 	.root-health-hero__heading {
-		font-size: 48px;
+		font-size: var(--font-display);
 		margin-bottom: 32px;
 	}
 
@@ -244,7 +244,6 @@
 	}
 
 	.root-health-hero__heading {
-		font-size: 64px;
 		margin-bottom: 40px;
 	}
 
@@ -300,7 +299,7 @@
 	}
 
 	.root-health-hero--split .root-health-hero__heading {
-		font-size: 52px;
+		font-size: var(--font-display);
 		margin-bottom: 32px;
 	}
 
@@ -327,7 +326,7 @@
 	}
 
 	.root-health-hero--full .root-health-hero__heading {
-		font-size: 96px;
+		font-size: var(--font-display);
 		margin-bottom: 60px;
 		text-align: left;
 	}
@@ -484,7 +483,7 @@
 	}
 
 	.root-health-hero--split .root-health-hero__heading {
-		font-size: 6rem;
+		font-size: var(--font-display);
 		margin-bottom: 24px;
 		max-width: 484px;
 	}
@@ -569,7 +568,7 @@
 
 @media screen and (min-width: 1367px) {
 	.root-health-hero--split .root-health-hero__heading {
-		font-size: 9rem;
+		font-size: var(--font-display);
 		margin-bottom: 24px;
 		max-width: 768px;
 	}
@@ -629,7 +628,7 @@
 
 	.root-health-hero--why.root-health-hero--full .root-health-hero__heading {
 		color: #ffffff;
-		font-size: 90px;
+		font-size: var(--font-display);
 		line-height: 1.02;
 		text-align: left;
 		max-width: 1000px;

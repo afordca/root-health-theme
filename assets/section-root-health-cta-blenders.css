@@ -175,7 +175,7 @@
 	}
 
 	.root-health-cta-blenders .root-health-cta-blenders__heading {
-		font-size: 56px !important;
+		font-size: 56px;
 	}
 
 	.root-health-cta-blenders__subtext {
@@ -194,7 +194,7 @@
 
 	.root-health-cta-blenders {
 		height: var(--section-height, 960px);
-		padding: 0;
+		padding: 0 40px;
 	}
 
 	.root-health-cta-blenders__container {
@@ -223,7 +223,7 @@
 	}
 
 	.root-health-cta-blenders .root-health-cta-blenders__heading {
-		font-size: 7.2rem !important;
+		font-size: 7.2rem;
 		line-height: 1;
 		text-align: left;
 		color: #ffffff;

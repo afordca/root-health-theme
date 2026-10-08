@@ -3111,9 +3111,24 @@ input[type="checkbox"] {
 	margin: 0 10px;
 }
 
+/* Cart icon shares the same box as the other header icons. The cart SVGs
+   were re-cropped (viewBox) to fill ~95% of their frame like the account
+   icon, so an equal box now renders an equal visible glyph. */
+.header__icon--cart .icon {
+	height: 2rem;
+	width: 2rem;
+	margin: 0;
+}
+
 .header__icon--cart {
 	position: relative;
 	margin-right: -1.2rem;
+}
+
+/* When the cart has items, the filled cart icon shows in brand red-orange
+   (the empty-state icon follows the normal nav color). */
+.header__icon--cart .icon-cart {
+	color: var(--color-primary) !important;
 }
 
 .header__icon--menu[aria-expanded="true"]::before {
@@ -4296,22 +4311,22 @@ details[open] .header__icon-close {
 		border-bottom: none;
 	}
 
-	/* ---- Default (top of page): pill ---- */
+	/* ---- Default (top of page / on load): transparent, no pill ---- */
 	.section-header .header {
 		max-width: 1280px;
 		margin: 0 auto;
 		min-height: 5.9rem;
 		padding: 0 3rem;
-		background: rgba(255, 255, 255, 0.8);
-		-webkit-backdrop-filter: blur(6px);
-		backdrop-filter: blur(6px);
+		background: transparent;
+		-webkit-backdrop-filter: none;
+		backdrop-filter: none;
 		border-radius: 100px;
-		box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
+		box-shadow: none;
 		grid-template-areas: "navigation heading icons";
 		grid-template-columns: 1fr auto 1fr;
 		column-gap: 2rem;
 		transition: max-width 0.25s ease, border-radius 0.25s ease,
-			background 0.25s ease, padding 0.25s ease;
+			background 0.25s ease, padding 0.25s ease, box-shadow 0.25s ease;
 	}
 
 	/* Logo centered in the default state */
@@ -4341,70 +4356,79 @@ details[open] .header__icon-close {
 		display: none;
 	}
 
-	/* Nav link typography */
+	/* Nav link typography — white + bold at top (transparent over hero) */
 	.section-header .header__inline-menu .header__menu-item {
 		font-family: "Gilroy", sans-serif;
-		font-weight: 400;
+		font-weight: 700;
 		font-size: 1.4rem;
 		letter-spacing: 0.1rem;
-		color: #000000;
+		color: #ffffff;
 		padding: 1rem;
 	}
 
 	.section-header .header__inline-menu .header__menu-item:hover {
-		color: #000000;
+		color: #ffffff;
 	}
 
 	.section-header .header__inline-menu .list-menu--inline {
 		column-gap: 1rem;
 	}
 
-	/* Account label */
+	/* Account label — white + bold at top */
 	.section-header .header__account-text,
 	.section-header .header__account-text-text {
 		font-family: "Gilroy", sans-serif;
-		font-weight: 300;
+		font-weight: 700;
 		font-size: 1.6rem;
 		letter-spacing: 0.1rem;
 		text-transform: uppercase;
-		color: #000000;
+		color: #ffffff;
 	}
 
-	.section-header .header__icon--cart {
-		color: #000000;
+	.section-header .header__icon--cart,
+	.section-header .header__icon--cart .icon,
+	.section-header .header__icons .svg-wrapper,
+	.section-header .header__icon {
+		color: #ffffff;
 	}
 
-	/* ---- Scrolled state: solid white full-width bar, logo left ---- */
+	/* ---- Scrolled state: translucent floating pill (former default) ---- */
 	.section-header.scrolled-past-header .header-wrapper {
 		background: transparent;
-		padding: 0;
+		padding: 1.2rem 0;
 	}
 
 	.section-header.scrolled-past-header .header {
-		max-width: none;
-		margin: 0;
-		padding: 1rem 6rem;
-		background: #ffffff;
-		-webkit-backdrop-filter: none;
-		backdrop-filter: none;
-		border-radius: 0;
-		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-		grid-template-areas: "heading navigation icons";
-		grid-template-columns: auto 1fr auto;
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 0 3rem;
+		background: rgba(255, 255, 255, 0.8);
+		-webkit-backdrop-filter: blur(6px);
+		backdrop-filter: blur(6px);
+		border-radius: 100px;
+		box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
+		grid-template-areas: "navigation heading icons";
+		grid-template-columns: 1fr auto 1fr;
 	}
 
-	.section-header.scrolled-past-header .header__heading,
-	.section-header.scrolled-past-header .header__heading-link {
-		justify-self: start;
+	/* Scrolled: text/icons back to black, normal weight, logo original color */
+	.section-header.scrolled-past-header .header__inline-menu .header__menu-item,
+	.section-header.scrolled-past-header .header__inline-menu .header__menu-item:hover {
+		color: #000000;
+		font-weight: 400;
 	}
 
-	/* Keep the logo full size when scrolled (match Figma scroll state) */
-	.section-header.scrolled-past-header .header__heading-logo-wrapper {
-		width: 100%;
+	.section-header.scrolled-past-header .header__account-text,
+	.section-header.scrolled-past-header .header__account-text-text {
+		color: #000000;
+		font-weight: 300;
 	}
 
-	.section-header.scrolled-past-header .header__inline-menu {
-		justify-self: center;
+	.section-header.scrolled-past-header .header__icon--cart,
+	.section-header.scrolled-past-header .header__icon--cart .icon,
+	.section-header.scrolled-past-header .header__icons .svg-wrapper,
+	.section-header.scrolled-past-header .header__icon {
+		color: #000000;
 	}
 }
 
@@ -4413,38 +4437,40 @@ details[open] .header__icon-close {
    + section-header/eyebrow label style: 12px Gilroy, 2px kern.
    Relies on now-semantic tags. Delete this block to revert.
    ============================================================ */
-/* Display — hero headlines */
-.root-health-section .root-health-hero__heading,
-.root-health-section .ingredient-hero__title,
-.root-health-section .display {
-	font-family: "GT Super Ds Trial", serif !important;
-	font-size: var(--font-display) !important;
-	line-height: 1.05 !important;
+/* Default section typography. Uses :where() so these carry (almost) zero
+   specificity — every section's own stylesheet overrides them by normal
+   cascade, no !important needed. To change a heading size, edit that
+   section's CSS; these are only fallbacks for un-styled tags. */
+:where(.root-health-section) h1 {
+	font-family: "GT Super Ds Trial", serif;
+	font-size: var(--font-h1);
+	line-height: 1.1;
 }
 
-/* H1 */
-.root-health-section h1 {
-	font-family: "GT Super Ds Trial", serif !important;
-	font-size: var(--font-h1) !important;
-	line-height: 1.1 !important;
+:where(.root-health-section) h2 {
+	font-family: "GT Super Ds Trial", serif;
+	font-size: var(--font-h2);
+	line-height: 1.15;
 }
 
-/* H2 — section titles */
-.root-health-section h2 {
-	font-family: "GT Super Ds Trial", serif !important;
-	font-size: var(--font-h2) !important;
-	line-height: 1.15 !important;
+:where(.root-health-section) h3 {
+	font-size: var(--font-h3);
+	line-height: 1.2;
 }
 
-/* H3 — sub-item titles */
-.root-health-section h3 {
-	font-size: var(--font-h3) !important;
-	line-height: 1.2 !important;
+:where(.root-health-section) p {
+	font-size: var(--font-body);
+	line-height: 1.5;
 }
 
-.root-health-section p {
-	font-size: var(--font-body) !important;
-	line-height: 1.5 !important;
+:where(
+	.root-health-section .root-health-hero__heading,
+	.root-health-section .ingredient-hero__title,
+	.root-health-section .display
+) {
+	font-family: "GT Super Ds Trial", serif;
+	font-size: var(--font-display);
+	line-height: 1.05;
 }
 
 /* Pill / section-header labels (eyebrows). Add class "type-label" to any
@@ -4476,7 +4502,51 @@ details[open] .header__icon-close {
 	.section-header {
 		z-index: 6;
 	}
-	.section-root-health-hero {
+	.section-root-health-hero,
+	.section-root-health-ingredient-hero {
 		margin-top: calc(-1 * var(--header-height, 84px));
+	}
+}
+
+/* ============================================================
+   Scroll reveal + micro-interactions (rh-animations.js)
+   Progressive enhancement — classes only applied when JS runs.
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+	.rh-reveal {
+		opacity: 0;
+		transform: translateY(24px);
+		transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+			transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+	}
+
+	.rh-reveal.rh-reveal--in {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* Micro-interaction: button lift on hover */
+.root-health-section .button,
+.root-health-cta-blenders__button,
+.rhpi-gift__button,
+.root-health-cta-footer__button {
+	transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.root-health-section .button:hover,
+	.root-health-cta-blenders__button:hover,
+	.rhpi-gift__button:hover,
+	.root-health-cta-footer__button:hover {
+		transform: translateY(-2px);
+	}
+
+	/* Micro-interaction: gentle image zoom on advisor cards (wrapper clips) */
+	.root-health-medical-advisors__image {
+		transition: transform 0.45s ease;
+	}
+	.root-health-medical-advisors__advisor:hover .root-health-medical-advisors__image {
+		transform: scale(1.04);
 	}
 }

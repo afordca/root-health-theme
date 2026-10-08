@@ -6,19 +6,33 @@
 .root-health-trusted-by {
 	background-color: var(--background-color, var(--color-cta));
 	padding: 0;
-	border-top: 1px solid var(--divider-color, #ffffff);
-	border-bottom: 1px solid var(--divider-color, #ffffff);
+	border-top: none;
+	border-bottom: none;
 }
 
 .root-health-trusted-by__container {
 	width: 100%;
-	padding: 16px 24px;
+	padding: 16px 0;
 }
 
-.root-health-trusted-by__quotes {
+/* Marquee viewport — clips the overflowing track */
+.root-health-trusted-by__marquee {
+	overflow: hidden;
+	width: 100%;
+}
+
+/* Track = two identical groups side by side; animating to -50% loops seamlessly */
+.root-health-trusted-by__track {
 	display: flex;
-	flex-direction: column;
-	gap: 12px;
+	width: max-content;
+	flex-wrap: nowrap;
+	animation: rh-trusted-marquee 45s linear infinite;
+}
+
+.root-health-trusted-by__group {
+	display: flex;
+	align-items: center;
+	flex: 0 0 auto;
 }
 
 .root-health-trusted-by__quote {
@@ -28,28 +42,39 @@
 	line-height: 1.3;
 	color: var(--quote-color, #ffffff);
 	margin: 0;
+	white-space: nowrap;
+}
+
+.root-health-trusted-by__sep {
+	color: var(--quote-color, #ffffff);
+	margin: 0 32px;
+	font-size: 1.1rem;
+	opacity: 0.8;
+}
+
+/* Pause on hover for readability */
+.root-health-trusted-by__marquee:hover .root-health-trusted-by__track {
+	animation-play-state: paused;
+}
+
+@keyframes rh-trusted-marquee {
+	from { transform: translateX(0); }
+	to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.root-health-trusted-by__track {
+		animation: none;
+		flex-wrap: wrap;
+	}
 }
 
 /* Desktop (1024px+) */
 @media screen and (min-width: 1024px) {
-	.root-health-trusted-by__container {
-		padding: 20px 38px;
-	}
-
-	.root-health-trusted-by__quotes {
-		flex-direction: row;
-		align-items: flex-start;
-		gap: 40px;
-		max-width: 640px;
-	}
-
 	.root-health-trusted-by__quote {
-		flex: 0 0 auto;
-		font-size: 1.2rem;
-		line-height: 1.3;
-	}
-
-	.root-health-trusted-by__quote:first-child {
 		font-size: 1.4rem;
+	}
+	.root-health-trusted-by__sep {
+		margin: 0 44px;
 	}
 }

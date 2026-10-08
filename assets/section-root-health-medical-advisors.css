@@ -40,9 +40,9 @@
 }
 
 .root-health-medical-advisors__heading {
-	font-family: "Gilroy", sans-serif;
+	font-family: "GT Super Ds Trial", serif;
 	font-weight: 300;
-	font-size: 2.4rem;
+	font-size: var(--font-h2);
 	line-height: 1.1;
 	color: var(--heading-color, #000000);
 	margin: 0 0 20px 0;
@@ -182,9 +182,6 @@
 		text-align: left;
 	}
 
-	.root-health-medical-advisors__heading {
-		font-size: 40px;
-	}
 
 	.root-health-medical-advisors__description {
 		text-align: left;
@@ -226,7 +223,6 @@
 	.root-health-medical-advisors__heading {
 		font-family: "GT Super Ds Trial", serif;
 		font-weight: 300;
-		font-size: 48px;
 		line-height: 1.1;
 		margin: 0 0 24px 0;
 	}

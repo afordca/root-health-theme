@@ -36,9 +36,9 @@
 }
 
 .root-health-founder-message__heading {
-	font-family: "Gilroy", sans-serif;
+	font-family: "GT Super Ds Trial", serif;
 	font-weight: 300;
-	font-size: 3.2rem;
+	font-size: var(--font-h2);
 	line-height: 1.05;
 	color: var(--heading-color, var(--color-primary));
 	margin: 0;
@@ -104,7 +104,6 @@
 	}
 
 	.root-health-founder-message__heading {
-		font-size: 4.8rem;
 		line-height: 1;
 	}
 

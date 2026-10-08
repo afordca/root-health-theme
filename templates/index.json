@@ -52,20 +52,28 @@
             "title": "Reduces Stress",
             "description": "87% of Women say they felt less stressed about the day knowing they had a healthy nutrition option."
           }
+        },
+        "benefit_new4": {
+          "type": "benefit",
+          "settings": {
+            "title": "New Benefit",
+            "description": "Add your benefit description here (editable in the theme editor)."
+          }
         }
       },
       "block_order": [
         "benefit_P7hBgh",
         "benefit_GkXfVy",
-        "benefit_6XiTYP"
+        "benefit_6XiTYP",
+        "benefit_new4"
       ],
       "name": "Subheader",
       "settings": {
         "heading": "Replace the meal you keep skipping",
-        "description": "Our first of its kind, ready to drink formula",
+        "description": "Breastfeeding can be the most rewarding experience for new moms, but it does not come without its challenges. Our daily nutrient supplement drink helps you take those challenges head on.",
         "benefits_heading": "KEY BENEFITS",
         "product_image": "shopify://shop_images/Package_-_Orange_1.png",
-        "product_image_filename": "RH-330_Mockup.png",
+        "product_image_filename": "package_shadow_sq.png",
         "heading_color": "#e5653d",
         "text_color": "#000000",
         "background_shape_color": "#fe9a68",
@@ -439,12 +447,19 @@
           "settings": {
             "quote": "“My supply went up by a couple ounces each time that I would pump.”"
           }
+        },
+        "quote_4": {
+          "type": "quote",
+          "settings": {
+            "quote": "“I feel way more in control and confident and feeling like I can get through this and I can do this.”"
+          }
         }
       },
       "block_order": [
         "quote_1",
         "quote_2",
-        "quote_3"
+        "quote_3",
+        "quote_4"
       ],
       "name": "Root Health Trusted By",
       "settings": {

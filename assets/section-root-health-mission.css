@@ -65,9 +65,9 @@
 }
 
 .root-health-mission__heading {
-	font-family: "GT Super Ds Trial", "GT Super Display", serif;
+	font-family: "GT Super Ds Trial", serif;
 	font-weight: 400;
-	font-size: 6rem;
+	font-size: var(--font-h2);
 	line-height: 2.5;
 	color: var(--mission-title-color);
 	margin: 0 0 -15px 0;
@@ -123,7 +123,6 @@
 	}
 
 	.root-health-mission__heading {
-		font-size: 60px;
 		line-height: 1.5;
 		margin: 0 0 37px 0;
 		width: 650px;

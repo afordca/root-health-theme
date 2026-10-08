@@ -66,9 +66,9 @@
 }
 
 .root-health-ingredient-thesis__heading {
-	font-family: "GT Super Ds Trial", var(--font-heading-family);
+	font-family: "GT Super Ds Trial", serif;
 	font-weight: 300;
-	font-size: 30px;
+	font-size: var(--font-h2);
 	line-height: 1.25;
 	color: var(--thesis-title-color);
 	margin: 0 0 20px 0;
@@ -246,7 +246,6 @@
 	}
 
 	.root-health-ingredient-thesis__heading {
-		font-size: 48px;
 		line-height: 1.25;
 		margin: 0 0 32px 0;
 	}

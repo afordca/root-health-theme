@@ -26,9 +26,9 @@
 	margin-bottom: 30px;
 }
 
-.root-health-faq__heading {
-	font-family: "GT Super Ds Trial", "GT Super Display", serif;
-	font-weight: 400;
+.root-health-faq .root-health-faq__heading {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
 	font-size: var(--heading-size);
 	line-height: 1;
 	text-align: center;
@@ -78,9 +78,9 @@
 }
 
 .root-health-faq__question-text {
-	font-family: "GT Super Txt Trial", serif;
+	font-family: "GT Super Ds Trial", serif;
 	font-weight: 400;
-	font-size: var(--question-size);
+	font-size: 1.6rem;
 	line-height: 1.2;
 	color: var(--question-color, #000000);
 	text-align: left;
@@ -129,8 +129,8 @@
 	padding: 0 var(--answer-padding);
 	font-family: "Gilroy", sans-serif;
 	font-weight: 300;
-	font-size: var(--answer-size);
-	line-height: 1.33;
+	font-size: 1.6rem;
+	line-height: 1.5;
 	color: var(--answer-color, #000000);
 	opacity: 0;
 	transition: opacity 0.3s ease, padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);

@@ -28,9 +28,9 @@
 }
 
 .section-root-health-two-column-text .main-heading {
-	font-family: "GT Super Ds Trial", "GT Super Display", serif;
+	font-family: "GT Super Ds Trial", serif;
 	font-weight: 400;
-	font-size: 36px;
+	font-size: var(--font-h2);
 	line-height: 1.33;
 	color: var(--color-primary);
 	margin: 0 0 16px 0;
@@ -196,7 +196,6 @@
 	}
 
 	.section-root-health-two-column-text .main-heading {
-		font-size: 48px;
 		line-height: 1.1;
 	}
 
@@ -240,7 +239,6 @@
 	}
 
 	.section-root-health-two-column-text .main-heading {
-		font-size: 60px;
 		line-height: 1;
 		color: var(--color-primary);
 		margin: 0 0 24px 0;

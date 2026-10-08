@@ -38,9 +38,9 @@
 }
 
 .root-health-product-subheader__heading {
-	font-family: "GT Super Ds Trial", "GT-Super-Display-Regular", serif;
+	font-family: "GT Super Ds Trial", serif;
 	font-weight: 400;
-	font-size: 48px;
+	font-size: var(--font-h2);
 	line-height: 1.25em; /* 60px */
 	color: var(--color-primary);
 	margin: 0;
@@ -71,7 +71,6 @@
 	}
 
 	.root-health-product-subheader__heading {
-		font-size: 90px;
 		line-height: 1em; /* 90px */
 		max-width: 592px;
 	}
@@ -92,7 +91,6 @@
 	}
 
 	.root-health-product-subheader__heading {
-		font-size: 9rem; /* 90px */
 		line-height: 1em; /* 90px */
 		max-width: 592px;
 		color: var(--color-primary);

@@ -26,7 +26,7 @@
 .root-health-cta-footer__heading {
 	font-family: "GT Super Ds Trial", serif;
 	font-weight: 300;
-	font-size: 4rem;
+	font-size: var(--font-h2);
 	line-height: 1.05;
 	color: var(--heading-color, #ffffff);
 	margin: 0;
@@ -95,7 +95,6 @@
 	}
 
 	.root-health-cta-footer__heading {
-		font-size: 6rem;
 		max-width: 614px;
 	}
 

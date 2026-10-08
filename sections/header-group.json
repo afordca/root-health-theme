@@ -1,1 +1,31 @@
-{"name":"t:sections.header.name","type":"header","sections":{"header":{"type":"header","settings":{"logo_position":"middle-left","mobile_logo_position":"center","menu":"main-menu","menu_type_desktop":"dropdown","sticky_header_type":"always","show_line_separator":true,"color_scheme":"accent-1","menu_color_scheme":"","enable_country_selector":false,"enable_language_selector":false,"enable_customer_avatar":true,"enable_account_icon":false,"mobile_menu_background_image":"shopify://shop_images/Package_-_Orange_1.png","enable_mobile_menu_utility_links":false,"margin_bottom":0,"padding_top":12,"padding_bottom":12}}},"order":["header"]}
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-left",
+        "mobile_logo_position": "center",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "always",
+        "show_line_separator": true,
+        "color_scheme": "accent-1",
+        "menu_color_scheme": "",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_customer_avatar": true,
+        "enable_account_icon": true,
+        "mobile_menu_background_image": "shopify://shop_images/Package_-_Orange_1.png",
+        "enable_mobile_menu_utility_links": false,
+        "margin_bottom": 0,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
+}

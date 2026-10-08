@@ -11,67 +11,60 @@
     --subheader-padding-bottom: {{ section.settings.padding_bottom | default: 15 }}px;
   "
 >
-  <div class="root-health-section__container">
-    <div class="subheader__container">
-      <div class="subheader__content">
-        <div class="subheader__visual-section">
-          {% if section.settings.product_image_filename != blank %}
-            <div class="subheader__image">
-              <img
-                src="{{ section.settings.product_image_filename | asset_url }}"
-                alt=""
-                loading="lazy"
-                class="subheader__product-image"
-              >
-            </div>
-          {% elsif section.settings.product_image != blank %}
-            <div class="subheader__image">
-              {{
-                section.settings.product_image
-                | image_url: width: 800
-                | image_tag: loading: 'lazy', alt: section.settings.product_image.alt, class: 'subheader__product-image'
-              }}
-            </div>
-          {% endif %}
-        </div>
+  {%- comment -%} Orange band: heading + subtext {%- endcomment -%}
+  <div class="subheader__band">
+    {% if section.settings.heading != blank %}
+      <h2 class="subheader__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <p class="subheader__description">{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
 
-        <div class="subheader__text-section">
-          {% if section.settings.heading != blank %}
-            <h2 class="subheader__heading">{{ section.settings.heading }}</h2>
-          {% endif %}
+  {%- comment -%} Body: benefits flank the centered bottle {%- endcomment -%}
+  {%- assign benefit_count = 0 -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'benefit' -%}{%- assign benefit_count = benefit_count | plus: 1 -%}{%- endif -%}
+  {%- endfor -%}
+  {%- assign left_count = benefit_count | plus: 1 | divided_by: 2 -%}
 
-          {% if section.settings.description != blank %}
-            <p class="subheader__description">{{ section.settings.description }}</p>
-          {% endif %}
-
-          {% if section.blocks.size > 0 %}
-            <div class="subheader__benefits">
-              {% if section.settings.benefits_heading != blank %}
-                <p class="subheader__benefits-heading type-label">{{ section.settings.benefits_heading }}</p>
-              {% endif %}
-
-              <div class="subheader__benefits-list">
-                {% for block in section.blocks %}
-                  {% case block.type %}
-                    {% when 'benefit' %}
-                      <div class="subheader__benefit" {{ block.shopify_attributes }}>
-                        {% if block.settings.title != blank %}
-                          <h4 class="subheader__benefit-title">{{ block.settings.title }}</h4>
-                        {% endif %}
-                        {% if block.settings.description != blank %}
-                          <p class="subheader__benefit-description">{{ block.settings.description }}</p>
-                        {% endif %}
-                        {% unless forloop.last %}
-                          <div class="subheader__benefit-line" aria-hidden="true"></div>
-                        {% endunless %}
-                      </div>
-                  {% endcase %}
-                {% endfor %}
-              </div>
+  <div class="root-health-section__container subheader__body">
+    <div class="subheader__col subheader__col--left">
+      {%- assign i = 0 -%}
+      {% for block in section.blocks %}
+        {% if block.type == 'benefit' %}
+          {% if i < left_count %}
+            <div class="subheader__benefit" {{ block.shopify_attributes }}>
+              {% if block.settings.title != blank %}<p class="subheader__benefit-title">{{ block.settings.title }}</p>{% endif %}
+              {% if block.settings.description != blank %}<p class="subheader__benefit-description">{{ block.settings.description }}</p>{% endif %}
             </div>
           {% endif %}
-        </div>
-      </div>
+          {%- assign i = i | plus: 1 -%}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="subheader__bottle">
+      {% if section.settings.product_image_filename != blank %}
+        <img src="{{ section.settings.product_image_filename | asset_url }}" alt="" loading="lazy" class="subheader__product-image">
+      {% elsif section.settings.product_image != blank %}
+        {{ section.settings.product_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: '', class: 'subheader__product-image' }}
+      {% endif %}
+    </div>
+
+    <div class="subheader__col subheader__col--right">
+      {%- assign i = 0 -%}
+      {% for block in section.blocks %}
+        {% if block.type == 'benefit' %}
+          {% if i >= left_count %}
+            <div class="subheader__benefit" {{ block.shopify_attributes }}>
+              {% if block.settings.title != blank %}<p class="subheader__benefit-title">{{ block.settings.title }}</p>{% endif %}
+              {% if block.settings.description != blank %}<p class="subheader__benefit-description">{{ block.settings.description }}</p>{% endif %}
+            </div>
+          {% endif %}
+          {%- assign i = i | plus: 1 -%}
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
 </section>

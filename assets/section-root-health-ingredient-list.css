@@ -23,9 +23,9 @@
 
 /* Section heading */
 .ril__heading {
-	font-family: "GT Super Ds Trial", var(--font-heading-family), serif;
+	font-family: "GT Super Ds Trial", serif;
 	font-weight: 300;
-	font-size: 3.2rem;
+	font-size: var(--font-h2);
 	line-height: 1.15;
 	color: #000;
 	margin: 0 0 3rem 0;
@@ -210,7 +210,6 @@
    --------------------------------------------------------------------- */
 @media screen and (min-width: 769px) {
 	.ril__heading {
-		font-size: 6rem;
 		line-height: 1.2;
 		margin: 0 0 4rem 0;
 	}
@@ -244,7 +243,7 @@
 		height: var(--ril-card-h, 460px);
 		overflow: hidden;
 		scroll-snap-align: start;
-		transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+		transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 		will-change: width;
 	}
 
@@ -253,13 +252,15 @@
 		top: 0;
 		left: auto;
 		right: 0;
-		width: 100%;
+		width: var(--ril-card-collapsed-w, 300px);
 		height: 65%;
 		object-fit: cover;
 		border-radius: var(--ril-card-radius, 20px) var(--ril-card-radius, 20px) 0 0;
-		transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-			height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-			border-radius 0.45s ease;
+		/* Fixed box + transform scale = clean monotonic shrink/grow,
+		   no width-percentage "zoom in" and no layout reflow. */
+		transform-origin: top right;
+		transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+			border-radius 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
 	.ril-card__footer {
@@ -268,6 +269,9 @@
 		right: 0;
 		bottom: 0;
 		padding: 2rem 2.4rem 2.4rem 2.4rem;
+		text-align: left;
+		/* glide the right edge in sync with the card width (no snap) */
+		transition: right 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
 	.ril-card__detail {
@@ -281,7 +285,7 @@
 		opacity: 0;
 		visibility: hidden;
 		overflow: hidden;
-		transition: opacity 0.3s ease;
+		transition: opacity 0.25s ease;
 	}
 
 	/* Expanded card */
@@ -290,17 +294,14 @@
 	}
 
 	.ril-card.is-open .ril-card__img {
-		width: 300px;
-		height: 260px;
-		top: 0;
-		left: auto;
-		right: 0;
+		transform: scale(0.86);
 		border-radius: 0 var(--ril-card-radius, 20px) 0 20px;
 	}
 
 	.ril-card.is-open .ril-card__detail {
 		opacity: 1;
 		visibility: visible;
+		transition: opacity 0.4s ease 0.22s;
 	}
 
 	.ril-card.is-open .ril-card__footer {

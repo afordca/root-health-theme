@@ -424,6 +424,46 @@
         "border_color": "#fe9a68",
         "icon_color": "#e5653d"
       }
+    },
+    "root_health_trusted_by_product": {
+      "type": "root-health-trusted-by",
+      "blocks": {
+        "quote_1": {
+          "type": "quote",
+          "settings": {
+            "quote": "“The postpartum chocolate shake I just drank was beyond my expectations.”"
+          }
+        },
+        "quote_2": {
+          "type": "quote",
+          "settings": {
+            "quote": "“I also like it because you could take it on the go.”"
+          }
+        },
+        "quote_3": {
+          "type": "quote",
+          "settings": {
+            "quote": "“My supply went up by a couple ounces each time that I would pump.”"
+          }
+        },
+        "quote_4": {
+          "type": "quote",
+          "settings": {
+            "quote": "“I feel way more in control and confident and feeling like I can get through this and I can do this.”"
+          }
+        }
+      },
+      "block_order": [
+        "quote_1",
+        "quote_2",
+        "quote_3",
+        "quote_4"
+      ],
+      "settings": {
+        "background_color": "#fc4c44",
+        "quote_color": "#ffffff",
+        "divider_color": "#ffffff"
+      }
     }
   },
   "order": [
@@ -435,6 +475,7 @@
     "root_health_testimonials_TR7jie",
     "related-products",
     "root_health_faq_product",
-    "main"
+    "main",
+    "root_health_trusted_by_product"
   ]
 }

@@ -37,8 +37,8 @@
 }
 
 .root-health-product-testing__heading {
-	font-family: var(--font-heading-family, "GT Super Ds Trial", serif);
-	font-size: 1.875rem; /* 30px for mobile */
+	font-family: "GT Super Ds Trial", serif;
+	font-size: var(--font-h2);
 	font-weight: 300;
 	line-height: 1.46;
 	color: #000000;
@@ -165,7 +165,6 @@
 	}
 
 	.root-health-product-testing__heading {
-		font-size: 2.25rem; /* 36px for tablet */
 		margin: 0 0 1.5rem 0;
 	}
 
@@ -232,7 +231,6 @@
 	}
 
 	.root-health-product-testing__heading {
-		font-size: 2.875rem; /* 46px from design */
 		font-weight: 300;
 		line-height: 1.3;
 		margin: 0 0 1.875rem 0; /* 30px bottom margin */

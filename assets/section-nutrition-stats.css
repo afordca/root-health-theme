@@ -70,7 +70,7 @@
 
 .nutrition-stats__title {
 	font-weight: 300;
-	font-size: 3.5rem;
+	font-size: var(--font-h3);
 	line-height: 1;
 	color: var(--nutrition-stats-title-color);
 	margin: 1rem 0 1.5rem 0;
@@ -130,7 +130,6 @@
 	}
 
 	.nutrition-stats__title {
-		font-size: 1.75rem;
 		margin-bottom: 2rem;
 	}
 
@@ -163,7 +162,6 @@
 	}
 
 	.nutrition-stats__title {
-		font-size: 2rem;
 		margin-bottom: 2.5rem;
 	}
 
@@ -205,7 +203,6 @@
 	}
 
 	.nutrition-stats__title {
-		font-size: 3.6rem;
 		line-height: 1;
 		margin-bottom: 3rem;
 		text-align: left;

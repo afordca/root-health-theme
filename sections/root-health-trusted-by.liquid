@@ -18,14 +18,19 @@
 >
   <div class="root-health-trusted-by__container">
     {% if section.blocks.size > 0 %}
-      <div class="root-health-trusted-by__quotes">
-        {% for block in section.blocks %}
-          {% if block.type == 'quote' and block.settings.quote != blank %}
-            <p class="root-health-trusted-by__quote" {{ block.shopify_attributes }}>
-              {{ block.settings.quote }}
-            </p>
-          {% endif %}
-        {% endfor %}
+      {%- capture rh_quotes -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'quote' and block.settings.quote != blank -%}
+            <span class="root-health-trusted-by__quote">{{ block.settings.quote }}</span>
+            <span class="root-health-trusted-by__sep" aria-hidden="true">&bull;</span>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+      <div class="root-health-trusted-by__marquee">
+        <div class="root-health-trusted-by__track">
+          <div class="root-health-trusted-by__group">{{ rh_quotes }}</div>
+          <div class="root-health-trusted-by__group" aria-hidden="true">{{ rh_quotes }}</div>
+        </div>
       </div>
     {% endif %}
   </div>
