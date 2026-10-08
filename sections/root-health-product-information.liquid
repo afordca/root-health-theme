@@ -366,9 +366,42 @@
               </div>
 
               <!-- Quantity picker: one row per variant, keeps name="id" wiring -->
+              {%- liquid
+                # Interim launch mode: only show variants flagged "Available at launch".
+                # Falls back to showing all variants if the toggle is on but none are flagged,
+                # so the picker can never render empty.
+                assign interim = section.settings.interim_mode
+                assign launch_count = 0
+                if interim
+                  for v in product.variants
+                    if v.metafields.custom.available_at_launch.value == true
+                      assign launch_count = launch_count | plus: 1
+                    endif
+                  endfor
+                endif
+                assign gate_active = false
+                if interim and launch_count > 0
+                  assign gate_active = true
+                endif
+                # Ensure the default-selected variant is one that is actually shown.
+                assign default_variant = product.selected_or_first_available_variant
+                if gate_active and default_variant.metafields.custom.available_at_launch.value != true
+                  for v in product.variants
+                    if v.metafields.custom.available_at_launch.value == true
+                      assign default_variant = v
+                      break
+                    endif
+                  endfor
+                endif
+              -%}
               <div class="rhpi-picker">
-                {%- assign pb_lines = section.settings.picker_benefits | strip | newline_to_br | split: '<br />' -%}
                 {%- for variant in product.variants -%}
+                  {%- if gate_active and variant.metafields.custom.available_at_launch.value != true -%}
+                    {%- continue -%}
+                  {%- endif -%}
+                  {%- comment -%} Per-variant benefits, falling back to the shared section list {%- endcomment -%}
+                  {%- assign v_benefits_src = variant.metafields.custom.plan_benefits.value | default: section.settings.picker_benefits -%}
+                  {%- assign pb_lines = v_benefits_src | strip | newline_to_br | split: '<br />' -%}
                   {%- assign v_months = variant.title | split: ' ' | first | plus: 0 -%}
                   {%- if variant.title contains 'Trial' -%}
                     {%- assign v_tier = 'TRIAL' -%}
@@ -386,7 +419,7 @@
                       form="{{ product_form_id }}"
                       data-tier="{{ v_tier }}"
                       data-price="{{ v_price }}"
-                      {% if variant.id == product.selected_or_first_available_variant.id %}checked{% endif %}
+                      {% if variant.id == default_variant.id %}checked{% endif %}
                       {% unless variant.available %}disabled{% endunless %}
                     >
                     <label for="rhpi-Variant-{{ section.id }}-{{ variant.id }}" class="rhpi-picker__label">
@@ -414,7 +447,7 @@
               </div>
 
               <!-- Add to cart: dynamic label via JS, server-rendered default -->
-              {%- assign sel = product.selected_or_first_available_variant -%}
+              {%- assign sel = default_variant -%}
               {%- assign sel_months = sel.title | split: ' ' | first | plus: 0 -%}
               {%- if sel.title contains 'Trial' -%}
                 {%- assign sel_tier = 'TRIAL' -%}
@@ -661,6 +694,17 @@
   },
   "settings": [
     {
+      "type": "header",
+      "content": "Interim launch"
+    },
+    {
+      "type": "checkbox",
+      "id": "interim_mode",
+      "label": "Interim launch mode",
+      "default": false,
+      "info": "When on, the picker only shows variants with 'Available at launch' checked (set per variant in Products). If none are checked, all variants show. Turn off to restore the full range."
+    },
+    {
       "type": "color",
       "id": "image_background_color",
       "label": "Image background color",
@@ -762,7 +806,8 @@
     {
       "type": "textarea",
       "id": "picker_benefits",
-      "label": "Selected plan benefits (one per line)",
+      "label": "Default plan benefits (one per line)",
+      "info": "Shown for any variant that doesn't have its own 'Plan benefits' metafield set (Products → variant → Metafields). Per-variant benefits override this.",
       "default": "30 Cartons Shipped to your door\nSave 15%\nFree Shipping\nFree Access to Latch365 Network"
     },
     {
