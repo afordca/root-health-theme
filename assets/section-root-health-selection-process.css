@@ -44,8 +44,8 @@
 .root-health-selection-process__description {
 	font-family: "Gilroy", sans-serif;
 	font-weight: 300;
-	font-size: 18px;
-	line-height: 1.6666666666666667em; /* 30px */
+	font-size: var(--font-body);
+	line-height: 1.8;
 	color: #000000;
 	margin: 0 0 23px 0;
 	width: 100%;
@@ -76,8 +76,8 @@
 .root-health-selection-process__criteria-item {
 	font-family: "Gilroy", sans-serif;
 	font-weight: 300;
-	font-size: 18px;
-	line-height: 1.2; /* 36px */
+	font-size: 16px;
+	line-height: 1.2;
 	color: #000000;
 	margin: 0;
 	text-align: left;
@@ -108,7 +108,7 @@
 	}
 
 	.root-health-selection-process__description {
-		line-height: 2em; /* 36px */
+		line-height: 1.8;
 		margin: 0 0 32px 0;
 		max-width: 738px;
 	}
@@ -163,8 +163,8 @@
 	}
 
 	.root-health-selection-process__description {
-		font-size: 1.8rem; /* 18px */
-		line-height: 1.5;
+		font-size: var(--font-body);
+		line-height: 1.8;
 		margin: 0 0 56px 0;
 		max-width: 546px;
 	}
@@ -178,7 +178,7 @@
 	.root-health-selection-process__criteria-item {
 		font-family: "Gilroy", sans-serif;
 		font-weight: 600;
-		font-size: 1.8rem; /* 18px */
+		font-size: 1.6rem; /* 16px */
 		line-height: 1;
 		white-space: pre-line;
 	}

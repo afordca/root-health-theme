@@ -817,9 +817,9 @@ form.product-form {
 	}
 	.rhpi-info__eyebrow {
 		font-family: "Gilroy", sans-serif;
-		font-size: 1.8rem;
+		font-size: 1.2rem;
 		font-weight: 600;
-		letter-spacing: 2px;
+		letter-spacing: 3px;
 		text-transform: uppercase;
 		color: var(--color-primary);
 		margin: 0 0 12px;

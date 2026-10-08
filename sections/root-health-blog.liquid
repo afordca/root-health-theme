@@ -1,0 +1,162 @@
+{{ 'section-root-health-blog.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign show_featured = section.settings.show_featured
+  assign per_page = section.settings.posts_per_page | default: 12
+-%}
+
+<div
+  class="root-health-section root-health-blog section-{{ section.id }}-padding"
+  style="padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px;"
+>
+  <div class="root-health-section__container rh-blog__container">
+
+    {%- if section.settings.heading != blank or section.settings.intro != blank -%}
+      <header class="rh-blog__header" data-reveal>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="type-label rh-blog__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h1 class="rh-blog__heading">{{ section.settings.heading }}</h1>
+        {%- endif -%}
+        {%- if section.settings.intro != blank -%}
+          <div class="rh-blog__intro rte">{{ section.settings.intro }}</div>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    {%- comment -%} Category filter built from the blog's tags {%- endcomment -%}
+    {%- if section.settings.show_filters and blog.all_tags.size > 0 -%}
+      <nav class="rh-blog__filters" aria-label="Categories">
+        <a
+          href="{{ blog.url }}"
+          class="rh-blog__filter{% if current_tags == blank %} is-active{% endif %}"
+        >All</a>
+        {%- for tag in blog.all_tags -%}
+          <a
+            href="{{ blog.url }}/tagged/{{ tag | handle }}"
+            class="rh-blog__filter{% if current_tags contains tag %} is-active{% endif %}"
+          >{{ tag }}</a>
+        {%- endfor -%}
+      </nav>
+    {%- endif -%}
+
+    {%- paginate blog.articles by per_page -%}
+      {%- if blog.articles.size == 0 -%}
+        <p class="rh-blog__empty">No posts yet. Check back soon.</p>
+      {%- else -%}
+        <div class="rh-blog__grid">
+          {%- for article in blog.articles -%}
+            {%- liquid
+              assign ctype = article.metafields.custom.content_type.value | default: 'post'
+              assign card_excerpt = article.metafields.custom.card_excerpt.value | default: article.excerpt_or_content | strip_html | truncatewords: 24
+              assign is_featured = false
+              if show_featured and forloop.first and current_tags == blank
+                assign is_featured = true
+              endif
+
+              assign card_href = article.url
+              assign new_tab = false
+              if ctype == 'link' and article.metafields.custom.external_url != blank
+                assign card_href = article.metafields.custom.external_url
+                assign new_tab = true
+              endif
+            -%}
+
+            <article
+              class="rh-blog-card rh-blog-card--{{ ctype }}{% if is_featured %} rh-blog-card--featured{% endif %}"
+              data-reveal
+            >
+              <a
+                class="rh-blog-card__link"
+                href="{{ card_href }}"
+                {% if new_tab %}target="_blank" rel="noopener"{% endif %}
+              >
+                <div class="rh-blog-card__media">
+                  {%- if article.image -%}
+                    <img
+                      class="rh-blog-card__img"
+                      src="{{ article.image | image_url: width: 900 }}"
+                      srcset="{{ article.image | image_url: width: 450 }} 450w, {{ article.image | image_url: width: 900 }} 900w, {{ article.image | image_url: width: 1400 }} 1400w"
+                      sizes="(min-width: 1024px) 45vw, 100vw"
+                      alt="{{ article.image.alt | escape | default: article.title }}"
+                      loading="lazy"
+                      width="{{ article.image.width }}"
+                      height="{{ article.image.height }}"
+                    >
+                  {%- else -%}
+                    <div class="rh-blog-card__img rh-blog-card__img--placeholder"></div>
+                  {%- endif -%}
+
+                  {%- case ctype -%}
+                    {%- when 'video' -%}
+                      <span class="rh-blog-card__badge rh-blog-card__badge--video" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+                        Video
+                      </span>
+                    {%- when 'link' -%}
+                      <span class="rh-blog-card__badge rh-blog-card__badge--link" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M14 3v2h3.59l-9.3 9.29 1.42 1.42L19 6.41V10h2V3h-7zM5 5h5V3H3v7h2V5z"/></svg>
+                        Link
+                      </span>
+                  {%- endcase -%}
+                </div>
+
+                <div class="rh-blog-card__body">
+                  {%- if article.tags.size > 0 -%}
+                    <p class="rh-blog-card__category">{{ article.tags.first }}</p>
+                  {%- endif -%}
+                  <h2 class="rh-blog-card__title">{{ article.title }}</h2>
+                  {%- if card_excerpt != blank -%}
+                    <p class="rh-blog-card__excerpt">{{ card_excerpt }}</p>
+                  {%- endif -%}
+                  <div class="rh-blog-card__meta">
+                    {%- if section.settings.show_date -%}
+                      <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %-d, %Y' }}</time>
+                    {%- endif -%}
+                    {%- if section.settings.show_author and article.author != blank -%}
+                      <span class="rh-blog-card__author">{{ article.author }}</span>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </a>
+            </article>
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <nav class="rh-blog__pagination" aria-label="Pagination">
+            {%- if paginate.previous -%}
+              <a href="{{ paginate.previous.url }}" class="rh-blog__page-link">&larr; Newer</a>
+            {%- endif -%}
+            {%- if paginate.next -%}
+              <a href="{{ paginate.next.url }}" class="rh-blog__page-link">Older &rarr;</a>
+            {%- endif -%}
+          </nav>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endpaginate -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Root Health Blog",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Journal" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Stories, science & support" },
+    { "type": "richtext", "id": "intro", "label": "Intro text" },
+    { "type": "checkbox", "id": "show_filters", "label": "Show category filter", "default": true },
+    { "type": "checkbox", "id": "show_featured", "label": "Feature the latest post", "default": true },
+    { "type": "checkbox", "id": "show_date", "label": "Show date", "default": true },
+    { "type": "checkbox", "id": "show_author", "label": "Show author", "default": false },
+    { "type": "range", "id": "posts_per_page", "min": 6, "max": 24, "step": 2, "label": "Posts per page", "default": 12 },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 60 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 80 }
+  ]
+}
+{% endschema %}

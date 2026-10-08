@@ -48,8 +48,8 @@
 		Cantarell,
 		sans-serif;
 	font-weight: 300;
-	font-size: 1.6rem;
-	line-height: 1.67;
+	font-size: var(--font-body);
+	line-height: 1.8;
 	color: #000000;
 	margin: 0;
 }
@@ -68,6 +68,20 @@
 .section-root-health-two-column-text .two-col-accordions {
 	margin-top: 40px;
 	max-width: 706px;
+}
+
+/* Full-width variant: story + founders combined in one block */
+.section-root-health-two-column-text .two-col-accordions--full {
+	max-width: none;
+}
+
+.section-root-health-two-column-text .accordion__subheading {
+	font-family: "GT Super Ds Trial", "GT Super Display", serif;
+	font-weight: 400;
+	font-size: 2rem;
+	line-height: 1.2;
+	color: var(--color-primary);
+	margin: 8px 0 20px 0;
 }
 
 .section-root-health-two-column-text .accordion {
@@ -199,11 +213,6 @@
 		line-height: 1.1;
 	}
 
-	.section-root-health-two-column-text .body-text {
-		font-size: 1.8rem;
-		line-height: 1.5;
-	}
-
 	.section-root-health-two-column-text .team-grid {
 		grid-template-columns: 1fr 1fr;
 		gap: 40px;
@@ -245,8 +254,6 @@
 	}
 
 	.section-root-health-two-column-text .body-text {
-		font-size: 1.8rem;
-		line-height: 1.5;
 		max-width: 685px;
 	}
 

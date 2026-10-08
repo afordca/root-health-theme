@@ -79,8 +79,8 @@
 
 .nutrition-stats__description {
 	font-weight: 300;
-	font-size: 1.8rem;
-	line-height: 1.67;
+	font-size: var(--font-body);
+	line-height: 1.8;
 	color: var(--nutrition-stats-text-color);
 	margin: 2rem 0;
 	text-align: left;
@@ -134,7 +134,6 @@
 	}
 
 	.nutrition-stats__description {
-		font-size: 1.125rem;
 		max-width: 280px;
 	}
 }
@@ -166,7 +165,6 @@
 	}
 
 	.nutrition-stats__description {
-		font-size: 1.25rem;
 		max-width: 300px;
 	}
 }
@@ -209,8 +207,6 @@
 	}
 
 	.nutrition-stats__description {
-		font-size: 1.8rem;
-		line-height: 1.67;
 		max-width: 300px;
 	}
 }

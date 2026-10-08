@@ -53,8 +53,8 @@
 .root-health-ingredient-thesis__description {
 	font-family: "Gilroy", var(--font-body-family);
 	font-weight: 300;
-	font-size: 20px;
-	line-height: 1.4em;
+	font-size: var(--font-body);
+	line-height: 1.8;
 	color: var(--thesis-text-color);
 	margin: 0;
 	text-align: left;
@@ -144,11 +144,6 @@
 		margin-bottom: 30px;
 	}
 
-	.root-health-ingredient-thesis__description {
-		font-size: 1.8rem;
-		line-height: 1.6em;
-	}
-
 	.root-health-ingredient-thesis__components {
 		gap: 12px;
 	}
@@ -195,8 +190,6 @@
 	}
 
 	.root-health-ingredient-thesis__description {
-		font-size: 30px;
-		line-height: 2em;
 		max-width: 722px;
 	}
 
@@ -251,8 +244,6 @@
 	}
 
 	.root-health-ingredient-thesis__description {
-		font-size: 18px;
-		line-height: 1.66;
 		max-width: 722px;
 	}
 

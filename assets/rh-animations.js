@@ -73,3 +73,21 @@
     init();
   }
 })();
+
+/* Nav background fade-in: engage the scrolled nav styling the instant the
+   user starts scrolling (not only after scrolling past the full header). */
+(function () {
+  var header = document.querySelector('sticky-header.section-header, .section-header');
+  if (!header) return;
+  var THRESHOLD = 4;
+  var ticking = false;
+  function update() {
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    header.classList.toggle('rh-nav-scrolled', y > THRESHOLD);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  update();
+})();

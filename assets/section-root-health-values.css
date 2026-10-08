@@ -59,8 +59,8 @@
 .root-health-values__item-description {
 	font-family: "Gilroy", sans-serif;
 	font-weight: 300;
-	font-size: 1.8rem;
-	line-height: 1.67;
+	font-size: var(--font-body);
+	line-height: 1.8;
 	color: var(--values-item-description-color);
 	margin: 0 auto;
 }
@@ -96,8 +96,8 @@
 .root-health-values__mission-text {
 	font-family: "Gilroy", sans-serif;
 	font-weight: 300;
-	font-size: 1.8rem;
-	line-height: 1.44;
+	font-size: var(--font-body);
+	line-height: 1.8;
 	color: #000000;
 }
 
@@ -141,7 +141,6 @@
 	.root-health-values__mission-text {
 		flex: 1 1 auto;
 		max-width: 983px;
-		line-height: 1.44;
 	}
 
 	.root-health-values__grid {
@@ -172,6 +171,5 @@
 		text-align: left;
 		margin: 0;
 		max-width: none;
-		line-height: 1.67;
 	}
 }

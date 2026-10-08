@@ -1,0 +1,173 @@
+/* Support Share Form — coral band, community contribution, Klaviyo-wired */
+.root-health-share-form {
+	background-color: var(--band-color, #fc4c44);
+	color: #ffffff;
+}
+
+.rh-share__inner {
+	max-width: 1010px;
+	margin: 0 auto;
+}
+
+.rh-share__header {
+	text-align: center;
+	margin: 0 0 32px 0;
+}
+
+.rh-share__heading {
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 300;
+	font-size: var(--font-h2);
+	line-height: 1.1;
+	color: #ffffff;
+	margin: 0 0 12px 0;
+}
+
+.rh-share__description {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: var(--font-body);
+	line-height: 1.6;
+	color: #ffffff;
+	max-width: 640px;
+	margin: 0 auto;
+}
+
+.rh-share__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 18px;
+}
+
+@media screen and (min-width: 768px) {
+	.rh-share__grid {
+		grid-template-columns: 1fr 1fr;
+		gap: 24px;
+		align-items: stretch;
+	}
+}
+
+.rh-share__fields {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.rh-share__field {
+	display: flex;
+	flex-direction: column;
+}
+
+.rh-share__field--message {
+	height: 100%;
+}
+
+.rh-share__label {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 600;
+	font-size: 1.35rem;
+	color: #ffffff;
+	margin: 0 0 7px 2px;
+}
+
+.rh-share__req { opacity: 0.9; }
+.rh-share__optional { font-weight: 400; opacity: 0.8; }
+
+.rh-share__hint {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 400;
+	font-size: 1.15rem;
+	color: rgba(255, 255, 255, 0.85);
+	margin: 6px 0 0 2px;
+}
+
+.rh-share__input,
+.rh-share__textarea {
+	width: 100%;
+	border: none;
+	border-radius: 10px;
+	background-color: #ffffff;
+	padding: 15px 18px;
+	font-family: "Gilroy", sans-serif;
+	font-size: 1.5rem;
+	color: #000000;
+}
+
+.rh-share__input::placeholder,
+.rh-share__textarea::placeholder {
+	color: #9a9a9a;
+}
+
+.rh-share__input { height: 54px; }
+
+.rh-share__textarea {
+	height: 100%;
+	min-height: 196px;
+	resize: vertical;
+	line-height: 1.5;
+}
+
+.rh-share__input:focus,
+.rh-share__textarea:focus {
+	outline: 3px solid rgba(255, 255, 255, 0.85);
+	outline-offset: 2px;
+}
+
+.rh-share__consent {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	max-width: 620px;
+	margin: 22px auto 0 auto;
+	font-family: "Gilroy", sans-serif;
+	font-size: 1.3rem;
+	line-height: 1.4;
+	color: #ffffff;
+	cursor: pointer;
+}
+
+.rh-share__consent input {
+	flex: 0 0 auto;
+	width: 20px;
+	height: 20px;
+	margin-top: 1px;
+	accent-color: #ffffff;
+	cursor: pointer;
+}
+
+.rh-share__submit {
+	display: block;
+	width: 100%;
+	max-width: 500px;
+	margin: 24px auto 0 auto;
+	padding: 17px 24px;
+	border: none;
+	border-radius: 999px;
+	background-color: #ffffff;
+	color: var(--band-color, #fc4c44);
+	font-family: "Gilroy", sans-serif;
+	font-weight: 700;
+	font-size: 1.6rem;
+	cursor: pointer;
+	transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.rh-share__submit:hover { transform: translateY(-2px); }
+
+.rh-share__submit:disabled {
+	opacity: 0.6;
+	cursor: default;
+	transform: none;
+}
+
+.rh-share__status {
+	text-align: center;
+	margin: 16px 0 0 0;
+	font-family: "Gilroy", sans-serif;
+	font-size: 1.4rem;
+	min-height: 1.4rem;
+	color: #ffffff;
+}
+
+.rh-share__status.is-success { font-weight: 700; }
+.rh-share__status.is-error { color: #ffe3e0; font-weight: 700; }

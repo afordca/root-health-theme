@@ -1,1 +1,95 @@
-{"sections":{"main":{"type":"main-blog","settings":{"layout":"collage","show_image":true,"image_height":"medium","show_date":true,"show_author":false,"padding_top":36,"padding_bottom":36}}},"order":["main"]}
+{
+  "sections": {
+    "hero": {
+      "type": "root-health-support-hero",
+      "settings": {
+        "heading": "We all need Support",
+        "eyebrow": "Learn from our community and partners",
+        "band_color": "#efece7"
+      }
+    },
+    "video_row": {
+      "type": "root-health-video-row",
+      "blocks": {
+        "v1": { "type": "video", "settings": {} },
+        "v2": { "type": "video", "settings": {} },
+        "v3": { "type": "video", "settings": {} },
+        "v4": { "type": "video", "settings": {} }
+      },
+      "block_order": ["v1", "v2", "v3", "v4"],
+      "settings": {
+        "eyebrow": "From Julia to you",
+        "heading": "Things learned by",
+        "padding_top": 56,
+        "padding_bottom": 32
+      }
+    },
+    "community": {
+      "type": "root-health-community-grid",
+      "settings": {
+        "eyebrow": "Our community",
+        "heading": "Learn from others",
+        "subtitle": "Get insight from other moms who've been through it",
+        "content_filter": "video",
+        "limit": 10,
+        "cta_label": "Have a tip? Share it here",
+        "cta_link": "#share",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "resources": {
+      "type": "root-health-resources",
+      "blocks": {
+        "r1": { "type": "resource", "settings": { "label": "Center for Lactation Consultants" } },
+        "r2": { "type": "resource", "settings": { "label": "Postpartum Support International" } },
+        "r3": { "type": "resource", "settings": { "label": "La Leche League" } },
+        "r4": { "type": "resource", "settings": { "label": "The Fourth Trimester Podcast" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4"],
+      "settings": {
+        "eyebrow": "Resources",
+        "heading": "Learn from others",
+        "subtitle": "Trusted resources, podcasts, lists, etc for your knowledge",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "advisors": {
+      "type": "root-health-advisors",
+      "settings": {
+        "eyebrow": "Service providers",
+        "heading": "Connect with a professional",
+        "note": "These independent providers are part of our vetted network. Root Health does not provide medical care — connecting with a provider is between you and them.",
+        "padding_top": 56,
+        "padding_bottom": 72
+      }
+    },
+    "share": {
+      "type": "root-health-share-form",
+      "settings": {
+        "heading": "Share your mom secrets",
+        "description": "Moms helping moms. Share a tip, something you wish you'd known, or a little encouragement — and we'll pass it on to the next mom who needs it.",
+        "textarea_placeholder": "Something you wish you'd known, a tip that helped, or encouragement for a new mom…",
+        "consent_label": "I'm okay with Root Health sharing my tip (first name only) with the community.",
+        "submit_label": "Share with the community",
+        "success_message": "Thank you for helping the next mom. Check your email to confirm.",
+        "band_color": "#fc4c44",
+        "klaviyo_public_key": "YkPr4q",
+        "klaviyo_list_id": "R76bpQ",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "disclaimer": {
+      "type": "root-health-disclaimer",
+      "settings": {
+        "label": "A note on care",
+        "text": "<p>The tips, stories, and providers shared here are offered for general information and community support. They are not medical advice and do not replace care from your own healthcare provider. If you have concerns about your health or your baby's, please reach out to a qualified professional.</p>",
+        "padding_top": 40,
+        "padding_bottom": 56
+      }
+    }
+  },
+  "order": ["hero", "video_row", "community", "resources", "advisors", "share", "disclaimer"]
+}

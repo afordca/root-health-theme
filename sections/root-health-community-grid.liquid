@@ -1,0 +1,122 @@
+{{ 'section-root-health-community-grid.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign limit = section.settings.limit | default: 10
+  assign filter = section.settings.content_filter
+-%}
+
+<div
+  class="root-health-section root-health-community-grid section-{{ section.id }}-padding"
+  style="padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px;"
+>
+  <div class="root-health-section__container rh-community__container">
+
+    <header class="rh-community__header" data-reveal>
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="type-label rh-community__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="rh-community__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="rh-community__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="rh-community__grid">
+      {%- assign shown = 0 -%}
+      {%- for article in blog.articles -%}
+        {%- liquid
+          assign ctype = article.metafields.custom.content_type.value | default: 'post'
+          if filter == 'video' and ctype != 'video'
+            continue
+          endif
+          if shown >= limit
+            break
+          endif
+          assign shown = shown | plus: 1
+
+          assign href = article.url
+          assign new_tab = false
+          if ctype == 'link' and article.metafields.custom.external_url != blank
+            assign href = article.metafields.custom.external_url
+            assign new_tab = true
+          endif
+        -%}
+        <a
+          class="rh-community-card rh-community-card--{{ ctype }}"
+          href="{{ href }}"
+          {% if new_tab %}target="_blank" rel="noopener"{% endif %}
+          data-reveal
+        >
+          <div class="rh-community-card__media">
+            {%- if article.image -%}
+              <img
+                class="rh-community-card__img"
+                src="{{ article.image | image_url: width: 500 }}"
+                srcset="{{ article.image | image_url: width: 250 }} 250w, {{ article.image | image_url: width: 500 }} 500w"
+                sizes="250px"
+                alt="{{ article.image.alt | escape | default: article.title }}"
+                loading="lazy"
+                width="{{ article.image.width }}"
+                height="{{ article.image.height }}"
+              >
+            {%- else -%}
+              <div class="rh-community-card__img rh-community-card__img--placeholder"></div>
+            {%- endif -%}
+
+            {%- if ctype == 'video' -%}
+              <span class="rh-community-card__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+              </span>
+            {%- elsif ctype == 'link' -%}
+              <span class="rh-community-card__badge" aria-hidden="true">Link</span>
+            {%- endif -%}
+
+            <span class="rh-community-card__title">{{ article.title }}</span>
+          </div>
+        </a>
+      {%- endfor -%}
+
+      {%- if shown == 0 -%}
+        <p class="rh-community__empty">No community posts yet.</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.cta_label != blank -%}
+      <div class="rh-community__cta" data-reveal>
+        <a href="{{ section.settings.cta_link | default: '#share' }}" class="rh-community__cta-link">
+          {{ section.settings.cta_label }}
+        </a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Support Community Grid",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our community" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Learn from others" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Get insight from other moms who've been through it" },
+    {
+      "type": "select", "id": "content_filter", "label": "Show",
+      "options": [
+        { "value": "all", "label": "All content" },
+        { "value": "video", "label": "Videos only" }
+      ],
+      "default": "video"
+    },
+    { "type": "range", "id": "limit", "min": 4, "max": 20, "step": 1, "label": "Max items", "default": 10 },
+    { "type": "text", "id": "cta_label", "label": "CTA label", "default": "Have a tip? Share it here" },
+    { "type": "url", "id": "cta_link", "label": "CTA link" },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 56 }
+  ]
+}
+{% endschema %}

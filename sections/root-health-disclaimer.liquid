@@ -1,0 +1,32 @@
+{{ 'section-root-health-disclaimer.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="root-health-section root-health-disclaimer section-{{ section.id }}-padding"
+  style="padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px;"
+>
+  <div class="root-health-section__container rh-disclaimer__container">
+    <div class="rh-disclaimer__box" data-reveal>
+      {%- if section.settings.label != blank -%}
+        <p class="type-label rh-disclaimer__label">{{ section.settings.label }}</p>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="rh-disclaimer__text rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Support Disclaimer",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label", "default": "A note on care" },
+    { "type": "richtext", "id": "text", "label": "Disclaimer text", "default": "<p>The tips, stories, and providers shared here are offered for general information and community support. They are not medical advice and do not replace care from your own healthcare provider. If you have concerns about your health or your baby's, please reach out to a qualified professional.</p>" },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding top", "default": 24 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Padding bottom", "default": 48 }
+  ]
+}
+{% endschema %}

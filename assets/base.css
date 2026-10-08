@@ -740,7 +740,7 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 
 .text-body {
 	font-size: 1.6rem;
-	letter-spacing: 0.06rem;
+	letter-spacing: 0.04rem;
 	line-height: calc(1 + 0.8 / var(--font-body-scale));
 	font-family: var(--font-body-family);
 	font-style: var(--font-body-style);
@@ -1363,7 +1363,7 @@ summary::-webkit-details-marker {
 .subtitle {
 	font-size: 1.8rem;
 	line-height: calc(1 + 0.8 / var(--font-body-scale));
-	letter-spacing: 0.06rem;
+	letter-spacing: 0.04rem;
 	color: rgba(var(--color-foreground), 0.7);
 }
 
@@ -4364,6 +4364,7 @@ details[open] .header__icon-close {
 		letter-spacing: 0.1rem;
 		color: #ffffff;
 		padding: 1rem;
+		transition: color 0.25s ease;
 	}
 
 	.section-header .header__inline-menu .header__menu-item:hover {
@@ -4383,6 +4384,7 @@ details[open] .header__icon-close {
 		letter-spacing: 0.1rem;
 		text-transform: uppercase;
 		color: #ffffff;
+		transition: color 0.25s ease;
 	}
 
 	.section-header .header__icon--cart,
@@ -4390,15 +4392,16 @@ details[open] .header__icon-close {
 	.section-header .header__icons .svg-wrapper,
 	.section-header .header__icon {
 		color: #ffffff;
+		transition: color 0.25s ease;
 	}
 
 	/* ---- Scrolled state: translucent floating pill (former default) ---- */
-	.section-header.scrolled-past-header .header-wrapper {
+	.section-header:is(.scrolled-past-header,.rh-nav-scrolled) .header-wrapper {
 		background: transparent;
 		padding: 1.2rem 0;
 	}
 
-	.section-header.scrolled-past-header .header {
+	.section-header:is(.scrolled-past-header,.rh-nav-scrolled) .header {
 		max-width: 1280px;
 		margin: 0 auto;
 		padding: 0 3rem;
@@ -4412,22 +4415,30 @@ details[open] .header__icon-close {
 	}
 
 	/* Scrolled: text/icons back to black, normal weight, logo original color */
-	.section-header.scrolled-past-header .header__inline-menu .header__menu-item,
-	.section-header.scrolled-past-header .header__inline-menu .header__menu-item:hover {
+	.section-header:is(.scrolled-past-header,.rh-nav-scrolled) .header__inline-menu .header__menu-item,
+	.section-header:is(.scrolled-past-header,.rh-nav-scrolled) .header__inline-menu .header__menu-item:hover {
 		color: #000000;
 		font-weight: 400;
 	}
 
-	.section-header.scrolled-past-header .header__account-text,
-	.section-header.scrolled-past-header .header__account-text-text {
+	/* Active (current page) nav item — brand terracotta in both states */
+	.section-header .header__inline-menu .header__menu-item[aria-current],
+	.section-header .header__inline-menu .header__menu-item[aria-current] span,
+	.section-header:is(.scrolled-past-header,.rh-nav-scrolled) .header__inline-menu .header__menu-item[aria-current],
+	.section-header:is(.scrolled-past-header,.rh-nav-scrolled) .header__inline-menu .header__menu-item[aria-current] span {
+		color: #e5653d;
+	}
+
+	.section-header:is(.scrolled-past-header,.rh-nav-scrolled) .header__account-text,
+	.section-header:is(.scrolled-past-header,.rh-nav-scrolled) .header__account-text-text {
 		color: #000000;
 		font-weight: 300;
 	}
 
-	.section-header.scrolled-past-header .header__icon--cart,
-	.section-header.scrolled-past-header .header__icon--cart .icon,
-	.section-header.scrolled-past-header .header__icons .svg-wrapper,
-	.section-header.scrolled-past-header .header__icon {
+	.section-header:is(.scrolled-past-header,.rh-nav-scrolled) .header__icon--cart,
+	.section-header:is(.scrolled-past-header,.rh-nav-scrolled) .header__icon--cart .icon,
+	.section-header:is(.scrolled-past-header,.rh-nav-scrolled) .header__icons .svg-wrapper,
+	.section-header:is(.scrolled-past-header,.rh-nav-scrolled) .header__icon {
 		color: #000000;
 	}
 }
@@ -4460,7 +4471,7 @@ details[open] .header__icon-close {
 
 :where(.root-health-section) p {
 	font-size: var(--font-body);
-	line-height: 1.5;
+	line-height: 1.8;
 }
 
 :where(

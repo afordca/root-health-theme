@@ -40,8 +40,8 @@
 .root-health-product-subheader__heading {
 	font-family: "GT Super Ds Trial", serif;
 	font-weight: 400;
-	font-size: var(--font-h2);
-	line-height: 1.25em; /* 60px */
+	font-size: 6rem; /* 60px */
+	line-height: 1.1em;
 	color: var(--color-primary);
 	margin: 0;
 	text-align: left;

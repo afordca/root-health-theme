@@ -127,9 +127,9 @@
 .root-health-hero__subheading {
 	font-family: var(--hero-subheading-font);
 	font-weight: 300;
-	font-size: 1.8rem;
-	line-height: 1.4;
-	color: black;
+	font-size: 3rem;
+	line-height: 1.6;
+	color: #ffffff;
 	margin: 0;
 	width: 100%;
 	max-width: 100%;
@@ -216,10 +216,6 @@
 		gap: 24px;
 	}
 
-	.root-health-hero__subheading {
-		font-size: 20px;
-	}
-
 	.root-health-hero__button {
 		font-size: 12px;
 		letter-spacing: 2px;
@@ -255,7 +251,6 @@
 	}
 
 	.root-health-hero__subheading {
-		font-size: 2.4rem;
 		width: 100%;
 		max-width: 728px;
 		flex: 1;
@@ -339,7 +334,6 @@
 	}
 
 	.root-health-hero--full .root-health-hero__subheading {
-		font-size: 30px;
 		flex: 0 1 75%;
 		text-align: left;
 	}
@@ -495,7 +489,6 @@
 	}
 
 	.root-health-hero--split .root-health-hero__subheading {
-		font-size: 18px;
 		width: 100%;
 		text-align: inherit;
 	}
@@ -578,7 +571,6 @@
 	}
 
 	.root-health-hero--split .root-health-hero__subheading {
-		font-size: 2.4rem;
 		width: 100%;
 		text-align: inherit;
 	}

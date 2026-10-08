@@ -159,7 +159,7 @@
 	}
 
 	.root-health-comparison-chart__heading p {
-		font-size: 22px;
+		font-size: var(--font-body);
 	}
 
 	.root-health-comparison-chart__table-wrapper {
@@ -201,7 +201,7 @@
 	}
 
 	.root-health-comparison-chart__heading p {
-		font-size: 26px;
+		font-size: var(--font-body);
 	}
 
 	.root-health-comparison-chart__table-wrapper {
@@ -263,7 +263,7 @@
 	.root-health-comparison-chart__heading p {
 		font-family: "Gilroy", sans-serif;
 		font-weight: 400;
-		font-size: 1.8rem;
+		font-size: var(--font-body);
 		line-height: 1.55;
 		color: var(--title-color, #ffffff);
 	}

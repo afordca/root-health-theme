@@ -1,0 +1,38 @@
+/* Support Hero — grey rounded band under the transparent nav */
+.root-health-support-hero {
+	/* rise under the transparent header like other hero banners */
+	margin-top: calc(-1 * var(--header-height, 84px));
+}
+
+.rh-support-hero__band {
+	background-color: var(--band-color, #efece7);
+	border-radius: 0 0 30px 30px;
+	padding: calc(var(--header-height, 84px) + 64px) 24px 72px 24px;
+	text-align: center;
+}
+
+.rh-support-hero__inner {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.rh-support-hero__heading {
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 300;
+	font-size: var(--font-h1);
+	line-height: 1.05;
+	color: #000000;
+	margin: 0 0 16px 0;
+}
+
+.rh-support-hero__eyebrow {
+	color: var(--color-primary);
+	margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+	.rh-support-hero__band {
+		border-radius: 0 0 20px 20px;
+		padding: calc(var(--header-height, 72px) + 40px) 20px 48px 20px;
+	}
+}

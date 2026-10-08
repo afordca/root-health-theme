@@ -484,23 +484,6 @@
         "label_color": "#e5653d",
         "label_bg_color": "#e5653d"
       }
-    },
-    "root_health_cta_footer_z9Y8x7": {
-      "type": "root-health-cta-footer",
-      "name": "CTA - Footer",
-      "settings": {
-        "heading": "Make Breastfeeding Easier",
-        "subtext": "Nutritional support for when you need it most, for as long as you need it",
-        "button_text": "SHOP NOW",
-        "button_url": "shopify://products/the-shake",
-        "image_filename": "",
-        "left_bg_color": "#fc4c44",
-        "right_bg_color": "#fe9a68",
-        "heading_color": "#ffffff",
-        "subtext_color": "#ffffff",
-        "button_border_color": "#ffffff",
-        "button_text_color": "#ffffff"
-      }
     }
   },
   "order": [
@@ -512,8 +495,7 @@
     "root_health_comparison_chart_jYJPJr",
     "root_health_ingredient_function_R7EJar",
     "root_health_testimonials_HK3XMR",
-    "root_health_trusted_by_inGgNh",
     "root_health_founder_message_JEy6Q4",
-    "root_health_cta_footer_z9Y8x7"
+    "root_health_trusted_by_inGgNh"
   ]
 }

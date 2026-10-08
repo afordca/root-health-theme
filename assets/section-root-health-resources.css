@@ -1,0 +1,110 @@
+/* Support Resources — link chips */
+.root-health-resources {
+	background-color: #ffffff;
+}
+
+.rh-resources__header {
+	margin: 0 0 32px 0;
+}
+
+.rh-resources__eyebrow {
+	color: var(--color-primary);
+	margin: 0 0 12px 0;
+}
+
+.rh-resources__heading {
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 300;
+	font-size: var(--font-h2);
+	line-height: 1.1;
+	color: #000000;
+	margin: 0 0 10px 0;
+}
+
+.rh-resources__subtitle {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: var(--font-body);
+	line-height: 1.6;
+	color: #333333;
+	margin: 0;
+}
+
+.rh-resources__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 16px;
+}
+
+@media screen and (min-width: 600px) {
+	.rh-resources__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media screen and (min-width: 1024px) {
+	.rh-resources__grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+}
+
+.rh-resource-chip {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	min-height: 100px;
+	padding: 13px 40px 13px 13px;
+	border-radius: 10px;
+	background-color: #f7f7f7;
+	text-decoration: none;
+	color: #000000;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.rh-resource-chip:hover {
+	background-color: #f0ede8;
+	transform: translateY(-2px);
+}
+
+.rh-resource-chip__icon {
+	flex: 0 0 74px;
+	width: 74px;
+	height: 74px;
+	border-radius: 4px;
+	background-color: #d9d9d9;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.rh-resource-chip__icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.rh-resource-chip__label {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 600;
+	font-size: 1.6rem;
+	line-height: 1.3;
+	color: #000000;
+}
+
+.rh-resource-chip__arrow {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	color: #000000;
+	opacity: 0.7;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.rh-resource-chip:hover .rh-resource-chip__arrow {
+	opacity: 1;
+	transform: translate(2px, -2px);
+	color: var(--color-primary);
+}
+
+.rh-resources__empty {
+	color: #777777;
+	font-size: var(--font-body);
+}

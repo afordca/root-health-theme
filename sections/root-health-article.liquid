@@ -1,0 +1,124 @@
+{{ 'section-root-health-article.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign ctype = article.metafields.custom.content_type.value | default: 'post'
+  assign vurl = article.metafields.custom.video_url
+  assign eurl = article.metafields.custom.external_url
+
+  assign embed = ''
+  if vurl != blank
+    if vurl contains 'youtube.com/watch'
+      assign yid = vurl | split: 'v=' | last | split: '&' | first
+      assign embed = 'https://www.youtube.com/embed/' | append: yid
+    elsif vurl contains 'youtu.be/'
+      assign yid = vurl | split: 'youtu.be/' | last | split: '?' | first
+      assign embed = 'https://www.youtube.com/embed/' | append: yid
+    elsif vurl contains 'youtube.com/embed'
+      assign embed = vurl
+    elsif vurl contains 'vimeo.com/'
+      assign vid = vurl | split: 'vimeo.com/' | last | split: '?' | first | split: '/' | first
+      assign embed = 'https://player.vimeo.com/video/' | append: vid
+    endif
+  endif
+-%}
+
+<div
+  class="root-health-section root-health-article section-{{ section.id }}-padding"
+  style="padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px;"
+>
+  <article class="root-health-section__container rh-article__container">
+
+    <header class="rh-article__header" data-reveal>
+      <a href="{{ blog.url }}" class="rh-article__back">&larr; {{ blog.title }}</a>
+
+      {%- if article.tags.size > 0 -%}
+        <p class="rh-article__category">{{ article.tags.first }}</p>
+      {%- endif -%}
+
+      <h1 class="rh-article__title">{{ article.title }}</h1>
+
+      <div class="rh-article__meta">
+        {%- if section.settings.show_date -%}
+          <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%B %-d, %Y' }}</time>
+        {%- endif -%}
+        {%- if section.settings.show_author and article.author != blank -%}
+          <span>By {{ article.author }}</span>
+        {%- endif -%}
+      </div>
+    </header>
+
+    {%- comment -%} Media: video embed for video posts, else featured image {%- endcomment -%}
+    {%- if ctype == 'video' and embed != blank -%}
+      <div class="rh-article__video" data-reveal>
+        <iframe
+          src="{{ embed }}"
+          title="{{ article.title | escape }}"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    {%- elsif article.image -%}
+      <div class="rh-article__image" data-reveal>
+        <img
+          src="{{ article.image | image_url: width: 1600 }}"
+          srcset="{{ article.image | image_url: width: 800 }} 800w, {{ article.image | image_url: width: 1600 }} 1600w"
+          sizes="(min-width: 1024px) 900px, 100vw"
+          alt="{{ article.image.alt | escape | default: article.title }}"
+          width="{{ article.image.width }}"
+          height="{{ article.image.height }}"
+        >
+      </div>
+    {%- endif -%}
+
+    <div class="rh-article__body rte" data-reveal>
+      {{ article.content }}
+    </div>
+
+    {%- if ctype == 'link' and eurl != blank -%}
+      <div class="rh-article__external" data-reveal>
+        <a class="rh-article__external-btn" href="{{ eurl }}" target="_blank" rel="noopener">
+          Visit resource &rarr;
+        </a>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_share -%}
+      <div class="rh-article__share">
+        <span>Share:</span>
+        <a href="https://www.facebook.com/sharer.php?u={{ shop.url }}{{ article.url }}" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://twitter.com/intent/tweet?url={{ shop.url }}{{ article.url }}&text={{ article.title | url_encode }}" target="_blank" rel="noopener">X</a>
+        <a href="mailto:?subject={{ article.title | url_encode }}&body={{ shop.url }}{{ article.url }}">Email</a>
+      </div>
+    {%- endif -%}
+
+    {%- if blog.previous_article or blog.next_article -%}
+      <nav class="rh-article__nav" aria-label="More posts">
+        {%- if blog.previous_article -%}
+          <a href="{{ blog.previous_article.url }}" class="rh-article__nav-link">&larr; Previous</a>
+        {%- endif -%}
+        {%- if blog.next_article -%}
+          <a href="{{ blog.next_article.url }}" class="rh-article__nav-link rh-article__nav-link--next">Next &rarr;</a>
+        {%- endif -%}
+      </nav>
+    {%- endif -%}
+
+  </article>
+</div>
+
+{% schema %}
+{
+  "name": "Root Health Article",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "checkbox", "id": "show_date", "label": "Show date", "default": true },
+    { "type": "checkbox", "id": "show_author", "label": "Show author", "default": false },
+    { "type": "checkbox", "id": "show_share", "label": "Show share links", "default": true },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 80 }
+  ]
+}
+{% endschema %}

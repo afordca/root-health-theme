@@ -41,8 +41,8 @@
 .root-health-science-formula__description {
 	font-family: "Gilroy", sans-serif;
 	font-weight: 300;
-	font-size: 1.6rem; /* 16px */
-	line-height: 1.5;
+	font-size: var(--font-body);
+	line-height: 1.8;
 	margin-bottom: 1rem;
 	color: #000000;
 }
@@ -102,8 +102,8 @@
 	}
 
 	.root-health-science-formula__description {
-		font-size: 1.875rem; /* 30px */
-		line-height: 1.6;
+		font-size: var(--font-body);
+		line-height: 1.8;
 		margin-bottom: 2rem;
 	}
 
@@ -149,8 +149,8 @@
 	}
 
 	.root-health-science-formula__description {
-		font-size: 2.4rem; /* 24px */
-		line-height: 1.5; /* 36px */
+		font-size: var(--font-body);
+		line-height: 1.8;
 		margin-bottom: 4rem;
 		max-width: 481px;
 		color: #000000;

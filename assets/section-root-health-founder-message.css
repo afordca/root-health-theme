@@ -47,8 +47,8 @@
 .root-health-founder-message__subtext {
 	font-family: "Gilroy", sans-serif;
 	font-weight: 300;
-	font-size: 1.6rem;
-	line-height: 1.4;
+	font-size: var(--font-body);
+	line-height: 1.8;
 	color: var(--subtext-color, #000000);
 	margin: 0;
 }
@@ -108,8 +108,6 @@
 	}
 
 	.root-health-founder-message__subtext {
-		font-size: 1.8rem;
-		line-height: 1.4;
 		max-width: 544px;
 	}
 }

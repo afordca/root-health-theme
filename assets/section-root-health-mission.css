@@ -85,8 +85,8 @@
 		Cantarell,
 		sans-serif;
 	font-weight: 300;
-	font-size: 2.4rem;
-	line-height: 1.67;
+	font-size: var(--font-body);
+	line-height: 1.8;
 	color: var(--mission-text-color);
 	margin: 15px 0;
 }
@@ -130,8 +130,6 @@
 	}
 
 	.root-health-mission__text {
-		font-size: 36px;
-		line-height: 1.33;
 		width: 525px;
 		height: 480px;
 		margin: 0;

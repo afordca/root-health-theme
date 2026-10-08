@@ -1,135 +1,127 @@
+/* Ingredient Hero — Figma 1565:994
+   Full-bleed photo (subject left), text block on the right:
+   white serif heading + black body, ~720px tall, no dark overlay. */
 .section-root-health-ingredient-hero {
 	--section-padding-top: 0;
 	--section-padding-bottom: 0;
 	position: relative;
-	min-height: 100vh;
+	min-height: 78vh;
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
+	align-items: flex-end;
+	overflow: hidden;
 	color: #ffffff;
 }
 
-/* Dark overlay for legibility of the overlaid title (sits between the
-   background image and the text content). */
+/* Mobile-only bottom scrim for legibility of overlaid text */
 .section-root-health-ingredient-hero::after {
 	content: "";
 	position: absolute;
 	inset: 0;
-	background: rgba(0, 0, 0, 0.3);
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 55%);
 	z-index: 1;
 	pointer-events: none;
 }
 
 .ingredient-hero__background {
 	position: absolute;
-	top: 0;
-	left: 0;
+	inset: 0;
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
-	z-index: 1;
+	z-index: 0;
 }
 
 .ingredient-hero__background img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	object-position: left center;
 	display: block;
 }
 
 .ingredient-hero__content {
 	position: relative;
 	z-index: 2;
-	max-width: 90%;
+	width: 100%;
+	max-width: 1440px;
 	margin: 0 auto;
-	padding: 4rem 2rem;
+	padding: 0 24px 48px 24px;
+}
+
+.ingredient-hero__text {
+	max-width: 560px;
 }
 
 .ingredient-hero__title {
 	font-family: "GT Super Ds Trial", serif;
 	font-weight: 400;
-	font-size: 3.75rem;
-	line-height: 1.1;
-	margin-bottom: 1.5rem;
+	font-size: 3.6rem;
+	line-height: 1.15;
 	color: #ffffff;
+	margin: 0 0 1.6rem 0;
 }
 
 .ingredient-hero__description {
 	font-family: "Gilroy", sans-serif;
-	font-weight: 400;
-	font-size: 1.125rem;
-	line-height: 1.6;
-	max-width: 600px;
-	margin: 0 auto;
+	font-weight: 300;
+	font-size: 1.6rem;
+	line-height: 1.55;
+	color: #ffffff;
+	max-width: 531px;
 }
 
-/* Tablet styles */
+.ingredient-hero__description p {
+	margin: 0;
+}
+
+/* Tablet */
 @media screen and (min-width: 768px) {
+	.section-root-health-ingredient-hero {
+		min-height: 600px;
+		align-items: center;
+	}
+
 	.ingredient-hero__content {
-		padding: 6rem 3rem;
+		padding: 0 40px;
+	}
+
+	.ingredient-hero__text {
+		margin-left: 48%;
+	}
+
+	.section-root-health-ingredient-hero::after {
+		display: none;
 	}
 
 	.ingredient-hero__title {
-		font-size: 4.5rem;
+		font-size: 4.8rem;
 	}
 
 	.ingredient-hero__description {
-		font-size: 1.25rem;
+		color: #000000;
 	}
 }
 
-/* Desktop styles (Figma 1710:1582 - split: image left, text right on white) */
+/* Desktop — match Figma: text block starts ~54% across, 720px tall */
 @media screen and (min-width: 1024px) {
 	.section-root-health-ingredient-hero {
-		min-height: 72rem; /* 720px */
-		color: #ffffff;
-		text-align: center;
-		justify-content: center;
-		overflow: hidden;
+		min-height: 720px;
 	}
 
-	/* Full-bleed background image */
-	.section-root-health-ingredient-hero .ingredient-hero__background {
-		width: 100%;
-		height: 100%;
-	}
-
-	.section-root-health-ingredient-hero .ingredient-hero__background img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: center;
-	}
-
-	/* Title overlaid, centered */
-	.ingredient-hero__content {
-		max-width: 900px;
-		width: 100%;
-		margin: 0 auto;
-		padding: 0 40px;
-		text-align: center;
+	.ingredient-hero__text {
+		margin-left: 54%;
+		max-width: 560px;
 	}
 
 	.ingredient-hero__title {
-		font-family: "GT Super Ds Trial", serif;
-		font-weight: 400;
 		font-size: 6rem; /* 60px */
-		line-height: 1.05;
-		color: #ffffff;
-		max-width: 820px;
-		margin: 0 auto 2rem;
-		overflow-wrap: normal;
-		word-break: normal;
+		line-height: 1.2; /* 72px */
+		margin: 0 0 2.6rem 0;
 	}
 
 	.ingredient-hero__description {
-		font-family: "Gilroy", sans-serif;
-		font-weight: 300;
 		font-size: 1.8rem; /* 18px */
-		line-height: 1.55;
-		color: #ffffff;
-		max-width: 600px;
-		margin: 0 auto;
+		line-height: 1.56; /* 28px */
+		color: #000000;
+		max-width: 531px;
 	}
 }

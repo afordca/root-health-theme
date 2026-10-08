@@ -1,0 +1,29 @@
+/* Support Disclaimer — calm, low-key note on care */
+.root-health-disclaimer {
+	background-color: #ffffff;
+}
+
+.rh-disclaimer__box {
+	max-width: 820px;
+	margin: 0 auto;
+	padding: 24px 28px;
+	border: 1px solid var(--color-divider, #e7e3dd);
+	border-radius: 16px;
+	background-color: #faf8f5;
+	text-align: center;
+}
+
+.rh-disclaimer__label {
+	color: var(--color-primary);
+	margin: 0 0 10px 0;
+}
+
+.rh-disclaimer__text {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.4rem;
+	line-height: 1.7;
+	color: #555555;
+}
+
+.rh-disclaimer__text p { margin: 0; }

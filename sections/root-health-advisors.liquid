@@ -1,0 +1,77 @@
+{{ 'section-root-health-advisors.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign advisors = shop.metaobjects.advisor.values | sort: 'position'
+-%}
+
+<div
+  class="root-health-section root-health-advisors section-{{ section.id }}-padding"
+  style="padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px;"
+>
+  <div class="root-health-section__container rh-advisors__container">
+
+    <header class="rh-advisors__header" data-reveal>
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="type-label rh-advisors__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="rh-advisors__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.note != blank -%}
+        <p class="rh-advisors__note">{{ section.settings.note }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- if advisors.size > 0 -%}
+      <div class="rh-advisors__grid">
+        {%- for advisor in advisors -%}
+          {%- liquid
+            assign a_name = advisor.name.value
+            assign a_title = advisor.title.value
+            assign a_action = advisor.action_label.value | default: 'Message'
+            assign a_url = advisor.contact_url.value
+            assign a_cred = advisor.credentials.value
+          -%}
+          <article class="rh-advisor-card" data-reveal>
+            <div class="rh-advisor-card__photo">
+              {%- if advisor.photo.value -%}
+                <img
+                  src="{{ advisor.photo.value | image_url: width: 500 }}"
+                  alt="{{ a_name | escape }}"
+                  loading="lazy"
+                  width="250" height="250"
+                >
+              {%- endif -%}
+            </div>
+            <h3 class="rh-advisor-card__name">{{ a_name }}{% if a_cred != blank %}<span class="rh-advisor-card__cred">{{ a_cred }}</span>{% endif %}</h3>
+            <p class="rh-advisor-card__title">{{ a_title }}</p>
+            {%- if a_url != blank -%}
+              <a class="rh-advisor-card__btn" href="{{ a_url }}">{{ a_action }} {{ a_name }}</a>
+            {%- else -%}
+              <span class="rh-advisor-card__btn rh-advisor-card__btn--disabled">{{ a_action }} {{ a_name }}</span>
+            {%- endif -%}
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p class="rh-advisors__empty">Add advisors in Settings &rarr; Custom data &rarr; Metaobjects &rarr; Advisor.</p>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Support Advisors",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Service providers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Connect with a professional" },
+    { "type": "textarea", "id": "note", "label": "Vetting note", "default": "These independent providers are part of our vetted network. Root Health does not provide medical care — connecting with a provider is between you and them." },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 72 }
+  ]
+}
+{% endschema %}

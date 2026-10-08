@@ -59,17 +59,19 @@
   </picture>
 
   <div class="ingredient-hero__content">
-    {%- if section.settings.title != blank -%}
-      <h1 class="ingredient-hero__title">
-        {{ section.settings.title | escape }}
-      </h1>
-    {%- endif -%}
+    <div class="ingredient-hero__text">
+      {%- if section.settings.title != blank -%}
+        <h1 class="ingredient-hero__title">
+          {{ section.settings.title | escape | newline_to_br }}
+        </h1>
+      {%- endif -%}
 
-    {%- if section.settings.description != blank -%}
-      <div class="ingredient-hero__description">
-        {{ section.settings.description }}
-      </div>
-    {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <div class="ingredient-hero__description">
+          {{ section.settings.description }}
+        </div>
+      {%- endif -%}
+    </div>
   </div>
 </section>
 
@@ -102,9 +104,10 @@
       "info": "Optional. Filename of an image in your theme assets. Overrides the mobile image picker above."
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "title",
-      "label": "Heading"
+      "label": "Heading",
+      "info": "Use line breaks to control where the heading wraps."
     },
     {
       "type": "richtext",

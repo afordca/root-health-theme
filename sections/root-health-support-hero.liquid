@@ -1,0 +1,30 @@
+{{ 'section-root-health-support-hero.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="root-health-section root-health-support-hero section-{{ section.id }}-padding"
+  style="--band-color: {{ section.settings.band_color }};"
+>
+  <div class="rh-support-hero__band">
+    <div class="rh-support-hero__inner">
+      {%- if section.settings.heading != blank -%}
+        <h1 class="rh-support-hero__heading">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="type-label rh-support-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Support Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "We all need Support" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Learn from our community and partners" },
+    { "type": "color", "id": "band_color", "label": "Band background", "default": "#efece7" }
+  ]
+}
+{% endschema %}

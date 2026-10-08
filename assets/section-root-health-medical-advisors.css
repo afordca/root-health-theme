@@ -51,7 +51,7 @@
 .root-health-medical-advisors__description {
 	font-family: "Gilroy", sans-serif;
 	font-weight: 300;
-	line-height: 1.5;
+	line-height: 1.8;
 	color: var(--text-color, #000000);
 	margin: 0;
 	text-align: left;
@@ -217,7 +217,7 @@
 
 	.root-health-medical-advisors__header {
 		margin-bottom: 55px;
-		max-width: 900px;
+		max-width: 1000px;
 	}
 
 	.root-health-medical-advisors__heading {
@@ -229,8 +229,8 @@
 
 	.root-health-medical-advisors__description {
 		font-size: 16px;
-		line-height: 1.5;
-		max-width: 898px;
+		line-height: 1.8;
+		max-width: 1000px;
 	}
 
 	.root-health-medical-advisors__grid {

@@ -1,0 +1,149 @@
+/* Support Community Grid — video/community article cards with play buttons */
+.root-health-community-grid {
+	background-color: #ffffff;
+}
+
+.rh-community__header {
+	text-align: center;
+	max-width: 720px;
+	margin: 0 auto 36px auto;
+}
+
+.rh-community__eyebrow {
+	color: var(--color-primary);
+	margin: 0 0 12px 0;
+}
+
+.rh-community__heading {
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 300;
+	font-size: var(--font-h2);
+	line-height: 1.1;
+	color: #000000;
+	margin: 0 0 12px 0;
+}
+
+.rh-community__subtitle {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: var(--font-body);
+	line-height: 1.6;
+	color: #333333;
+	margin: 0;
+}
+
+.rh-community__grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+}
+
+@media screen and (min-width: 768px) {
+	.rh-community__grid {
+		grid-template-columns: repeat(5, 1fr);
+		gap: 23px;
+	}
+}
+
+.rh-community-card {
+	text-decoration: none;
+	color: inherit;
+}
+
+.rh-community-card__media {
+	position: relative;
+	aspect-ratio: 234 / 436;
+	border-radius: 20px;
+	overflow: hidden;
+	background-color: #d9d9d9;
+}
+
+.rh-community-card__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rh-community-card__img--placeholder {
+	background: linear-gradient(160deg, #e9e4dd, #d4ccc1);
+}
+
+.rh-community-card:hover .rh-community-card__img {
+	transform: scale(1.05);
+}
+
+.rh-community-card__play {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 54px;
+	height: 54px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.9);
+	color: var(--color-primary);
+	backdrop-filter: blur(4px);
+	transition: transform 0.25s ease;
+}
+
+.rh-community-card:hover .rh-community-card__play {
+	transform: translate(-50%, -50%) scale(1.08);
+}
+
+.rh-community-card__badge {
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	padding: 5px 11px;
+	border-radius: 999px;
+	background-color: rgba(255, 255, 255, 0.92);
+	color: var(--color-primary);
+	font-family: "Gilroy", sans-serif;
+	font-weight: 700;
+	font-size: 1.1rem;
+}
+
+.rh-community-card__title {
+	position: absolute;
+	left: 12px;
+	right: 12px;
+	bottom: 12px;
+	color: #ffffff;
+	font-family: "Gilroy", sans-serif;
+	font-weight: 600;
+	font-size: 1.3rem;
+	line-height: 1.25;
+	text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+}
+
+.rh-community__cta {
+	text-align: center;
+	margin-top: 44px;
+}
+
+.rh-community__cta-link {
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 400;
+	font-size: var(--font-h3);
+	color: #000000;
+	text-decoration: none;
+	border-bottom: 2px solid var(--color-primary);
+	padding-bottom: 4px;
+	transition: color 0.2s ease;
+}
+
+.rh-community__cta-link:hover {
+	color: var(--color-primary);
+}
+
+.rh-community__empty {
+	grid-column: 1 / -1;
+	text-align: center;
+	color: #777777;
+	font-size: var(--font-body);
+}

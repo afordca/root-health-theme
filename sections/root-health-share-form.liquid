@@ -1,0 +1,157 @@
+{{ 'section-root-health-share-form.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign pk = section.settings.klaviyo_public_key
+  assign list_id = section.settings.klaviyo_list_id
+  assign uid = section.id
+-%}
+
+<div
+  class="root-health-section root-health-share-form section-{{ section.id }}-padding"
+  id="share"
+  style="--band-color: {{ section.settings.band_color }};padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px;"
+>
+  <div class="root-health-section__container rh-share__container">
+    <div class="rh-share__inner">
+
+      <header class="rh-share__header" data-reveal>
+        {%- if section.settings.heading != blank -%}
+          <h2 class="rh-share__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <p class="rh-share__description">{{ section.settings.description }}</p>
+        {%- endif -%}
+      </header>
+
+      <form class="rh-share__form" data-rh-share-form data-reveal novalidate>
+        <div class="rh-share__grid">
+          <div class="rh-share__fields">
+            <div class="rh-share__field">
+              <label class="rh-share__label" for="rh-name-{{ uid }}">Your name</label>
+              <input class="rh-share__input" id="rh-name-{{ uid }}" type="text" name="name" autocomplete="name" placeholder="First name (or leave blank to stay anonymous)">
+            </div>
+            <div class="rh-share__field">
+              <label class="rh-share__label" for="rh-email-{{ uid }}">Email <span class="rh-share__req">*</span></label>
+              <input class="rh-share__input" id="rh-email-{{ uid }}" type="email" name="email" autocomplete="email" placeholder="you@email.com" required>
+              <span class="rh-share__hint">So we can confirm it's you. We won't publish your email.</span>
+            </div>
+            <div class="rh-share__field">
+              <label class="rh-share__label" for="rh-social-{{ uid }}">Instagram / social <span class="rh-share__optional">(optional)</span></label>
+              <input class="rh-share__input" id="rh-social-{{ uid }}" type="text" name="social" placeholder="@yourhandle">
+            </div>
+            <div class="rh-share__field">
+              <label class="rh-share__label" for="rh-video-{{ uid }}">Video link <span class="rh-share__optional">(optional)</span></label>
+              <input class="rh-share__input" id="rh-video-{{ uid }}" type="url" name="video" inputmode="url" placeholder="YouTube, Instagram, TikTok…">
+            </div>
+          </div>
+
+          <div class="rh-share__field rh-share__field--message">
+            <label class="rh-share__label" for="rh-tip-{{ uid }}">Your tip or encouragement <span class="rh-share__req">*</span></label>
+            <textarea class="rh-share__textarea" id="rh-tip-{{ uid }}" name="tip" placeholder="{{ section.settings.textarea_placeholder | escape }}" required></textarea>
+          </div>
+        </div>
+
+        <label class="rh-share__consent">
+          <input type="checkbox" name="consent" value="yes" required>
+          <span>{{ section.settings.consent_label }}</span>
+        </label>
+
+        <button type="submit" class="rh-share__submit">{{ section.settings.submit_label }}</button>
+        <p class="rh-share__status" data-rh-share-status role="status" aria-live="polite"></p>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var form = document.querySelector('#share [data-rh-share-form]');
+    if (!form) return;
+    var statusEl = form.querySelector('[data-rh-share-status]');
+    var PUBLIC_KEY = {{ pk | json }};
+    var LIST_ID = {{ list_id | json }};
+    var SUCCESS_MSG = {{ section.settings.success_message | json }};
+
+    function setStatus(msg, cls) {
+      statusEl.textContent = msg;
+      statusEl.className = 'rh-share__status' + (cls ? ' ' + cls : '');
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('.rh-share__submit');
+      var fd = new FormData(form);
+      var email = (fd.get('email') || '').toString().trim();
+      var tip = (fd.get('tip') || '').toString().trim();
+      var consent = fd.get('consent');
+
+      if (!email || !tip) { setStatus('Please add your email and a tip to share.', 'is-error'); return; }
+      if (!consent) { setStatus('Please check the box so we know it’s okay to share your tip.', 'is-error'); return; }
+      if (!PUBLIC_KEY || !LIST_ID) { setStatus('Form is not configured yet. Add your Klaviyo key and list in the theme editor.', 'is-error'); return; }
+
+      btn.disabled = true;
+      setStatus('Sending…', '');
+
+      var payload = {
+        data: {
+          type: 'subscription',
+          attributes: {
+            profile: {
+              data: {
+                type: 'profile',
+                attributes: {
+                  email: email,
+                  first_name: (fd.get('name') || '').toString(),
+                  properties: {
+                    'Community Tip': tip,
+                    'Social Media': (fd.get('social') || '').toString(),
+                    'Video Link': (fd.get('video') || '').toString(),
+                    'Consent To Share': 'Yes',
+                    'Source': 'Support page – community tips'
+                  }
+                }
+              }
+            }
+          },
+          relationships: { list: { data: { type: 'list', id: LIST_ID } } }
+        }
+      };
+
+      fetch('https://a.klaviyo.com/client/subscriptions/?company_id=' + encodeURIComponent(PUBLIC_KEY), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', revision: '2024-10-15' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) {
+          if (res.ok) { form.reset(); setStatus(SUCCESS_MSG, 'is-success'); }
+          else { return res.text().then(function (t) { throw new Error(t); }); }
+        })
+        .catch(function () { setStatus('Something went wrong. Please try again.', 'is-error'); })
+        .finally(function () { btn.disabled = false; });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Support Share Form",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Share your mom secrets" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Moms helping moms. Share a tip, something you wish you'd known, or a little encouragement — and we'll pass it on to the next mom who needs it." },
+    { "type": "text", "id": "textarea_placeholder", "label": "Message placeholder", "default": "Something you wish you'd known, a tip that helped, or encouragement for a new mom…" },
+    { "type": "text", "id": "consent_label", "label": "Consent checkbox label", "default": "I'm okay with Root Health sharing my tip (first name only) with the community." },
+    { "type": "text", "id": "submit_label", "label": "Submit label", "default": "Share with the community" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thank you for helping the next mom. Check your email to confirm." },
+    { "type": "color", "id": "band_color", "label": "Band background", "default": "#fc4c44" },
+    { "type": "header", "content": "Klaviyo" },
+    { "type": "text", "id": "klaviyo_public_key", "label": "Klaviyo public API key (company ID)", "default": "YkPr4q" },
+    { "type": "text", "id": "klaviyo_list_id", "label": "Klaviyo list ID", "default": "R76bpQ" },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 140, "step": 4, "unit": "px", "label": "Padding top", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 140, "step": 4, "unit": "px", "label": "Padding bottom", "default": 72 }
+  ]
+}
+{% endschema %}

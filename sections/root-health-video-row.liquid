@@ -1,0 +1,97 @@
+{{ 'section-root-health-video-row.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="root-health-section root-health-video-row section-{{ section.id }}-padding"
+  style="padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px;"
+>
+  <div class="root-health-section__container rh-video-row__container">
+
+    <header class="rh-video-row__header" data-reveal>
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="type-label rh-video-row__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="rh-video-row__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </header>
+
+    <div class="rh-video-row__track">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign vurl = block.settings.video_url
+          assign href = vurl | default: block.settings.link
+        -%}
+        <a
+          class="rh-video-card"
+          {% if href != blank %}href="{{ href }}" target="_blank" rel="noopener"{% endif %}
+          {{ block.shopify_attributes }}
+          data-reveal
+        >
+          <div class="rh-video-card__media">
+            {%- if block.settings.thumbnail -%}
+              <img
+                class="rh-video-card__img"
+                src="{{ block.settings.thumbnail | image_url: width: 600 }}"
+                srcset="{{ block.settings.thumbnail | image_url: width: 300 }} 300w, {{ block.settings.thumbnail | image_url: width: 600 }} 600w"
+                sizes="300px"
+                alt="{{ block.settings.caption | escape }}"
+                loading="lazy"
+                width="{{ block.settings.thumbnail.width }}"
+                height="{{ block.settings.thumbnail.height }}"
+              >
+            {%- else -%}
+              <div class="rh-video-card__img rh-video-card__img--placeholder"></div>
+            {%- endif -%}
+
+            {%- if href != blank -%}
+              <span class="rh-video-card__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+              </span>
+            {%- endif -%}
+
+            {%- if block.settings.caption != blank -%}
+              <span class="rh-video-card__caption">{{ block.settings.caption }}</span>
+            {%- endif -%}
+          </div>
+        </a>
+      {%- else -%}
+        <p class="rh-video-row__empty">Add video blocks in the theme editor.</p>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Support Video Row",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "From Julia to you" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Things learned by" },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 32 }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        { "type": "image_picker", "id": "thumbnail", "label": "Thumbnail" },
+        { "type": "url", "id": "video_url", "label": "Video URL (YouTube, Vimeo, etc.)" },
+        { "type": "url", "id": "link", "label": "Fallback link (if no video)" },
+        { "type": "text", "id": "caption", "label": "Caption" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Support Video Row",
+      "blocks": [ { "type": "video" }, { "type": "video" }, { "type": "video" }, { "type": "video" } ]
+    }
+  ]
+}
+{% endschema %}

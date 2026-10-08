@@ -1,0 +1,79 @@
+{{ 'section-root-health-resources.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="root-health-section root-health-resources section-{{ section.id }}-padding"
+  style="padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px;"
+>
+  <div class="root-health-section__container rh-resources__container">
+
+    <header class="rh-resources__header" data-reveal>
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="type-label rh-resources__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="rh-resources__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="rh-resources__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="rh-resources__grid">
+      {%- for block in section.blocks -%}
+        <a
+          class="rh-resource-chip"
+          {% if block.settings.link != blank %}href="{{ block.settings.link }}" target="_blank" rel="noopener"{% endif %}
+          {{ block.shopify_attributes }}
+          data-reveal
+        >
+          <span class="rh-resource-chip__icon">
+            {%- if block.settings.icon -%}
+              <img src="{{ block.settings.icon | image_url: width: 148 }}" alt="{{ block.settings.label | escape }}" width="74" height="74" loading="lazy">
+            {%- endif -%}
+          </span>
+          <span class="rh-resource-chip__label">{{ block.settings.label }}</span>
+          <span class="rh-resource-chip__arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M14 3v2h3.59l-9.3 9.29 1.42 1.42L19 6.41V10h2V3h-7zM5 5h5V3H3v7h2V5z"/></svg>
+          </span>
+        </a>
+      {%- else -%}
+        <p class="rh-resources__empty">Add resource blocks in the theme editor.</p>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Support Resources",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Resources" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Learn from others" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Trusted resources, podcasts, lists, etc for your knowledge" },
+    { "type": "header", "content": "Section padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding top", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Padding bottom", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "resource",
+      "name": "Resource",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon / logo" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Center for Lactation Consultants" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Support Resources",
+      "blocks": [ { "type": "resource" }, { "type": "resource" }, { "type": "resource" }, { "type": "resource" } ]
+    }
+  ]
+}
+{% endschema %}
