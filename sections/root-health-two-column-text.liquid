@@ -26,65 +26,38 @@
         {%- endif -%}
       </div>
       <div class="two-col-top__media">
-        <div
-          class="two-col-media"
-          {% if image_filename != blank %}
-            style="background-image: url('{{ image_filename | asset_url }}');"
-          {% elsif image != blank %}
-            style="background-image: url('{{ image | image_url: width: 1000 }}');"
-          {% endif %}
-        ></div>
-      </div>
-    </div>
-
-    <div class="two-col-accordions two-col-accordions--full">
-      {%- if founding_story != blank or section.blocks.size > 0 -%}
-        <details class="accordion" open>
-          <summary class="accordion__summary">
-            <span class="accordion__label">{{ founding_story_label }}</span>
-          </summary>
-          <div class="accordion__content accordion__content--rich">
-            {%- if founding_story != blank -%}
-              {{ founding_story }}
-            {%- endif -%}
-
-            {%- if section.blocks.size > 0 -%}
-              {%- if team_label != blank -%}
-                <h3 class="accordion__subheading">{{ team_label }}</h3>
+        {%- if section.blocks.size > 0 -%}
+          <div class="founders__list">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'team_member' -%}
+                {%- assign member_image = block.settings.image -%}
+                {%- assign member_image_filename = block.settings.image_filename -%}
+                <div class="founder-row" {{ block.shopify_attributes }}>
+                  <div
+                    class="founder-row__photo"
+                    {% if member_image_filename != blank %}
+                      style="background-image: url('{{ member_image_filename | asset_url }}');"
+                    {% elsif member_image != blank %}
+                      style="background-image: url('{{ member_image | image_url: width: 400 }}');"
+                    {% endif %}
+                  ></div>
+                  <div class="founder-row__info">
+                    {%- if block.settings.name != blank -%}
+                      <h3 class="founder-row__name">{{ block.settings.name }}</h3>
+                    {%- endif -%}
+                    {%- if block.settings.role != blank -%}
+                      <p class="founder-row__role">{{ block.settings.role }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.bio != blank -%}
+                      <p class="founder-row__bio">{{ block.settings.bio }}</p>
+                    {%- endif -%}
+                  </div>
+                </div>
               {%- endif -%}
-              <div class="team-grid">
-                {%- for block in section.blocks -%}
-                  {%- if block.type == 'team_member' -%}
-                    {%- assign member_image = block.settings.image -%}
-                    {%- assign member_image_filename = block.settings.image_filename -%}
-                    <div class="team-card" {{ block.shopify_attributes }}>
-                      <div
-                        class="team-card__photo"
-                        {% if member_image_filename != blank %}
-                          style="background-image: url('{{ member_image_filename | asset_url }}');"
-                        {% elsif member_image != blank %}
-                          style="background-image: url('{{ member_image | image_url: width: 400 }}');"
-                        {% endif %}
-                      ></div>
-                      <div class="team-card__info">
-                        {%- if block.settings.name != blank -%}
-                          <span class="team-card__name">{{ block.settings.name }}</span>
-                        {%- endif -%}
-                        {%- if block.settings.role != blank -%}
-                          <span class="team-card__role">{{ block.settings.role }}</span>
-                        {%- endif -%}
-                        {%- if block.settings.bio != blank -%}
-                          <span class="team-card__bio">{{ block.settings.bio }}</span>
-                        {%- endif -%}
-                      </div>
-                    </div>
-                  {%- endif -%}
-                {%- endfor -%}
-              </div>
-            {%- endif -%}
+            {%- endfor -%}
           </div>
-        </details>
-      {%- endif -%}
+        {%- endif -%}
+      </div>
     </div>
   </div>
 </section>

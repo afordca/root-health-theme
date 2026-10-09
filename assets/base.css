@@ -4395,6 +4395,18 @@ details[open] .header__icon-close {
 		transition: color 0.25s ease;
 	}
 
+	/* Light-background templates (e.g. product): the top of the page is white,
+	   so use dark nav text/icons at the top state instead of white. The
+	   scrolled pill state is unaffected (already dark). */
+	body.template-product .section-header:not(.rh-nav-scrolled) .header__inline-menu .header__menu-item:not([aria-current]),
+	body.template-product .section-header:not(.rh-nav-scrolled) .header__account-text,
+	body.template-product .section-header:not(.rh-nav-scrolled) .header__account-text-text,
+	body.template-product .section-header:not(.rh-nav-scrolled) .header__icon--cart,
+	body.template-product .section-header:not(.rh-nav-scrolled) .header__icons .svg-wrapper,
+	body.template-product .section-header:not(.rh-nav-scrolled) .header__icon {
+		color: #000000;
+	}
+
 	/* ---- Scrolled state: translucent floating pill (former default) ---- */
 	.section-header:is(.scrolled-past-header,.rh-nav-scrolled) .header-wrapper {
 		background: transparent;

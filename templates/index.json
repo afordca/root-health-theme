@@ -190,8 +190,8 @@
       "settings": {
         "heading": "Real-world tested for efficacy",
         "disclaimer": "Results disclaimer",
-        "image": "shopify://shop_images/small-business-interior.jpg",
-        "image_filename": "",
+        "image": "",
+        "image_filename": "efficacy-report-bg.jpg",
         "background_color": "#fe9a68",
         "heading_color": "#ffffff",
         "stat_color": "#ffffff",

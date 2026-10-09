@@ -69,7 +69,7 @@
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "full_width": false,
-        "color_scheme": "",
+        "color_scheme": "scheme-4",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -80,7 +80,7 @@
       "settings": {
         "mission_text": "This is for you, mom. The time-crunched, sleep-deprived, multitasking, always-hungry, always-pumping, nursing-on-demand, rediscovering-yourself-again, totally-in-love you. I wanted to make it a little bit easier for you to get what you need throughout your day, so we put four postpartum must-haves in a made-for-you drink. Just one less thing to think about so you can focus on what matters most.\n\nRooting for you,",
         "role_text": "FOUNDER + CEO",
-        "founder_image_filename": "julia-ford-carther-72098e.jpg",
+        "founder_image_filename": "julia-box.png",
         "signature_image_filename": "Julia_Signature.svg",
         "background_color": "#fc4c44",
         "text_color": "#ffffff",
@@ -148,8 +148,8 @@
     "root_health_hero_MQJx39",
     "root_health_two_column_text_687BtC",
     "video_qTYKUC",
-    "root_health_mission_HHta4m",
     "root_health_values_F9J8Xy",
-    "main"
+    "main",
+    "root_health_mission_HHta4m"
   ]
 }

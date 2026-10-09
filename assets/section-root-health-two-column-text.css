@@ -213,6 +213,25 @@
 		line-height: 1.1;
 	}
 
+	/* Text + image side by side from tablet up */
+	.section-root-health-two-column-text .two-col-top {
+		flex-direction: row;
+		align-items: center;
+		gap: 40px;
+	}
+
+	.section-root-health-two-column-text .two-col-top__text {
+		flex: 1 1 auto;
+	}
+
+	.section-root-health-two-column-text .two-col-top__media {
+		flex: 0 0 45%;
+	}
+
+	.section-root-health-two-column-text .two-col-media {
+		width: 100%;
+	}
+
 	.section-root-health-two-column-text .team-grid {
 		grid-template-columns: 1fr 1fr;
 		gap: 40px;
@@ -259,5 +278,112 @@
 
 	.section-root-health-two-column-text .two-col-accordions {
 		margin-top: 56px;
+	}
+}
+
+/* ======================================================================
+   Founding Story (left) + Founding Team (right) — white, Figma 3867:1990
+   ====================================================================== */
+.section-root-health-two-column-text .founders {
+	margin-top: 48px;
+}
+
+.section-root-health-two-column-text .founders__heading {
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 400;
+	font-size: 2.6rem;
+	line-height: 1.1;
+	color: #000000;
+	margin: 0 0 20px 0;
+}
+
+.section-root-health-two-column-text .founders__text {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.5rem;
+	line-height: 1.8;
+	color: #000000;
+}
+
+.section-root-health-two-column-text .founders__text p {
+	margin: 0 0 1.2em 0;
+}
+
+.section-root-health-two-column-text .founders__text p:last-child {
+	margin-bottom: 0;
+}
+
+/* Team — small photo + text rows */
+.section-root-health-two-column-text .founders__team {
+	margin-top: 40px;
+}
+
+.section-root-health-two-column-text .founders__list {
+	display: flex;
+	flex-direction: column;
+	gap: 26px;
+}
+
+.section-root-health-two-column-text .founder-row {
+	display: flex;
+	gap: 20px;
+	align-items: flex-start;
+}
+
+.section-root-health-two-column-text .founder-row__photo {
+	flex: 0 0 160px;
+	width: 160px;
+	height: 140px;
+	border-radius: 10px;
+	background-color: var(--color-divider, #e7e3dd);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.section-root-health-two-column-text .founder-row__name {
+	font-family: "GT Super Ds Trial", serif;
+	font-weight: 400;
+	font-size: 1.9rem;
+	line-height: 1.2;
+	color: #000000;
+	margin: 0 0 8px 0;
+}
+
+.section-root-health-two-column-text .founder-row__role {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 700;
+	font-size: 1.3rem;
+	line-height: 1.35;
+	color: #000000;
+	margin: 0 0 4px 0;
+}
+
+.section-root-health-two-column-text .founder-row__bio {
+	font-family: "Gilroy", sans-serif;
+	font-weight: 300;
+	font-size: 1.2rem;
+	line-height: 1.45;
+	color: #666666;
+	margin: 0;
+}
+
+/* Desktop: story left, team right */
+@media screen and (min-width: 1024px) {
+	.section-root-health-two-column-text .founders {
+		display: flex;
+		align-items: flex-start;
+		gap: 92px;
+		margin-top: 64px;
+	}
+
+	.section-root-health-two-column-text .founders__story {
+		flex: 1 1 auto;
+		max-width: 808px;
+	}
+
+	.section-root-health-two-column-text .founders__team {
+		flex: 0 0 384px;
+		margin-top: 0;
 	}
 }
