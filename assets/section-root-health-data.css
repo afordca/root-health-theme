@@ -85,7 +85,7 @@
 	font-size: 1.6rem;
 	line-height: 1.4;
 	color: var(--data-disclaimer-color, var(--color-primary));
-	margin: 24px 0 0;
+	margin: 12px 0 0;
 }
 
 /* Desktop (1024px+) */
@@ -138,7 +138,7 @@
 	}
 
 	.root-health-data__disclaimer {
-		margin-top: 40px;
+		margin-top: 16px;
 		padding-left: 40px;
 	}
 }
