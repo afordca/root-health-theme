@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "root_health_product_information_tdNqRP": {
@@ -62,7 +71,8 @@
         "benefit_item_xaQ793": {
           "type": "benefit_item",
           "settings": {
-            "benefit_text": "Fast, Easy + Ready to Go"
+            "benefit_text": "Fast, Easy + Ready to Go",
+            "icon_filename": ""
           }
         },
         "benefit_item_NUTJCt": {
@@ -104,6 +114,7 @@
       ],
       "name": "Root Health Product Information",
       "settings": {
+        "interim_mode": true,
         "image_background_color": "#fe9a68",
         "color_scheme": "background-1",
         "enable_sticky_info": true,
@@ -114,7 +125,13 @@
         "rail_image_2_filename": "Facts.png",
         "rail_image_3_filename": "Case.png",
         "rail_image_4_filename": "Ingredients.png",
-        "rail_image_5_filename": "Chart.png"
+        "rail_image_5_filename": "Chart.png",
+        "picker_benefits": "30 Cartons Shipped to your door\nSave 15%\nFree Shipping\nFree Access to Latch365 Network",
+        "gift_heading": "Give the gift of Postpartum Support",
+        "gift_subtext": "If you or your loved one is expecting, gift them Root for when their little one arrives",
+        "gift_url": "",
+        "ingredients_content": "",
+        "recommendations_content": ""
       }
     },
     "root_health_product_subheader_J6xbxM": {
@@ -124,6 +141,54 @@
         "heading": "Less Stress.\nMore We time.",
         "padding_top": 0,
         "padding_bottom": 0
+      }
+    },
+    "root_health_data_prod01": {
+      "type": "root-health-data",
+      "blocks": {
+        "stat_d1": {
+          "type": "stat",
+          "settings": {
+            "number": "4 out of 5",
+            "unit": "",
+            "description": "Moms saw a milk supply increase"
+          }
+        },
+        "stat_d2": {
+          "type": "stat",
+          "settings": {
+            "number": "+0.9",
+            "unit": "oz",
+            "description": "Avg increase in supply per feeding (3.6 oz → 4.5 oz, +25%)"
+          }
+        },
+        "stat_d3": {
+          "type": "stat",
+          "settings": {
+            "number": "+3",
+            "unit": "min",
+            "description": "Longer average pumping session duration"
+          }
+        }
+      },
+      "block_order": [
+        "stat_d1",
+        "stat_d2",
+        "stat_d3"
+      ],
+      "name": "Data",
+      "settings": {
+        "heading": "Real-world tested for efficacy",
+        "disclaimer": "Results disclaimer",
+        "image_filename": "efficacy-report-bg.jpg",
+        "background_color": "#fe9a68",
+        "heading_color": "#ffffff",
+        "stat_color": "#ffffff",
+        "description_color": "#ffffff",
+        "divider_color": "#ffffff",
+        "disclaimer_color": "#e5653d",
+        "padding_top": 100,
+        "padding_bottom": 100
       }
     },
     "root_health_science_backed_formula_zCMpDn": {
@@ -156,7 +221,6 @@
         "video_1": {
           "type": "testimonial",
           "settings": {
-            "image": "",
             "image_filename": "",
             "video_url": "",
             "caption": ""
@@ -165,7 +229,6 @@
         "video_2": {
           "type": "testimonial",
           "settings": {
-            "image": "",
             "image_filename": "",
             "video_url": "",
             "caption": ""
@@ -174,7 +237,6 @@
         "video_3": {
           "type": "testimonial",
           "settings": {
-            "image": "",
             "image_filename": "",
             "video_url": "",
             "caption": ""
@@ -183,7 +245,6 @@
         "video_4": {
           "type": "testimonial",
           "settings": {
-            "image": "",
             "image_filename": "",
             "video_url": "",
             "caption": ""
@@ -192,7 +253,6 @@
         "video_5": {
           "type": "testimonial",
           "settings": {
-            "image": "",
             "image_filename": "",
             "video_url": "",
             "caption": ""
@@ -232,6 +292,64 @@
         "show_rating": false,
         "padding_top": 36,
         "padding_bottom": 28
+      }
+    },
+    "root_health_faq_product": {
+      "type": "root-health-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Membership Cancelation",
+            "answer": "You can cancel your membership at any time through your account dashboard or by contacting our customer support team."
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Product Testing",
+            "answer": "We test our products at a third party facility that is regulated by the FDA. We test every batch that is produced for the following:\n\nLead\nHarmful Materials"
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Shipping Information",
+            "answer": "We offer free shipping on all orders over $50. Standard shipping typically takes 3-5 business days."
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Product Ingredients",
+            "answer": "All our ingredients are carefully sourced and tested for quality. You can find detailed ingredient lists on each product page."
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Return Policy",
+            "answer": "We offer a 30-day return policy for unopened products. Please contact customer service to initiate a return."
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
+      "name": "Root Health FAQ",
+      "settings": {
+        "heading": "FAQ",
+        "first_item_open": true,
+        "background_color": "#ffffff",
+        "heading_color": "#e5653d",
+        "question_color": "#000000",
+        "answer_color": "#000000",
+        "border_color": "#fe9a68",
+        "icon_color": "#e5653d"
       }
     },
     "main": {
@@ -316,113 +434,6 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
-      }
-    },
-    "root_health_data_prod01": {
-      "type": "root-health-data",
-      "blocks": {
-        "stat_d1": {
-          "type": "stat",
-          "settings": {
-            "number": "4 out of 5",
-            "unit": "",
-            "description": "Moms saw a milk supply increase"
-          }
-        },
-        "stat_d2": {
-          "type": "stat",
-          "settings": {
-            "number": "+0.9",
-            "unit": "oz",
-            "description": "Avg increase in supply per feeding (3.6 oz → 4.5 oz, +25%)"
-          }
-        },
-        "stat_d3": {
-          "type": "stat",
-          "settings": {
-            "number": "+3",
-            "unit": "min",
-            "description": "Longer average pumping session duration"
-          }
-        }
-      },
-      "block_order": [
-        "stat_d1",
-        "stat_d2",
-        "stat_d3"
-      ],
-      "name": "Data",
-      "settings": {
-        "heading": "Real-world tested for efficacy",
-        "disclaimer": "Results disclaimer",
-        "image": "",
-        "image_filename": "efficacy-report-bg.jpg",
-        "background_color": "#fe9a68",
-        "heading_color": "#ffffff",
-        "stat_color": "#ffffff",
-        "description_color": "#ffffff",
-        "divider_color": "#ffffff",
-        "disclaimer_color": "#e5653d",
-        "padding_top": 100,
-        "padding_bottom": 100
-      }
-    },
-    "root_health_faq_product": {
-      "type": "root-health-faq",
-      "blocks": {
-        "faq_1": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Membership Cancelation",
-            "answer": "You can cancel your membership at any time through your account dashboard or by contacting our customer support team."
-          }
-        },
-        "faq_2": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Product Testing",
-            "answer": "We test our products at a third party facility that is regulated by the FDA. We test every batch that is produced for the following:\n\nLead\nHarmful Materials"
-          }
-        },
-        "faq_3": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Shipping Information",
-            "answer": "We offer free shipping on all orders over $50. Standard shipping typically takes 3-5 business days."
-          }
-        },
-        "faq_4": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Product Ingredients",
-            "answer": "All our ingredients are carefully sourced and tested for quality. You can find detailed ingredient lists on each product page."
-          }
-        },
-        "faq_5": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Return Policy",
-            "answer": "We offer a 30-day return policy for unopened products. Please contact customer service to initiate a return."
-          }
-        }
-      },
-      "block_order": [
-        "faq_1",
-        "faq_2",
-        "faq_3",
-        "faq_4",
-        "faq_5"
-      ],
-      "name": "Root Health FAQ",
-      "settings": {
-        "heading": "FAQ",
-        "first_item_open": true,
-        "background_color": "#ffffff",
-        "heading_color": "#e5653d",
-        "question_color": "#000000",
-        "answer_color": "#000000",
-        "border_color": "#fe9a68",
-        "icon_color": "#e5653d"
       }
     },
     "root_health_trusted_by_product": {
