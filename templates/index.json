@@ -17,8 +17,8 @@
         "layout_type": "full",
         "text_position": "center",
         "text_alignment": "center",
-        "heading": "Nutritional Support<br>when you need it most",
-        "subheading": "#1 leading Dietary Supplement for nursing moms; enhance your supply ( and your mood)",
+        "heading": "Nutritional support when you need it most",
+        "subheading": "Introducing Root Postpartum, the first ready-to-drink Dietary Supplement for nursing moms",
         "cta_text": "ORDER NOW",
         "cta_url": "shopify://products/the-shake",
         "enable_button_cta": true,
@@ -89,7 +89,7 @@
           "settings": {
             "number": "15G",
             "title": "Protein",
-            "description": "Packed with complete protein to keep your body strong and your brain fit"
+            "description": "Packed with complete protein to keep your body strong and your brain fit."
           }
         },
         "stat_4NHhem": {
@@ -104,8 +104,8 @@
           "type": "stat",
           "settings": {
             "number": "24",
-            "title": "Vitamins",
-            "description": "A complete postpartum vitamin + mineral profile helps boost your energy levels."
+            "title": "Vitamins + Minerals",
+            "description": "A complete postpartum vitamin and mineral profile helps boost your energy levels."
           }
         },
         "stat_RygfEw": {
@@ -140,6 +140,7 @@
       "type": "root-health-cta-blenders",
       "name": "CTA - Blenders",
       "settings": {
+        "background_image_filename": "hero-cta-blenders.png",
         "heading": "Who has time for powders or blenders?",
         "subtext": "Just grab and go and focus on what's important instead.",
         "button_text": "SHOP NOW",
@@ -149,8 +150,7 @@
         "heading_color": "#e5653d",
         "subtext_color": "#000000",
         "button_bg_color": "#fc4c44",
-        "button_text_color": "#ffffff",
-        "background_image_filename": "hero-cta-blenders.png"
+        "button_text_color": "#ffffff"
       }
     },
     "root_health_data_a1B2c3": {
@@ -161,7 +161,7 @@
           "settings": {
             "number": "4 out of 5",
             "unit": "",
-            "description": "Moms saw a milk supply increase"
+            "description": "Moms saw an increase in milk supply"
           }
         },
         "stat_d2": {
@@ -169,7 +169,7 @@
           "settings": {
             "number": "+0.9",
             "unit": "oz",
-            "description": "Avg increase in supply per feeding (3.6 oz → 4.5 oz, +25%)"
+            "description": "Average increase in milk supply per feeding, going from an average of 3.6 oz → 4.5 oz (a 25% increase!)"
           }
         },
         "stat_d3": {
@@ -190,7 +190,6 @@
       "settings": {
         "heading": "Real-world tested for efficacy",
         "disclaimer": "Results disclaimer",
-        "image": "",
         "image_filename": "efficacy-report-bg.jpg",
         "background_color": "#fe9a68",
         "heading_color": "#ffffff",
@@ -280,8 +279,8 @@
       ],
       "name": "Comparison Chart",
       "settings": {
-        "title": "The Most Complete product on the market",
-        "heading": "We've identified 5 different nutritional components that have an impact on your lactation volume. As the only complete product on the market, see how our shake compares to other products.",
+        "title": "The most complete ready-to-go Postpartum product on the market",
+        "heading": "We've identified 5 nutritional components that have an impact on your lactation volume. See how our shake stacks up to other lactation support products.",
         "components": "Hydration, Calories, Vitamins, Proteins, Galactagogues",
         "background_color": "#fe9a68",
         "title_color": "#ffffff",
@@ -358,13 +357,13 @@
         "heading": "Functional ingredients free of refined sugar, artificial ingredients, allergens, and harmful substances.",
         "button_text": "Learn More",
         "button_url": "shopify://pages/our-ingredients",
+        "background_image_filename": "ingredients-bg.png",
         "decor_top_left_filename": "",
         "decor_bottom_right_filename": "",
         "background_color": "#ffffff",
         "heading_color": "#000000",
         "label_color": "#000000",
-        "learn_more_color": "#fc4c44",
-        "background_image_filename": "ingredients-bg.png"
+        "learn_more_color": "#fc4c44"
       }
     },
     "root_health_testimonials_HK3XMR": {
@@ -427,6 +426,23 @@
         "play_color": "#fc4c44"
       }
     },
+    "root_health_founder_message_JEy6Q4": {
+      "type": "root-health-founder-message",
+      "name": "Root Health Founder Message",
+      "settings": {
+        "image_filename": "julia-box.png",
+        "heading": "We exist to support moms...",
+        "subtext": "We value what we put in our body just as much as you do.",
+        "label": "OUR FOUNDING STORY",
+        "action_link": "shopify://pages/our-why",
+        "section_height": 600,
+        "background_color": "#ffffff",
+        "heading_color": "#e5653d",
+        "subtext_color": "#000000",
+        "label_color": "#e5653d",
+        "label_bg_color": "#e5653d"
+      }
+    },
     "root_health_trusted_by_inGgNh": {
       "type": "root-health-trusted-by",
       "blocks": {
@@ -466,23 +482,6 @@
         "background_color": "#fc4c44",
         "quote_color": "#ffffff",
         "divider_color": "#ffffff"
-      }
-    },
-    "root_health_founder_message_JEy6Q4": {
-      "type": "root-health-founder-message",
-      "name": "Root Health Founder Message",
-      "settings": {
-        "image_filename": "julia-box.png",
-        "heading": "We exist to support moms...",
-        "subtext": "We value what we put in our body just as much as you do.",
-        "label": "OUR FOUNDING STORY",
-        "action_link": "shopify://pages/our-why",
-        "section_height": 600,
-        "background_color": "#ffffff",
-        "heading_color": "#e5653d",
-        "subtext_color": "#000000",
-        "label_color": "#e5653d",
-        "label_bg_color": "#e5653d"
       }
     }
   },
